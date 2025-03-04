@@ -39,13 +39,11 @@ export class MusicPlayer extends LitElement{
     if (this.audioElement) {
       this.audioElement.pause();
     }
-    
     this.audioElement = new Audio(this.audioUrl);
     this.audioElement.volume = volume;
     this.audioElement.addEventListener("loadeddata", () => {
       this.isPlaying = true;
       this.audioElement?.play();
-      console.log("loadeddata")
     });
     this.audioElement.addEventListener("loadedmetadata", () => {
       this.duration = this.audioElement?.duration || 0;
@@ -53,6 +51,7 @@ export class MusicPlayer extends LitElement{
     });
     this.audioElement.addEventListener("timeupdate", () => {
       this.currentTime = this.audioElement?.currentTime || 0;
+      this.isPlaying = true;
     });
     this.audioElement.addEventListener("ended", () => {
       this.isPlaying = false;
@@ -60,6 +59,9 @@ export class MusicPlayer extends LitElement{
     });
     this.audioElement.addEventListener("waiting", () => {
       this.isPlaying = false;
+    });
+    this.audioElement.addEventListener("playing", () => {
+      this.isPlaying = true;
     });
   }
   public updateSong(song: MusicTrack, volume:number){
