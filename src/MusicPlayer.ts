@@ -39,6 +39,7 @@ export class MusicPlayer extends LitElement{
     if (this.audioElement) {
       this.audioElement.pause();
     }
+
     this.audioElement = new Audio(this.audioUrl);
     this.audioElement.volume = volume;
     this.audioElement.addEventListener("loadeddata", () => {
@@ -51,7 +52,6 @@ export class MusicPlayer extends LitElement{
     });
     this.audioElement.addEventListener("timeupdate", () => {
       this.currentTime = this.audioElement?.currentTime || 0;
-      this.isPlaying = true;
     });
     this.audioElement.addEventListener("ended", () => {
       this.isPlaying = false;
@@ -153,6 +153,10 @@ export class MusicPlayer extends LitElement{
       align-items: center;
       gap: 10px;
     }
+    .controls button{
+      margin-top:-7px;
+      font-size: 1.5em; color:#5F5F5F;
+    }
     button {
       border: none;
       background: transparent;
@@ -188,7 +192,6 @@ private _onPlayPause() {
   } else {
     this.audioElement.play();
   }
-  
   this.isPlaying = !this.isPlaying;
 }
 
@@ -259,11 +262,11 @@ private _updateTimeFromClick(e: MouseEvent) {
             
             </div>
             <div class="controls">
-                 <button @click=${this._onPrevious}><img src="icons/back_player.svg" ></img></button>
-            <button style="margin-top:-7px; font-size: 1.5em; color:#5F5F5F; " @click=${this._onPlayPause}>${this.isPlaying ? '⏸' : '▶'}</button>
-            <button @click=${this._onNext}><img src="icons/forward_player.svg" ></img></button>
-        </div>
+              <button @click=${this._onPrevious}>⏮</button>
+              <button @click=${this._onPlayPause}>${this.isPlaying ? '⏸' : '▶'}</button>
+              <button @click=${this._onNext}>⏭</button>
             </div>
+          </div>
         </div>
       </div>
     `;
