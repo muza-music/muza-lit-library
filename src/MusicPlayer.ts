@@ -1,17 +1,83 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-
+interface MusicTrack {
+  id: number;
+  uuid: string;
+  original_uuid: string;
+  album_cover: string;
+  album_title: string;
+  label: string;
+  label_logo: string;
+  band_name: string;
+  artist_photo: string;
+  artist_main: string;
+  instrument: string;
+  other_artist_playing: string;
+  other_instrument: string;
+  year_recorded: number;
+  year_released: number;
+  song_order: number;
+  song_title: string;
+  composer: string;
+  song_file: string;
+  created_at: string;
+}
 @customElement("music-player")
 export class MusicPlayer extends LitElement{
-  @property({ type: String }) src = "art/imag_3.jpg";
+  @property({ type: String }) imageSrc = "";
   @property({ type: String }) title = "";
-  @property({ type: String }) artist = "Unknown Artist";
-  @property({ type: String }) album = "Unknown Album";
-  @property({ type: Number }) year = 2000;
-  @property({ type: Number }) duration =30;
-  @property({ type: Number }) currentTime = 20;
+  @property({ type: String }) artist = "";
+  @property({ type: String }) album = "";
+  @property({ type: Number }) year = 0;
+  @property({ type: Number }) duration =0;
+  @property({ type: Number }) currentTime = 0;
   @property({ type: Boolean }) isPlaying = false;
+  @property({type:String}) audioUrl=""
+  private audioElement?: HTMLAudioElement;
+  private _initializeAudio(volume:number) {
+    if (this.audioElement) {
+      this.audioElement.pause();
+    }
+    
+    this.audioElement = new Audio(this.audioUrl);
+    this.audioElement.volume = volume;
+    this.audioElement.addEventListener("loadeddata", () => {
+      this.isPlaying = true;
+      this.audioElement?.play();
+      console.log("loadeddata")
+    });
+    this.audioElement.addEventListener("loadedmetadata", () => {
+      this.duration = this.audioElement?.duration || 0;
+      this.currentTime = this.audioElement?.currentTime || 0;
+    });
+    this.audioElement.addEventListener("timeupdate", () => {
+      this.currentTime = this.audioElement?.currentTime || 0;
+    });
+    this.audioElement.addEventListener("ended", () => {
+      this.isPlaying = false;
+      this._onNext()
+    });
+    this.audioElement.addEventListener("waiting", () => {
+      this.isPlaying = false;
+    });
+  }
+  public updateSong(song: MusicTrack, volume:number){
+    this.imageSrc = song.album_cover;
+    this.title = song.song_title;
+    this.artist = song.artist_main;
+    this.album = song.album_title;
+    this.year = song.year_released;
+    this.audioUrl = song.song_file;
+    this._initializeAudio(volume);
+    
+  }
+  public updateVolume(volume: number){
+    if (this.audioElement) {
+      this.audioElement.volume = volume;
+    }
+  
+  }
     static styles = css`
       :host {
       display: block;
@@ -78,7 +144,7 @@ export class MusicPlayer extends LitElement{
       height: 100%;
       background: #666;
       border-radius: 5px;
-      transition: width 0.1s ease;
+      transition: width 0.5s ease;
     }
     .controls {
       display: flex;
@@ -113,12 +179,15 @@ export class MusicPlayer extends LitElement{
 }
 
 private _onPlayPause() {
-    this.isPlaying = !this.isPlaying;
-    this.dispatchEvent(new CustomEvent('playback-toggle', {
-        bubbles: true,
-        composed: true,
-        detail: { isPlaying: this.isPlaying }
-    }));
+  if (!this.audioElement) return;
+    
+  if (this.isPlaying) {
+    this.audioElement.pause();
+  } else {
+    this.audioElement.play();
+  }
+  
+  this.isPlaying = !this.isPlaying;
 }
 
 private _onNext() {
@@ -151,7 +220,9 @@ private _updateTimeFromClick(e: MouseEvent) {
     const width = rect.width;
     const percentage = Math.min(Math.max(x / width, 0), 1);
     const newTime = percentage * this.duration;
-    
+    if (this.audioElement) {
+    this.audioElement.currentTime = newTime;
+    }
     this.currentTime = newTime;
     this.dispatchEvent(new CustomEvent('time-update', {
         bubbles: true,
@@ -160,10 +231,10 @@ private _updateTimeFromClick(e: MouseEvent) {
     }));
 }
   render() {
-    if(this.title){
+    if(this.audioElement){
     return html`
       <div class="player">
-        <img class="album-art" src=${this.src} alt="Album Art">
+        <img class="album-art" src=${this.imageSrc} alt="Album Art">
         <div class="track-info">
           <h4>${this.title}</h4>
           <p>${this.artist} </p>
