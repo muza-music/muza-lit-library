@@ -60,42 +60,24 @@
     <div class="main">
       <music-topbar></music-topbar>
 
-
-
       <div class="content">
         <song-line id="song1"></song-line>
 
-
         <music-section
+          id="featured"
           title="Featured Albums"
-          albums='[
-            {"imageSrc": "art/imag_2.jpg", "title": "Orange cat", "subTitle": "1944"},
-            {"imageSrc": "art/imag_3.jpg", "title": "Paper cat", "subTitle": "2002"}
-          ]'
         ></music-section>
         <music-section
+          id="newReleases"
           title="New Relases"
-          albums='[
-            {"imageSrc": "art/imag_3.jpg", "title": "Paper cat", "subTitle": "2002"},
-            {"imageSrc": "art/imag_1.jpg", "title": "Two cats", "subTitle": "2023"},
-            {"imageSrc": "art/imag_2.jpg", "title": "Orange cat", "subTitle": "1944"}
-          ]'
         ></music-section>
         <music-section
-          title="New Relases"
-          albums='[
-            {"imageSrc": "art/imag_3.jpg", "title": "Paper cat", "subTitle": "2002"},
-            {"imageSrc": "art/imag_1.jpg", "title": "Two cats", "subTitle": "2023"},
-            {"imageSrc": "art/imag_2.jpg", "title": "Orange cat", "subTitle": "1944"}
-          ]'
+          id="recommended"
+          title="Recommended"
         ></music-section>
         <music-section
-          title="New Relases"
-          albums='[
-            {"imageSrc": "art/imag_3.jpg", "title": "Paper cat", "subTitle": "2002"},
-            {"imageSrc": "art/imag_1.jpg", "title": "Two cats", "subTitle": "2023"},
-            {"imageSrc": "art/imag_2.jpg", "title": "Orange cat", "subTitle": "1944"}
-          ]'
+          id="popular"
+          title="Popular Albums"
         ></music-section>
       </div>
     </div>
@@ -107,12 +89,28 @@
       import "./src/MusicTopbar.ts";
       import "./src/SongLine.ts"
 
-
-      // Set the sections after the component is loaded
-      document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('DOMContentLoaded', async () => {
         const sidebar = document.getElementById('sidebar');
-        document.getElementById('song2');
+        const songElement = document.getElementById('song1');
+        
+        // Fetch album data from JSON file
+        const albumsResponse = await fetch('data/albums.json');
+        const albumsData = await albumsResponse.json();
+        
+        // Set albums for each section
+        document.getElementById('featured').albums = albumsData.featured;
+        document.getElementById('newReleases').albums = albumsData.newReleases;
+        document.getElementById('recommended').albums = albumsData.recommended;
+        document.getElementById('popular').albums = albumsData.newReleases;
+        
+        // Fetch song data from JSON file
+        const songsResponse = await fetch('data/songs.json');
+        const songsData = await songsResponse.json();
+        if (songElement && songsData.songs && songsData.songs.length > 0) {
+          songElement.details = songsData.songs[0];
+        }
 
+        // Set sidebar sections
         sidebar.sections = [
           {
             title: 'My Muza',
@@ -132,7 +130,6 @@
           }
         ];
       });
-
     </script>
   </body>
 </html>
