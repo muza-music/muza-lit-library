@@ -57,18 +57,19 @@ export class MusicTopbar extends LitElement {
       align-items: center;
     }
 
-    .user-menu {
+    .user-menu, .menu-menu {
       position: relative;
     }
 
-    .user-icon {
+    .user-icon, .menu-icon {
       cursor: pointer;
       padding: 8px;
       border-radius: 50%;
       color: #666;
+      font-size: 24px;
     }
 
-    .user-icon:hover {
+    .user-icon:hover, .menu-icon:hover {
       background: #e0e0e0;
     }
   `;
@@ -82,6 +83,14 @@ export class MusicTopbar extends LitElement {
 
   private userIconClick() {
     const event = new CustomEvent('user-icon-click', {
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(event);
+  }
+
+  private menuIconClick() {
+    const event = new CustomEvent('menu-icon-click', {
       bubbles: true,
       composed: true,
     });
@@ -121,9 +130,15 @@ export class MusicTopbar extends LitElement {
             ></volume-control>
           </div>
           <div class="user-menu">
+          <i
+          class="fa-solid fa-circle-user user-icon"
+          @click=${this.userIconClick}
+          ></i>
+          </div>
+          <div class="menu-menu">
             <i
-              class="fa-solid fa-circle-user user-icon"
-              @click=${this.userIconClick}
+              class="fa-solid fa-bars menu-icon"
+              @click=${this.menuIconClick}
             ></i>
           </div>
         </div>
