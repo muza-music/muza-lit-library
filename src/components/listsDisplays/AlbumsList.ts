@@ -96,8 +96,16 @@ export class MusicSection extends LitElement {
   @property({ type: String })
   subTitle = '';
 
+  @property({ type: String })
+  artist = '';
+
   @property({ type: Array })
-  albums: { imageSrc: string; title: string; subTitle: string }[] = [];
+  albums: {
+    imageSrc: string;
+    title: string;
+    subTitle: string;
+    artist: string;
+  }[] = [];
 
   private handleShowAll() {
     this.dispatchEvent(
@@ -116,6 +124,7 @@ export class MusicSection extends LitElement {
           image-src=${album.imageSrc}
           title=${album.title}
           sub-title=${album.subTitle}
+          artist=${album.artist}
         ></album-cover>
       `
     );

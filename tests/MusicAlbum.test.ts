@@ -29,13 +29,14 @@ describe('AlbumCover', () => {
       <album-cover
         image-src="test.jpg"
         title="Test Album"
-        sub-title="Test Artist"
+        sub-title="Test subTitle"
+        artist="Test Artist"
       ></album-cover>
     `);
 
     expect(el.imageSrc).toBe('test.jpg');
     expect(el.title).toBe('Test Album');
-    expect(el.subTitle).toBe('Test Artist');
+    expect(el.subTitle).toBe('Test subTitle');
 
     const img = el.shadowRoot!.querySelector('img');
     const h3 = el.shadowRoot!.querySelector('h3');
@@ -43,7 +44,7 @@ describe('AlbumCover', () => {
 
     expect(img?.getAttribute('src')).toBe('test.jpg');
     expect(h3?.textContent).toBe('Test Album');
-    expect(p?.textContent).toBe('Test Artist');
+    expect(p?.textContent).toBe('Test subTitle');
   });
 
   it('dispatches album-selected event on click', async () => {
@@ -51,7 +52,8 @@ describe('AlbumCover', () => {
       <album-cover
         image-src="test.jpg"
         title="Test Album"
-        sub-title="Test Artist"
+        sub-title="Test subTitle"
+        artist="Test Artist"
       ></album-cover>
     `);
 
@@ -65,7 +67,8 @@ describe('AlbumCover', () => {
 
     expect(eventDetail).toEqual({
       title: 'Test Album',
-      subTitle: 'Test Artist',
+      subTitle: 'Test subTitle',
+      artist: 'Test Artist',
       imageSrc: 'test.jpg',
     });
   });
