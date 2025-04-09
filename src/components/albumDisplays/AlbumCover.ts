@@ -108,12 +108,16 @@ export class AlbumCover extends LitElement {
   @property({ type: String, attribute: 'sub-title' })
   subTitle = '';
 
+  @property({ type: String, attribute: 'artist' })
+  artist = '';
+
   private handleTrackClick() {
     const event = new CustomEvent('album-selected', {
       detail: {
         title: this.title,
         subTitle: this.subTitle,
         imageSrc: this.imageSrc,
+        artist: this.artist,
       },
       bubbles: true,
       composed: true,
@@ -132,6 +136,7 @@ export class AlbumCover extends LitElement {
         </div>
         <h3>${this.title}</h3>
         <p>${this.subTitle}</p>
+        <p>${this.artist}</p>
       </div>
     `;
   }
