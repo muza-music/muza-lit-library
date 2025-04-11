@@ -81,6 +81,7 @@
 
   <script type="module">
     import "./src/components/albumDisplays/AlbumCover.ts";
+    import "./src/components/albumDisplays/AlbumArtist.ts";
     import "./src/components/albumDisplays/PlaylistCover.ts";
     import "./src/components/listsDisplays/MusicListSection.ts";
     import "./src/components/sections/MusicSidebar.ts";
@@ -164,6 +165,10 @@
       const albumsResponse = await fetch('data/albums.json');
       const albumsData = await albumsResponse.json();
 
+            // Fetch artist data
+      const artistsResponse = await fetch('data/artists.json');
+      const artistsData = await artistsResponse.json();
+
       // Create Featured Albums section
       if (albumsData.featured && albumsData.featured.length > 0) {
         const featuredSection = document.createElement('music-list-section');
@@ -187,6 +192,13 @@
         recommendedSection.list = albumsData.recommended
         recommendedSection.type = 'playlist';
         content.appendChild(recommendedSection);
+      }
+      if (artistsData.artists && artistsData.artists.length > 0) {
+        const artistsSection = document.createElement('music-list-section');
+        artistsSection.title = "Artists";
+        artistsSection.list = artistsData.artists
+        artistsSection.type = 'artist';
+        content.appendChild(artistsSection);
       }
     };
     // Execute the data fetching immediately

@@ -1,0 +1,19 @@
+{
+  "artists": [
+    {
+      "id": 2, 
+      "index": 4, 
+      "imageSrc":"https://s3-alpha-sig.figma.com/img/0bc6/0c61/0f9043e0f7b4e05d8b18c6b00d3be0d9?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=NvjD-de355wgYODrzakHdFmuN3xePbiScMEHY94Y7T19m09mkcJIfp7dRKHlc~causl~tVWcLAzVUmRG9E1I8SUjIuFL5Ht~9jFkGjOzY3mmv6JX8KwW2lUXNikPbPuVzmyLZyw~xxYcNbYP8BGVQlBOoU6XO-8QHyn57UCkbNgUIizAQNJ-B6-5T0Ie5fF3orcpJQgEsBmjZ~eXjmx8TUj7Xl204Co9CyWwlg5UJCKocV8rZis8LINqozq~FYsEhJalloQrcIzRrEZ3eI~P5KET5zMASlHlM9GEpqcWAlyUeVEYTGfCHtmJZmFPuFCGrGAQ7IhgIky6AHbvOxbwFg__",
+      "artistName": "Legendary Saxophone",
+      "albumsCount": "22"
+      
+    },
+    {
+      "id": 3, 
+      "index": 5, 
+      "imageSrc": "https://s3-alpha-sig.figma.com/img/7d0c/449b/3454b3959649ee83d4beadb305737afe?Expires=1745193600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nbrvFjioe3n~wX6jAIVLlCZVAZCtJFj-oKcPZhKtvFaHBSB47GC-0wI6OaunTgT2j0q6LfLRR03qnkjhwEj5xt~xFQx5JhQxhpqZRsGWw9L2VwQ1y0N9JS7hHEZuSXD4j0DWR8vsPZQ7NowhSeJGjPAASV5T9SvIJ1dglQc5CjYrMj1yIYPl6pf0l59raCTtlNvmEH4BBtU1bS0g92juTQq0Ved7ttsrt5u8U6KB3Oooy1uTS0rtomv~nAXw8Uk8g73EQ8zIES7YUoE0DKErBVoos3S9q3cYh376P7wzyBCp~pgXBSRk-usZYuV62tYNP-8Ot45D6iABRrzGeeKQLw__",
+      "artistName": "John Coltrane",
+      "albumsCount": "11"
+    }
+  ]
+}

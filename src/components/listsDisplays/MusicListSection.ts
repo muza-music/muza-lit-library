@@ -54,6 +54,9 @@ export class MusicListSection extends LitElement {
     .content-items > album-cover:first-child {
       margin-left: 0;
     }
+    .content-items > artist-album:first-child {
+      margin-left: 0;
+    }
 
     .section-button {
       align-self: center;
@@ -96,12 +99,17 @@ export class MusicListSection extends LitElement {
   @property({ type: String })
   subTitle = '';
 
+  @property({ type: String })
+  artistName = '';
+
   @property({ type: Array })
   list: {
     imageSrc: string;
     title: string;
     subTitle?: string;
+    artistName?: string;
     songsCount?: number;
+    albumsCount?: number;
   }[] = [];
 
   // 'album' | 'playlist'
@@ -130,6 +138,18 @@ export class MusicListSection extends LitElement {
     );
   }
 
+  private renderArtists() {
+    return this.list.map(
+      (artist) => html`
+        <album-artist
+          image-src=${artist.imageSrc}
+          artist-name=${artist.artistName}
+          albums-count=${artist.albumsCount?.toString()}
+        ></album-artist>
+      `
+    );
+  }
+
   private renderPlaylists() {
     return this.list.map(
       (album) => html`
@@ -154,6 +174,8 @@ export class MusicListSection extends LitElement {
         <div class="content-items">
           ${this.type === 'album'
             ? this.renderAlbums()
+            : this.type === 'artist'
+            ? this.renderArtists()
             : this.renderPlaylists()}
         </div>
       </div>

@@ -1,4 +1,5 @@
 export { AlbumCover } from './components/albumDisplays/AlbumCover';
+export { AlbumArtist } from './components/albumDisplays/AlbumArtist';
 export { MusicSidebar } from './components/sections/MusicSidebar';
 export { MusicTopbar } from './components/sections/MusicTopbar';
 export { VolumeControl } from './controls/VolumeControl';
