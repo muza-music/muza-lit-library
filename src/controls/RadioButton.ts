@@ -9,17 +9,17 @@ export class RadioButton extends LitElement {
   @property({ type: Boolean }) checked = false;
   @property({ type: Boolean }) disabled = false;
   @property({ type: String }) helperText = '';
-  @property({ type: String }) size = 'default'; 
+  @property({ type: String }) size = 'default';
 
   static styles = css`
     :host {
-      --radio-color: var(--muza-secondary-text-color, #5f5f5f);
-      --radio-checked-color: var(--muza-primary-text-color, #333333);
-      --radio-disabled-color: var(--muza-tertiary-text-color, #aaa);
-      --radio-focus-ring: var(--muza-button-background, #eee);
+      --radio-color: var(--muza-radio-color, #d1d5db);
+      --radio-checked-color: var(--muza-radio-checked-color, #2563eb);
+      --radio-disabled-color: var(--muza-radio-disabled-color, #9ca3af);
+      --radio-focus-ring: var(--muza-radio-focus-ring);
       --radio-text-color: var(--muza-primary-text-color, #333333);
       --radio-helper-text-color: var(--muza-tertiary-text-color, #aaa);
-      
+
       display: block;
       margin-bottom: var(--muza-spacing-sm, 8px);
     }
@@ -123,24 +123,27 @@ export class RadioButton extends LitElement {
   private handleChange(e: Event) {
     const target = e.target as HTMLInputElement;
     this.checked = target.checked;
-    
+
     this.dispatchEvent(
       new CustomEvent('radio-change', {
         detail: {
           name: this.name,
           value: this.value,
-          checked: this.checked
+          checked: this.checked,
         },
         bubbles: true,
-        composed: true
+        composed: true,
       })
     );
   }
 
   render() {
     return html`
-      <label 
-        class="radio-container ${this.size === 'large' ? 'large' : ''} ${this.disabled ? 'disabled' : ''}"
+      <label
+        class="radio-container ${this.size === 'large' ? 'large' : ''} ${this
+          .disabled
+          ? 'disabled'
+          : ''}"
       >
         <input
           type="radio"
@@ -150,11 +153,13 @@ export class RadioButton extends LitElement {
           ?checked="${this.checked}"
           ?disabled="${this.disabled}"
           @change="${this.handleChange}"
-        >
+        />
         <span class="radio-control"></span>
         <span class="radio-label">${this.label}</span>
       </label>
-      ${this.helperText ? html`<div class="helper-text">${this.helperText}</div>` : ''}
+      ${this.helperText
+        ? html`<div class="helper-text">${this.helperText}</div>`
+        : ''}
     `;
   }
 }

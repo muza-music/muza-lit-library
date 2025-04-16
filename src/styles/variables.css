@@ -23,6 +23,10 @@
   --muza-input-disabled-bg: #f3f4f6;
   --muza-input-error-border: #e53935;
   --muza-input-success-border: #4caf50;
+  --muza-radio-color: #d1d5db;
+  --muza-radio-checked-color: #2563eb;
+  --muza-radio-disabled-color: #9ca3af;
+  --muza-radio-focus-ring: rgba(37, 99, 235, 0.2);
 
   /* Typography */
   --muza-primary-font-size: 14px;
