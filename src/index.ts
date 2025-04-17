@@ -2,6 +2,7 @@ export { AlbumCover } from './components/albumDisplays/AlbumCover';
 export { AlbumArtist } from './components/albumDisplays/AlbumArtist';
 export { MusicSidebar } from './components/sections/MusicSidebar';
 export { MusicTopbar } from './components/sections/MusicTopbar';
+export { Header } from './components/sections/Header';
 export { VolumeControl } from './controls/VolumeControl';
 export { SongLine } from './components/songLineDisplays/SongLine';
 export { MusicPlayer } from './components/sections/MusicPlayer';
