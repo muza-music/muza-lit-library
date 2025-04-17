@@ -9,20 +9,20 @@ export class MuzaCheckBox extends LitElement {
   @property({ type: String }) id = '';
   @property({ type: String }) name = '';
   @property({ type: String }) value = '';
-  @property({ type: String }) size = 'default'; 
-  @property({ type: String }) variant = 'default'; 
+  @property({ type: String }) size = 'default';
+  @property({ type: String }) variant = 'default';
 
   static styles = css`
     :host {
-        --checkbox-color: var(--muza-primary-text-color, #333333);
-        --checkbox-bg: var(--muza-input-bg, #ffffff);
-        --checkbox-border: var(--muza-border-color, #D1D5DB); 
-        --checkbox-border-radius: var(--muza-border-radius-sm, 4px);
-        --checkbox-hover-border: var(--muza-checkbox-checked-bg, #3B82F6);
-        --checkbox-focus-border: var(--muza-checkbox-checked-bg, #3B82F6);
-        --checkbox-checked-bg: var(--muza-checkbox-checked-bg, #2563EB);
-        --checkbox-disabled-bg: var(--muza-input-disabled-bg, #f3f4f6);
-        --checkbox-label-color: var(--muza-secondary-text-color, #374151);
+      --checkbox-color: var(--muza-primary-text-color, #333333);
+      --checkbox-bg: var(--muza-input-bg, #ffffff);
+      --checkbox-border: var(--muza-border-color, #d1d5db);
+      --checkbox-border-radius: var(--muza-border-radius-sm, 4px);
+      --checkbox-hover-border: var(--muza-checkbox-checked-bg, #3b82f6);
+      --checkbox-focus-border: var(--muza-checkbox-checked-bg, #3b82f6);
+      --checkbox-checked-bg: var(--muza-checkbox-checked-bg, #2563eb);
+      --checkbox-disabled-bg: var(--muza-input-disabled-bg, #f3f4f6);
+      --checkbox-label-color: var(--muza-secondary-text-color, #374151);
 
       display: block;
       font-family: inherit;
@@ -34,7 +34,7 @@ export class MuzaCheckBox extends LitElement {
       cursor: pointer;
     }
 
-    input[type="checkbox"] {
+    input[type='checkbox'] {
       position: relative;
       appearance: none;
       width: 16px;
@@ -47,22 +47,22 @@ export class MuzaCheckBox extends LitElement {
       transition: all 0.2s ease;
     }
 
-    input[type="checkbox"]:hover {
+    input[type='checkbox']:hover {
       border-color: var(--checkbox-hover-border);
     }
 
-    input[type="checkbox"]:focus {
+    input[type='checkbox']:focus {
       outline: none;
       border-color: var(--checkbox-focus-border);
       box-shadow: 0 0 0 1px var(--checkbox-focus-border);
     }
 
-    input[type="checkbox"]:checked {
+    input[type='checkbox']:checked {
       background-color: var(--checkbox-checked-bg);
       border-color: var(--checkbox-checked-bg);
     }
 
-    input[type="checkbox"]:checked::before {
+    input[type='checkbox']:checked::before {
       content: '';
       position: absolute;
       width: 8px;
@@ -75,7 +75,7 @@ export class MuzaCheckBox extends LitElement {
       background-position: center;
     }
 
-    input[type="checkbox"]:disabled {
+    input[type='checkbox']:disabled {
       background-color: var(--checkbox-disabled-bg);
       border-color: var(--checkbox-border);
       cursor: not-allowed;
@@ -94,22 +94,22 @@ export class MuzaCheckBox extends LitElement {
     }
 
     /* Size variants */
-    input[type="checkbox"].small {
+    input[type='checkbox'].small {
       width: 12px;
       height: 12px;
     }
 
-    input[type="checkbox"].small:checked::before {
+    input[type='checkbox'].small:checked::before {
       width: 6px;
       height: 6px;
     }
 
-    input[type="checkbox"].large {
+    input[type='checkbox'].large {
       width: 20px;
       height: 20px;
     }
 
-    input[type="checkbox"].large:checked::before {
+    input[type='checkbox'].large:checked::before {
       width: 10px;
       height: 10px;
     }
@@ -126,7 +126,7 @@ export class MuzaCheckBox extends LitElement {
       border-color: var(--checkbox-hover-border);
     }
 
-    .bordered:has(input[type="checkbox"]:checked) {
+    .bordered:has(input[type='checkbox']:checked) {
       border-color: var(--checkbox-checked-bg);
     }
   `;
@@ -134,32 +134,37 @@ export class MuzaCheckBox extends LitElement {
   private _handleChange(e: Event) {
     const target = e.target as HTMLInputElement;
     this.checked = target.checked;
-    
-    this.dispatchEvent(new CustomEvent('change', {
-      detail: {
-        checked: this.checked,
-        value: this.value,
-        name: this.name
-      },
-      bubbles: true,
-      composed: true
-    }));
+
+    this.dispatchEvent(
+      new CustomEvent('change', {
+        detail: {
+          checked: this.checked,
+          value: this.value,
+          name: this.name,
+        },
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   render() {
-    const uniqueId = this.id || `muza-checkbox-${Math.random().toString(36).substring(2, 9)}`;
+    const uniqueId =
+      this.id || `muza-checkbox-${Math.random().toString(36).substring(2, 9)}`;
     const containerClasses = {
       'checkbox-container': true,
-      'disabled': this.disabled,
-      'bordered': this.variant === 'bordered'
+      disabled: this.disabled,
+      bordered: this.variant === 'bordered',
     };
 
     return html`
-      <div class="${Object.entries(containerClasses)
-        .filter(([, value]) => value)
-        .map(([key]) => key)
-        .join(' ')}">
-        <input 
+      <div
+        class="${Object.entries(containerClasses)
+          .filter(([, value]) => value)
+          .map(([key]) => key)
+          .join(' ')}"
+      >
+        <input
           type="checkbox"
           id="${uniqueId}"
           name="${this.name}"
