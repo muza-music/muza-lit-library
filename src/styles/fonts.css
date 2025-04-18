@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'Founders Grotesk Semibold';
+  src: url('/fonts/FoundersGrotesk-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Founders Grotesk MediumItalic';
+  src: url('/fonts/FoundersGrotesk-MediumItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Founders Grotesk Regular';
+  src: url('/fonts/FoundersGrotesk-Regular.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Founders Grotesk SemiboldItalic';
+  src: url('/fonts/FoundersGrotesk-SemiboldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Founders Grotesk LightItalic';
+  src: url('/fonts/FoundersGrotesk-LightItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Founders Grotesk Bold';
+  src: url('/fonts/FoundersGrotesk-Bold') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Founders Grotesk BoldItalic';
+  src: url('/fonts/FoundersGrotesk-BoldItalic') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
