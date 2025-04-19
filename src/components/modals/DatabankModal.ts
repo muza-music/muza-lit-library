@@ -16,6 +16,12 @@ export class DataBankModal extends LitElement {
       --button-text-color: var(--muza-button-text-color, #ffffff);
       --overlay-background: var(--muza-overlay-background, rgba(0, 0, 0, 0.5));
       --border-color: var(--muza-border-color, #e5e7eb);
+      --title-font-family: var(
+        --muza-title-font-family,
+        'Founders Grotesk Text Test',
+        system-ui,
+        sans-serif
+      );
     }
 
     .modal-overlay {
@@ -32,102 +38,157 @@ export class DataBankModal extends LitElement {
     }
 
     .modal-container {
-      width: 100%;
-      max-width: 40rem;
-      padding: 1rem;
+      width: 625px;
+      height: 331px;
+      border-radius: 8px;
+      border-width: 1px;
+      padding-top: 8px;
+      padding-bottom: 12px;
+      gap: 12px;
+      overflow: hidden;
     }
 
     .modal-content {
       background-color: var(--modal-background);
-      border-radius: 0.75rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .modal-upper {
+      width: 588px;
+      height: 251px;
+      border-radius: 8px;
+      padding-top: 6px;
+      padding-right: 16px;
+      padding-bottom: 6px;
+      padding-left: 16px;
+      gap: 6px;
     }
 
     .modal-header {
-      padding: 1.5rem 1.5rem 1rem;
-    }
-
-    .modal-title {
-      font-size: 2.25rem;
-      font-weight: 700;
-      color: var(--modal-text-color);
-      margin: 0;
+      padding: 24px 24px 12px;
       text-align: center;
     }
 
+    .modal-title {
+      width: 460px;
+      height: 32px;
+      font-family: var(--title-font-family);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 100%;
+      letter-spacing: -0.03em;
+      color: var(--modal-text-color);
+      margin: 0 auto;
+      text-align: center;
+      text-transform: capitalize;
+    }
+
     .modal-body {
-      padding: 0 1.5rem;
+      padding: 0 24px;
       text-align: left;
     }
 
     .modal-text {
-      font-size: 1.125rem;
+      font-size: 16px;
       color: var(--modal-secondary-text);
-      margin-bottom: 1.5rem;
+      margin-bottom: 16px;
       line-height: 1.5;
-      padding-left: 2rem;
-      padding-right: 2rem;
     }
 
     .modal-footer {
+      width: 588px;
+      height: 68px;
       display: flex;
       justify-content: space-between;
-      padding: 1.5rem;
+      align-items: center;
+      padding-top: 10px;
+      padding-right: 24px;
+      padding-bottom: 10px;
+      padding-left: 24px;
       border-top: 1px solid var(--border-color);
-      margin-top: 1rem;
     }
 
     .button-container {
+      width: 278px;
+      height: 34px;
       display: flex;
-      gap: 0.75rem;
+      gap: 10px;
     }
 
     .button {
-      font-size: 1rem;
+      font-size: 14px;
       font-weight: 500;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.375rem;
+      border-radius: 8px;
       border: none;
       cursor: pointer;
       transition: background-color 0.2s;
-      white-space: nowrap;
     }
 
     .button-red {
+      width: 72px;
+      height: 34px;
       background-color: var(--button-red-background);
       color: var(--button-text-color);
+      padding: 2px 3px;
+      gap: 2px;
     }
 
     .button-blue {
+      width: 138px;
+      height: 34px;
       background-color: var(--button-blue-background);
       color: var(--button-text-color);
+      padding: 2px 3px;
+      gap: 2px;
     }
 
     .button-gray {
+      width: 130px;
+      height: 34px;
       background-color: var(--button-gray-background);
       color: var(--modal-text-color);
+      padding: 2px 3px;
+      gap: 2px;
     }
 
     .hidden {
       display: none;
     }
-    
+
     @media (max-width: 640px) {
+      .modal-container {
+        width: 100%;
+        max-width: 588px;
+        height: auto;
+      }
+
+      .modal-upper {
+        width: 100%;
+        height: auto;
+      }
+
       .modal-title {
-        font-size: 1.75rem;
+        width: 100%;
+        font-size: 28px;
       }
-      
+
       .modal-footer {
+        width: 100%;
         flex-direction: column;
-        gap: 1rem;
+        align-items: center;
+        gap: 16px;
+        height: auto;
+        padding-top: 16px;
+        padding-bottom: 16px;
       }
-      
+
       .button-container {
         width: 100%;
         justify-content: space-between;
       }
-      
+
       .button-red {
         width: 100%;
       }
@@ -155,37 +216,34 @@ export class DataBankModal extends LitElement {
       <div class="modal-overlay">
         <div class="modal-container">
           <div class="modal-content">
-            <!-- Modal header -->
-            <div class="modal-header">
-              <h3 class="modal-title">Auto-Fill Your Song Details?</h3>
+            <div class="modal-upper">
+              <!-- Modal header -->
+              <div class="modal-header">
+                <h3 class="modal-title">Auto-Fill Your Song Details?</h3>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <p class="modal-text">
+                  We'll Use The Artist And Album Name You Entered To Match Your
+                  Release With Existing Records.
+                </p>
+
+                <p class="modal-text">
+                  If We Find A Match, Song Titles, Composers, And More Will Be
+                  Filled In Automatically.
+                </p>
+
+                <p class="modal-text">You Can Still Edit Everything Later.</p>
+              </div>
             </div>
-            
-            <!-- Modal body -->
-            <div class="modal-body">
-              <p class="modal-text">
-                We'll Use The Artist And Album Name You Entered To Match 
-                Your Release With Existing Records.
-              </p>
-              
-              <p class="modal-text">
-                If We Find A Match, Song Titles, Composers, And More Will Be 
-                Filled In Automatically.
-              </p>
-              
-              <p class="modal-text">
-                You Can Still Edit Everything Later.
-              </p>
-            </div>
-            
+
             <!-- Modal footer -->
             <div class="modal-footer">
-              <button
-                class="button button-red"
-                @click=${this._handleGoBack}
-              >
+              <button class="button button-red" @click=${this._handleGoBack}>
                 Go back
               </button>
-              
+
               <div class="button-container">
                 <button
                   class="button button-gray"
@@ -193,7 +251,7 @@ export class DataBankModal extends LitElement {
                 >
                   No I'll do it manually
                 </button>
-                
+
                 <button
                   class="button button-blue"
                   @click=${this._handleAutoFill}
