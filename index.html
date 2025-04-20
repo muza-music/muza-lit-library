@@ -71,6 +71,12 @@
     <music-topbar id="topbar"></music-topbar>
 
     <div class="content" id="content">
+      <muza-slider 
+      id="demo-slider" 
+      min="0" 
+      max="100" 
+      value="50">
+    </muza-slider>
       <!-- content -->
     </div>
   </div>
@@ -95,6 +101,7 @@
     import "./src/components/listsDisplays/MusicPlaylist.ts";
     import "./src/components/songLineDisplays/PlaylistItem.ts";
     import "./src/components/albumDisplays/SmallAlbumDetails.ts";
+    import "./src/controls/MuzaSlider.ts";
     import "./src/controls/MuzaButton.ts";
     import "./src/controls/MuzaInputField.ts";
     import "./src/icons/Playlist.ts";
