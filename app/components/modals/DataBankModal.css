@@ -1,147 +1,148 @@
 .modal-overlay {
-    --modal-background: var(--muza-modal-background, #ffffff);
-    --modal-text-color: var(--muza-text-color, #000000);
-    --modal-secondary-text: var(--muza-tertiary-text-color, #6b7280);
-    --button-red-background: var(--muza-red-background, #dc2626);
-    --button-blue-background: var(--muza-blue-background, #3b82f6);
-    --button-gray-background: var(--muza-gray-background, #f3f4f6);
-    --button-text-color: var(--muza-button-text-color, #ffffff);
-    --overlay-background: var(--muza-overlay-background, rgba(0, 0, 0, 0.5));
-    --border-color: var(--muza-border-color, #e5e7eb);
-    --title-font-family: var(
-      --muza-title-font-family,
-      'Founders Grotesk Text Test',
-      system-ui,
-      sans-serif
-    );
-    
-    position: fixed;
-    inset: 0; /* Shorthand for top, right, bottom, left: 0 */
-    background-color: var(--overlay-background);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 50;
-  }
-  
+  --modal-background: var(--muza-modal-background, #ffffff);
+  --modal-text-color: var(--muza-text-color, #000000);
+  --modal-secondary-text: var(--muza-tertiary-text-color, #6b7280);
+  --button-red-background: var(--muza-red-background, #dc2626);
+  --button-blue-background: var(--muza-blue-background, #3b82f6);
+  --button-gray-background: var(--muza-gray-background, #f3f4f6);
+  --button-text-color: var(--muza-button-text-color, #ffffff);
+  --overlay-background: var(--muza-overlay-background, rgba(0, 0, 0, 0.5));
+  --border-color: var(--muza-border-color, #e5e7eb);
+  --title-font-family: var(
+    --muza-title-font-family,
+    "Founders Grotesk Text Test",
+    system-ui,
+    sans-serif
+  );
+
+  position: fixed;
+  inset: 0; /* Shorthand for top, right, bottom, left: 0 */
+  background-color: var(--overlay-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.modal-container {
+  width: 625px;
+  max-width: 100%;
+  border-radius: 8px;
+  padding: 8px 0 12px;
+  overflow: hidden;
+}
+
+.modal-content {
+  background-color: var(--modal-background);
+  border-radius: 8px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.modal-upper {
+  max-width: 588px;
+  margin: 0 auto;
+  border-radius: 8px;
+  padding: 6px 16px;
+}
+
+.modal-header {
+  padding: 24px 24px 12px;
+  text-align: center;
+}
+
+.modal-title {
+  max-width: 460px;
+  font-family: var(--title-font-family);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  color: var(--modal-text-color);
+  margin: 0 auto;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.modal-body {
+  padding: 0 24px;
+  text-align: left;
+}
+
+.modal-text {
+  font-size: 16px;
+  color: var(--modal-secondary-text);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.modal-footer {
+  max-width: 588px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 24px;
+  border-top: 1px solid var(--border-color);
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  padding: 2px 3px;
+  height: 34px;
+}
+
+.button-red {
+  width: 72px;
+  background-color: var(--button-red-background);
+  color: var(--button-text-color);
+}
+
+.button-blue {
+  width: 138px;
+  background-color: var(--button-blue-background);
+  color: var(--button-text-color);
+}
+
+.button-gray {
+  width: 130px;
+  background-color: var(--button-gray-background);
+  color: var(--modal-text-color);
+}
+
+@media (max-width: 640px) {
   .modal-container {
-    width: 625px;
-    max-width: 100%;
-    border-radius: 8px;
-    padding: 8px 0 12px;
-    overflow: hidden;
+    height: auto;
   }
-  
-  .modal-content {
-    background-color: var(--modal-background);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  }
-  
-  .modal-upper {
-    max-width: 588px;
-    margin: 0 auto;
-    border-radius: 8px;
-    padding: 6px 16px;
-  }
-  
-  .modal-header {
-    padding: 24px 24px 12px;
-    text-align: center;
-  }
-  
+
   .modal-title {
-    max-width: 460px;
-    font-family: var(--title-font-family);
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 100%;
-    letter-spacing: -0.03em;
-    color: var(--modal-text-color);
-    margin: 0 auto;
-    text-align: center;
-    text-transform: capitalize;
+    font-size: 28px;
   }
-  
-  .modal-body {
-    padding: 0 24px;
-    text-align: left;
-  }
-  
-  .modal-text {
-    font-size: 16px;
-    color: var(--modal-secondary-text);
-    margin-bottom: 16px;
-    line-height: 1.5;
-  }
-  
+
   .modal-footer {
-    max-width: 588px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 10px 24px;
-    border-top: 1px solid var(--border-color);
+    gap: 16px;
+    padding: 16px 24px;
   }
-  
+
   .button-container {
-    display: flex;
-    gap: 10px;
+    width: 100%;
+    justify-content: space-between;
   }
-  
-  .button {
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    padding: 2px 3px;
-    height: 34px;
-  }
-  
+
   .button-red {
-    width: 72px;
-    background-color: var(--button-red-background);
-    color: var(--button-text-color);
+    width: 100%;
   }
-  
-  .button-blue {
-    width: 138px;
-    background-color: var(--button-blue-background);
-    color: var(--button-text-color);
-  }
-  
-  .button-gray {
-    width: 130px;
-    background-color: var(--button-gray-background);
-    color: var(--modal-text-color);
-  }
-  
-  @media (max-width: 640px) {
-    .modal-container {
-      height: auto;
-    }
-    
-    .modal-title {
-      font-size: 28px;
-    }
-    
-    .modal-footer {
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      padding: 16px 24px;
-    }
-    
-    .button-container {
-      width: 100%;
-      justify-content: space-between;
-    }
-    
-    .button-red {
-      width: 100%;
-    }
-  }
+}

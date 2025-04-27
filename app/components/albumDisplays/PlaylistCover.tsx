@@ -1,6 +1,6 @@
-import React from 'react';
-import AlbumCover from './AlbumCover';
-import './PlaylistCover.css';
+import React from "react";
+import AlbumCover from "./AlbumCover";
+import "./PlaylistCover.css";
 
 interface PlaylistCoverProps {
   imageSrc: string;

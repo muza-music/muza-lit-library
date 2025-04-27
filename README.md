@@ -12,7 +12,7 @@ A lightweight web components library for displaying music albums and sections us
 - `<music-section>` - Create sections of multiple music albums
 - `<music-sidebar>` - Navigation sidebar with customizable sections and menu items
 - `<music-topbar>` - Top navigation bar with search and volume controls
-- `<song-details>` - display song setails - image , name and artist. 
+- `<song-details>` - display song setails - image , name and artist.
 
 ## Installation
 
@@ -29,15 +29,15 @@ Import and use the components in your HTML:
 <music-topbar></music-topbar>
 
 <!-- Single Album -->
-<music-album 
-  image-src="art/album.jpg" 
-  title="Album Title" 
+<music-album
+  image-src="art/album.jpg"
+  title="Album Title"
   sub-title="2023"
 ></music-album>
 
 <!-- Album Section -->
-<music-section 
-  title="Featured Albums" 
+<music-section
+  title="Featured Albums"
   albums='[
     {"imageSrc": "art/album1.jpg", "title": "Album 1", "subTitle": "2023"},
     {"imageSrc": "art/album2.jpg", "title": "Album 2", "subTitle": "2023"}
@@ -45,46 +45,46 @@ Import and use the components in your HTML:
 ></music-section>
 
 <!-- Sidebar Navigation -->
-<music-sidebar
-  logo-src="art/logo.jpg"
-  logo-alt="Music Library">
+<music-sidebar logo-src="art/logo.jpg" logo-alt="Music Library">
 </music-sidebar>
 
-
-<song-line details='{
+<song-line
+  details='{
             "src": "songLine.audioUrl",
             "imageSrc": "songLine.imageSrc",
             "title": "songLine.title",
             "artist": "songLine.artist",
             "album": "songLine.album",
             "year": 1988
-          }'></song-line>
+          }'
+></song-line>
 
-<song-details details='{
+<song-details
+  details='{
   "imageSrc": "art/imag_2.jpg",
   "title": "song",
   "artist": "song artist"
-}' ></song-details>
-
+}'
+></song-details>
 
 <script>
   // Configure sidebar sections and items
-  const sidebar = document.querySelector('music-sidebar');
+  const sidebar = document.querySelector("music-sidebar");
   sidebar.sections = [
     {
-      title: 'My Muza',
+      title: "My Muza",
       items: [
-        { icon: 'house', text: 'Home' },
-        { icon: 'search', text: 'Explore' }
-      ]
+        { icon: "house", text: "Home" },
+        { icon: "search", text: "Explore" },
+      ],
     },
     {
-      title: 'Library',
+      title: "Library",
       items: [
-        { icon: 'square-plus', text: 'Playlists' },
-        { icon: 'heart', text: 'Albums' }
-      ]
-    }
+        { icon: "square-plus", text: "Playlists" },
+        { icon: "heart", text: "Albums" },
+      ],
+    },
   ];
 </script>
 ```
@@ -92,6 +92,7 @@ Import and use the components in your HTML:
 ### Topbar Features
 
 The `<music-topbar>` component provides:
+
 - Search functionality with real-time updates
 - Volume control with slider
 - User menu icon

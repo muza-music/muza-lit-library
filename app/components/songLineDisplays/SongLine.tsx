@@ -1,7 +1,7 @@
-import React, { type MouseEventHandler } from 'react';
-import './SongLine.css';
-import type { SongDetails } from '../../appData/models';
-import { formatSongNumber } from '../../appData/utils';
+import React, { type MouseEventHandler } from "react";
+import "./SongLine.css";
+import type { SongDetails } from "../../appData/models";
+import { formatSongNumber } from "../../appData/utils";
 
 interface SongLineProps {
   details: SongDetails;
@@ -11,7 +11,7 @@ interface SongLineProps {
 const formatDuration = (seconds: number): string => {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
-  return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+  return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
 };
 
 const SongLine: React.FC<SongLineProps> = ({ details, onClick }) => {
@@ -28,7 +28,9 @@ const SongLine: React.FC<SongLineProps> = ({ details, onClick }) => {
 
     return (
       <>
-        <span className="track-number">{formatSongNumber(details.index || 1)}</span>
+        <span className="track-number">
+          {formatSongNumber(details.index || 1)}
+        </span>
         <span className="play-icon">
           <i className="fa-solid fa-play"></i>
         </span>
@@ -43,7 +45,9 @@ const SongLine: React.FC<SongLineProps> = ({ details, onClick }) => {
           {renderIcon()}
           <span className="track-title">{details.title}</span>
         </div>
-        <span className="track-duration">{details.time ? formatDuration(details.time) : ''}</span>
+        <span className="track-duration">
+          {details.time ? formatDuration(details.time) : ""}
+        </span>
       </div>
     </div>
   );

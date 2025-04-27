@@ -1,5 +1,5 @@
-import React from 'react';
-import './SmallAlbumDetails.css';
+import React from "react";
+import "./SmallAlbumDetails.css";
 
 interface SmallAlbumDetailsProps {
   title: string;
@@ -13,11 +13,11 @@ const SmallAlbumDetails: React.FC<SmallAlbumDetailsProps> = ({
   imageSrc,
 }) => {
   return (
-    <div className= "small-album-details" >
-    <img src={ imageSrc } alt = { title } width = "148px" height = "148px" />
-      <h3>{ title } </h3>
-      < p > { author } </p>
-      </div>
+    <div className="small-album-details">
+      <img src={imageSrc} alt={title} width="148px" height="148px" />
+      <h3>{title} </h3>
+      <p> {author} </p>
+    </div>
   );
 };
 

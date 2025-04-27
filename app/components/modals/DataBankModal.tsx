@@ -1,5 +1,5 @@
-import React from 'react';
-import './DataBankModal.css';
+import React from "react";
+import "./DataBankModal.css";
 
 interface DataBankModalProps {
   isOpen: boolean;
@@ -44,16 +44,10 @@ const DataBankModal: React.FC<DataBankModalProps> = ({
               Go back
             </button>
             <div className="button-container">
-              <button
-                className="button button-gray"
-                onClick={onManualFill}
-              >
+              <button className="button button-gray" onClick={onManualFill}>
                 No I'll do it manually
               </button>
-              <button
-                className="button button-blue"
-                onClick={onAutoFill}
-              >
+              <button className="button button-blue" onClick={onAutoFill}>
                 Yes please Auto-Fill
               </button>
             </div>
