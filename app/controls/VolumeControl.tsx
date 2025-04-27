@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './VolumeControl.css';
+import React, { useState, useRef, useEffect } from "react";
+import "./VolumeControl.css";
 
 interface VolumeControlProps {
   value?: number;
@@ -14,7 +14,7 @@ const VolumeControl: React.FC<VolumeControlProps> = ({
   muted = false,
   disabled = false,
   volumeStep = 1,
-  onVolumeChange
+  onVolumeChange,
 }) => {
   const [isMuted, setIsMuted] = useState(muted);
   const [isDragging, setIsDragging] = useState(false);
@@ -22,9 +22,9 @@ const VolumeControl: React.FC<VolumeControlProps> = ({
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const getVolumeIcon = () => {
-    if (value === 0 || isMuted) return 'volume-xmark';
-    if (value < 50) return 'volume-low';
-    return 'volume-high';
+    if (value === 0 || isMuted) return "volume-xmark";
+    if (value < 50) return "volume-low";
+    return "volume-high";
   };
 
   const toggleMute = () => {
@@ -74,15 +74,15 @@ const VolumeControl: React.FC<VolumeControlProps> = ({
 
   useEffect(() => {
     if (isDragging) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
     } else {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
     }
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
     };
   }, [isDragging]);
 
@@ -91,7 +91,7 @@ const VolumeControl: React.FC<VolumeControlProps> = ({
   };
 
   return (
-    <div className={`volume-control ${disabled ? 'disabled' : ''}`}>
+    <div className={`volume-control ${disabled ? "disabled" : ""}`}>
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"

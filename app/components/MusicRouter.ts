@@ -1,7 +1,7 @@
-import { LitElement, html, css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import { Router, RouteConfig } from '@lit-labs/router';
-import type { SongDetails } from '../appData/models';
+import { LitElement, html, css } from "lit";
+import { customElement, property } from "lit/decorators.js";
+import { Router, RouteConfig } from "@lit-labs/router";
+import type { SongDetails } from "../appData/models";
 
 // Define interfaces for album data structure
 interface Album {
@@ -46,7 +46,7 @@ export interface CustomRouteConfig {
   component: HTMLElement | (() => HTMLElement);
 }
 
-@customElement('music-router')
+@customElement("music-router")
 export class MusicRouter extends LitElement {
   static styles = css`
     :host {
@@ -76,7 +76,7 @@ export class MusicRouter extends LitElement {
   routes: CustomRouteConfig[] = [];
 
   @property({ type: String })
-  currentPage = 'home';
+  currentPage = "home";
 
   private router: Router = new Router(this, []);
 
@@ -86,17 +86,17 @@ export class MusicRouter extends LitElement {
   }
 
   updated(changedProps: Map<string, unknown>) {
-    if (changedProps.has('routes') && this.routes.length > 0) {
+    if (changedProps.has("routes") && this.routes.length > 0) {
       this.initializeRouter();
     }
 
-    if (changedProps.has('currentPage')) {
+    if (changedProps.has("currentPage")) {
       this.dispatchEvent(
-        new CustomEvent('currentPageChanged', {
+        new CustomEvent("currentPageChanged", {
           detail: { page: this.currentPage },
           bubbles: true,
           composed: true,
-        })
+        }),
       );
     }
   }
@@ -110,22 +110,22 @@ export class MusicRouter extends LitElement {
         this.currentPage = routeConfig.name;
 
         let component;
-        if (typeof routeConfig.component === 'function') {
+        if (typeof routeConfig.component === "function") {
           component = routeConfig.component();
         } else {
           component = routeConfig.component;
         }
 
-        if (routeConfig.path.includes(':')) {
+        if (routeConfig.path.includes(":")) {
           this.dispatchEvent(
-            new CustomEvent('route-params-changed', {
+            new CustomEvent("route-params-changed", {
               detail: {
                 params: params as Record<string, string>,
                 routeName: routeConfig.name,
               },
               bubbles: true,
               composed: true,
-            })
+            }),
           );
         }
 
@@ -140,11 +140,11 @@ export class MusicRouter extends LitElement {
     if (!this.player || !song) return;
 
     const data = {
-      src: song.audioUrl || '',
-      imageSrc: song.imageSrc || '',
-      title: song.title || '',
-      artist: song.artist || '',
-      album: song.album || '',
+      src: song.audioUrl || "",
+      imageSrc: song.imageSrc || "",
+      title: song.title || "",
+      artist: song.artist || "",
+      album: song.album || "",
       year: song.year || 0,
       isPlaying: true,
     };
@@ -153,7 +153,7 @@ export class MusicRouter extends LitElement {
   }
 
   navigate(path: string) {
-    window.history.pushState({}, '', path);
+    window.history.pushState({}, "", path);
     this.router.goto(path);
   }
 

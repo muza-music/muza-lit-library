@@ -1,6 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { FaBackward, FaForward, FaPause, FaPlay, FaSpinner } from 'react-icons/fa';
-import './MusicPlayer.css';
+import React, { useEffect, useRef, useState } from "react";
+import {
+  FaBackward,
+  FaForward,
+  FaPause,
+  FaPlay,
+  FaSpinner,
+} from "react-icons/fa";
+import "./MusicPlayer.css";
 
 interface PlayerDetails {
   audioUrl: string;
@@ -34,11 +40,14 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
   const [volume, setVolume] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
-  const progressPercentage = duration > 0 ? `${(currentTime / duration) * 100}%` : '0%';
+  const progressPercentage =
+    duration > 0 ? `${(currentTime / duration) * 100}%` : "0%";
 
   const formatTime = (seconds: number): string => {
     const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+    const secs = Math.floor(seconds % 60)
+      .toString()
+      .padStart(2, "0");
     return `${minutes}:${secs}`;
   };
 
@@ -46,7 +55,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
     const audio = audioRef.current;
     if (!audio || isLoading) return;
     audio.play().catch((err) => {
-      console.error('Error playing audio:', err);
+      console.error("Error playing audio:", err);
       onUpdate?.({ ...details, isPlaying: false });
     });
   };
@@ -76,14 +85,14 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
     const onLoadStart = () => setIsLoading(true);
     const onCanPlay = () => setIsLoading(false);
 
-    audio.addEventListener('loadeddata', onLoadedData);
-    audio.addEventListener('timeupdate', onTimeUpdate);
-    audio.addEventListener('ended', onEnded);
-    audio.addEventListener('play', onPlay);
-    audio.addEventListener('pause', onPause);
-    audio.addEventListener('loadstart', onLoadStart);
-    audio.addEventListener('waiting', onLoadStart);
-    audio.addEventListener('canplay', onCanPlay);
+    audio.addEventListener("loadeddata", onLoadedData);
+    audio.addEventListener("timeupdate", onTimeUpdate);
+    audio.addEventListener("ended", onEnded);
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+    audio.addEventListener("loadstart", onLoadStart);
+    audio.addEventListener("waiting", onLoadStart);
+    audio.addEventListener("canplay", onCanPlay);
 
     audio.src = details.audioUrl;
     audio.load();
@@ -95,14 +104,14 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
 
     return () => {
       audio.pause();
-      audio.removeEventListener('loadeddata', onLoadedData);
-      audio.removeEventListener('timeupdate', onTimeUpdate);
-      audio.removeEventListener('ended', onEnded);
-      audio.removeEventListener('play', onPlay);
-      audio.removeEventListener('pause', onPause);
-      audio.removeEventListener('loadstart', onLoadStart);
-      audio.removeEventListener('waiting', onLoadStart);
-      audio.removeEventListener('canplay', onCanPlay);
+      audio.removeEventListener("loadeddata", onLoadedData);
+      audio.removeEventListener("timeupdate", onTimeUpdate);
+      audio.removeEventListener("ended", onEnded);
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("loadstart", onLoadStart);
+      audio.removeEventListener("waiting", onLoadStart);
+      audio.removeEventListener("canplay", onCanPlay);
     };
   }, [details.audioUrl]);
 
@@ -150,7 +159,10 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
         </div>
         <div className="player-controls">
           <div className="progress-bar" onClick={handleSeek}>
-            <div className="progress" style={{ width: progressPercentage }}></div>
+            <div
+              className="progress"
+              style={{ width: progressPercentage }}
+            ></div>
           </div>
           <div className="durations">
             <span>{formatTime(currentTime)}</span>
@@ -161,7 +173,13 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
               <FaBackward />
             </button>
             <button className="play-pause-button" onClick={togglePlayPause}>
-              {isLoading ? <FaSpinner className="fa-spin" /> : details.isPlaying ? <FaPause /> : <FaPlay />}
+              {isLoading ? (
+                <FaSpinner className="fa-spin" />
+              ) : details.isPlaying ? (
+                <FaPause />
+              ) : (
+                <FaPlay />
+              )}
             </button>
             <button className="prev-next-button" onClick={onNext}>
               <FaForward />

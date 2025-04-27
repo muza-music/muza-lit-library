@@ -1,5 +1,5 @@
-import React from 'react';
-import './ToggleButton.css';
+import React from "react";
+import "./ToggleButton.css";
 
 interface ToggleButtonProps {
   checked: boolean;
@@ -8,7 +8,12 @@ interface ToggleButtonProps {
   onChange: (checked: boolean) => void;
 }
 
-const ToggleButton: React.FC<ToggleButtonProps> = ({ checked, label = '', disabled = false, onChange }) => {
+const ToggleButton: React.FC<ToggleButtonProps> = ({
+  checked,
+  label = "",
+  disabled = false,
+  onChange,
+}) => {
   const handleToggle = () => {
     if (!disabled) {
       onChange(!checked);
@@ -16,17 +21,17 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({ checked, label = '', disabl
   };
 
   return (
-    <div className="toggle-wrapper" onClick={handleToggle} >
-      <label className="toggle" >
+    <div className="toggle-wrapper" onClick={handleToggle}>
+      <label className="toggle">
         <input
           type="checkbox"
           checked={checked}
           disabled={disabled}
           onChange={handleToggle}
         />
-        <span className="slider" > </span>
+        <span className="slider"> </span>
       </label>
-      {label && <span className="label" > {label} </span>}
+      {label && <span className="label"> {label} </span>}
     </div>
   );
 };
