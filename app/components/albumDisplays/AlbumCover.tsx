@@ -1,14 +1,23 @@
-import React from 'react';
-import './AlbumCover.css';
+import React from "react";
+import "./AlbumCover.css";
 
 interface AlbumCoverProps {
   imageSrc: string;
   title: string;
   subTitle: string;
-  onAlbumSelect?: (data: { title: string; subTitle: string; imageSrc: string }) => void;
+  onAlbumSelect?: (data: {
+    title: string;
+    subTitle: string;
+    imageSrc: string;
+  }) => void;
 }
 
-const AlbumCover: React.FC<AlbumCoverProps> = ({ imageSrc, title, subTitle, onAlbumSelect }) => {
+const AlbumCover: React.FC<AlbumCoverProps> = ({
+  imageSrc,
+  title,
+  subTitle,
+  onAlbumSelect,
+}) => {
   const handleClick = () => {
     if (onAlbumSelect) {
       onAlbumSelect({ title, subTitle, imageSrc });

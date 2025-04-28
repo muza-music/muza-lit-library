@@ -1,10 +1,10 @@
-import React from 'react';
-import './MusicPlaylist.css';
-import type { SongDetails } from '../../appData/models';
-import SmallAlbumDetails from '../albumDisplays/SmallAlbumDetails';
-import MuzaButton from '~/controls/MuzaButton';
-import PlaylistItem from '../songLineDisplays/PlaylistItem';
-import MusicSuggestionsList from './MusicSuggestionsList';
+import React from "react";
+import "./MusicPlaylist.css";
+import type { SongDetails } from "../../appData/models";
+import SmallAlbumDetails from "../albumDisplays/SmallAlbumDetails";
+import MuzaButton from "~/controls/MuzaButton";
+import PlaylistItem from "../songLineDisplays/PlaylistItem";
+import MusicSuggestionsList from "./MusicSuggestionsList";
 
 interface MusicPlaylistProps {
   title: string;
@@ -17,14 +17,14 @@ interface MusicPlaylistProps {
 const MusicPlaylist: React.FC<MusicPlaylistProps> = ({
   title,
   author,
-  imageSrc = '',
+  imageSrc = "",
   songs,
   suggestions,
 }) => {
-  const sideMode = 'side';
+  const sideMode = "side";
 
   const getImageSrc = () => {
-    return imageSrc.length > 0 ? imageSrc : songs[0]?.imageSrc || '';
+    return imageSrc.length > 0 ? imageSrc : songs[0]?.imageSrc || "";
   };
 
   return (

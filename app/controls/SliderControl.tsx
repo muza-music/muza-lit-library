@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from "react";
 
 interface SliderControlProps {
   value?: number;
@@ -16,8 +16,8 @@ const SliderControl: React.FC<SliderControlProps> = ({
   step = 1,
   min = 0,
   max = 100,
-  className = '',
-  onChange
+  className = "",
+  onChange,
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -59,15 +59,15 @@ const SliderControl: React.FC<SliderControlProps> = ({
 
   useEffect(() => {
     if (isDragging) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
     } else {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
     }
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
     };
   }, [isDragging]);
 
@@ -77,7 +77,9 @@ const SliderControl: React.FC<SliderControlProps> = ({
   };
 
   return (
-    <div className={`slider-control ${className} ${disabled ? 'disabled' : ''}`}>
+    <div
+      className={`slider-control ${className} ${disabled ? "disabled" : ""}`}
+    >
       <div className="slider" ref={sliderRef} onClick={handleSliderClick}>
         <svg viewBox="0 0 100 24">
           <line className="track" x1="2" y1="12" x2="98" y2="12" />

@@ -1,6 +1,6 @@
-import React from 'react';
-import './SongDetails.css';
-import type { SongDetails } from '../../appData/models';
+import React from "react";
+import "./SongDetails.css";
+import type { SongDetails } from "../../appData/models";
 
 interface SongDetailsViewProps {
   details: SongDetails;

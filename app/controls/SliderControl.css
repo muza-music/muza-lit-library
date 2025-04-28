@@ -1,46 +1,46 @@
 .slider-control {
-    display: flex;
-    align-items: center;
-  }
-  
-  .slider {
-    width: 100px;
-    height: 24px;
-    cursor: pointer;
-    position: relative;
-  }
-  
-  svg {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .track {
-    stroke: #ddd;
-    stroke-width: 4;
-    stroke-linecap: round;
-  }
-  
-  .fill {
-    stroke: #666;
-    stroke-width: 4;
-    stroke-linecap: round;
-  }
-  
-  .handle {
-    fill: #666;
-    cursor: grab;
-  }
-  
-  .handle:active {
-    cursor: grabbing;
-  }
-  
-  .disabled .track,
-  .disabled .fill {
-    opacity: 0.5;
-  }
-  
-  .disabled .handle {
-    cursor: not-allowed;
-  }
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  width: 100px;
+  height: 24px;
+  cursor: pointer;
+  position: relative;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+.track {
+  stroke: #ddd;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.fill {
+  stroke: #666;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.handle {
+  fill: #666;
+  cursor: grab;
+}
+
+.handle:active {
+  cursor: grabbing;
+}
+
+.disabled .track,
+.disabled .fill {
+  opacity: 0.5;
+}
+
+.disabled .handle {
+  cursor: not-allowed;
+}

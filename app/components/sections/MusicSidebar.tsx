@@ -1,6 +1,6 @@
-import React from 'react';
-import './MusicSidebar.css';
-import MuzaIcon from '~/icons/MuzaIcon';
+import React from "react";
+import "./MusicSidebar.css";
+import MuzaIcon from "~/icons/MuzaIcon";
 
 interface MenuItem {
   svg?: string;
@@ -22,7 +22,7 @@ interface MusicSidebarProps {
 
 const MusicSidebar: React.FC<MusicSidebarProps> = ({
   logoSrc,
-  logoAlt = 'Logo',
+  logoAlt = "Logo",
   sections,
 }) => {
   const handleItemClick = (action?: () => void) => {
@@ -36,16 +36,14 @@ const MusicSidebar: React.FC<MusicSidebarProps> = ({
       // Placeholder: Replace `div` with your custom SVG component if needed
       <div
         style={{
-          marginRight: '10px',
-          width: '20px',
-          height: '20px',
-          fill: '#666',
+          marginRight: "10px",
+          width: "20px",
+          height: "20px",
+          fill: "#666",
         }}
       >
         {/* Could render actual SVG here */}
-        <MuzaIcon
-          iconName={item.svg}
-        />
+        <MuzaIcon iconName={item.svg} />
       </div>
     ) : (
       <i className={`fa-solid fa-${item.icon}`}></i>

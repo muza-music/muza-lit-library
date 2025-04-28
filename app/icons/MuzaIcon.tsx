@@ -1,7 +1,11 @@
-import React from 'react';
+import React from "react";
 
 // Preload all SVGs at once
-const icons = import.meta.glob('./icons/*.svg', { query: '?raw', eager: true, import: 'default' });
+const icons = import.meta.glob("./icons/*.svg", {
+  query: "?raw",
+  eager: true,
+  import: "default",
+});
 
 interface MuzaIconProps {
   iconName: string; // e.g., 'play', 'pause'
@@ -9,7 +13,11 @@ interface MuzaIconProps {
   className?: string;
 }
 
-const MuzaIcon: React.FC<MuzaIconProps> = ({ iconName, svgStyle, className }) => {
+const MuzaIcon: React.FC<MuzaIconProps> = ({
+  iconName,
+  svgStyle,
+  className,
+}) => {
   const svgContent = icons[`./icons/${iconName}.svg`]; // Get raw SVG content as string
 
   if (!svgContent) {
