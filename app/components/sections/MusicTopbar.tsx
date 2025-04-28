@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import './MusicTopbar.css';
-import VolumeControl from '../../controls/VolumeControl';
+import React, { useState } from "react";
+import "./MusicTopbar.css";
+import VolumeControl from "../../controls/VolumeControl";
 
 interface MusicTopbarProps {
   onSearchChange?: (searchText: string) => void;

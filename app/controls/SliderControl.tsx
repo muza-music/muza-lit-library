@@ -1,42 +1,26 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./VolumeControl.css";
 
-interface VolumeControlProps {
+interface SliderControlProps {
   value?: number;
-  muted?: boolean;
   disabled?: boolean;
-  volumeStep?: number;
-  onVolumeChange?: (value: number) => void;
+  step?: number;
+  min?: number;
+  max?: number;
+  className?: string;
+  onChange?: (value: number) => void;
 }
 
-const VolumeControl: React.FC<VolumeControlProps> = ({
-  value = 75,
-  muted = false,
+const SliderControl: React.FC<SliderControlProps> = ({
+  value = 50,
   disabled = false,
-  volumeStep = 1,
-  onVolumeChange,
+  step = 1,
+  min = 0,
+  max = 100,
+  className = "",
+  onChange,
 }) => {
-  const [isMuted, setIsMuted] = useState(muted);
   const [isDragging, setIsDragging] = useState(false);
-  const previousVolume = useRef(value);
   const sliderRef = useRef<HTMLDivElement>(null);
-
-  const getVolumeIcon = () => {
-    if (value === 0 || isMuted) return "volume-xmark";
-    if (value < 50) return "volume-low";
-    return "volume-high";
-  };
-
-  const toggleMute = () => {
-    if (disabled) return;
-    if (isMuted) {
-      onVolumeChange?.(previousVolume.current);
-    } else {
-      previousVolume.current = value;
-      onVolumeChange?.(0);
-    }
-    setIsMuted(!isMuted);
-  };
 
   const handleSliderClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (disabled || !sliderRef.current) return;
@@ -46,9 +30,9 @@ const VolumeControl: React.FC<VolumeControlProps> = ({
     const maxX = rect.width - handleRadius;
     const x = Math.max(minX, Math.min(maxX, e.clientX - rect.left));
     const percentage = ((x - minX) / (maxX - minX)) * 100;
-    const steppedValue = Math.round(percentage / volumeStep) * volumeStep;
-    setIsMuted(false);
-    onVolumeChange?.(steppedValue);
+    const mappedValue = min + (percentage / 100) * (max - min);
+    const steppedValue = Math.round(mappedValue / step) * step;
+    onChange?.(steppedValue);
   };
 
   const handleMouseMove = (e: MouseEvent) => {
@@ -59,8 +43,9 @@ const VolumeControl: React.FC<VolumeControlProps> = ({
     const maxX = rect.width - handleRadius;
     const x = Math.max(minX, Math.min(maxX, e.clientX - rect.left));
     const percentage = ((x - minX) / (maxX - minX)) * 100;
-    const steppedValue = Math.round(percentage / volumeStep) * volumeStep;
-    onVolumeChange?.(steppedValue);
+    const mappedValue = min + (percentage / 100) * (max - min);
+    const steppedValue = Math.round(mappedValue / step) * step;
+    onChange?.(steppedValue);
   };
 
   const handleMouseDown = () => {
@@ -86,21 +71,15 @@ const VolumeControl: React.FC<VolumeControlProps> = ({
     };
   }, [isDragging]);
 
-  const mapValueToPosition = (value: number): number => {
-    return 6 + (value * 88) / 100;
+  const mapValueToPosition = (val: number): number => {
+    const percentage = ((val - min) / (max - min)) * 100;
+    return 6 + (percentage * 88) / 100;
   };
 
   return (
-    <div className={`volume-control ${disabled ? "disabled" : ""}`}>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      />
-      <i className="fa-solid fa-speaker volume-icon" onClick={toggleMute}></i>
-      <i
-        className={`fa-solid fa-${getVolumeIcon()} volume-icon`}
-        onClick={toggleMute}
-      ></i>
+    <div
+      className={`slider-control ${className} ${disabled ? "disabled" : ""}`}
+    >
       <div className="slider" ref={sliderRef} onClick={handleSliderClick}>
         <svg viewBox="0 0 100 24">
           <line className="track" x1="2" y1="12" x2="98" y2="12" />
@@ -124,4 +103,4 @@ const VolumeControl: React.FC<VolumeControlProps> = ({
   );
 };
 
-export default VolumeControl;
+export default SliderControl;

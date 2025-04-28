@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import './MuzaInputField.css';
+import React, { useState, useEffect } from "react";
+import "./MuzaInputField.css";
 
 export type ValidationRule =
-  | { type: 'required'; message: string }
-  | { type: 'minLength' | 'maxLength'; value: number; message: string }
-  | { type: 'pattern'; value: RegExp; message: string }
-  | { type: 'email'; message: string }
-  | { type: 'custom'; validator: (value: string) => boolean; message: string };
+  | { type: "required"; message: string }
+  | { type: "minLength" | "maxLength"; value: number; message: string }
+  | { type: "pattern"; value: RegExp; message: string }
+  | { type: "email"; message: string }
+  | { type: "custom"; validator: (value: string) => boolean; message: string };
 
-export interface MuzaInputFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface MuzaInputFieldProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
   label?: string;
   leadingIcon?: string;
   trailingIcon?: string;
   helperText?: string;
   validationRules?: ValidationRule[];
-  inputSize?: 'small' | 'medium' | 'large';
+  inputSize?: "small" | "medium" | "large";
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -22,50 +23,59 @@ const MuzaInputField: React.FC<MuzaInputFieldProps> = ({
   label,
   required,
   name,
-  type = 'text',
+  type = "text",
   placeholder,
   disabled,
-  inputSize = 'medium',
+  inputSize = "medium",
   leadingIcon,
   trailingIcon,
-  helperText = '',
+  helperText = "",
   validationRules = [],
   onChange,
   value: propValue,
   ...rest
 }) => {
-  const [value, setValue] = useState<string>(String(propValue ?? ''));
-  const [validationMessage, setValidationMessage] = useState<string>('');
-  const [inputState, setInputState] = useState<'default' | 'success' | 'error'>('default');
+  const [value, setValue] = useState<string>(String(propValue ?? ""));
+  const [validationMessage, setValidationMessage] = useState<string>("");
+  const [inputState, setInputState] = useState<"default" | "success" | "error">(
+    "default",
+  );
 
   useEffect(() => {
-    setValue(String(propValue ?? ''));
+    setValue(String(propValue ?? ""));
   }, [propValue]);
 
-  const validateInput = (val: string): { isValid: boolean; message: string } => {
+  const validateInput = (
+    val: string,
+  ): { isValid: boolean; message: string } => {
     for (const rule of validationRules) {
       switch (rule.type) {
-        case 'required':
+        case "required":
           if (!val.trim()) return { isValid: false, message: rule.message };
           break;
-        case 'minLength':
-          if (val.length < rule.value) return { isValid: false, message: rule.message };
+        case "minLength":
+          if (val.length < rule.value)
+            return { isValid: false, message: rule.message };
           break;
-        case 'maxLength':
-          if (val.length > rule.value) return { isValid: false, message: rule.message };
+        case "maxLength":
+          if (val.length > rule.value)
+            return { isValid: false, message: rule.message };
           break;
-        case 'pattern':
-          if (!rule.value.test(val)) return { isValid: false, message: rule.message };
+        case "pattern":
+          if (!rule.value.test(val))
+            return { isValid: false, message: rule.message };
           break;
-        case 'email':
-          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) return { isValid: false, message: rule.message };
+        case "email":
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val))
+            return { isValid: false, message: rule.message };
           break;
-        case 'custom':
-          if (!rule.validator(val)) return { isValid: false, message: rule.message };
+        case "custom":
+          if (!rule.validator(val))
+            return { isValid: false, message: rule.message };
           break;
       }
     }
-    return { isValid: true, message: '' };
+    return { isValid: true, message: "" };
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,7 +84,7 @@ const MuzaInputField: React.FC<MuzaInputFieldProps> = ({
 
     const { isValid, message } = validateInput(newVal);
     setValidationMessage(message);
-    setInputState(isValid ? (newVal ? 'success' : 'default') : 'error');
+    setInputState(isValid ? (newVal ? "success" : "default") : "error");
 
     if (onChange) {
       onChange(e);
@@ -104,7 +114,7 @@ const MuzaInputField: React.FC<MuzaInputFieldProps> = ({
           required={required}
           value={value}
           onChange={handleInputChange}
-          className={`${inputState} ${inputSize} ${leadingIcon ? 'has-leading-icon' : ''} ${trailingIcon ? 'has-trailing-icon' : ''}`}
+          className={`${inputState} ${inputSize} ${leadingIcon ? "has-leading-icon" : ""} ${trailingIcon ? "has-trailing-icon" : ""}`}
           {...rest}
         />
         {trailingIcon && (
