@@ -1,8 +1,8 @@
-import React from 'react';
-import './MusicListSection.css';
-import AlbumCover from '../albumDisplays/AlbumCover';
-import { AlbumArtist } from '../albumDisplays/AlbumArtist';
-import PlaylistCover from '../albumDisplays/PlaylistCover';
+import React from "react";
+import "./MusicListSection.css";
+import AlbumCover from "../albumDisplays/AlbumCover";
+import { AlbumArtist } from "../albumDisplays/AlbumArtist";
+import PlaylistCover from "../albumDisplays/PlaylistCover";
 
 interface MusicListItem {
   imageSrc: string;
@@ -16,7 +16,7 @@ interface MusicListItem {
 type MusicListSectionProps = {
   title: string;
   subTitle?: string;
-  type: 'album' | 'artist' | 'playlist';
+  type: "album" | "artist" | "playlist";
   list: MusicListItem[];
   onShowAll?: (sectionTitle: string) => void;
 };
@@ -36,31 +36,31 @@ const MusicListSection: React.FC<MusicListSectionProps> = ({
 
   const renderContent = () => {
     switch (type) {
-      case 'album':
+      case "album":
         return list.map((item, idx) => (
           <AlbumCover
             key={idx}
             imageSrc={item.imageSrc}
             title={item.title}
-            subTitle={item.subTitle || ''}
+            subTitle={item.subTitle || ""}
           />
         ));
-      case 'artist':
+      case "artist":
         return list.map((item, idx) => (
           <AlbumArtist
             key={idx}
             imageSrc={item.imageSrc}
-            artistName={item.artistName || ''}
+            artistName={item.artistName || ""}
             albumsCount={item.albumsCount || 1}
           />
         ));
-      case 'playlist':
+      case "playlist":
         return list.map((item, idx) => (
           <PlaylistCover
             key={idx}
             imageSrc={item.imageSrc}
             title={item.title}
-            songsCount={item.songsCount?.toString() || ''}
+            songsCount={item.songsCount?.toString() || ""}
           />
         ));
       default:
