@@ -5,5 +5,5 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import flowbiteReact from "flowbite-react/plugin/vite";
 
 export default defineConfig({
-  plugins: [tailwindcss(), reactRouter(), tsconfigPaths(), flowbiteReact()],
+  plugins: [tailwindcss(), reactRouter(), tsconfigPaths(), flowbiteReact()]
 });
