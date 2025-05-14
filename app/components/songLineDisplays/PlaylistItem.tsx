@@ -1,9 +1,9 @@
-import React from 'react';
-import './PlaylistItem.css';
-import type { SongDetails } from '../../appData/models';
-import { formatSongNumber } from '../../appData/utils';
-import SongDetailsView from './SongDetails';
-import MuzaButton from '../../controls/MuzaButton';
+import React from "react";
+import "./PlaylistItem.css";
+import type { SongDetails } from "../../appData/models";
+import { formatSongNumber } from "../../appData/utils";
+import SongDetailsView from "./SongDetails";
+import MuzaButton from "../../controls/MuzaButton";
 
 interface PlaylistItemProps {
   details: SongDetails;

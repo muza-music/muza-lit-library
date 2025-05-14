@@ -1,6 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { FaBackward, FaForward, FaPause, FaPlay, FaSpinner } from 'react-icons/fa';
-import './MusicPlayer.css';
+import React, { useEffect, useRef, useState } from "react";
+import {
+  FaBackward,
+  FaForward,
+  FaPause,
+  FaPlay,
+  FaSpinner,
+  FaRandom,
+} from "react-icons/fa";
+import { FaRepeat } from "react-icons/fa6";
+import "./MusicPlayer.css";
+import VolumeControl from "../../controls/VolumeControl";
 
 interface PlayerDetails {
   audioUrl: string;
@@ -33,20 +42,34 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
   const [currentTime, setCurrentTime] = useState(0);
   const [volume, setVolume] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [shuffle, setShuffle] = useState(false);
+  const [repeat, setRepeat] = useState(false);
 
-  const progressPercentage = duration > 0 ? `${(currentTime / duration) * 100}%` : '0%';
+  const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   const formatTime = (seconds: number): string => {
     const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+    const secs = Math.floor(seconds % 60)
+      .toString()
+      .padStart(2, "0");
     return `${minutes}:${secs}`;
+  };
+
+  const handleVolumeChange = (newVolume: number) => {
+    const normalizedVolume = newVolume / 100;
+    setVolume(normalizedVolume);
+
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = normalizedVolume;
+    }
   };
 
   const playAudio = () => {
     const audio = audioRef.current;
     if (!audio || isLoading) return;
     audio.play().catch((err) => {
-      console.error('Error playing audio:', err);
+      console.error("Error playing audio:", err);
       onUpdate?.({ ...details, isPlaying: false });
     });
   };
@@ -76,14 +99,14 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
     const onLoadStart = () => setIsLoading(true);
     const onCanPlay = () => setIsLoading(false);
 
-    audio.addEventListener('loadeddata', onLoadedData);
-    audio.addEventListener('timeupdate', onTimeUpdate);
-    audio.addEventListener('ended', onEnded);
-    audio.addEventListener('play', onPlay);
-    audio.addEventListener('pause', onPause);
-    audio.addEventListener('loadstart', onLoadStart);
-    audio.addEventListener('waiting', onLoadStart);
-    audio.addEventListener('canplay', onCanPlay);
+    audio.addEventListener("loadeddata", onLoadedData);
+    audio.addEventListener("timeupdate", onTimeUpdate);
+    audio.addEventListener("ended", onEnded);
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+    audio.addEventListener("loadstart", onLoadStart);
+    audio.addEventListener("waiting", onLoadStart);
+    audio.addEventListener("canplay", onCanPlay);
 
     audio.src = details.audioUrl;
     audio.load();
@@ -95,14 +118,14 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
 
     return () => {
       audio.pause();
-      audio.removeEventListener('loadeddata', onLoadedData);
-      audio.removeEventListener('timeupdate', onTimeUpdate);
-      audio.removeEventListener('ended', onEnded);
-      audio.removeEventListener('play', onPlay);
-      audio.removeEventListener('pause', onPause);
-      audio.removeEventListener('loadstart', onLoadStart);
-      audio.removeEventListener('waiting', onLoadStart);
-      audio.removeEventListener('canplay', onCanPlay);
+      audio.removeEventListener("loadeddata", onLoadedData);
+      audio.removeEventListener("timeupdate", onTimeUpdate);
+      audio.removeEventListener("ended", onEnded);
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("loadstart", onLoadStart);
+      audio.removeEventListener("waiting", onLoadStart);
+      audio.removeEventListener("canplay", onCanPlay);
     };
   }, [details.audioUrl]);
 
@@ -134,38 +157,101 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
     onUpdate?.({ ...details, isPlaying: !details.isPlaying });
   };
 
-  // if (!details.src) return null;
-
   return (
     <div className="music-player">
       <audio ref={audioRef} hidden />
-      <div className="player">
-        <img className="album-art" src={details.imageSrc} alt="Album Art" />
-        <div className="track-info">
-          <h4>{details.title}</h4>
-          <p>{details.artist}</p>
-          <h5>
-            {details.album} • {details.year}
-          </h5>
+      <div className="player-container">
+        {/* Left section - Player Info */}
+        <div className="player-info">
+          <img
+            className="album-art"
+            src={details.imageSrc}
+            alt={`${details.title} album cover`}
+          />
+          <div className="track-info-music-player">
+            <h2 className="track-title">{details.title}</h2>
+            <p className="track-artist">{details.artist}</p>
+            <div className="track-details">
+              <span>{details.album}</span>
+              <span className="separator">•</span>
+              <span>{details.year}</span>
+            </div>
+          </div>
         </div>
-        <div className="player-controls">
-          <div className="progress-bar" onClick={handleSeek}>
-            <div className="progress" style={{ width: progressPercentage }}></div>
+
+        {/* Right section - Player Controls */}
+        <div className="player-controls-section">
+          {/* Progress bar */}
+          <div className="progress-container">
+            <div className="progress-bar" onClick={handleSeek}>
+              <div
+                className="progress-fill"
+                style={{ width: `${progressPercentage}%` }}
+              />
+              <div
+                className="progress-handle"
+                style={{ left: `${progressPercentage}%` }}
+              />
+            </div>
+            <div className="time-display">
+              <span>{formatTime(currentTime)}</span>
+              <span>{formatTime(duration - currentTime)}</span>
+            </div>
           </div>
-          <div className="durations">
-            <span>{formatTime(currentTime)}</span>
-            <span>{formatTime(duration - currentTime)}</span>
-          </div>
-          <div className="controls">
-            <button className="prev-next-button" onClick={onPrevious}>
-              <FaBackward />
-            </button>
-            <button className="play-pause-button" onClick={togglePlayPause}>
-              {isLoading ? <FaSpinner className="fa-spin" /> : details.isPlaying ? <FaPause /> : <FaPlay />}
-            </button>
-            <button className="prev-next-button" onClick={onNext}>
-              <FaForward />
-            </button>
+
+          {/* Playback controls */}
+          <div className="controls-container">
+            <div className="controls-spacer"></div>
+            <div className="playback-controls">
+              <button
+                className={`control-button shuffle-button ${shuffle ? "active" : ""}`}
+                onClick={() => setShuffle(!shuffle)}
+                aria-label="Shuffle"
+              >
+                <FaRandom />
+              </button>
+              <button
+                className="control-button previous-button"
+                onClick={onPrevious}
+                aria-label="Previous track"
+              >
+                <FaBackward />
+              </button>
+              <button
+                className="control-button play-button"
+                onClick={togglePlayPause}
+                aria-label="Play or pause"
+              >
+                {isLoading ? (
+                  <FaSpinner className="spinner" />
+                ) : details.isPlaying ? (
+                  <FaPause />
+                ) : (
+                  <FaPlay />
+                )}
+              </button>
+              <button
+                className="control-button next-button"
+                onClick={onNext}
+                aria-label="Next track"
+              >
+                <FaForward />
+              </button>
+              <button
+                className={`control-button repeat-button ${repeat ? "active" : ""}`}
+                onClick={() => setRepeat(!repeat)}
+                aria-label="Repeat"
+              >
+                <FaRepeat />
+              </button>
+            </div>
+            <div className="volume-control-container">
+              <VolumeControl
+                noSymbol={true}
+                value={volume * 100}
+                onVolumeChange={handleVolumeChange}
+              />
+            </div>
           </div>
         </div>
       </div>
