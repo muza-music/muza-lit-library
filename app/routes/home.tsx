@@ -9,7 +9,6 @@ import "../styles/variables.css";
 import "../styles/main.css";
 import SongLine from "~/components/songLineDisplays/SongLine";
 import type { SongDetails } from "~/appData/models";
-import Navbar from "~/components/sections/navbar";
 export default function Home() {
   const [data, setData] = useState<any>([]);
   const [selectedSong, setSelectSong] = useState<any>([]);
@@ -52,7 +51,6 @@ export default function Home() {
           <SongLine details={s} onClick={() => setSelectSong(s)}></SongLine>
         ))}
         <MusicPlayer details={selectedSong}></MusicPlayer>
-        <Navbar manuItems={data.navbar.items}></Navbar>
       </div>
 
       <MusicPlaylist
