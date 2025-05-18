@@ -54,7 +54,6 @@ export default function Home() {
         ))}
         <MusicPlayer details={selectedSong}></MusicPlayer>
         <Navbar manuItems={data.navbar.items}></Navbar>
-
       </div>
       
 

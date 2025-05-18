@@ -14,8 +14,6 @@ interface NavbarProps {
   manuItems: MenuItem[];
 }
 
-
-
 const Navbar: React.FC<NavbarProps> = ({ manuItems }) => {
   const handleItemClick = (action?: () => void) => {
     if (action) {
@@ -24,7 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ manuItems }) => {
   };
 
   const renderSection = (menuItem: MenuItem, index: number) => (
-    <div key={index} className="nav-items"         onClick={() => handleItemClick(menuItem.action)}
+    <div key={index} className="nav-items" onClick={() => handleItemClick(menuItem.action)}
     >
       <MuzaIcon iconName={menuItem.svg || ""}></MuzaIcon>
       <div className="item-text">{menuItem.text}</div>
