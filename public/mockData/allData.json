@@ -109,7 +109,6 @@
           { "icon": "headphones", "text": "headphones example" }
         ]
       }
-
     ]
   },
   "songs": [
@@ -222,13 +221,13 @@
       "year": 2019
     }
   ],
-  "navbar":{
-      "items": [
-        { "svg": "share", "text": "Share" },
-        { "svg": "edit", "text": "Edit" },
-        { "svg": "private", "text": "Make private" },
-        { "svg": "add", "text": "Add to playlist" },
-        { "svg": "report", "text": "Report" }
-      ]
-    }
+  "navbar": {
+    "items": [
+      { "svg": "share", "text": "Share" },
+      { "svg": "edit", "text": "Edit" },
+      { "svg": "private", "text": "Make private" },
+      { "svg": "add", "text": "Add to playlist" },
+      { "svg": "report", "text": "Report" }
+    ]
+  }
 }

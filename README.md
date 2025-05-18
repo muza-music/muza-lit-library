@@ -1,14 +1,14 @@
 # Muza react library
 
 1. ContextMenu and MuzaContainer and MuzaButton
-<ContextMenu>
-  <ContextMenuTrigger>
-    <MuzaButton content="•••" />
-  </ContextMenuTrigger>
-  <ContextMenuContent>
-    <MuzaContainer>context menu </MuzaContainer>
-  </ContextMenuContent>
-</ContextMenu>
+   <ContextMenu>
+   <ContextMenuTrigger>
+   <MuzaButton content="•••" />
+   </ContextMenuTrigger>
+   <ContextMenuContent>
+   <MuzaContainer>context menu </MuzaContainer>
+   </ContextMenuContent>
+   </ContextMenu>
 
 # Muza Lit Library
 

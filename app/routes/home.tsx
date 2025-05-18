@@ -45,7 +45,6 @@ export default function Home() {
         logoAlt="Music Library"
         sections={data.sidebar.sections}
       ></MusicSidebar>
-      
 
       <div className="content">
         <MusicTopbar></MusicTopbar>
@@ -55,7 +54,6 @@ export default function Home() {
         <MusicPlayer details={selectedSong}></MusicPlayer>
         <Navbar manuItems={data.navbar.items}></Navbar>
       </div>
-      
 
       <MusicPlaylist
         songs={data.songs.slice(0, 3)}
