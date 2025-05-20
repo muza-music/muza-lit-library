@@ -210,6 +210,41 @@
   height: 24px;
   fill: var(--tertiary-text-color);
 }
+
+/* Action buttons styles */
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 16px;
+}
+
+.action-button {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--tertiary-text-color);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.action-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.heart-icon, .ellipsis-icon, .checkbox-icon {
+  color: var(--tertiary-text-color);
+  opacity: 0.7;
+}
+
+.checkbox-container {
+  opacity: 0.5;
+}
+
 @media (max-width: 640px) {
   .cover-art-container {
     width: 40px;
@@ -227,5 +262,9 @@
   
   .song-line {
     padding: calc(var(--song-line-padding) * 0.8);
+  }
+  
+  .action-buttons {
+    gap: 8px;
   }
 }
