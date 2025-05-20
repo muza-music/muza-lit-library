@@ -219,6 +219,17 @@
       "artist": "Twin Kittens",
       "album": "Twice As Nice",
       "year": 2019
+    },
+    {
+      "id": 10,
+      "index": 4,
+      "title": "No Cover Song",
+      "time": 215,
+      "albumId": "3",
+      "audioUrl": "https://github.com/muza-music/muza-audio-stream/raw/refs/heads/main/audio_files/09_goin_home.wav",
+      "artist": "The Missing Artwork",
+      "album": "Invisible Covers",
+      "year": 2023
     }
   ]
 }
