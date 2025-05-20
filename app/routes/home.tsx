@@ -14,6 +14,7 @@ import ArtistDetails from "~/components/artistDisplays/ArtistDetails";
 import { useUserStore } from "~/appData/userStore";
 import { useMusicLibraryStore } from "~/appData/musicStore";
 
+
 export default function Home() {
   const { selectedSong, setSelectedSong } = useUserStore();
   const {
@@ -87,6 +88,7 @@ export default function Home() {
         logoAlt="Music Library"
         sections={sidebarSections}
       />
+
 
       <div className="content">
         <MusicTopbar />
