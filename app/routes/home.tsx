@@ -9,6 +9,7 @@ import "../styles/variables.css";
 import "../styles/main.css";
 import SongLine from "~/components/songLineDisplays/SongLine";
 import type { SongDetails } from "~/appData/models";
+import SongList from "~/components/songLineDisplays/songList";
 
 export default function Home() {
   const [data, setData] = useState<any>([]);
@@ -48,9 +49,11 @@ export default function Home() {
 
       <div className="content">
         <MusicTopbar></MusicTopbar>
-        {data.songs.map((s: SongDetails) => (
-          <SongLine details={s} onClick={() => setSelectSong(s)}></SongLine>
-        ))}
+        <SongList 
+  songs={data.songs} 
+  // title="All Songs"
+  onSelectSong={setSelectSong} 
+/>
         <MusicPlayer details={selectedSong}></MusicPlayer>
       </div>
 
