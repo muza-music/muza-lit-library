@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <div className="body">
       <MusicSidebar
-        logoSrc="./art/logo.jpg"
+        logoSrc="app/icons/icons/muza.svg"
         logoAlt="Music Library"
         sections={data.sidebar.sections}
       ></MusicSidebar>
