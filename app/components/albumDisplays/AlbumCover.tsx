@@ -1,6 +1,5 @@
 import React from "react";
 import './AlbumCover.css';
-import MuzaContainer from "../ui/MuzaContainer";
 
 interface AlbumCoverProps {
   imageSrc: string;
