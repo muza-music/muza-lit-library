@@ -40,7 +40,11 @@
   --muza-section-button-font-size: 12px;
 
   /* Spacing and Layout */
-  --muza-spacing-xs: 4px;
+  --width-w-4: 16px;
+  --height-h-4: 16px;
+  --muza-spacing-1: 4px;
+  --spacing-2: --muza-spacing-xs: 4px;
+  --muza-spacing-1-5: 6px;
   --muza-spacing-sm: 8px;
   --muza-spacing-md: 12px;
   --muza-spacing-lg: 16px;
@@ -61,6 +65,7 @@
 
   /* Elements */
   --muza-border-radius-sm: 4px;
+  --muza-border-radius-ms: 6px;
   --muza-border-radius-md: 8px;
   --muza-border-radius-lg: 20px;
   --muza-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -122,6 +127,8 @@
   --typographyTypographyComponentsH1FontSize: 48;
   --typographyTypographyComponentsH1LineHeight: 40;
   --typographyTypographyComponentsH1FontWeight: 700;
+  --typography-base-sizes-small-letter-spacing: 0.25px;
+  --typography-base-sizes-small-line-height: 20px;
   --typographyTypographyComponentsH1LetterSpacing: -0.4000000059604645;
   --typographyTypographyComponentsH1FontFamily: Founders Grotesk;
   --typographyTypographyComponentsH2FontFamily: Founders Grotesk;
@@ -176,6 +183,7 @@
   --typographyTypographyComponentsSmallLineHeight: 14;
   --typographyTypographyComponentsSmallFontWeight: 400;
   --typographyTypographyComponentsSmallLetterSpacing: 16;
+  --typography-base-sizes-small-line-heigh: 20px;
   --borderRadiusMd: 6;
   --typographyBaseSizesXlargeFontSize: 24;
   --typographyBaseSizesXlargeLineHeight: 28;
@@ -185,6 +193,7 @@
   --typographyBaseSizes4xLargeLineHeight: 40;
   --typographyBaseSizes3xLargeFontSize: 36;
   --typographyBaseSizes3xLargeLineHeight: 36;
+  --typography-base-sizes-small-font-size: 16px;
   --colorsChart1Light: #2a9d90;
   --colorsChart1Dark: #2662d9;
   --colorsChart2Light: #e76e50;

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import MusicPlaylist from "~/components/listsDisplays/MusicPlaylist";
 import { MusicPlayer } from "~/components/sections/MusicPlayer";
 import MusicTopbar from "~/components/sections/MusicTopbar";
+import Navbar from "~/components/sections/Navbar";
+
 import "../styles/scrollbar.css";
 import "../styles/variables.css";
 import "../styles/main.css";
@@ -44,6 +46,7 @@ export default function Home() {
         logoAlt="Music Library"
         sections={data.sidebar.sections}
       ></MusicSidebar>
+      
 
       <div className="content">
         <MusicTopbar></MusicTopbar>
@@ -51,7 +54,11 @@ export default function Home() {
           <SongLine details={s} onClick={() => setSelectSong(s)}></SongLine>
         ))}
         <MusicPlayer details={selectedSong}></MusicPlayer>
+        <Navbar
+        manuItems={data.navbar.items}
+      ></Navbar>  
       </div>
+
 
       <MusicPlaylist
         songs={data.songs.slice(0, 3)}

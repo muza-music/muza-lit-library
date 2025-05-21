@@ -1,12 +1,11 @@
 .nav-bar {
   display: flex;
-  width: 256px;
-  padding: var(--spacing-1, 4px) 0px;
+  padding: var(--muza-spacing-1) 0px;
   flex-direction: column;
   align-items: flex-start;
-  border-radius: var(--border-radius-md, 6px);
-  border: 1px solid var(--base-border, #e5e7eb);
-  background: var(--base-popover, #fff);
+  border-radius: var(--muza-border-radius-ms);
+  border: 1px solid var(--colorsBorderLight);
+  background: var(--colorsBackgroundLight);
   box-shadow:
     0px 4px 6px -1px rgba(0, 0, 0, 0.1),
     0px 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -14,8 +13,8 @@
 
 .nav-items {
   display: flex;
-  margin: var(--spacing-1-5, 6px) var(--spacing-2, 8px) var(--spacing-1-5, 6px)
-    var(--spacing-8, 12px);
+  margin: var(--muza-spacing-1-5) var(--muza-spacing-sm) var(--muza-spacing-1-5)
+    var(--muza-spacing-md);
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
@@ -26,16 +25,17 @@
   -webkit-line-clamp: 1;
   flex: 1 0 0;
   overflow: hidden;
-  color: var(--base-popover-foreground, #030712);
+  color: var(--colorsPopoverDark);
   text-overflow: ellipsis;
   /* text small/leading-normal/regular */
-  font-size: var(--typography-base-sizes-small-font-size, 16px);
+  font-size: var(--typography-base-sizes-small-font-size);
   font-style: normal;
-  font-weight: var(--font-weight-Regular, 400);
-  line-height: var(--typography-base-sizes-small-line-height, 20px); /* 125% */
-  letter-spacing: var(--typography-base-sizes-small-letter-spacing, 0.25px);
+  font-weight: var(--muza-font-weight-normal);
+  line-height: var(--typography-base-sizes-small-line-height); /* 125% */
+  letter-spacing: var(--typography-base-sizes-small-letter-spacing);
   margin-left: 10px;
 }
+
 .icon-wrapper {
   width: var(--width-w-4, 16px);
   height: var(--height-h-4, 16px);
