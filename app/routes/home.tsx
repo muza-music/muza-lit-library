@@ -45,7 +45,7 @@ export default function Home() {
         logoAlt="Music Library"
         sections={data.sidebar.sections}
       ></MusicSidebar>
-      <AlbumCover 
+      <AlbumCover
         imageSrc="./art/logo.jpg"
         title="Music Library"
         subTitle="Music Library"

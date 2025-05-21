@@ -1,4 +1,4 @@
-.album-cover{
+.album-cover {
   display: flex;
   width: var(--album-cover-width, 12rem);
   flex-direction: column;
@@ -15,7 +15,7 @@
   border-radius: var(--border-radius-sm, 0.125rem);
 }
 
-.album-image{
+.album-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -44,9 +44,9 @@
   opacity: 1;
 }
 
-.album-artist{
+.album-artist {
   overflow: hidden;
-  color: var(--colors-muted-foreground-light, #6B7280);
+  color: var(--colors-muted-foreground-light, #6b7280);
   text-overflow: ellipsis;
   font-size: var(--typography-base-sizes-small-font-size, 1rem);
   font-style: normal;
@@ -55,7 +55,7 @@
   letter-spacing: var(--typography-base-sizes-small-letter-spacing, 0.01563rem);
 }
 
-.album-title{
+.album-title {
   color: var(--colors-foreground-light, #030712);
   text-overflow: ellipsis;
   font-size: var(--typography-base-sizes-small-font-size, 1rem);
