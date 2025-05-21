@@ -14,16 +14,16 @@ const SongList: React.FC<SongListProps> = ({ songs, title, onSelectSong }) => {
     <div className="song-list">
       {title && <h2 className="list-title">{title}</h2>}
       <div className="song-list-container">
-      {songs.map((song, index) => {
-    const songWithIndex = { ...song, index: index + 1 };
-    return (
-      <SongLine 
-        key={song.id || index} 
-        details={songWithIndex} 
-        onClick={() => onSelectSong(song)} 
-      />
-    );
-  })}
+        {songs.map((song, index) => {
+          const songWithIndex = { ...song, index: index + 1 };
+          return (
+            <SongLine
+              key={song.id || index}
+              details={songWithIndex}
+              onClick={() => onSelectSong(song)}
+            />
+          );
+        })}
       </div>
     </div>
   );

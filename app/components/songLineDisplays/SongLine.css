@@ -62,7 +62,7 @@
   min-width: 44px;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--muza-box-shadow);
 }
 
 .cover-art {
@@ -136,7 +136,8 @@
   text-overflow: ellipsis;
 }
 
-.track-artist, .track-album {
+.track-artist,
+.track-album {
   color: var(--tertiary-text-color);
   white-space: nowrap;
   overflow: hidden;
@@ -236,7 +237,9 @@
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.heart-icon, .ellipsis-icon, .checkbox-icon {
+.heart-icon,
+.ellipsis-icon,
+.checkbox-icon {
   color: var(--tertiary-text-color);
   opacity: 0.7;
 }
@@ -251,19 +254,19 @@
     height: 40px;
     min-width: 40px;
   }
-  
+
   .track-title {
     font-size: calc(var(--song-title-font-size) - 1px);
   }
-  
+
   .track-metadata {
     font-size: calc(var(--song-title-font-size) - 3px);
   }
-  
+
   .song-line {
     padding: calc(var(--song-line-padding) * 0.8);
   }
-  
+
   .action-buttons {
     gap: 8px;
   }
