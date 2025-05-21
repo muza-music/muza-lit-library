@@ -245,4 +245,13 @@
   --colors_secondary_light_50_: #f3f4f67f;
   --colors_background_light_50_: #ffffff7f;
   --colors_background_dark_50_: #0307127f;
+
+  /* Album Cover Specific Variables */
+  --album-cover-width: 12rem;
+  --album-cover-height: 12rem;
+  --album-hover-transition-duration: 0.3s;
+  --album-overlay-background: rgba(0, 0, 0, 0.3);
+  --album-hover-scale: 1.05;
+  --album-overlay-icon-height: 5rem;
+  --album-button-spacing: 0.5rem;
 }
