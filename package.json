@@ -18,6 +18,7 @@
     "@react-router/serve": "^7.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "esbuild": "^0.25.3",
     "flowbite-react": "^0.11.7",
     "isbot": "^5.1.26",
     "lucide-react": "^0.503.0",

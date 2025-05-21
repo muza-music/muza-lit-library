@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import MusicPlaylist from "~/components/listsDisplays/MusicPlaylist";
 import { MusicPlayer } from "~/components/sections/MusicPlayer";
 import MusicTopbar from "~/components/sections/MusicTopbar";
+
 import "../styles/scrollbar.css";
 import "../styles/variables.css";
 import "../styles/main.css";
 import SongLine from "~/components/songLineDisplays/SongLine";
 import type { SongDetails } from "~/appData/models";
-
 export default function Home() {
   const [data, setData] = useState<any>([]);
   const [selectedSong, setSelectSong] = useState<any>([]);
@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <div className="body">
       <MusicSidebar
-        logoSrc="app/icons/icons/muza.svg"
+        logoSrc="./art/logo.jpg"
         logoAlt="Music Library"
         sections={data.sidebar.sections}
       ></MusicSidebar>
