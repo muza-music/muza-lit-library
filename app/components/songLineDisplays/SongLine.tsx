@@ -36,30 +36,25 @@ const SongLine: React.FC<SongLineProps> = ({ details, onClick }) => {
     );
   };
 
-  const renderHoverIcon = () => {
-    if (details.isPlaying) {
-      return (
-        <svg
-          className="hover-icon pause-icon"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect x="6" y="4" width="4" height="16" fill="white" />
-          <rect x="14" y="4" width="4" height="16" fill="white" />
-        </svg>
-      );
-    }
-
+const renderHoverIcon = () => {
+  if (details.isPlaying) {
     return (
-      <svg
-        className="hover-icon play-icon"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M8 5v14l11-7z" fill="white" />
-      </svg>
+      <MuzaIcon
+        iconName="Pause"
+        className="hover-icon pause-icon"
+        svgStyle={{ width: "24px", height: "24px" }}
+      />
     );
-  };
+  }
+
+  return (
+    <MuzaIcon
+      iconName="Play"
+      className="hover-icon play-icon"
+      svgStyle={{ width: "24px", height: "24px"}}
+    />
+  );
+};
 
   // Render the action buttons that appear on hover
   const renderActionButtons = () => {
