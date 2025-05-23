@@ -9,7 +9,7 @@ import "../styles/variables.css";
 import "../styles/main.css";
 import SongLine from "~/components/songLineDisplays/SongLine";
 import type { SongDetails } from "~/appData/models";
-import AlbumCover from "~/components/albumDisplays/AlbumCover";
+import AlbumCover from "~/components/albumDisplays/Cover";
 export default function Home() {
   const [data, setData] = useState<any>([]);
   const [selectedSong, setSelectSong] = useState<any>([]);

@@ -1,8 +1,7 @@
 import React from "react";
 import "./MusicListSection.css";
-import AlbumCover from "../albumDisplays/AlbumCover";
+import Cover from "../albumDisplays/Cover";
 import { AlbumArtist } from "../albumDisplays/AlbumArtist";
-import PlaylistCover from "../albumDisplays/PlaylistCover";
 
 interface MusicListItem {
   imageSrc: string;
@@ -38,11 +37,12 @@ const MusicListSection: React.FC<MusicListSectionProps> = ({
     switch (type) {
       case "album":
         return list.map((item, idx) => (
-          <AlbumCover
+          <Cover
             key={idx}
             imageSrc={item.imageSrc}
             title={item.title}
             subTitle={item.subTitle || ""}
+            type="album"
           />
         ));
       case "artist":
@@ -56,11 +56,12 @@ const MusicListSection: React.FC<MusicListSectionProps> = ({
         ));
       case "playlist":
         return list.map((item, idx) => (
-          <PlaylistCover
+          <Cover
             key={idx}
             imageSrc={item.imageSrc}
             title={item.title}
-            songsCount={item.songsCount?.toString() || ""}
+            subTitle={item.subTitle || ""}
+            type="playlist"
           />
         ));
       default:
