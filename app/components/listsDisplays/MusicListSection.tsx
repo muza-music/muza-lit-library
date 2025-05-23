@@ -3,25 +3,9 @@ import "./MusicListSection.css";
 import AlbumCover from "../albumDisplays/AlbumCover";
 import { AlbumArtist } from "../albumDisplays/AlbumArtist";
 import PlaylistCover from "../albumDisplays/PlaylistCover";
+import type { MusicListSection } from "~/appData/models";
 
-interface MusicListItem {
-  imageSrc: string;
-  title: string;
-  subTitle?: string;
-  artistName?: string;
-  songsCount?: number;
-  albumsCount?: number;
-}
-
-type MusicListSectionProps = {
-  title: string;
-  subTitle?: string;
-  type: "album" | "artist" | "playlist";
-  list: MusicListItem[];
-  onShowAll?: (sectionTitle: string) => void;
-};
-
-const MusicListSection: React.FC<MusicListSectionProps> = ({
+const MusicListSection: React.FC<MusicListSection> = ({
   title,
   subTitle,
   type,

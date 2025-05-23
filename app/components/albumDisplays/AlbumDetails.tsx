@@ -1,16 +1,9 @@
 import React from "react";
 import "./AlbumDetails.css";
-
-export interface AlbumDetailsData {
-  imageSrc: string;
-  title: string;
-  subTitle: string;
-  artist: string;
-  genre?: string;
-}
+import type { Album } from "~/appData/models";
 
 interface AlbumDetailsProps {
-  details: AlbumDetailsData;
+  details: Album;
 }
 
 const AlbumDetails: React.FC<AlbumDetailsProps> = ({ details }) => {

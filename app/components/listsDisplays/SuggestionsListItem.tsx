@@ -4,9 +4,9 @@ import type { SongDetails } from "../../appData/models";
 import MuzaButton from "../../controls/MuzaButton";
 import SongDetailsView from "../songLineDisplays/SongDetails";
 
-interface SuggestionsListItemProps {
+export type SuggestionsListItemProps = {
   details: SongDetails;
-}
+};
 
 const SuggestionsListItem: React.FC<SuggestionsListItemProps> = ({
   details,

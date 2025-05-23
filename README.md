@@ -107,7 +107,7 @@ import { MusicSidebar, MusicTopbar } from 'muza-react-library';
 ### Album and Playlist Displays
 
 ```jsx
-import { MusicListSection, MusicPlaylist } from 'muza-react-library';
+import { MusicListSection, MuzaMusicPlaylist } from 'muza-react-library';
 
 <MusicListSection
   title="Featured Albums"
@@ -122,7 +122,7 @@ import { MusicListSection, MusicPlaylist } from 'muza-react-library';
   onShowAll={() => console.log('Show all albums')}
 />
 
-<MusicPlaylist
+<MuzaMusicPlaylist
   title="My Playlist"
   author="User Name"
   imageSrc="playlist.jpg"

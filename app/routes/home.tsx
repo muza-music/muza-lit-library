@@ -1,7 +1,6 @@
 import "../components/sections/MusicSidebar";
 import MusicSidebar from "~/components/sections/MusicSidebar";
 import { useEffect, useState } from "react";
-import MusicPlaylist from "~/components/listsDisplays/MusicPlaylist";
 import { MusicPlayer } from "~/components/sections/MusicPlayer";
 import MusicTopbar from "~/components/sections/MusicTopbar";
 import "../styles/scrollbar.css";
@@ -9,6 +8,7 @@ import "../styles/variables.css";
 import "../styles/main.css";
 import type { SongDetails } from "~/appData/models";
 import MusicPlaylistWithCover from "~/components/songLineDisplays/MusicPlaylistWithCover";
+import MuzaMusicPlaylist from "~/components/listsDisplays/MusicPlaylist";
 
 export default function Home() {
   const [data, setData] = useState<any>([]);
@@ -75,7 +75,7 @@ export default function Home() {
         <MusicPlayer details={selectedSong}></MusicPlayer>
       </div>
 
-      <MusicPlaylist
+      <MuzaMusicPlaylist
         songs={data.songs.slice(0, 3)}
         suggestions={data.songs.slice(3, 7)}
         title="playlist 3"
