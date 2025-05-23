@@ -93,20 +93,27 @@
   "sidebar": {
     "sections": [
       {
-        "title": "My Muza",
         "items": [
-          { "icon": "house", "text": "Home" },
+          { "svg": "home", "text": "Home" },
           { "icon": "search", "text": "Explore" }
         ]
       },
       {
-        "title": "Library",
+        "title": "My Muza",
         "items": [
           { "svg": "playlist", "text": "Playlists" },
           { "svg": "albums", "text": "Albums" },
           { "svg": "artists", "text": "Artists" },
-          { "svg": "songs", "text": "Songs" },
-          { "icon": "headphones", "text": "headphones example" }
+          { "svg": "songs", "text": "Songs" }
+        ]
+      },
+      {
+        "title": "Playlists",
+        "addAction": "createPlaylist",
+        "items": [
+          { "svg": "ListMusic", "text": "Chill Vibes" },
+          { "svg": "ListMusic", "text": "Morning Coffee" },
+          { "svg": "ListMusic", "text": "Cat Party Mix" }
         ]
       }
     ]
