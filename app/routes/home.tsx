@@ -9,7 +9,7 @@ import "../styles/variables.css";
 import "../styles/main.css";
 import SongLine from "~/components/songLineDisplays/SongLine";
 import type { SongDetails } from "~/appData/models";
-import SongList from "~/components/songLineDisplays/songList";
+import SongList from "~/components/songLineDisplays/MusicPlaylistWithCover";
 
 export default function Home() {
   const [data, setData] = useState<any>([]);
@@ -37,26 +37,20 @@ export default function Home() {
   }, []);
 
   const handleSelectSong = (song: SongDetails) => {
-    // Check if the selected song is already playing
     const isCurrentlyPlaying = data.songs.find(
       (s: SongDetails) => s.id === song.id && s.isPlaying,
     );
 
-    // If this song is already playing, we want to pause it
     const shouldPlay = !isCurrentlyPlaying;
 
-    // Update the selected song state
     setSelectSong({ ...song, isPlaying: shouldPlay });
 
-    // Only update the songs array if we have data
     if (data && data.songs) {
-      // Update the isPlaying property for all songs
       const updatedSongs = data.songs.map((s: SongDetails) => ({
         ...s,
         isPlaying: shouldPlay && s.id === song.id,
       }));
 
-      // Update the data state with the modified songs
       setData({ ...data, songs: updatedSongs });
     }
   };

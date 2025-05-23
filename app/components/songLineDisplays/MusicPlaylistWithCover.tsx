@@ -1,15 +1,14 @@
 import React from "react";
-// import "./SongList.css";
 import type { SongDetails } from "../../appData/models";
-import SongLine from "../songLineDisplays/SongLine";
+import SongLine from "./SongLine";
 
-interface SongListProps {
+interface MusicPlaylistWithCoverProps {
   songs: SongDetails[];
   title?: string;
   onSelectSong: (song: SongDetails) => void;
 }
 
-const SongList: React.FC<SongListProps> = ({ songs, title, onSelectSong }) => {
+const MusicPlaylistWithCover: React.FC<MusicPlaylistWithCoverProps> = ({ songs, title, onSelectSong }) => {
   return (
     <div className="song-list">
       {title && <h2 className="list-title">{title}</h2>}
@@ -29,4 +28,4 @@ const SongList: React.FC<SongListProps> = ({ songs, title, onSelectSong }) => {
   );
 };
 
-export default SongList;
+export default MusicPlaylistWithCover;
