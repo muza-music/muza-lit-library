@@ -8,7 +8,11 @@ interface MusicPlaylistWithCoverProps {
   onSelectSong: (song: SongDetails) => void;
 }
 
-const MusicPlaylistWithCover: React.FC<MusicPlaylistWithCoverProps> = ({ songs, title, onSelectSong }) => {
+const MusicPlaylistWithCover: React.FC<MusicPlaylistWithCoverProps> = ({
+  songs,
+  title,
+  onSelectSong,
+}) => {
   return (
     <div className="song-list">
       {title && <h2 className="list-title">{title}</h2>}
