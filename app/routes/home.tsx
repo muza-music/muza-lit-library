@@ -9,7 +9,7 @@ import "../styles/variables.css";
 import "../styles/main.css";
 import SongLine from "~/components/songLineDisplays/SongLine";
 import type { SongDetails } from "~/appData/models";
-import AlbumCover from "~/components/albumDisplays/Cover";
+import Cover from "~/components/albumDisplays/Cover";
 export default function Home() {
   const [data, setData] = useState<any>([]);
   const [selectedSong, setSelectSong] = useState<any>([]);
@@ -45,7 +45,7 @@ export default function Home() {
         logoAlt="Music Library"
         sections={data.sidebar.sections}
       ></MusicSidebar>
-      <AlbumCover
+      <Cover
         imageSrc="./art/logo.jpg"
         title="Music Library"
         subTitle="Music Library"
@@ -54,7 +54,7 @@ export default function Home() {
         onClick3Dots={() => {}}
         onClickEdit={() => {}}
         onClickDelete={() => {}}
-      ></AlbumCover>
+      ></Cover>
       <div className="content">
         <MusicTopbar></MusicTopbar>
         {data.songs.map((s: SongDetails) => (

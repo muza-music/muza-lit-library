@@ -1,7 +1,6 @@
 import React from "react";
-import "./AlbumCover.css";
-
-interface AlbumCoverProps {
+import "./Cover.css";
+interface CoverProps {
   imageSrc: string;
   title: string;
   subTitle: string;
@@ -231,7 +230,7 @@ const PlaylistButtons: React.FC<playlistButtonProps> = ({ onClick3Dots }) => {
   );
 };
 
-const AlbumCover: React.FC<AlbumCoverProps> = ({
+const Cover: React.FC<CoverProps> = ({
   imageSrc,
   title,
   subTitle,
@@ -308,4 +307,4 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({
   );
 };
 
-export default AlbumCover;
+export default Cover;
