@@ -1,0 +1,98 @@
+.album-cover {
+  display: flex;
+  width: var(--album-cover-width, 12rem);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-0, 0px);
+  position: relative;
+}
+
+.album-image-container {
+  position: relative;
+  width: 100%;
+  height: var(--album-cover-height, 12rem);
+  overflow: hidden;
+  border-radius: var(--border-radius-sm, 0.125rem);
+}
+
+.album-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--album-hover-transition-duration, 0.3s) ease;
+}
+
+.album-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--album-overlay-background, rgba(0, 0, 0, 0.3));
+  opacity: 0;
+  transition: opacity var(--album-hover-transition-duration, 0.3s) ease;
+}
+
+.album-image-container:hover .album-image {
+  transform: scale(var(--album-hover-scale, 1.05));
+}
+
+.album-image-container:hover .album-image-overlay {
+  opacity: 1;
+}
+
+.album-artist {
+  overflow: hidden;
+  color: var(--colors-muted-foreground-light, #6b7280);
+  text-overflow: ellipsis;
+  font-size: var(--typography-base-sizes-small-font-size, 1rem);
+  font-style: normal;
+  font-weight: var(--font-weight-Regular, 400);
+  line-height: var(--typography-base-sizes-small-line-height, 1.25rem);
+  letter-spacing: var(--typography-base-sizes-small-letter-spacing, 0.01563rem);
+}
+
+.album-title {
+  color: var(--colors-foreground-light, #030712);
+  text-overflow: ellipsis;
+  font-size: var(--typography-base-sizes-small-font-size, 1rem);
+  font-style: normal;
+  font-weight: var(--font-weight-Semibold, 600);
+  line-height: var(--typography-base-sizes-small-line-height, 1.25rem);
+}
+
+.album-image-overlay-icon-container {
+  height: var(--album-overlay-icon-height, 5rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-album-button {
+  position: absolute;
+  top: var(--album-button-spacing, 0.5rem);
+  right: var(--album-button-spacing, 0.5rem);
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: var(--spacing-1, 0.25rem);
+}
+
+.my-album-button button {
+  padding: var(--spacing-2, 0.5rem);
+  border-radius: var(--border-radius-full, 50%);
+  background-color: var(--colors-background-light, white);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color var(--album-hover-transition-duration, 0.2s) ease;
+}
+
+.my-album-button button:hover {
+  background-color: var(--colors-accent-light, #f3f4f6);
+}
