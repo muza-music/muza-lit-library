@@ -6,8 +6,8 @@ import MusicTopbar from "~/components/sections/MusicTopbar";
 import "../styles/scrollbar.css";
 import "../styles/variables.css";
 import "../styles/main.css";
-import SongLine from "~/components/songLineDisplays/SongLine";
 import type { SongDetails } from "~/appData/models";
+import MusicPlaylistWithCover from "~/components/songLineDisplays/MusicPlaylistWithCover";
 import MuzaMusicPlaylist from "~/components/listsDisplays/MusicPlaylist";
 
 export default function Home() {
@@ -35,6 +35,25 @@ export default function Home() {
       });
   }, []);
 
+  const handleSelectSong = (song: SongDetails) => {
+    const isCurrentlyPlaying = data.songs.find(
+      (s: SongDetails) => s.id === song.id && s.isPlaying,
+    );
+
+    const shouldPlay = !isCurrentlyPlaying;
+
+    setSelectSong({ ...song, isPlaying: shouldPlay });
+
+    if (data && data.songs) {
+      const updatedSongs = data.songs.map((s: SongDetails) => ({
+        ...s,
+        isPlaying: shouldPlay && s.id === song.id,
+      }));
+
+      setData({ ...data, songs: updatedSongs });
+    }
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
@@ -48,9 +67,11 @@ export default function Home() {
 
       <div className="content">
         <MusicTopbar></MusicTopbar>
-        {data.songs.map((s: SongDetails) => (
-          <SongLine details={s} onClick={() => setSelectSong(s)}></SongLine>
-        ))}
+        <MusicPlaylistWithCover
+          songs={data.songs}
+          // title="All Songs"
+          onSelectSong={handleSelectSong}
+        />
         <MusicPlayer details={selectedSong}></MusicPlayer>
       </div>
 
