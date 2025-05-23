@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./VolumeControl.css";
+import { FaVolumeUp, FaVolumeDown, FaVolumeMute } from "react-icons/fa";
 
 interface VolumeControlProps {
   value?: number;
@@ -7,6 +8,7 @@ interface VolumeControlProps {
   disabled?: boolean;
   volumeStep?: number;
   onVolumeChange?: (value: number) => void;
+  noSymbol?: boolean;
 }
 
 const VolumeControl: React.FC<VolumeControlProps> = ({
@@ -15,6 +17,7 @@ const VolumeControl: React.FC<VolumeControlProps> = ({
   disabled = false,
   volumeStep = 1,
   onVolumeChange,
+  noSymbol = false,
 }) => {
   const [isMuted, setIsMuted] = useState(muted);
   const [isDragging, setIsDragging] = useState(false);
@@ -92,15 +95,18 @@ const VolumeControl: React.FC<VolumeControlProps> = ({
 
   return (
     <div className={`volume-control ${disabled ? "disabled" : ""}`}>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      />
-      <i className="fa-solid fa-speaker volume-icon" onClick={toggleMute}></i>
-      <i
-        className={`fa-solid fa-${getVolumeIcon()} volume-icon`}
-        onClick={toggleMute}
-      ></i>
+      {!noSymbol && (
+        <>
+          <i
+            className="fa-solid fa-speaker volume-icon"
+            onClick={toggleMute}
+          ></i>
+          <i
+            className={`fa-solid fa-${getVolumeIcon()} volume-icon`}
+            onClick={toggleMute}
+          ></i>
+        </>
+      )}
       <div className="slider" ref={sliderRef} onClick={handleSliderClick}>
         <svg viewBox="0 0 100 24">
           <line className="track" x1="2" y1="12" x2="98" y2="12" />

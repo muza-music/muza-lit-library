@@ -16,6 +16,31 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const getCurrentSongIndex = () => {
+    if (!selectedSong || !selectedSong.id) return -1;
+    return data.songs.findIndex(
+      (song: SongDetails) => song.id === selectedSong.id,
+    );
+  };
+
+  const handlePreviousSong = () => {
+    const currentIndex = getCurrentSongIndex();
+    if (currentIndex <= 0) {
+      setSelectSong(data.songs[data.songs.length - 1]);
+    } else {
+      setSelectSong(data.songs[currentIndex - 1]);
+    }
+  };
+
+  const handleNextSong = () => {
+    const currentIndex = getCurrentSongIndex();
+    if (currentIndex === -1 || currentIndex === data.songs.length - 1) {
+      setSelectSong(data.songs[0]);
+    } else {
+      setSelectSong(data.songs[currentIndex + 1]);
+    }
+  };
+
   useEffect(() => {
     fetch("./mockData/allData.json") // or use a full URL: 'https://example.com/api/data'
       .then((response) => {
@@ -51,7 +76,13 @@ export default function Home() {
         {data.songs.map((s: SongDetails) => (
           <SongLine details={s} onClick={() => setSelectSong(s)}></SongLine>
         ))}
-        <MusicPlayer details={selectedSong}></MusicPlayer>
+        <MusicPlayer
+          details={selectedSong}
+          onUpdate={(updatedDetails) => setSelectSong(updatedDetails)}
+          onPrevious={() => handlePreviousSong()}
+          onNext={() => handleNextSong()}
+          onSongEnded={() => handleNextSong()}
+        ></MusicPlayer>
       </div>
 
       <MuzaMusicPlaylist
