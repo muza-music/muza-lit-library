@@ -7,9 +7,8 @@ import MusicTopbar from "~/components/sections/MusicTopbar";
 import "../styles/scrollbar.css";
 import "../styles/variables.css";
 import "../styles/main.css";
-import SongLine from "~/components/songLineDisplays/SongLine";
 import type { SongDetails } from "~/appData/models";
-import SongList from "~/components/songLineDisplays/MusicPlaylistWithCover";
+import MusicPlaylistWithCover from "~/components/songLineDisplays/MusicPlaylistWithCover";
 
 export default function Home() {
   const [data, setData] = useState<any>([]);
@@ -68,7 +67,7 @@ export default function Home() {
 
       <div className="content">
         <MusicTopbar></MusicTopbar>
-        <SongList
+        <MusicPlaylistWithCover
           songs={data.songs}
           // title="All Songs"
           onSelectSong={handleSelectSong}
