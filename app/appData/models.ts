@@ -33,8 +33,8 @@ export interface Album {
 
 export interface Artist {
   id: string;
-  name: string;
-  imageUrl: string;
+  artistName: string;
+  imageSrc: string;
   albumsCount: number;
 }
 

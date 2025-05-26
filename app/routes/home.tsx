@@ -11,12 +11,21 @@ import type { Album, SongDetails } from "~/appData/models";
 import MuzaMusicPlaylist from "~/components/listsDisplays/MusicPlaylist";
 import AlbumDetails from "~/components/albumDisplays/AlbumDetails";
 import ArtistDetails from "~/components/artistDisplays/ArtistDetails";
+import LoadReleasesOnMount from "../api/Loader";
+
+import { useMusicLibraryStore } from '../appData/musicStore'; 
 
 export default function Home() {
   const [data, setData] = useState<any>([]);
   const [selectedSong, setSelectSong] = useState<any>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+
+  const newReleases = useMusicLibraryStore((state) => state.newReleases);
+  const recentlyPlayed = useMusicLibraryStore((state) => state.recentlyPlayed);
+  const artists = useMusicLibraryStore((state) => state.artists);
+
 
   useEffect(() => {
     fetch("./mockData/allData.json") // or use a full URL: 'https://example.com/api/data'
@@ -40,8 +49,11 @@ export default function Home() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
+
+
   return (
     <div className="body">
+      <LoadReleasesOnMount/>
       <MusicSidebar
         logoSrc="app/icons/icons/muza.svg"
         logoAlt="Music Library"
@@ -55,14 +67,14 @@ export default function Home() {
           <hr />
           <h2>New Releases</h2>
           <div className="album-list">
-            {data.albums.newReleases.map((a: Album) => (
+            {newReleases.map((a: Album) => (
               <AlbumDetails details={a} />
             ))}
           </div>
           <hr />
           <h2>Recently Played</h2>
           <div className="song-list">
-            {data.songs.map((s: SongDetails) => (
+          {recentlyPlayed.map((s: SongDetails) => (
               <SongLine
                 details={s}
                 onClick={() => setSelectSong(s)}
@@ -73,7 +85,7 @@ export default function Home() {
           <hr />
           <h2>Artists</h2>
           <div className="album-list">
-            {data.artists.map((artist: any) => (
+            {artists.map((artist: any) => (
               <ArtistDetails key={artist.id} details={artist} />
             ))}
           </div>

@@ -3,7 +3,7 @@
   width: 240px;
   height: 100vh;
   padding: 20px 0;
-  border-right: 1px solid #ededed;
+  border-right: 1px solid var(--muza-sidebar-border-color);
 }
 
 .logo {
