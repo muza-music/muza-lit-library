@@ -17,7 +17,6 @@ const formatDuration = (seconds: number): string => {
 };
 
 const SongLine: React.FC<SongLineProps> = ({ details, onClick, isPlaying }) => {
-
   const renderPlayingIndicator = () => {
     if (isPlaying) {
       return (
@@ -79,7 +78,10 @@ const SongLine: React.FC<SongLineProps> = ({ details, onClick, isPlaying }) => {
   };
 
   return (
-    <div className={isPlaying ? "song-line playing-song-line" : "song-line"} onClick={onClick}>
+    <div
+      className={isPlaying ? "song-line playing-song-line" : "song-line"}
+      onClick={onClick}
+    >
       <div className="song-container">
         <div className="song-content">
           {details.imageSrc ? (
@@ -99,27 +101,28 @@ const SongLine: React.FC<SongLineProps> = ({ details, onClick, isPlaying }) => {
               </div>
             </div>
           ) : (
-            
             <div className="track-info-number">
               {renderHoverIcon(details.imageSrc ? "" : "filled")}
-              {!isPlaying &&
-              <span className="track-number">
-
-                 {formatSongNumber(details.index || 1)}
-              </span>
-              }
-
+              {!isPlaying && (
+                <span className="track-number">
+                  {formatSongNumber(details.index || 1)}
+                </span>
+              )}
             </div>
           )}
           <div className="track-info-content">
-            <span className={isPlaying ? "track-title-playing" : "track-title"}>{details.title}</span>
+            <span className={isPlaying ? "track-title-playing" : "track-title"}>
+              {details.title}
+            </span>
             {details.artist && (
               <div className="track-metadata">
                 <span className="track-artist">{details.artist}</span>
                 {details.playsNumber && (
                   <>
                     <span className="separator">•</span>
-                    <span className="track-album">{details.playsNumber.toLocaleString() + " Plays"}</span>
+                    <span className="track-album">
+                      {details.playsNumber.toLocaleString() + " Plays"}
+                    </span>
                   </>
                 )}
               </div>
