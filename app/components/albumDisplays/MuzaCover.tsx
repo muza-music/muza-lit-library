@@ -1,5 +1,5 @@
 import React from "react";
-import "./Cover.css";
+import "./MuzaCover.css";
 interface CoverProps {
   imageSrc: string;
   title: string;
@@ -230,7 +230,7 @@ const PlaylistButtons: React.FC<playlistButtonProps> = ({ onClick3Dots }) => {
   );
 };
 
-const Cover: React.FC<CoverProps> = ({
+const MuzaCover: React.FC<CoverProps> = ({
   imageSrc,
   title,
   subTitle,
@@ -307,4 +307,4 @@ const Cover: React.FC<CoverProps> = ({
   );
 };
 
-export default Cover;
+export default MuzaCover;

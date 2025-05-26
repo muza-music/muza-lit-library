@@ -1,6 +1,6 @@
 import React from "react";
 import "./MusicListSection.css";
-import Cover from "../albumDisplays/Cover";
+import MuzaCover from "../albumDisplays/MuzaCover";
 import { AlbumArtist } from "../albumDisplays/AlbumArtist";
 
 interface MusicListItem {
@@ -37,7 +37,7 @@ const MusicListSection: React.FC<MusicListSectionProps> = ({
     switch (type) {
       case "album":
         return list.map((item, idx) => (
-          <Cover
+          <MuzaCover
             key={idx}
             imageSrc={item.imageSrc}
             title={item.title}
@@ -56,7 +56,7 @@ const MusicListSection: React.FC<MusicListSectionProps> = ({
         ));
       case "playlist":
         return list.map((item, idx) => (
-          <Cover
+          <MuzaCover
             key={idx}
             imageSrc={item.imageSrc}
             title={item.title}
