@@ -2,8 +2,9 @@ import React from "react";
 import "./MusicListSection.css";
 import AlbumCover from "../albumDisplays/AlbumCover";
 import PlaylistCover from "../albumDisplays/PlaylistCover";
-import type { MusicListSectionType } from "~/appData/models";
+import type { Album, MusicListSectionType } from "~/appData/models";
 import ArtistDetails from "~/components/artistDisplays/ArtistDetails";
+import AlbumDetails from "../albumDisplays/AlbumDetails";
 
 
 const MusicListSection: React.FC<MusicListSectionType> = ({
@@ -22,12 +23,10 @@ const MusicListSection: React.FC<MusicListSectionType> = ({
   const renderContent = () => {
     switch (type) {
       case "album":
-        return list.map((item, idx) => (
-          <AlbumCover
+        return (list as Album[]).map((album, idx) => (
+          <AlbumDetails
             key={idx}
-            imageSrc={item.imageSrc}
-            title={item.title}
-            subTitle={item.subTitle || ""}
+            details={album} 
           />
         ));
       case "artist":
@@ -51,18 +50,26 @@ const MusicListSection: React.FC<MusicListSectionType> = ({
   };
 
   return (
-    <div className="music-list-section">
-      <div className="section-header">
-        <h2>{title}</h2>
-        <button className="section-button" onClick={handleShowAll}>
-          Show All
-        </button>
-      </div>
-      {subTitle && <p>{subTitle}</p>}
-      <div className="section-content">
-        <div className="content-items">{renderContent()}</div>
-      </div>
-    </div>
+    // <div className="music-list-section">
+    //   <div className="section-header">
+    //     <h2>{title}</h2>
+    //     <button className="section-button" onClick={handleShowAll}>
+    //       Show All
+    //     </button>
+    //   </div>
+    //   {subTitle && <p>{subTitle}</p>}
+    //   <div className="section-content">
+    //     <div className="content-items">{renderContent()}</div>
+    //   </div>
+    // </div>
+    <>
+          <hr />
+          <h2>New Releases</h2>
+          <div className="album-list">
+               <div className="content-items">{renderContent()}</div>
+
+          </div>
+    </>
   );
 };
 
