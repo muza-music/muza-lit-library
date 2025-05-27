@@ -21,11 +21,7 @@ const MusicListSection: React.FC<MusicListSection> = ({
     switch (type) {
       case "album":
         return list.map((item, idx) => (
-          <MuzaCover
-            key={idx}
-            songDetails={item}
-            type="album"
-          />
+          <MuzaCover key={idx} songDetails={item} type="album" />
         ));
       case "artist":
         return list.map((item, idx) => (
@@ -38,11 +34,7 @@ const MusicListSection: React.FC<MusicListSection> = ({
         ));
       case "playlist":
         return list.map((item, idx) => (
-          <MuzaCover
-            key={idx}
-            songDetails={item}
-            type="playlist"
-          />
+          <MuzaCover key={idx} songDetails={item} type="playlist" />
         ));
       default:
         return null;
