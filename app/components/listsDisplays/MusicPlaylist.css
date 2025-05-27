@@ -38,6 +38,7 @@
 }
 
 .buttons {
+  display:none
   position: absolute;
   left: 14px;
   top: 14px;
