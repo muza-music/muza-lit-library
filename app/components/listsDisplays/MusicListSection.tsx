@@ -1,11 +1,12 @@
 import React from "react";
 import "./MusicListSection.css";
 import AlbumCover from "../albumDisplays/AlbumCover";
-import { AlbumArtist } from "../albumDisplays/AlbumArtist";
 import PlaylistCover from "../albumDisplays/PlaylistCover";
-import type { MusicListSection } from "~/appData/models";
+import type { MusicListSectionType } from "~/appData/models";
+import ArtistDetails from "~/components/artistDisplays/ArtistDetails";
 
-const MusicListSection: React.FC<MusicListSection> = ({
+
+const MusicListSection: React.FC<MusicListSectionType> = ({
   title,
   subTitle,
   type,
@@ -30,14 +31,11 @@ const MusicListSection: React.FC<MusicListSection> = ({
           />
         ));
       case "artist":
-        return list.map((item, idx) => (
-          <AlbumArtist
-            key={idx}
-            imageSrc={item.imageSrc}
-            artistName={item.artistName || ""}
-            albumsCount={item.albumsCount || 1}
-          />
-        ));
+        return <div className="album-list">
+        {list.map((artist: any) => (
+          <ArtistDetails key={artist.id} details={artist} />
+        ))}
+      </div>
       case "playlist":
         return list.map((item, idx) => (
           <PlaylistCover

@@ -47,7 +47,7 @@ interface MusicListItem {
   albumsCount?: number;
 }
 
-export type MusicListSection = {
+export type MusicListSectionType = {
   title: string;
   subTitle?: string;
   type: "album" | "artist" | "playlist";
