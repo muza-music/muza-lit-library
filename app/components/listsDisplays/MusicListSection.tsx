@@ -5,6 +5,7 @@ import PlaylistCover from "../albumDisplays/PlaylistCover";
 import type { Album, MusicListSectionType } from "~/appData/models";
 import ArtistDetails from "~/components/artistDisplays/ArtistDetails";
 import AlbumDetails from "../albumDisplays/AlbumDetails";
+import "./../../styles/main.css"
 
 
 const MusicListSection: React.FC<MusicListSectionType> = ({
@@ -23,12 +24,16 @@ const MusicListSection: React.FC<MusicListSectionType> = ({
   const renderContent = () => {
     switch (type) {
       case "album":
-        return (list as Album[]).map((album, idx) => (
+        return (
+        <div className="album-list">
+        {list.map((a: any) => (
           <AlbumDetails
-            key={idx}
-            details={album} 
+            key={a.id}
+            details={a} 
           />
-        ));
+        ))}
+        </div>)
+        ;
       case "artist":
         return <div className="album-list">
         {list.map((artist: any) => (
@@ -65,10 +70,7 @@ const MusicListSection: React.FC<MusicListSectionType> = ({
     <>
           <hr />
           <h2>New Releases</h2>
-          <div className="album-list">
-               <div className="content-items">{renderContent()}</div>
-
-          </div>
+              {renderContent()}
     </>
   );
 };
