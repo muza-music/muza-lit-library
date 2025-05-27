@@ -13,7 +13,7 @@ import AlbumDetails from "~/components/albumDisplays/AlbumDetails";
 import ArtistDetails from "~/components/artistDisplays/ArtistDetails";
 import { useUserStore } from "~/appData/userStore";
 import { useMusicLibraryStore } from "~/appData/musicStore";
-
+import MuzaCover from "~/components/albumDisplays/MuzaCover";
 export default function Home() {
   const { selectedSong, setSelectedSong } = useUserStore();
   const {
@@ -86,8 +86,7 @@ export default function Home() {
         logoSrc="app/icons/icons/muza.svg"
         logoAlt="Music Library"
         sections={sidebarSections}
-      />
-
+      ></MusicSidebar>
       <div className="content">
         <MusicTopbar />
 
@@ -97,7 +96,7 @@ export default function Home() {
           <h2>New Releases</h2>
           <div className="album-list">
             {newReleases.map((a: Album) => (
-              <AlbumDetails key={a.id} details={a} />
+              <MuzaCover key={a.id} songDetails={a} type="album" />
             ))}
           </div>
 

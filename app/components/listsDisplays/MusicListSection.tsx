@@ -1,8 +1,7 @@
 import React from "react";
 import "./MusicListSection.css";
-import AlbumCover from "../albumDisplays/AlbumCover";
+import MuzaCover from "../albumDisplays/MuzaCover";
 import { AlbumArtist } from "../albumDisplays/AlbumArtist";
-import PlaylistCover from "../albumDisplays/PlaylistCover";
 import type { MusicListSection } from "~/appData/models";
 
 const MusicListSection: React.FC<MusicListSection> = ({
@@ -22,12 +21,7 @@ const MusicListSection: React.FC<MusicListSection> = ({
     switch (type) {
       case "album":
         return list.map((item, idx) => (
-          <AlbumCover
-            key={idx}
-            imageSrc={item.imageSrc}
-            title={item.title}
-            subTitle={item.subTitle || ""}
-          />
+          <MuzaCover key={idx} songDetails={item} type="album" />
         ));
       case "artist":
         return list.map((item, idx) => (
@@ -40,12 +34,7 @@ const MusicListSection: React.FC<MusicListSection> = ({
         ));
       case "playlist":
         return list.map((item, idx) => (
-          <PlaylistCover
-            key={idx}
-            imageSrc={item.imageSrc}
-            title={item.title}
-            songsCount={item.songsCount?.toString() || ""}
-          />
+          <MuzaCover key={idx} songDetails={item} type="playlist" />
         ));
       default:
         return null;
