@@ -38,12 +38,13 @@
 }
 
 .buttons {
-  display:none
   position: absolute;
   left: 14px;
   top: 14px;
   gap: 8px;
   display: flex;
+  display: none;
+
   flex-direction: column;
 }
 
