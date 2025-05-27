@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { Album, Artist, MusicListSection, SongDetails } from "./models";
+import type { Album, Artist, MusicListSectionType, SongDetails } from "./models";
 
 
 
@@ -8,14 +8,14 @@ type musicLibraryStore = {
   recentlyPlayed: SongDetails[];
   artists: Artist[];
   labels: Artist[];
-  musicSections: MusicListSection[];
+  musicSections: MusicListSectionType[];
 
   // ✅ Add setter definitions:
   setNewReleases: (albums: Album[]) => void;
   setRecentlyPlayed: (songs: SongDetails[]) => void;
   setArtists: (artists: Artist[]) => void;
   setLabels: (labels: Artist[]) => void;
-  setMusicSections: (sections: MusicListSection[]) => void;
+  setMusicSections: (sections: MusicListSectionType[]) => void;
 };
 
 export const useMusicLibraryStore = create<musicLibraryStore>((set) => ({
@@ -33,6 +33,6 @@ export const useMusicLibraryStore = create<musicLibraryStore>((set) => ({
 
   setLabels: (labels: Artist[]) => set({ labels }),
 
-  setMusicSections: (sections: MusicListSection[]) =>
+  setMusicSections: (sections: MusicListSectionType[]) =>
     set({ musicSections: sections }),
 }));
