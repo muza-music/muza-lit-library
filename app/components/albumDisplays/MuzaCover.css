@@ -1,12 +1,12 @@
 .album-cover {
-display: flex;
-width: var(--width-w-48, 192px);
-flex-direction: column;
-align-items: flex-start;
-gap: var(--spacing-0, 0px);
+  display: flex;
+  width: var(--width-w-48, 192px);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-0, 0px);
   position: relative;
   margin: var(--muza-spacing-sm);
-  min-width:var(--width-w-48, 192px);
+  min-width: var(--width-w-48, 192px);
 }
 
 .album-image-container {
@@ -22,7 +22,6 @@ gap: var(--spacing-0, 0px);
   height: 100%;
   object-fit: cover;
   transition: transform var(--album-hover-transition-duration, 0.3s) ease;
-  
 }
 
 .album-image-overlay {

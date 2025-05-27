@@ -96,7 +96,11 @@ const MuzaCover: React.FC<CoverProps> = ({
   return (
     <div className="album-cover" onClick={onAlbumClicked}>
       <div className="album-image-container">
-        <img src={songDetails.imageSrc} alt={songDetails.title} className="album-image" />
+        <img
+          src={songDetails.imageSrc}
+          alt={songDetails.title}
+          className="album-image"
+        />
 
         <div className="album-image-overlay">
           {type === "myAlbum" && (
@@ -125,8 +129,7 @@ const MuzaCover: React.FC<CoverProps> = ({
           )}
 
           <div className="album-image-overlay-icon-container">
-            <MuzaIcon iconName="play-circle"
-            />
+            <MuzaIcon iconName="play-circle" />
           </div>
         </div>
       </div>

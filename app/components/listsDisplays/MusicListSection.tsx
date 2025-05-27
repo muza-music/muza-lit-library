@@ -4,7 +4,6 @@ import MuzaCover from "../albumDisplays/MuzaCover";
 import { AlbumArtist } from "../albumDisplays/AlbumArtist";
 import type { MusicListSection } from "~/appData/models";
 
-
 const MusicListSection: React.FC<MusicListSection> = ({
   title,
   subTitle,
@@ -24,9 +23,7 @@ const MusicListSection: React.FC<MusicListSection> = ({
         return list.map((item, idx) => (
           <MuzaCover
             key={idx}
-            imageSrc={item.imageSrc}
-            title={item.title}
-            subTitle={item.subTitle || ""}
+            songDetails={item}
             type="album"
           />
         ));
@@ -43,9 +40,7 @@ const MusicListSection: React.FC<MusicListSection> = ({
         return list.map((item, idx) => (
           <MuzaCover
             key={idx}
-            imageSrc={item.imageSrc}
-            title={item.title}
-            subTitle={item.subTitle || ""}
+            songDetails={item}
             type="playlist"
           />
         ));
