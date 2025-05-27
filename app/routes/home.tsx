@@ -87,16 +87,6 @@ export default function Home() {
         logoAlt="Music Library"
         sections={sidebarSections}
       ></MusicSidebar>
-      <MuzaCover
-        imageSrc="./art/logo.jpg"
-        title="Music Library"
-        subTitle="Music Library"
-        onAlbumClicked={() => {}}
-        type="myAlbum"
-        onClick3Dots={() => {}}
-        onClickEdit={() => {}}
-        onClickDelete={() => {}}
-      ></MuzaCover>
       <div className="content">
         <MusicTopbar />
 
@@ -106,7 +96,7 @@ export default function Home() {
           <h2>New Releases</h2>
           <div className="album-list">
             {newReleases.map((a: Album) => (
-              <AlbumDetails key={a.id} details={a} />
+              <MuzaCover key={a.id} songDetails={a} type="album" />
             ))}
           </div>
 
