@@ -12,9 +12,9 @@ import  MusicListSection  from "~/components/listsDisplays/MusicListSection";
 
 // Removed the import as the module '../appData/model' does not exist
 
-import AlbumDetails from "~/components/albumDisplays/AlbumDetails";
-import ArtistDetails from "~/components/artistDisplays/ArtistDetails";
-import LoadReleasesOnMount from "../api/Loader";
+
+import {useLoadMusicDataOnMount} from "../api/Loader";
+
 
 import { useMusicLibraryStore } from '../appData/musicStore'; 
 
@@ -23,6 +23,8 @@ export default function Home() {
   const [selectedSong, setSelectSong] = useState<any>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
+  useLoadMusicDataOnMount()
 
 
   const newReleases = useMusicLibraryStore((state) => state.newReleases);
@@ -56,7 +58,6 @@ export default function Home() {
 
   return (
     <div className="body">
-      <LoadReleasesOnMount/>
       <MusicSidebar
         logoSrc="app/icons/icons/muza.svg"
         logoAlt="Music Library"
