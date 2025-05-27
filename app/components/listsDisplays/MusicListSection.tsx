@@ -1,11 +1,11 @@
 import React from "react";
-// import "./MusicListSection.css";
-import AlbumCover from "../albumDisplays/AlbumCover";
 import PlaylistCover from "../albumDisplays/PlaylistCover";
-import type { Album, MusicListSectionType } from "~/appData/models";
+import type {  MusicListSectionType } from "~/appData/models";
 import ArtistDetails from "~/components/artistDisplays/ArtistDetails";
 import AlbumDetails from "../albumDisplays/AlbumDetails";
 import "../../styles/main.css"
+// import "./MusicListSection.css";
+
 
 
 const MusicListSection: React.FC<MusicListSectionType> = ({
