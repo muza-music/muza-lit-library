@@ -6,6 +6,7 @@
   --muza-sidebar-border-color: #ededed;
   --muza-tertiary-text-color: #aaa;
   --muza-border-color: #a9a9a9;
+  --muza-light-border-color: #e5e7eb;
   --muza-hover-background: #eeeeee;
   --muza-button-background: #eeeeee;
   --muza-section-background: #f7f7f7;
@@ -25,6 +26,12 @@
   --muza-input-disabled-bg: #f3f4f6;
   --muza-input-error-border: #e53935;
   --muza-input-success-border: #4caf50;
+  --muza-player-info-background: #f9fafb;
+  --muza-track-title-color: #111827;
+  --muza-track-artist-color: #6b7280;
+  --muza-separator-color: #9ca3af;
+  --muza-play-button-color: #1f2937;
+  --muza-time-display-color: #4b5563;
 
   /* Typography */
   --muza-primary-font-size: 14px;

@@ -5,11 +5,12 @@ import {
   FaPause,
   FaPlay,
   FaSpinner,
+  FaRandom,
 } from "react-icons/fa";
+import { FaRepeat } from "react-icons/fa6";
 import "./MusicPlayer.css";
-import type { PlayerDetails } from "~/appData/models";
-import MuzaIcon from "~/icons/MuzaIcon";
 import VolumeControl from "../../controls/VolumeControl";
+import type { PlayerDetails } from "~/appData/models";
 
 type MusicPlayerProps = {
   details: PlayerDetails;
@@ -32,9 +33,10 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
   const [volume, setVolume] = useState(75);
   const [isLoading, setIsLoading] = useState(false);
   const [isPlaying, setIsPlaying] = useState(details.isPlaying || false);
+  const [shuffle, setShuffle] = useState(false);
+  const [repeat, setRepeat] = useState(false);
 
-  const progressPercentage =
-    duration > 0 ? `${(currentTime / duration) * 100}%` : "0%";
+  const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   const formatTime = (seconds: number): string => {
     const minutes = Math.floor(seconds / 60);
@@ -44,9 +46,18 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
     return `${minutes}:${secs}`;
   };
 
+  const handleVolumeChange = (newVolume: number) => {
+    const normalizedVolume = newVolume / 100;
+    setVolume(normalizedVolume);
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = normalizedVolume;
+    }
+  };
+
   const playAudio = () => {
     const audio = audioRef.current;
-    if (!audio || isLoading) return;
+    if (!audio) return;
     audio.play().catch((err) => {
       console.error("Error playing audio:", err);
       setIsPlaying(false);
@@ -54,7 +65,6 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
     });
   };
 
-  // Sync local isPlaying state with details prop
   useEffect(() => {
     setIsPlaying(details.isPlaying || false);
   }, [details.isPlaying]);
@@ -69,10 +79,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
       if (isPlaying) playAudio();
     };
 
-    const onTimeUpdate = () => {
-      setCurrentTime(audio.currentTime);
-    };
-
+    const onTimeUpdate = () => setCurrentTime(audio.currentTime);
     const onEnded = () => {
       setIsPlaying(false);
       onUpdate?.({ ...details, isPlaying: false });
@@ -104,13 +111,9 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
     audio.src = details.audioUrl;
     audio.load();
 
-    if (volume < 0 || volume > 100) {
-      audio.volume = volume / 100.0;
-    }
+    audio.volume = volume / 100;
 
-    if (isPlaying) {
-      playAudio();
-    }
+    if (isPlaying) playAudio();
 
     return () => {
       audio.pause();
@@ -158,65 +161,88 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
   return (
     <div className="player-container">
       <audio ref={audioRef} hidden />
-      <div className="player">
-        <div className="player-info">
-          <img className="album-art" src={details.imageSrc} alt="Album Art" />
-          <div className="track-info">
-            <h4>{details.title}</h4>
-            <p>{details.artist}</p>
-            <h5>
-              {details.album} • {details.year}
-            </h5>
+      <div className="player-info">
+        <img
+          className="album-art"
+          src={details.imageSrc}
+          alt={`${details.title} album cover`}
+        />
+        <div className="track-info-music-player">
+          <h2 className="track-title">{details.title}</h2>
+          <p className="track-artist">{details.artist}</p>
+          <div className="track-details">
+            <span>{details.album}</span>
+            <span className="separator">•</span>
+            <span>{details.year}</span>
           </div>
         </div>
-        <div className="player-controls">
+      </div>
+
+      <div className="player-controls-section">
+        <div className="progress-container">
           <div className="progress-bar" onClick={handleSeek}>
             <div
-              className="progress"
-              style={{ width: progressPercentage }}
-            ></div>
+              className="progress-fill"
+              style={{ width: `${progressPercentage}%` }}
+            />
           </div>
-          <div className="durations">
+          <div className="time-display">
             <span>{formatTime(currentTime)}</span>
             <span>{formatTime(duration - currentTime)}</span>
           </div>
-          <div className="controls-wrapper">
-            <div className="controls-center">
-              <div className="controls">
-                <button>
-                  <MuzaIcon iconName="shuffle" />
-                </button>
-                <button className="prev-next-button" onClick={onPrevious}>
-                  <MuzaIcon iconName="skip-back" />
-                </button>
-                <button className="play-pause-button" onClick={togglePlayPause}>
-                  {isLoading ? (
-                    <FaSpinner className="fa-spin" />
-                  ) : isPlaying ? (
-                    <MuzaIcon iconName="pause" className="pause" />
-                  ) : (
-                    <MuzaIcon iconName="play" className="play" />
-                  )}
-                </button>
-                <button className="prev-next-button" onClick={onNext}>
-                  <MuzaIcon iconName="skip-forward" />
-                </button>
-                <button>
-                  <MuzaIcon iconName="repeat" />
-                </button>
-              </div>
-            </div>
-            <div className="volume-control">
-              <VolumeControl
-                value={volume}
-                onVolumeChange={(newVolume) => {
-                  setVolume(newVolume);
-                  if (audioRef.current) {
-                    audioRef.current.volume = newVolume / 100.0;
-                  }
-                }}
-              />
-            </div>
+        </div>
+
+        <div className="controls-container">
+          <div className="controls-spacer"></div>
+          <div className="playback-controls">
+            <button
+              className={`control-button shuffle-button ${shuffle ? "active" : ""}`}
+              onClick={() => setShuffle(!shuffle)}
+              aria-label="Shuffle"
+            >
+              <FaRandom />
+            </button>
+            <button
+              className="control-button previous-button"
+              onClick={onPrevious}
+              aria-label="Previous track"
+            >
+              <FaBackward />
+            </button>
+            <button
+              className="control-button play-button"
+              onClick={togglePlayPause}
+              aria-label="Play or pause"
+            >
+              {isLoading ? (
+                <FaSpinner className="spinner" />
+              ) : isPlaying ? (
+                <FaPause />
+              ) : (
+                <FaPlay />
+              )}
+            </button>
+            <button
+              className="control-button next-button"
+              onClick={onNext}
+              aria-label="Next track"
+            >
+              <FaForward />
+            </button>
+            <button
+              className={`control-button repeat-button ${repeat ? "active" : ""}`}
+              onClick={() => setRepeat(!repeat)}
+              aria-label="Repeat"
+            >
+              <FaRepeat />
+            </button>
+          </div>
+          <div className="volume-control-container">
+            <VolumeControl
+              noSymbol={true}
+              value={volume * 100}
+              onVolumeChange={handleVolumeChange}
+            />
           </div>
         </div>
       </div>
