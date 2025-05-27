@@ -13,8 +13,7 @@ import AlbumDetails from "~/components/albumDisplays/AlbumDetails";
 import ArtistDetails from "~/components/artistDisplays/ArtistDetails";
 import { useUserStore } from "~/appData/userStore";
 import { useMusicLibraryStore } from "~/appData/musicStore";
-
-
+import MuzaCover from "~/components/albumDisplays/MuzaCover";
 export default function Home() {
   const { selectedSong, setSelectedSong } = useUserStore();
   const {
@@ -87,9 +86,17 @@ export default function Home() {
         logoSrc="app/icons/icons/muza.svg"
         logoAlt="Music Library"
         sections={sidebarSections}
-      />
-
-
+      ></MusicSidebar>
+      <MuzaCover
+        imageSrc="./art/logo.jpg"
+        title="Music Library"
+        subTitle="Music Library"
+        onAlbumClicked={() => {}}
+        type="myAlbum"
+        onClick3Dots={() => {}}
+        onClickEdit={() => {}}
+        onClickDelete={() => {}}
+      ></MuzaCover>
       <div className="content">
         <MusicTopbar />
 
