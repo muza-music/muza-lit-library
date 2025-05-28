@@ -3,8 +3,7 @@ import PlaylistCover from "../albumDisplays/PlaylistCover";
 import type { MusicListSectionType } from "~/appData/models";
 import ArtistDetails from "~/components/artistDisplays/ArtistDetails";
 import AlbumDetails from "../albumDisplays/AlbumDetails";
-import "../../styles/main.css";
-// import "./MusicListSection.css";
+import "./MusicListSection.css";
 
 const MusicListSection: React.FC<MusicListSectionType> = ({
   title,
