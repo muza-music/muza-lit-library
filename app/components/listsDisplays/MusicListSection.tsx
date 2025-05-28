@@ -52,18 +52,6 @@ const MusicListSection: React.FC<MusicListSectionType> = ({
   };
 
   return (
-    // <div className="music-list-section">
-    //   <div className="section-header">
-    //     <h2>{title}</h2>
-    //     <button className="section-button" onClick={handleShowAll}>
-    //       Show All
-    //     </button>
-    //   </div>
-    //   {subTitle && <p>{subTitle}</p>}
-    //   <div className="section-content">
-    //     <div className="content-items">{renderContent()}</div>
-    //   </div>
-    // </div>
     <>
       <hr />
       <h2>New Releases</h2>
