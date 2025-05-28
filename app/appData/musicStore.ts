@@ -1,7 +1,10 @@
 import { create } from "zustand";
-import type { Album, Artist, MusicListSectionType, SongDetails } from "./models";
-
-
+import type {
+  Album,
+  Artist,
+  MusicListSectionType,
+  SongDetails,
+} from "./models";
 
 type musicLibraryStore = {
   newReleases: Album[];

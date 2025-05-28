@@ -8,13 +8,11 @@ import "../styles/variables.css";
 import "../styles/main.css";
 import SongLine from "~/components/songLineDisplays/SongLine";
 import type { Album, SongDetails } from "~/appData/models";
-import  MusicListSection  from "~/components/listsDisplays/MusicListSection";
+import MusicListSection from "~/components/listsDisplays/MusicListSection";
 
 // Removed the import as the module '../appData/model' does not exist
 
-
-import {useLoadMusicDataOnMount} from "../api/musicDataApi";
-
+import { useLoadMusicDataOnMount } from "../api/musicDataApi";
 
 import MuzaMusicPlaylist from "~/components/listsDisplays/MusicPlaylist";
 import AlbumDetails from "~/components/albumDisplays/AlbumDetails";
@@ -35,11 +33,8 @@ export default function Home() {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  
-  useLoadMusicDataOnMount()
 
-
-
+  useLoadMusicDataOnMount();
 
   const [sidebarSections, setSidebarSections] = useState([]);
 
@@ -94,8 +89,6 @@ export default function Home() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
-
-
   return (
     <div className="body">
       <MusicSidebar
@@ -138,14 +131,14 @@ export default function Home() {
             title={"Artists"}
             subTitle={""}
             list={artists.map((artist: any) => ({
-              imageSrc: artist.imageSrc || "default-image-path.jpg", 
-              artistName: artist.artistName, 
+              imageSrc: artist.imageSrc || "default-image-path.jpg",
+              artistName: artist.artistName,
               title: "",
               albumsCount: artist.albumsCount || 0,
-              subTitle: artist.genre || "", 
+              subTitle: artist.genre || "",
             }))}
-          />  
-         
+          />
+
           {selectedSong && (
             <MusicPlayer
               details={{

@@ -1,12 +1,10 @@
 import React from "react";
 import PlaylistCover from "../albumDisplays/PlaylistCover";
-import type {  MusicListSectionType } from "~/appData/models";
+import type { MusicListSectionType } from "~/appData/models";
 import ArtistDetails from "~/components/artistDisplays/ArtistDetails";
 import AlbumDetails from "../albumDisplays/AlbumDetails";
-import "../../styles/main.css"
+import "../../styles/main.css";
 // import "./MusicListSection.css";
-
-
 
 const MusicListSection: React.FC<MusicListSectionType> = ({
   title,
@@ -25,21 +23,20 @@ const MusicListSection: React.FC<MusicListSectionType> = ({
     switch (type) {
       case "album":
         return (
-        <div className="album-list">
-        {list.map((a: any) => (
-          <AlbumDetails
-            key={a.id}
-            details={a} 
-          />
-        ))}
-        </div>)
-        ;
+          <div className="album-list">
+            {list.map((a: any) => (
+              <AlbumDetails key={a.id} details={a} />
+            ))}
+          </div>
+        );
       case "artist":
-        return <div className="album-list">
-        {list.map((artist: any) => (
-          <ArtistDetails key={artist.id} details={artist} />
-        ))}
-      </div>
+        return (
+          <div className="album-list">
+            {list.map((artist: any) => (
+              <ArtistDetails key={artist.id} details={artist} />
+            ))}
+          </div>
+        );
       case "playlist":
         return list.map((item, idx) => (
           <PlaylistCover
@@ -68,9 +65,9 @@ const MusicListSection: React.FC<MusicListSectionType> = ({
     //   </div>
     // </div>
     <>
-          <hr />
-          <h2>New Releases</h2>
-              {renderContent()}
+      <hr />
+      <h2>New Releases</h2>
+      {renderContent()}
     </>
   );
 };

@@ -2,7 +2,6 @@ import React from "react";
 import "./ArtistDetails.css";
 import type { Artist } from "../../appData/models";
 
-
 interface ArtistDetailsProps {
   details: Artist;
 }
