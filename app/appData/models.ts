@@ -9,6 +9,7 @@ export interface SongDetails {
   year?: number;
   id?: string;
   isPlaying?: boolean;
+  playsNumber?: number;
 }
 
 export interface MenuItem {
