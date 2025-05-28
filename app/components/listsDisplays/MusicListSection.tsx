@@ -1,11 +1,11 @@
 import React from "react";
-import "./MusicListSection.css";
-import AlbumCover from "../albumDisplays/AlbumCover";
-import { AlbumArtist } from "../albumDisplays/AlbumArtist";
 import PlaylistCover from "../albumDisplays/PlaylistCover";
-import type { MusicListSection } from "~/appData/models";
+import type { MusicListSectionType } from "~/appData/models";
+import ArtistDetails from "~/components/artistDisplays/ArtistDetails";
+import AlbumDetails from "../albumDisplays/AlbumDetails";
+import "./MusicListSection.css";
 
-const MusicListSection: React.FC<MusicListSection> = ({
+const MusicListSection: React.FC<MusicListSectionType> = ({
   title,
   subTitle,
   type,
@@ -21,23 +21,21 @@ const MusicListSection: React.FC<MusicListSection> = ({
   const renderContent = () => {
     switch (type) {
       case "album":
-        return list.map((item, idx) => (
-          <AlbumCover
-            key={idx}
-            imageSrc={item.imageSrc}
-            title={item.title}
-            subTitle={item.subTitle || ""}
-          />
-        ));
+        return (
+          <div className="album-list">
+            {list.map((a: any) => (
+              <AlbumDetails key={a.id} details={a} />
+            ))}
+          </div>
+        );
       case "artist":
-        return list.map((item, idx) => (
-          <AlbumArtist
-            key={idx}
-            imageSrc={item.imageSrc}
-            artistName={item.artistName || ""}
-            albumsCount={item.albumsCount || 1}
-          />
-        ));
+        return (
+          <div className="album-list">
+            {list.map((artist: any) => (
+              <ArtistDetails key={artist.id} details={artist} />
+            ))}
+          </div>
+        );
       case "playlist":
         return list.map((item, idx) => (
           <PlaylistCover
@@ -53,18 +51,11 @@ const MusicListSection: React.FC<MusicListSection> = ({
   };
 
   return (
-    <div className="music-list-section">
-      <div className="section-header">
-        <h2>{title}</h2>
-        <button className="section-button" onClick={handleShowAll}>
-          Show All
-        </button>
-      </div>
-      {subTitle && <p>{subTitle}</p>}
-      <div className="section-content">
-        <div className="content-items">{renderContent()}</div>
-      </div>
-    </div>
+    <>
+      <hr />
+      <h2>New Releases</h2>
+      {renderContent()}
+    </>
   );
 };
 

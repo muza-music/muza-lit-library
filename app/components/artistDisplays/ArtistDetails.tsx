@@ -1,12 +1,6 @@
 import React from "react";
 import "./ArtistDetails.css";
-
-interface Artist {
-  id: number;
-  imageSrc: string;
-  artistName: string;
-  albumsCount: string;
-}
+import type { Artist } from "../../appData/models";
 
 interface ArtistDetailsProps {
   details: Artist;

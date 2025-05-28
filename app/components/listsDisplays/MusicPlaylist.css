@@ -43,6 +43,8 @@
   top: 14px;
   gap: 8px;
   display: flex;
+  display: none;
+
   flex-direction: column;
 }
 

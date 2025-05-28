@@ -11,14 +11,6 @@
   border-bottom: 1px solid var(--muza-section-border-color, #a9a9a9);
 }
 
-h2 {
-  flex-grow: 1;
-  margin: 0;
-  font-size: var(--muza-heading-font-size, 18px);
-  font-weight: var(--muza-font-weight-bold, 600);
-  color: var(--muza-section-title-color, #5f5f5f);
-}
-
 p {
   margin: 0;
   padding: 0 var(--muza-spacing-md, 8px) 1rem var(--muza-spacing-md, 8px);

@@ -33,8 +33,8 @@ export interface Album {
 
 export interface Artist {
   id: string;
-  name: string;
-  imageUrl: string;
+  artistName: string;
+  imageSrc: string;
   albumsCount: number;
 }
 
@@ -47,7 +47,7 @@ interface MusicListItem {
   albumsCount?: number;
 }
 
-export type MusicListSection = {
+export type MusicListSectionType = {
   title: string;
   subTitle?: string;
   type: "album" | "artist" | "playlist";

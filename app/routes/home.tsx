@@ -8,6 +8,12 @@ import "../styles/variables.css";
 import "../styles/main.css";
 import SongLine from "~/components/songLineDisplays/SongLine";
 import type { Album, SongDetails } from "~/appData/models";
+import MusicListSection from "~/components/listsDisplays/MusicListSection";
+
+// Removed the import as the module '../appData/model' does not exist
+
+import { useLoadMusicDataOnMount } from "../api/musicDataApi";
+
 import MuzaMusicPlaylist from "~/components/listsDisplays/MusicPlaylist";
 import AlbumDetails from "~/components/albumDisplays/AlbumDetails";
 import ArtistDetails from "~/components/artistDisplays/ArtistDetails";
@@ -27,6 +33,9 @@ export default function Home() {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  useLoadMusicDataOnMount();
+
   const [sidebarSections, setSidebarSections] = useState([]);
 
   const getCurrentSongIndex = () => {
@@ -94,14 +103,16 @@ export default function Home() {
         <main>
           <h1>Home</h1>
           <hr />
-          <h2>New Releases</h2>
-          <div className="album-list">
-            {newReleases.map((a: Album) => (
-              <AlbumDetails key={a.id} details={a} />
-            ))}
-          </div>
+          <MusicListSection
+            type={"album"}
+            title={"New Releases"}
+            subTitle={""}
+            list={recentlyPlayed.map((song) => ({
+              ...song,
+              imageSrc: song.imageSrc || "default-image-path.jpg", // Provide a fallback image
+            }))}
+          />
 
-          <hr />
           <h2>Recently Played</h2>
           <div className="song-list">
             {recentlyPlayed.map((s: SongDetails) => (
@@ -115,12 +126,18 @@ export default function Home() {
           </div>
 
           <hr />
-          <h2>Artists</h2>
-          <div className="album-list">
-            {artists.map((artist: any) => (
-              <ArtistDetails key={artist.id} details={artist} />
-            ))}
-          </div>
+          <MusicListSection
+            type={"artist"}
+            title={"Artists"}
+            subTitle={""}
+            list={artists.map((artist: any) => ({
+              imageSrc: artist.imageSrc || "default-image-path.jpg",
+              artistName: artist.artistName,
+              title: "",
+              albumsCount: artist.albumsCount || 0,
+              subTitle: artist.genre || "",
+            }))}
+          />
 
           {selectedSong && (
             <MusicPlayer
