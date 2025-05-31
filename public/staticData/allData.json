@@ -94,19 +94,27 @@
   "sidebar": {
     "sections": [
       {
-        "title": "My Muza",
         "items": [
-          { "icon": "house", "text": "Home", "action": "/" },
-          { "icon": "search", "text": "Explore" }
+          { "svg": "home", "text": "Home" },
+          { "svg": "explore", "text": "Explore" }
         ]
       },
       {
-        "title": "Library",
+        "title": "My Muza",
         "items": [
           { "svg": "playlist", "text": "Playlists" },
-          { "svg": "album", "text": "Albums", "action": "/routes/albums" },
-          { "svg": "artists", "text": "Artists", "action": "/routes/artists" },
-          { "svg": "songs", "text": "Songs", "action": "/routes/songs" }
+          { "svg": "album", "text": "Albums" },
+          { "svg": "artist", "text": "Artists" },
+          { "svg": "song", "text": "Songs" }
+        ]
+      },
+      {
+        "title": "Playlists",
+        "addAction": "createPlaylist",
+        "items": [
+          { "svg": "playlist", "text": "Chill Vibes" },
+          { "svg": "playlist", "text": "Morning Coffee" },
+          { "svg": "playlist", "text": "Cat Party Mix" }
         ]
       }
     ]

@@ -1,26 +1,25 @@
 .music-sidebar {
   display: block;
-  width: 180px;
+  width: 240px;
   height: 100vh;
   padding: 20px 0;
   border-right: 1px solid #ededed;
 }
 
 .logo {
-  padding: 25px var(--muza-spacing-lg) var(--muza-spacing-lg);
+  padding: 0 20px 20px;
   text-align: center;
 }
 
 .logo img {
-  width: 120px;
-  height: auto;
-  margin-left: 12px;
+  max-width: 120px;
+  margin: 0 auto;
+  display: block;
 }
 
 .section {
   padding: 20px 0;
   margin: 0 10px;
-  padding-left: 20px;
 }
 
 .section-title {
