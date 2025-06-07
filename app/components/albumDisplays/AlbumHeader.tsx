@@ -13,8 +13,13 @@ interface AlbumHeaderProps {
 }
 
 const AlbumHeader: React.FC<AlbumHeaderProps> = ({ album, songs }) => {
-  const { selectedSong, setSelectedSong, setSelectedPlaListOrAlbum, isPlaying  , setIsPlaying} =
-    useCurrentPlayerStore();
+  const {
+    selectedSong,
+    setSelectedSong,
+    setSelectedPlaListOrAlbum,
+    isPlaying,
+    setIsPlaying,
+  } = useCurrentPlayerStore();
   const [isModalOpen, setModalOpen] = useState(false);
 
   const GetRandomSong = () => {

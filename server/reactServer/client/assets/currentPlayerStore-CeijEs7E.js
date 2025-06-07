@@ -1,1 +1,0 @@
-import{c as s}from"./musicStore-RauqRZw2.js";const a=s(l=>({selectedSong:null,isPlaying:!1,selectedPlaListOrAlbum:null,setSelectedSong:e=>l({selectedSong:e}),setIsPlaying:e=>l({isPlaying:e}),setSelectedPlaListOrAlbum:e=>l({selectedPlaListOrAlbum:e})}));export{a as u};

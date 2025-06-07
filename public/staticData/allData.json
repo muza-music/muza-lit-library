@@ -96,14 +96,14 @@
       {
         "title": "My Muza",
         "items": [
-          { "icon": "house", "text": "Home", "action": "/" },
-          { "icon": "search", "text": "Explore" }
+          { "svg": "home", "text": "Home", "action": "/" },
+          { "svg": "explore", "text": "Explore", "action": "/" }
         ]
       },
       {
         "title": "Library",
         "items": [
-          { "svg": "playlist", "text": "Playlists" },
+          { "svg": "playlist", "text": "Playlists", "action": "/" },
           { "svg": "album", "text": "Albums", "action": "/routes/albums" },
           { "svg": "artists", "text": "Artists", "action": "/routes/artists" },
           { "svg": "songs", "text": "Songs", "action": "/routes/songs" }
