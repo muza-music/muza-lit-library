@@ -1,13 +1,13 @@
 import "../components/sections/MusicSidebar";
-import MusicSidebar from "~/components/sections/MusicSidebar";
-import { useEffect, useState } from "react";
-import { MusicPlayer } from "~/components/sections/MusicPlayer";
-import MusicTopbar from "~/components/sections/MusicTopbar";
 import type { Album, SongDetails } from "~/appData/models";
 import AlbumDetails from "~/components/albumDisplays/AlbumDetails";
 import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
 import { useMusicLibraryStore } from "~/appData/musicStore";
 import { useNavigate } from "react-router";
+
+import "../styles/scrollbar.css";
+import "../styles/variables.css";
+import "../styles/main.css";
 
 export default function Albums() {
   const { setSelectedSong } = useCurrentPlayerStore();
