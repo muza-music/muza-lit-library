@@ -54,7 +54,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     fetch("/staticData/allData.json")
       .then((response) => {
         if (!response.ok) {
-          fetch("./staticData/allData.json").then((response) => {
+          return fetch("./staticData/allData.json").then((response) => {
             if (!response.ok) throw new Error("Network response was not ok");
             return response.json();
           });
@@ -81,11 +81,47 @@ export function Layout({ children }: { children: React.ReactNode }) {
       });
   }, []);
 
-  const content = loading ? (
-    <p>Loading...</p>
-  ) : error ? (
-    <p>Error: {error}</p>
-  ) : null;
+  if (loading) {
+    return (
+      <html lang="en" suppressHydrationWarning>
+        <head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <Meta />
+          <Links />
+          <ThemeModeScript />
+        </head>
+        <body>
+          <div className="body">
+            <p>Loading...</p>
+          </div>
+          <ScrollRestoration />
+          <Scripts />
+        </body>
+      </html>
+    );
+  }
+
+  if (error) {
+    return (
+      <html lang="en" suppressHydrationWarning>
+        <head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <Meta />
+          <Links />
+          <ThemeModeScript />
+        </head>
+        <body>
+          <div className="body">
+            <p>Error: {error}</p>
+          </div>
+          <ScrollRestoration />
+          <Scripts />
+        </body>
+      </html>
+    );
+  }
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -106,15 +142,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
           <div className="content">
             <MusicTopbar />
-
-            {content || children}
-            <MuzaMusicPlayer></MuzaMusicPlayer>
+            {children}
+            <MuzaMusicPlayer />
           </div>
         </div>
+        <ToastContainer />
         <ScrollRestoration />
         <Scripts />
       </body>
-      <ToastContainer />
     </html>
   );
 }

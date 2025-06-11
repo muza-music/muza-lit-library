@@ -35,58 +35,6 @@ export default function Explore() {
           alignItems: "center",
         }}
       >
-        <h2>Featured</h2>
-        <button
-          onClick={() => navigate("/routes/albums")}
-          className="show-more-btn"
-        >
-          Show more
-        </button>
-      </div>
-      <div className="album-list">
-        {featured.map((a: Album) => (
-          <AlbumDetails
-            key={a.id}
-            details={a}
-            onAlbumClick={() => onAlbumClick(a)}
-          />
-        ))}
-      </div>
-
-      <hr />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <h2>Recommended for You</h2>
-        <button
-          onClick={() => navigate("/routes/albums")}
-          className="show-more-btn"
-        >
-          Show more
-        </button>
-      </div>
-      <div className="album-list">
-        {recommended.map((a: Album) => (
-          <AlbumDetails
-            key={a.id}
-            details={a}
-            onAlbumClick={() => onAlbumClick(a)}
-          />
-        ))}
-      </div>
-
-      <hr />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
         <h2>New Releases</h2>
         <button
           onClick={() => navigate("/routes/albums")}
@@ -113,21 +61,20 @@ export default function Explore() {
           alignItems: "center",
         }}
       >
-        <h2>Recently Played</h2>
+        <h2>The Classics</h2>
         <button
-          onClick={() => navigate("/routes/songs")}
+          onClick={() => navigate("/routes/albums")}
           className="show-more-btn"
         >
           Show more
         </button>
       </div>
-      <div className="song-list">
-        {recentlyPlayed.slice(0, 30).map((s: SongDetails) => (
-          <SongLine
-            key={s.id}
-            details={s}
-            onClick={() => setSelectedSong(s)}
-            isPlaying={s.id === selectedSong?.id}
+      <div className="album-list">
+        {featured.map((a: Album) => (
+          <AlbumDetails
+            key={a.id}
+            details={a}
+            onAlbumClick={() => onAlbumClick(a)}
           />
         ))}
       </div>
@@ -140,17 +87,73 @@ export default function Explore() {
           alignItems: "center",
         }}
       >
-        <h2>Popular Artists</h2>
+        <h2>Uncovered Gems</h2>
         <button
-          onClick={() => navigate("/routes/artists")}
+          onClick={() => navigate("/routes/albums")}
           className="show-more-btn"
         >
           Show more
         </button>
       </div>
-      <div className="artist-list">
-        {artists.slice(0, 6).map((artist: any) => (
-          <ArtistDetails key={artist.id} details={artist} />
+      <div className="album-list">
+        {recommended.map((a: Album) => (
+          <AlbumDetails
+            key={a.id}
+            details={a}
+            onAlbumClick={() => onAlbumClick(a)}
+          />
+        ))}
+      </div>
+
+      <hr />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <h2>Albums</h2>
+        <button
+          onClick={() => navigate("/routes/albums")}
+          className="show-more-btn"
+        >
+          Show more
+        </button>
+      </div>
+      <div className="album-list">
+        {featured.concat(recommended).map((a: Album) => (
+          <AlbumDetails
+            key={a.id}
+            details={a}
+            onAlbumClick={() => onAlbumClick(a)}
+          />
+        ))}
+      </div>
+
+      <hr />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <h2>The Ones You Missed</h2>
+        <button
+          onClick={() => navigate("/routes/albums")}
+          className="show-more-btn"
+        >
+          Show more
+        </button>
+      </div>
+      <div className="album-list">
+        {recommended.map((a: Album) => (
+          <AlbumDetails
+            key={a.id}
+            details={a}
+            onAlbumClick={() => onAlbumClick(a)}
+          />
         ))}
       </div>
     </main>
