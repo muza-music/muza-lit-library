@@ -34,4 +34,10 @@ const songs = {
   id: "songs",
 } as RouteConfigEntry;
 
-export default [home, album, albums, artists, songs] satisfies RouteConfig;
+const explore = {
+  file: "routes/explore.tsx",
+  path: "routes/explore",
+  id: "explore",
+} as RouteConfigEntry;
+
+export default [home, album, albums, artists, songs, explore] satisfies RouteConfig;
