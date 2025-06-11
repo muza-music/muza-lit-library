@@ -10,6 +10,13 @@ import {
 import type { Route } from "./+types/root";
 
 import "./app.css";
+import { ToastContainer } from "react-toastify";
+import MusicSidebar from "./components/sections/MusicSidebar";
+import MusicTopbar from "./components/sections/MusicTopbar";
+import { useMusicLibraryStore } from "./appData/musicStore";
+import { useEffect, useState } from "react";
+import { useCurrentPlayerStore } from "./appData/currentPlayerStore";
+import MuzaMusicPlayer from "./components/componentsWithLogic/MuzaMusicPlayer";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -22,9 +29,64 @@ export const links: Route.LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
+  {
+    rel: "stylesheet",
+    href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css",
+  },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const {
+    sidebarSections,
+    setNewReleases,
+    setFeatured,
+    setArtists,
+    setRecommended,
+    setRecentlyPlayed,
+    setSidebarSections,
+  } = useMusicLibraryStore();
+  const { selectedSong, setSelectedSong } = useCurrentPlayerStore();
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/staticData/allData.json")
+      .then((response) => {
+        if (!response.ok) {
+          fetch("./staticData/allData.json").then((response) => {
+            if (!response.ok) throw new Error("Network response was not ok");
+            return response.json();
+          });
+        } else {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        setFeatured(data.albums.featured || []);
+        setNewReleases(data.albums.newReleases.slice(0, 5) || []);
+        setRecommended(data.albums.recommended || []);
+        setArtists(data.artists);
+        setRecentlyPlayed(data.songs);
+        setSidebarSections(data.sidebar.sections);
+
+        if (data.songs.length > 0 && !selectedSong) {
+          setSelectedSong(data.songs[0]);
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  const content = loading ? (
+    <p>Loading...</p>
+  ) : error ? (
+    <p>Error: {error}</p>
+  ) : null;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -35,10 +97,24 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <ThemeModeScript />
       </head>
       <body>
-        {children}
+        <div className="body">
+          <MusicSidebar
+            logoSrc="/app/icons/icons/muza.svg"
+            logoAlt="Music Library"
+            sections={sidebarSections}
+          />
+
+          <div className="content">
+            <MusicTopbar />
+
+            {content || children}
+            <MuzaMusicPlayer></MuzaMusicPlayer>
+          </div>
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
+      <ToastContainer />
     </html>
   );
 }
