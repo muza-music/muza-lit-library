@@ -15,7 +15,8 @@ import "../styles/main.css";
 
 export default function Explore() {
   const { selectedSong, setSelectedSong } = useCurrentPlayerStore();
-  const { recentlyPlayed, newReleases, artists, featured, recommended } = useMusicLibraryStore();
+  const { recentlyPlayed, newReleases, artists, featured, recommended } =
+    useMusicLibraryStore();
 
   const navigate = useNavigate();
 
@@ -26,7 +27,7 @@ export default function Explore() {
   return (
     <main>
       <h1>Explore</h1>
-      
+
       <hr />
       <div
         style={{
@@ -158,4 +159,4 @@ export default function Explore() {
       </div>
     </main>
   );
-} 
+}

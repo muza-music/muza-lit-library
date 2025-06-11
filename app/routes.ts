@@ -40,4 +40,11 @@ const explore = {
   id: "explore",
 } as RouteConfigEntry;
 
-export default [home, album, albums, artists, songs, explore] satisfies RouteConfig;
+export default [
+  home,
+  album,
+  albums,
+  artists,
+  songs,
+  explore,
+] satisfies RouteConfig;
