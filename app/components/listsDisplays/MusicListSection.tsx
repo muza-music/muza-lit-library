@@ -5,18 +5,12 @@ import { AlbumArtist } from "../albumDisplays/AlbumArtist";
 import PlaylistCover from "../albumDisplays/PlaylistCover";
 import type { MusicListSection, Album } from "~/appData/models";
 
-const MusicListSection: React.FC<MusicListSection & { 
-  onAlbumClick?: (album: Album) => void;
-  albums?: Album[];
-}> = ({
-  title,
-  subTitle,
-  type,
-  list,
-  onShowAll,
-  onAlbumClick,
-  albums,
-}) => {
+const MusicListSection: React.FC<
+  MusicListSection & {
+    onAlbumClick?: (album: Album) => void;
+    albums?: Album[];
+  }
+> = ({ title, subTitle, type, list, onShowAll, onAlbumClick, albums }) => {
   const handleShowAll = () => {
     if (onShowAll) {
       onShowAll(title);

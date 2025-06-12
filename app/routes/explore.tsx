@@ -20,36 +20,35 @@ export default function Explore() {
     navigate("/routes/albums");
   };
 
-
   // Define sections configuration for the loop
   const sections = [
     {
       title: "New Releases",
-      albums: newReleases
+      albums: newReleases,
     },
     {
-      title: "The Classics", 
-      albums: featured
+      title: "The Classics",
+      albums: featured,
     },
     {
       title: "Uncovered Gems",
-      albums: recommended
+      albums: recommended,
     },
     {
       title: "Albums",
-      albums: featured.concat(recommended)
+      albums: featured.concat(recommended),
     },
     {
       title: "The Ones You Missed",
-      albums: recommended
-    }
+      albums: recommended,
+    },
   ];
 
   return (
     <main>
       <h1>Explore</h1>
       <hr />
-      
+
       {sections.map((section, index) => (
         <div key={section.title}>
           <MusicListSectionComponent
