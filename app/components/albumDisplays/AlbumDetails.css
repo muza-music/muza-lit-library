@@ -8,7 +8,7 @@
   align-items: flex-start;
 }
 
-.image-container {
+.album-details-card .image-container {
   width: 180px;
   height: 180px;
   border-radius: var(--muza-border-radius-sm);
@@ -50,7 +50,7 @@
   margin-top: var(--muza-spacing-xs);
 }
 
-.buttons {
+.album-details-card .buttons {
   display: none;
   gap: var(--muza-spacing-sm);
   margin-top: var(--muza-spacing-md);
