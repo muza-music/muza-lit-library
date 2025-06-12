@@ -30,15 +30,18 @@ export default function MuzaMusicPlayer() {
 
   const handleNextSong = () => {
     const currentIndex = getCurrentSongIndex();
+    
     let nextSong;
     if (currentIndex === -1 || currentIndex === recentlyPlayed.length - 1) {
       nextSong = recentlyPlayed[0];
     } else {
       nextSong = recentlyPlayed[currentIndex + 1];
     }
+    
     setSelectedSong({
       ...nextSong,
     });
+    setIsPlaying(true); // Auto-play the next song
   };
 
   return (
