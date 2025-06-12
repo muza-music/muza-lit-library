@@ -4,7 +4,12 @@ import AlbumDetails from "../albumDisplays/AlbumDetails";
 import ArtistDetails from "../artistDisplays/ArtistDetails";
 import PlaylistCover from "../albumDisplays/PlaylistCover";
 import SongLine from "../songLineDisplays/SongLine";
-import type { MusicListSection, Album, SongDetails, Artist } from "~/appData/models";
+import type {
+  MusicListSection,
+  Album,
+  SongDetails,
+  Artist,
+} from "~/appData/models";
 
 const MusicListSectionComponent: React.FC<
   MusicListSection & {
@@ -15,7 +20,19 @@ const MusicListSectionComponent: React.FC<
     selectedSong?: SongDetails;
     artists?: Artist[];
   }
-> = ({ title, subTitle, type, list, onShowAll, onAlbumClick, albums, songs, onSongClick, selectedSong, artists }) => {
+> = ({
+  title,
+  subTitle,
+  type,
+  list,
+  onShowAll,
+  onAlbumClick,
+  albums,
+  songs,
+  onSongClick,
+  selectedSong,
+  artists,
+}) => {
   const handleShowAll = () => {
     if (onShowAll) {
       onShowAll(title);
@@ -34,14 +51,14 @@ const MusicListSectionComponent: React.FC<
         ));
       case "artist":
         return artists!.map((artist: any) => (
-          <ArtistDetails 
-            key={artist.id} 
+          <ArtistDetails
+            key={artist.id}
             details={{
               id: parseInt(artist.id.toString()),
               imageSrc: artist.imageSrc || artist.imageUrl,
               artistName: artist.artistName || artist.name,
               albumsCount: artist.albumsCount.toString(),
-            }} 
+            }}
           />
         ));
       case "playlist":
