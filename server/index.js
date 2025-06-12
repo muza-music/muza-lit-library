@@ -277,7 +277,7 @@ async function initializeApp() {
     console.log("Setting up app static file serving from:", appDir);
     app.use("/app", express.static(appDir));
 
-    // Serve public directory for other static assets
+    // Serve static files from the public directory
     console.log("Setting up public file serving from:", publicDir);
     app.use(express.static(publicDir));
 

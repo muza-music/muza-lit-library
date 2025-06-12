@@ -46,7 +46,7 @@
   font-weight: 400;
 }
 
-.buttons {
+.album-header-card .buttons {
   display: flex;
   flex-direction: row;
   gap: 1rem;
