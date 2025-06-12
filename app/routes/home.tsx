@@ -1,6 +1,5 @@
 import "../components/sections/MusicSidebar";
-import SongLine from "~/components/songLineDisplays/SongLine";
-import type { Album, SongDetails } from "~/appData/models";
+import type { Album } from "~/appData/models";
 import MusicListSectionComponent from "~/components/listsDisplays/MusicListSection";
 import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
 import { useMusicLibraryStore } from "~/appData/musicStore";
