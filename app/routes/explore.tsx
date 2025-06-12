@@ -1,6 +1,5 @@
 import type { Album } from "~/appData/models";
-import * as MusicListSectionModule from "~/components/listsDisplays/MusicListSection";
-const MusicListSectionComponent = MusicListSectionModule.default;
+import MusicListSectionComponent from "~/components/listsDisplays/MusicListSection";
 import { useMusicLibraryStore } from "~/appData/musicStore";
 import { useNavigate } from "react-router";
 
