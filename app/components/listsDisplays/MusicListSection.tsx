@@ -1,16 +1,38 @@
 import React from "react";
 import "./MusicListSection.css";
 import AlbumDetails from "../albumDisplays/AlbumDetails";
-import { AlbumArtist } from "../albumDisplays/AlbumArtist";
+import ArtistDetails from "../artistDisplays/ArtistDetails";
 import PlaylistCover from "../albumDisplays/PlaylistCover";
-import type { MusicListSection, Album } from "~/appData/models";
+import SongLine from "../songLineDisplays/SongLine";
+import type {
+  MusicListSection,
+  Album,
+  SongDetails,
+  Artist,
+} from "~/appData/models";
 
 const MusicListSectionComponent: React.FC<
   MusicListSection & {
     onAlbumClick?: (album: Album) => void;
     albums?: Album[];
+    songs?: SongDetails[];
+    onSongClick?: (song: SongDetails) => void;
+    selectedSong?: SongDetails;
+    artists?: Artist[];
   }
-> = ({ title, subTitle, type, list, onShowAll, onAlbumClick, albums }) => {
+> = ({
+  title,
+  subTitle,
+  type,
+  list,
+  onShowAll,
+  onAlbumClick,
+  albums,
+  songs,
+  onSongClick,
+  selectedSong,
+  artists,
+}) => {
   const handleShowAll = () => {
     if (onShowAll) {
       onShowAll(title);
@@ -28,12 +50,15 @@ const MusicListSectionComponent: React.FC<
           />
         ));
       case "artist":
-        return list.map((item, idx) => (
-          <AlbumArtist
-            key={idx}
-            imageSrc={item.imageSrc}
-            artistName={item.artistName || ""}
-            albumsCount={item.albumsCount || 1}
+        return artists!.map((artist: any) => (
+          <ArtistDetails
+            key={artist.id}
+            details={{
+              id: parseInt(artist.id.toString()),
+              imageSrc: artist.imageSrc || artist.imageUrl,
+              artistName: artist.artistName || artist.name,
+              albumsCount: artist.albumsCount.toString(),
+            }}
           />
         ));
       case "playlist":
@@ -43,6 +68,15 @@ const MusicListSectionComponent: React.FC<
             imageSrc={item.imageSrc}
             title={item.title}
             songsCount={item.songsCount?.toString() || ""}
+          />
+        ));
+      case "song":
+        return songs!.map((song) => (
+          <SongLine
+            key={song.id}
+            details={song}
+            onClick={() => onSongClick?.(song)}
+            isPlaying={song.id === selectedSong?.id}
           />
         ));
       default:
@@ -59,6 +93,8 @@ const MusicListSectionComponent: React.FC<
         return "artist-list";
       case "playlist":
         return "album-list"; // Use album-list styling for playlists
+      case "song":
+        return "song-list";
       default:
         return "album-list";
     }
