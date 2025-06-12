@@ -5,7 +5,7 @@ import { AlbumArtist } from "../albumDisplays/AlbumArtist";
 import PlaylistCover from "../albumDisplays/PlaylistCover";
 import type { MusicListSection, Album } from "~/appData/models";
 
-const MusicListSection: React.FC<
+const MusicListSectionComponent: React.FC<
   MusicListSection & {
     onAlbumClick?: (album: Album) => void;
     albums?: Album[];
@@ -84,4 +84,4 @@ const MusicListSection: React.FC<
   );
 };
 
-export default MusicListSection;
+export default MusicListSectionComponent;
