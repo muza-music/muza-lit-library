@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./MusicTopbar.css";
+import "./MusicTopbar.scss";
 
 interface MusicTopbarProps {
   onSearchChange?: (searchText: string) => void;

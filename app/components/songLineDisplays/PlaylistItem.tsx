@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./PlaylistItem.css";
+import "./PlaylistItem.scss";
 import type { SongDetails } from "../../appData/models";
 import { formatSongNumber } from "../../appData/utils";
 import SongDetailsView from "./SongDetails";

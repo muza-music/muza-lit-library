@@ -9,7 +9,7 @@ import {
 } from "react-router";
 import type { Route } from "./+types/root";
 
-import "./app.css";
+import "./app.scss";
 import { ToastContainer } from "react-toastify";
 import MusicSidebar from "./components/sections/MusicSidebar";
 import MusicTopbar from "./components/sections/MusicTopbar";

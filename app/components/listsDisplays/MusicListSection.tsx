@@ -1,5 +1,5 @@
 import React from "react";
-import "./MusicListSection.css";
+import "./MusicListSection.scss";
 import AlbumCover from "../albumDisplays/AlbumCover";
 import { AlbumArtist } from "../albumDisplays/AlbumArtist";
 import PlaylistCover from "../albumDisplays/PlaylistCover";

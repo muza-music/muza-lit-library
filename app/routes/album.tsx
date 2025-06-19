@@ -9,9 +9,9 @@ import MusicTopbar from "~/components/sections/MusicTopbar";
 import SongLine from "~/components/songLineDisplays/SongLine";
 import { useLocation } from "react-router";
 
-import "../styles/scrollbar.css";
-import "../styles/variables.css";
-import "../styles/main.css";
+import "../styles/scrollbar.scss";
+import "../styles/variables.scss";
+import "../styles/main.scss";
 
 interface AlbumPageState {
   album: Album;

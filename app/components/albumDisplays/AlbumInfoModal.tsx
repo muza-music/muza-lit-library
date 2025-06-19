@@ -1,5 +1,5 @@
 import React from "react";
-import "./AlbumInfoModal.css";
+import "./AlbumInfoModal.scss";
 
 interface AlbumInfoProps {
   isOpen: boolean;

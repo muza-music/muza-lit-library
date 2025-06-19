@@ -1,5 +1,5 @@
 import React from "react";
-import "./MusicSuggestionsList.css";
+import "./MusicSuggestionsList.scss";
 import type { SongDetails } from "../../appData/models";
 import SuggestionsListItem from "./SuggestionsListItem";
 

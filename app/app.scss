@@ -1,7 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@plugin "flowbite-react/plugin/tailwindcss";
-@source "../.flowbite-react/class-list.json";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Founders Grotesk Font Family */
 @font-face {
