@@ -2,43 +2,43 @@
   display: flex;
   align-items: center;
   gap: 8px;
-}
 
-.volume-icon {
-  color: #666;
-  cursor: pointer;
-}
+  .volume-icon {
+    color: #666;
+    cursor: pointer;
+  }
 
-.slider {
-  width: 100px;
-  height: 24px;
-  cursor: pointer;
-  position: relative;
-}
+  .slider {
+    width: 100px;
+    height: 24px;
+    cursor: pointer;
+    position: relative;
 
-svg {
-  width: 100%;
-  height: 100%;
-}
+    svg {
+      width: 100%;
+      height: 100%;
 
-.track {
-  stroke: #e1e2e3;
-  stroke-width: 6;
-  stroke-linecap: round;
-}
+      .track {
+        stroke: #e1e2e3;
+        stroke-width: 6;
+        stroke-linecap: round;
+      }
 
-.fill {
-  stroke: var(--foreground, #030712);
-  stroke-width: 6;
-  stroke-linecap: round;
-}
+      .fill {
+        stroke: var(--foreground, #030712);
+        stroke-width: 6;
+        stroke-linecap: round;
+      }
 
-.handle {
-  fill: var(--foreground, #030712);
-  cursor: grab;
-  r: 8;
-}
+      .handle {
+        fill: var(--foreground, #030712);
+        cursor: grab;
+        r: 8;
 
-.handle:active {
-  cursor: grabbing;
+        &:active {
+          cursor: grabbing;
+        }
+      }
+    }
+  }
 }

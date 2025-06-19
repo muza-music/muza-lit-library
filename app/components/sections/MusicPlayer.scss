@@ -29,49 +29,49 @@
   min-width: 280px;
   background-color: #f9fafb;
   border-right: 1px solid #e5e7eb;
-}
 
-.album-art {
-  width: 64px;
-  height: 64px;
-  border-radius: 6px;
-  object-fit: cover;
-  flex-shrink: 0;
-}
+  .album-art {
+    width: 64px;
+    height: 64px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
 
-.track-info {
-  flex: 1;
-  min-width: 0;
-}
+  .track-info {
+    flex: 1;
+    min-width: 0;
 
-.track-title {
-  margin: 0 0 4px 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: #111827;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+    .track-title {
+      margin: 0 0 4px 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-.track-artist {
-  margin: 0 0 6px 0;
-  font-size: 14px;
-  color: #6b7280;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+    .track-artist {
+      margin: 0 0 6px 0;
+      font-size: 14px;
+      color: #6b7280;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-.track-details {
-  display: flex;
-  gap: 8px;
-  font-size: 12px;
-  color: #9ca3af;
-}
+    .track-details {
+      display: flex;
+      gap: 8px;
+      font-size: 12px;
+      color: #9ca3af;
 
-.separator {
-  color: #d1d5db;
+      .separator {
+        color: #d1d5db;
+      }
+    }
+  }
 }
 
 .player-controls {
@@ -79,56 +79,56 @@
   display: flex;
   flex-direction: column;
   min-width: 400px;
-}
 
-/* Progress Bar */
-.progress-section {
-  padding: 0;
-}
+  /* Progress Bar */
+  .progress-section {
+    padding: 0;
 
-.progress-bar {
-  height: 6px;
-  background: #f3f4f6;
-  cursor: pointer;
-  position: relative;
-}
+    .progress-bar {
+      height: 6px;
+      background: #f3f4f6;
+      cursor: pointer;
+      position: relative;
 
-.progress-fill {
-  height: 100%;
-  background: #3b82f6;
-  transition: width 0.1s ease;
-}
+      .progress-fill {
+        height: 100%;
+        background: #3b82f6;
+        transition: width 0.1s ease;
+      }
+    }
 
-.time-display {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 16px 0;
-  font-size: 12px;
-  color: #6b7280;
-}
+    .time-display {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 16px 0;
+      font-size: 12px;
+      color: #6b7280;
+    }
+  }
 
-/* Controls Row */
-.controls-row {
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  position: relative;
-}
+  /* Controls Row */
+  .controls-row {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    position: relative;
 
-.playback-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  flex: 1;
-}
+    .playback-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex: 1;
+    }
 
-.volume-section {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  right: 16px;
-  padding-right: 32px;
+    .volume-section {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      right: 16px;
+      padding-right: 32px;
+    }
+  }
 }
 
 /* ===== CONTROL BUTTONS ===== */
@@ -141,47 +141,47 @@
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
-}
 
-.control-btn:hover {
-  color: #374151;
-  transform: scale(1.05);
-}
+  &:hover {
+    color: #374151;
+    transform: scale(1.05);
+  }
 
-.control-btn:active {
-  transform: scale(0.95);
-}
+  &:active {
+    transform: scale(0.95);
+  }
 
-.control-btn.active {
-  color: #3b82f6;
-}
+  &.active {
+    color: #3b82f6;
+  }
 
-/* Button Sizes */
-.control-btn.shuffle,
-.control-btn.repeat {
-  font-size: 16px;
-  padding: 8px;
-}
+  /* Button Sizes */
+  &.shuffle,
+  &.repeat {
+    font-size: 16px;
+    padding: 8px;
+  }
 
-.control-btn.previous,
-.control-btn.next {
-  font-size: 20px;
-  padding: 12px;
-}
+  &.previous,
+  &.next {
+    font-size: 20px;
+    padding: 12px;
+  }
 
-.control-btn.play {
-  font-size: 24px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #f8fafc;
-  color: #1f2937;
-  border: 1px solid #e5e7eb;
-}
+  &.play {
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #f8fafc;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
 
-.control-btn.play:hover {
-  background: #f1f5f9;
-  border-color: #d1d5db;
+    &:hover {
+      background: #f1f5f9;
+      border-color: #d1d5db;
+    }
+  }
 }
 
 /* Spinner Animation */

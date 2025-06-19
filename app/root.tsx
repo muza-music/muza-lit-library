@@ -111,10 +111,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <MuzaMusicPlayer></MuzaMusicPlayer>
           </div>
         </div>
+        <ToastContainer />
         <ScrollRestoration />
         <Scripts />
       </body>
-      <ToastContainer />
     </html>
   );
 }
