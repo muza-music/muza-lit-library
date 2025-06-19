@@ -4,9 +4,9 @@ import MusicTopbar from "~/components/sections/MusicTopbar";
 import ArtistDetails from "~/components/artistDisplays/ArtistDetails";
 import { useMusicLibraryStore } from "~/appData/musicStore";
 
-import "../styles/scrollbar.css";
-import "../styles/variables.css";
-import "../styles/main.css";
+import "../styles/scrollbar.scss";
+import "../styles/variables.scss";
+import "../styles/main.scss";
 
 export default function Artists() {
   const { artists, sidebarSections } = useMusicLibraryStore();

@@ -1,5 +1,5 @@
 import React, { type ReactNode } from "react";
-import "./MuzaContainer.css";
+import "./MuzaContainer.scss";
 
 interface MuzaContainerProps {
   children: ReactNode | ReactNode[];

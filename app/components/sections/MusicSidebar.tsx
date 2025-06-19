@@ -1,5 +1,5 @@
 import React from "react";
-import "./MusicSidebar.css";
+import "./MusicSidebar.scss";
 import MuzaIcon from "~/icons/MuzaIcon";
 import type { MenuItem, Section } from "~/appData/models";
 import { useNavigate } from "react-router";

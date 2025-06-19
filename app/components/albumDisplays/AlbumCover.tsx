@@ -1,5 +1,5 @@
 import React from "react";
-import "./AlbumCover.css";
+import "./AlbumCover.scss";
 
 interface AlbumCoverProps {
   imageSrc: string;

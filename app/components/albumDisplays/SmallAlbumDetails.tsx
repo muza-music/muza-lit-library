@@ -1,5 +1,5 @@
 import React from "react";
-import "./SmallAlbumDetails.css";
+import "./SmallAlbumDetails.scss";
 
 interface SmallAlbumDetailsProps {
   title: string;

@@ -8,7 +8,7 @@ import {
   FaRandom,
 } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
-import "./MusicPlayer.css";
+import "./MusicPlayer.scss";
 import VolumeControl from "../../controls/VolumeControl";
 import type { PlayerDetails } from "~/appData/models";
 

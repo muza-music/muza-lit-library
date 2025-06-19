@@ -1,5 +1,5 @@
 import React from "react";
-import "./AlbumArtist.css";
+import "./AlbumArtist.scss";
 
 type AlbumArtistProps = {
   imageSrc: string;

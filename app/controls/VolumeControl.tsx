@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./VolumeControl.css";
+import "./VolumeControl.scss";
 import { FaVolumeUp, FaVolumeDown, FaVolumeMute } from "react-icons/fa";
 
 interface VolumeControlProps {

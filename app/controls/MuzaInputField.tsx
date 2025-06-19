@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./MuzaInputField.css";
+import "./MuzaInputField.scss";
 
 export type ValidationRule =
   | { type: "required"; message: string }

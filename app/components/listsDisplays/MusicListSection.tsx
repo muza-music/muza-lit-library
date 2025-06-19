@@ -1,5 +1,5 @@
 import React from "react";
-import "./MusicListSection.css";
+import "./MusicListSection.scss";
 import AlbumDetails from "../albumDisplays/AlbumDetails";
 import ArtistDetails from "../artistDisplays/ArtistDetails";
 import PlaylistCover from "../albumDisplays/PlaylistCover";

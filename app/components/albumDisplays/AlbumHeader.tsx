@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./AlbumHeader.css";
+import "./AlbumHeader.scss";
 import type { Album, SongDetails } from "~/appData/models";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";

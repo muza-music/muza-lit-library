@@ -1,5 +1,5 @@
 import React from "react";
-import "./SongDetails.css";
+import "./SongDetails.scss";
 import type { SongDetails } from "../../appData/models";
 
 interface SongDetailsViewProps {

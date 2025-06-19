@@ -1,5 +1,5 @@
 import React from "react";
-import "./MuzaButton.css";
+import "./MuzaButton.scss";
 
 interface MuzaButtonProps {
   content: string;
