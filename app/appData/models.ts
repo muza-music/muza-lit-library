@@ -49,7 +49,7 @@ interface MusicListItem {
 export type MusicListSection = {
   title: string;
   subTitle?: string;
-  type: "album" | "artist" | "playlist";
+  type: "album" | "artist" | "playlist" | "song";
   list: MusicListItem[];
   onShowAll?: (sectionTitle: string) => void;
 };

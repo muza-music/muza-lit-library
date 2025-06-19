@@ -1,16 +1,37 @@
 import React from "react";
 import "./MusicListSection.scss";
-import AlbumCover from "../albumDisplays/AlbumCover";
-import { AlbumArtist } from "../albumDisplays/AlbumArtist";
+import AlbumDetails from "../albumDisplays/AlbumDetails";
+import ArtistDetails from "../artistDisplays/ArtistDetails";
 import PlaylistCover from "../albumDisplays/PlaylistCover";
-import type { MusicListSection } from "~/appData/models";
+import SongLine from "../songLineDisplays/SongLine";
+import type {
+  MusicListSection,
+  Album,
+  SongDetails,
+  Artist,
+} from "~/appData/models";
 
-const MusicListSection: React.FC<MusicListSection> = ({
+const MusicListSectionComponent: React.FC<
+  MusicListSection & {
+    onAlbumClick?: (album: Album) => void;
+    albums?: Album[];
+    songs?: SongDetails[];
+    onSongClick?: (song: SongDetails) => void;
+    selectedSong?: SongDetails;
+    artists?: Artist[];
+  }
+> = ({
   title,
   subTitle,
   type,
   list,
   onShowAll,
+  onAlbumClick,
+  albums,
+  songs,
+  onSongClick,
+  selectedSong,
+  artists,
 }) => {
   const handleShowAll = () => {
     if (onShowAll) {
@@ -21,21 +42,23 @@ const MusicListSection: React.FC<MusicListSection> = ({
   const renderContent = () => {
     switch (type) {
       case "album":
-        return list.map((item, idx) => (
-          <AlbumCover
-            key={idx}
-            imageSrc={item.imageSrc}
-            title={item.title}
-            subTitle={item.subTitle || ""}
+        return albums!.map((album) => (
+          <AlbumDetails
+            key={album.id}
+            details={album}
+            onAlbumClick={() => onAlbumClick?.(album)}
           />
         ));
       case "artist":
-        return list.map((item, idx) => (
-          <AlbumArtist
-            key={idx}
-            imageSrc={item.imageSrc}
-            artistName={item.artistName || ""}
-            albumsCount={item.albumsCount || 1}
+        return artists!.map((artist: any) => (
+          <ArtistDetails
+            key={artist.id}
+            details={{
+              id: parseInt(artist.id.toString()),
+              imageSrc: artist.imageSrc || artist.imageUrl,
+              artistName: artist.artistName || artist.name,
+              albumsCount: artist.albumsCount.toString(),
+            }}
           />
         ));
       case "playlist":
@@ -47,25 +70,54 @@ const MusicListSection: React.FC<MusicListSection> = ({
             songsCount={item.songsCount?.toString() || ""}
           />
         ));
+      case "song":
+        return songs!.map((song) => (
+          <SongLine
+            key={song.id}
+            details={song}
+            onClick={() => onSongClick?.(song)}
+            isPlaying={song.id === selectedSong?.id}
+          />
+        ));
       default:
         return null;
     }
   };
 
+  // Determine the appropriate CSS class based on type
+  const getContentClass = () => {
+    switch (type) {
+      case "album":
+        return "album-list";
+      case "artist":
+        return "artist-list";
+      case "playlist":
+        return "album-list"; // Use album-list styling for playlists
+      case "song":
+        return "song-list";
+      default:
+        return "album-list";
+    }
+  };
+
   return (
     <div className="music-list-section">
-      <div className="section-header">
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <h2>{title}</h2>
-        <button className="section-button" onClick={handleShowAll}>
-          Show All
+        <button className="show-more-btn" onClick={handleShowAll}>
+          Show more
         </button>
       </div>
       {subTitle && <p>{subTitle}</p>}
-      <div className="section-content">
-        <div className="content-items">{renderContent()}</div>
-      </div>
+      <div className={getContentClass()}>{renderContent()}</div>
     </div>
   );
 };
 
-export default MusicListSection;
+export default MusicListSectionComponent;

@@ -97,7 +97,7 @@
         "title": "My Muza",
         "items": [
           { "svg": "home", "text": "Home", "action": "/" },
-          { "svg": "explore", "text": "Explore", "action": "/" }
+          { "svg": "explore", "text": "Explore", "action": "/routes/explore" }
         ]
       },
       {
