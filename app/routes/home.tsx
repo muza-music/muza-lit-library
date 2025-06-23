@@ -5,9 +5,9 @@ import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
 import { useMusicLibraryStore } from "~/appData/musicStore";
 import { useNavigate } from "react-router";
 
-import "../styles/scrollbar.css";
-import "../styles/variables.css";
-import "../styles/main.css";
+import "../styles/scrollbar.scss";
+import "../styles/variables.scss";
+import "../styles/main.scss";
 
 export default function Home() {
   const { selectedSong, setSelectedSong } = useCurrentPlayerStore();

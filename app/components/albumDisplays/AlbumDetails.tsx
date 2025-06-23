@@ -1,5 +1,5 @@
 import React from "react";
-import "./AlbumDetails.css";
+import "./AlbumDetails.scss";
 import type { Album } from "~/appData/models";
 
 interface AlbumDetailsProps {

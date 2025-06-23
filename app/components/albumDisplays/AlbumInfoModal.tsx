@@ -1,5 +1,5 @@
 import React from "react";
-import "./AlbumInfoModal.css";
+import "./AlbumInfoModal.scss";
 
 interface AlbumInfoProps {
   isOpen: boolean;
@@ -14,7 +14,7 @@ const AlbumInfoModal: React.FC<AlbumInfoProps> = ({ isOpen, onClose }) => {
       <div className="modal-header">
         <img
           className="album-cover"
-          src="../art/imag_1.jpg"
+          src="/art/imag_1.jpg"
           alt="Ballads album cover"
         />
         <div className="album-info">

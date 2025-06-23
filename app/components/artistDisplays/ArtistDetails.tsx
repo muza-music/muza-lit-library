@@ -1,5 +1,5 @@
 import React from "react";
-import "./ArtistDetails.css";
+import "./ArtistDetails.scss";
 
 interface Artist {
   id: number;

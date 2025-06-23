@@ -3,9 +3,9 @@ import MusicListSectionComponent from "~/components/listsDisplays/MusicListSecti
 import { useMusicLibraryStore } from "~/appData/musicStore";
 import { useNavigate } from "react-router";
 
-import "../styles/scrollbar.css";
-import "../styles/variables.css";
-import "../styles/main.css";
+import "../styles/scrollbar.scss";
+import "../styles/variables.scss";
+import "../styles/main.scss";
 
 export default function Explore() {
   const { newReleases, featured, recommended } = useMusicLibraryStore();

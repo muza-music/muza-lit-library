@@ -6,9 +6,9 @@ import type { SongDetails } from "~/appData/models";
 import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
 import { useMusicLibraryStore } from "~/appData/musicStore";
 
-import "../styles/scrollbar.css";
-import "../styles/variables.css";
-import "../styles/main.css";
+import "../styles/scrollbar.scss";
+import "../styles/variables.scss";
+import "../styles/main.scss";
 
 export default function Songs() {
   const { setSelectedSong } = useCurrentPlayerStore();

@@ -1,5 +1,5 @@
 import React from "react";
-import "./MusicPlaylist.css";
+import "./MusicPlaylist.scss";
 import type { MusicPlaylist, SongDetails } from "../../appData/models";
 import SmallAlbumDetails from "../albumDisplays/SmallAlbumDetails";
 import MuzaButton from "~/controls/MuzaButton";
