@@ -9,7 +9,7 @@
   overflow: hidden;
   border-radius: 8px;
   border: 1px solid #e5e7eb;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 16px;
+  padding: 0px 8px;
   min-width: 280px;
   background-color: #f9fafb;
   border-right: 1px solid #e5e7eb;
@@ -98,6 +98,7 @@
     }
 
     .time-display {
+      position: absolute;
       display: flex;
       justify-content: space-between;
       padding: 8px 16px 0;
@@ -110,8 +111,8 @@
   .controls-row {
     display: flex;
     align-items: center;
-    padding: 16px;
     position: relative;
+    padding:  4px 64px;
 
     .playback-controls {
       display: flex;
@@ -124,8 +125,6 @@
     .volume-section {
       display: flex;
       align-items: center;
-      position: absolute;
-      right: 16px;
       padding-right: 32px;
     }
   }
