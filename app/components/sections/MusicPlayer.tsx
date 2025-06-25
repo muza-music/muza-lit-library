@@ -40,7 +40,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
     if (!seconds || isNaN(seconds) || !isFinite(seconds)) {
       return "0:00";
     }
-    
+
     const minutes = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60)
       .toString()
