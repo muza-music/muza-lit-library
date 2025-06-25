@@ -23,9 +23,9 @@
 
 .player-info {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--muza-spacing-md, 12px);
-  padding: 0px var(--muza-spacing-sm, 8px);
+  padding:  var(--muza-spacing-sm, 8px);
   min-width: 280px;
   background-color: var(--muza-player-info-background, #f9fafb);
   border-right: 1px solid var(--muza-light-border-color, #e5e7eb);
@@ -39,13 +39,16 @@
   }
 
   .track-info {
+    display: flex;
     flex: 1;
     min-width: 0;
-
+    flex-direction: column;
+    gap: var(--muza-spacing-sm, 8px);
+    
     .track-title {
-      margin: 0 0 var(--muza-spacing-xs, 4px) 0;
       font-size: var(--muza-songline-title-font-size, 16px);
       font-weight: var(--muza-font-weight-bold, 600);
+      font-family: var(--typography-font-family-font-sans, "Founders Grotesk");
       color: var(--muza-track-title-color, #111827);
       white-space: nowrap;
       overflow: hidden;
@@ -53,9 +56,12 @@
     }
 
     .track-artist {
-      margin: 0 0 var(--muza-spacing-sm, 6px) 0;
-      font-size: var(--muza-primary-font-size, 14px);
-      color: var(--muza-track-artist-color, #6b7280);
+      color: var(--muza-track-artist-color, #6B7280);
+      font-family: var(--typography-font-family-font-sans, "Founders Grotesk");
+      font-size: var(--typography-base-sizes-extra-small-font-size, 14px);
+      font-style: normal;
+      font-weight: var(--font-weight-Regular, 400);
+      line-height: 100%; /* 14px */
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -63,9 +69,9 @@
 
     .track-details {
       display: flex;
-      gap: var(--muza-spacing-sm, 8px);
+      gap: var(--muza-spacing-xs, 4px);
       font-size: var(--muza-secondary-font-size, 12px);
-      color: var(--muza-separator-color, #9ca3af);
+      color: var(--muza-track-artist-color, #6B7280);
 
       .separator {
         color: #d1d5db;

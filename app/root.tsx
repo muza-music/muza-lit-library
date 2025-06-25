@@ -46,7 +46,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     setRecentlyPlayed,
     setSidebarSections,
   } = useMusicLibraryStore();
-  const { selectedSong, setSelectedSong } = useCurrentPlayerStore();
+  const setSelectedSong = useCurrentPlayerStore((state) => state.setSelectedSong);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -71,7 +71,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         setRecentlyPlayed(data.songs);
         setSidebarSections(data.sidebar.sections);
 
-        if (data.songs.length > 0 && !selectedSong) {
+        const currentSelectedSong = useCurrentPlayerStore.getState().selectedSong;
+        if (data.songs.length > 0 && !currentSelectedSong) {
           setSelectedSong(data.songs[0]);
         }
         setLoading(false);
