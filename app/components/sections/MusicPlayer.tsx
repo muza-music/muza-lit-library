@@ -58,6 +58,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
     audio.play().catch((err) => {
       console.error("Error playing audio:", err);
       setIsPlaying(false);
+      onUpdate?.({ ...details });
     });
   };
 
@@ -84,9 +85,25 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
     if (isLoading) return;
     const newPlayingState = !details.isPlaying;
     setIsPlaying(newPlayingState);
+    onUpdate?.({ ...details });
   };
 
   // Effects
+  useEffect(() => {
+    setIsPlaying(details.isPlaying || false);
+  }, [details.isPlaying]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (details.isPlaying && !isLoading) {
+      playAudio();
+    } else if (!details.isPlaying) {
+      audio.pause();
+    }
+  }, [details.isPlaying, isLoading]);
+
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio || !details.audioUrl) return;
@@ -102,15 +119,18 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
 
     const handleEnded = () => {
       setIsPlaying(false);
+      onUpdate?.({ ...details });
       onSongEnded?.();
     };
 
     const handlePlay = () => {
       setIsPlaying(true);
+      onUpdate?.({ ...details });
     };
 
     const handlePause = () => {
       setIsPlaying(false);
+      onUpdate?.({ ...details });
     };
 
     const handleLoadStart = () => setIsLoading(true);
@@ -146,17 +166,6 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
       audio.removeEventListener("canplay", handleCanPlay);
     };
   }, [details.audioUrl]);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (details.isPlaying && !isLoading) {
-      playAudio();
-    } else if (!details.isPlaying) {
-      audio.pause();
-    }
-  }, [details.isPlaying, isLoading]);
 
   return (
     <div className="music-player">
