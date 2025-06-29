@@ -1,0 +1,72 @@
+.songs-page {
+  --page-background: var(--colors_background_light, #ffffff);
+  --header-text-color: var(--colors_foreground_light, #030712);
+  --list-gap: var(--muza-spacing-sm, 8px);
+
+  background: var(--page-background);
+  padding: 0;
+  margin: 0;
+
+  .page-header {
+    padding: var(--content-padding) var(--content-padding) 0;
+    padding-bottom: var(--muza-spacing-lg, 16px);
+
+    h1 {
+      font-family: var(--typography_font_family_font_sans, 'Founders Grotesk'), sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--header-text-color);
+      margin: 0;
+      padding: 3px 0;
+    }
+  }
+
+  .songs-list-container {
+    padding: 0 var(--content-padding);
+    padding-bottom: 70px; // Space for music player
+  }
+
+  .songs-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--list-gap);
+    max-width: 100%;
+  }
+
+  // Responsive design
+  @media (max-width: 1024px) {
+    .page-header {
+      padding: var(--muza-spacing-lg, 16px);
+      padding-bottom: var(--muza-spacing-md, 12px);
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+
+    .songs-list-container {
+      padding: 0 var(--muza-spacing-lg, 16px);
+      padding-bottom: 70px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-header {
+      padding: var(--muza-spacing-md, 12px);
+
+      h1 {
+        font-size: 20px;
+      }
+    }
+
+    .songs-list-container {
+      padding: 0 var(--muza-spacing-md, 12px);
+      padding-bottom: 70px;
+    }
+
+    .songs-list {
+      gap: 6px;
+    }
+  }
+}
