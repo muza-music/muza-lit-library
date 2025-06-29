@@ -38,7 +38,7 @@ export default function Songs() {
       <div className="page-header">
         <h1>Songs</h1>
       </div>
-      
+
       <div className="songs-list-container">
         <div className="songs-list">
           {recentlyPlayed.map((song) => (

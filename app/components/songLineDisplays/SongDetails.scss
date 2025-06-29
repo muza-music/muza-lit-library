@@ -60,8 +60,9 @@
     background-position: center;
     background-repeat: no-repeat;
     border-radius: var(--muza-border-radius-sm, 4px);
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 
-                0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+    box-shadow:
+      0px 1px 3px 0px rgba(0, 0, 0, 0.1),
+      0px 1px 2px 0px rgba(0, 0, 0, 0.06);
     position: relative;
     overflow: hidden;
   }
@@ -99,7 +100,8 @@
   }
 
   .track-title {
-    font-family: var(--typography_font_family_font_sans, 'Founders Grotesk'), sans-serif;
+    font-family:
+      var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
@@ -117,7 +119,8 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    font-family: var(--typography_font_family_font_sans, 'Founders Grotesk'), sans-serif;
+    font-family:
+      var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
     font-size: 16px;
     line-height: 1;
     color: var(--secondary-text-color);
@@ -178,7 +181,8 @@
   }
 
   .duration {
-    font-family: var(--typography_font_family_font_sans, 'Founders Grotesk'), sans-serif;
+    font-family:
+      var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
     font-size: 16px;
     color: var(--primary-text-color);
     line-height: 1;

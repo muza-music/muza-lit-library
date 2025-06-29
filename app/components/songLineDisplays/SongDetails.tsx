@@ -20,11 +20,11 @@ const formatPlays = (plays: number): string => {
   return `${plays.toLocaleString()} Plays`;
 };
 
-const SongDetails: React.FC<SongDetailsProps> = ({ 
-  details, 
-  onClick, 
+const SongDetails: React.FC<SongDetailsProps> = ({
+  details,
+  onClick,
   isPlaying = false,
-  isActive = false 
+  isActive = false,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
@@ -48,20 +48,20 @@ const SongDetails: React.FC<SongDetailsProps> = ({
     >
       <div className="song-info">
         <div className="cover-container">
-          <div 
-            className="cover-image" 
-            style={{ backgroundImage: `url(${details.imageSrc || '/art/imag_1.jpg'})` }}
+          <div
+            className="cover-image"
+            style={{
+              backgroundImage: `url(${details.imageSrc || "/art/imag_1.jpg"})`,
+            }}
           >
             {(isHovered || isActive) && (
               <div className="play-overlay">
-                <div className="play-button">
-                  {renderPlayButton()}
-                </div>
+                <div className="play-button">{renderPlayButton()}</div>
               </div>
             )}
           </div>
         </div>
-        
+
         <div className="track-details">
           <div className={`track-title ${isActive ? "active" : ""}`}>
             {details.title}
@@ -69,7 +69,9 @@ const SongDetails: React.FC<SongDetailsProps> = ({
           <div className="track-metadata">
             <span className="track-artist">{details.artist}</span>
             <span className="separator">•</span>
-            <span className="play-count">{formatPlays(details.plays || 0)}</span>
+            <span className="play-count">
+              {formatPlays(details.plays || 0)}
+            </span>
           </div>
         </div>
       </div>
@@ -84,8 +86,8 @@ const SongDetails: React.FC<SongDetailsProps> = ({
               <MuzaIcon iconName="ellipsis" />
             </button>
             <div className="checkbox-container">
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 className="song-checkbox"
                 checked={isSelected}
                 onChange={(e) => setIsSelected(e.target.checked)}
@@ -93,7 +95,7 @@ const SongDetails: React.FC<SongDetailsProps> = ({
             </div>
           </div>
         )}
-        
+
         {!isHovered && (
           <div className="duration">
             {details.time ? formatDuration(details.time) : "00:00"}
