@@ -42,11 +42,10 @@ const SongDetails: React.FC<SongDetailsProps> = ({
   return (
     <div
       className={`song-details ${isHovered ? "hover" : ""} ${isActive ? "active" : ""}`}
-      onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="song-info">
+      <div className="song-info" onClick={onClick}>
         <div className="cover-container">
           <div
             className="cover-image"
@@ -79,10 +78,20 @@ const SongDetails: React.FC<SongDetailsProps> = ({
       <div className="song-actions">
         {isHovered && (
           <div className="action-buttons">
-            <button className="action-btn heart-btn">
+            <button
+              className="action-btn heart-btn"
+              onClick={() => {
+                // Add heart action logic here
+              }}
+            >
               <MuzaIcon iconName="heart" />
             </button>
-            <button className="action-btn menu-btn">
+            <button
+              className="action-btn menu-btn"
+              onClick={() => {
+                // Add menu action logic here
+              }}
+            >
               <MuzaIcon iconName="ellipsis" />
             </button>
             <div className="checkbox-container">
