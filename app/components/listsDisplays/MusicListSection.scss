@@ -9,50 +9,48 @@
     var(--muza-section-header-padding-bottom, 0.3rem);
   border-top: 2px solid var(--muza-section-border-color, #a9a9a9);
   border-bottom: 1px solid var(--muza-section-border-color, #a9a9a9);
-}
+  h2 {
+    flex-grow: 1;
+    margin: 0;
+    font-size: var(--muza-heading-font-size, 18px);
+    font-weight: var(--muza-font-weight-bold, 600);
+    color: var(--muza-section-title-color, #5f5f5f);
+  }
 
-h2 {
-  flex-grow: 1;
-  margin: 0;
-  font-size: var(--muza-heading-font-size, 18px);
-  font-weight: var(--muza-font-weight-bold, 600);
-  color: var(--muza-section-title-color, #5f5f5f);
-}
+  p {
+    margin: 0;
+    padding: 0 var(--muza-spacing-md, 8px) 1rem var(--muza-spacing-md, 8px);
+    color: var(--muza-section-subtitle-color, #888);
+  }
+  .section-content {
+    padding: 0;
+  }
 
-p {
-  margin: 0;
-  padding: 0 var(--muza-spacing-md, 8px) 1rem var(--muza-spacing-md, 8px);
-  color: var(--muza-section-subtitle-color, #888);
-}
+  .content-items {
+    display: flex;
+    max-width: 100%;
+    overflow-x: auto;
+  }
 
-.section-content {
-  padding: 0;
-}
+  .content-items > album-cover:first-child,
+  .content-items > artist-album:first-child {
+    margin-left: 0;
+  }
 
-.content-items {
-  display: flex;
-  max-width: 100%;
-  overflow-x: auto;
-}
+  .section-button {
+    padding: var(--muza-section-button-padding, 6px 10px);
+    border: none;
+    border-radius: var(--muza-border-radius-sm, 6px);
+    background-color: var(--muza-button-background, #eee);
+    color: var(--muza-section-button-color, #333);
+    font-size: var(--muza-section-button-font-size, 12px);
+    text-decoration: none;
+    cursor: pointer;
+  }
 
-.content-items > album-cover:first-child,
-.content-items > artist-album:first-child {
-  margin-left: 0;
-}
-
-.section-button {
-  padding: var(--muza-section-button-padding, 6px 10px);
-  border: none;
-  border-radius: var(--muza-border-radius-sm, 6px);
-  background-color: var(--muza-button-background, #eee);
-  color: var(--muza-section-button-color, #333);
-  font-size: var(--muza-section-button-font-size, 12px);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.section-button:hover {
-  background-color: var(--muza-button-hover-background, #ddd);
+  .section-button:hover {
+    background-color: var(--muza-button-hover-background, #ddd);
+  }
 }
 
 /* Scrollbar */
