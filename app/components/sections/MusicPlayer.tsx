@@ -1,15 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  FaBackward,
-  FaForward,
-  FaPause,
-  FaPlay,
-  FaSpinner,
-  FaRandom,
-} from "react-icons/fa";
-import { FaRepeat } from "react-icons/fa6";
+import { FaSpinner } from "react-icons/fa";
 import "./MusicPlayer.scss";
 import VolumeControl from "../../controls/VolumeControl";
+import MuzaIcon from "~/icons/MuzaIcon";
 import type { PlayerDetails } from "~/appData/models";
 
 type MusicPlayerProps = {
@@ -43,6 +36,11 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
 
   // Helper functions
   const formatTime = (seconds: number): string => {
+    // Handle edge cases
+    if (!seconds || isNaN(seconds) || !isFinite(seconds)) {
+      return "0:00";
+    }
+
     const minutes = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60)
       .toString()
@@ -180,7 +178,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
           alt={`${details.title} album cover`}
         />
         <div className="track-info">
-          <h2 className="track-title">{details.title}</h2>
+          <h3 className="track-title">{details.title}</h3>
           <p className="track-artist">{details.artist}</p>
           <div className="track-details">
             <span>{details.album}</span>
@@ -211,7 +209,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
               onClick={() => setShuffle(!shuffle)}
               aria-label="Shuffle"
             >
-              <FaRandom />
+              <MuzaIcon iconName="shuffle" />
             </button>
 
             <button
@@ -219,7 +217,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
               onClick={onPrevious}
               aria-label="Previous track"
             >
-              <FaBackward />
+              <MuzaIcon iconName="skip-back" />
             </button>
 
             <button
@@ -230,9 +228,9 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
               {isLoading ? (
                 <FaSpinner className="spinner" />
               ) : details.isPlaying ? (
-                <FaPause />
+                <MuzaIcon iconName="pause" />
               ) : (
-                <FaPlay />
+                <MuzaIcon iconName="play" />
               )}
             </button>
 
@@ -241,7 +239,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
               onClick={onNext}
               aria-label="Next track"
             >
-              <FaForward />
+              <MuzaIcon iconName="skip-forward" />
             </button>
 
             <button
@@ -249,7 +247,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
               onClick={() => setRepeat(!repeat)}
               aria-label="Repeat"
             >
-              <FaRepeat />
+              <MuzaIcon iconName="repeat" />
             </button>
           </div>
 

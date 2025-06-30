@@ -11,6 +11,7 @@ import type { Route } from "./+types/root";
 
 import "./app.scss";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import MusicSidebar from "./components/sections/MusicSidebar";
 import MusicTopbar from "./components/sections/MusicTopbar";
 import { useMusicLibraryStore } from "./appData/musicStore";
