@@ -1,37 +1,33 @@
 .songs-page {
-  --page-background: var(--colors_background_light, #ffffff);
-  --header-text-color: var(--colors_foreground_light, #030712);
-  --list-gap: var(--muza-spacing-sm, 8px);
-
-  background: var(--page-background);
+  background: var(--colors_background_light, #ffffff);
   padding: 0;
   margin: 0;
 
   .page-header {
-    padding: var(--content-padding) var(--content-padding) 0;
+    padding: var(--muza-spacing-lg, 16px) var(--muza-spacing-lg, 16px) 0;
     padding-bottom: var(--muza-spacing-lg, 16px);
 
     h1 {
       font-family:
         var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
-      font-size: 30px;
-      font-weight: 700;
+      font-size: var(--muza-title-font-size, 27px);
+      font-weight: var(--muza-font-weight-bold-extra, 700);
       line-height: 1;
-      color: var(--header-text-color);
+      color: var(--muza-primary-text-color, #333333);
       margin: 0;
-      padding: 3px 0;
+      padding: var(--muza-spacing-xs, 4px) 0;
     }
   }
 
   .songs-list-container {
-    padding: 0 var(--content-padding);
+    padding: 0 var(--muza-spacing-lg, 16px);
     padding-bottom: 70px; // Space for music player
   }
 
   .songs-list {
     display: flex;
     flex-direction: column;
-    gap: var(--list-gap);
+    gap: var(--muza-spacing-sm, 8px);
     max-width: 100%;
   }
 
@@ -42,7 +38,7 @@
       padding-bottom: var(--muza-spacing-md, 12px);
 
       h1 {
-        font-size: 24px;
+        font-size: var(--muza-heading-font-size, 18px);
       }
     }
 
@@ -57,7 +53,7 @@
       padding: var(--muza-spacing-md, 12px);
 
       h1 {
-        font-size: 20px;
+        font-size: var(--muza-songline-title-font-size, 16px);
       }
     }
 
@@ -67,7 +63,7 @@
     }
 
     .songs-list {
-      gap: 6px;
+      gap: var(--muza-spacing-xs, 4px);
     }
   }
 }

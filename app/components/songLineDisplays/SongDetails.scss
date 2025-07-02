@@ -12,14 +12,6 @@
 }
 
 .song-details {
-  --primary-text-color: var(--colors_foreground_light, #030712);
-  --secondary-text-color: var(--colors_muted_foreground_light, #6b7280);
-  --hover-background: var(--colors_muted_light, #f9fafb);
-  --active-background: rgba(249, 250, 251, 0.5);
-  --border-color: var(--colors_border_light, #e5e7eb);
-  --active-text-color: var(--colors_primary_light, #1d4ed8);
-  --overlay-background: rgba(9, 9, 9, 0.5);
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,12 +24,12 @@
 
   &:hover,
   &.hover {
-    background: var(--hover-background);
+    background: var(--muza-hover-background, #eeeeee);
   }
 
   &.active {
-    background: var(--active-background);
-    border: 1px solid var(--border-color);
+    background: var(--colors_muted_light_50_, rgba(249, 250, 251, 0.5));
+    border: 1px solid var(--muza-light-border-color, #e5e7eb);
   }
 
   .song-info {
@@ -70,7 +62,7 @@
   .play-overlay {
     position: absolute;
     inset: 0;
-    background: var(--overlay-background);
+    background: rgba(9, 9, 9, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,13 +97,13 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
-    color: var(--primary-text-color);
+    color: var(--muza-track-title-color, #111827);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
     &.active {
-      color: var(--active-text-color);
+      color: var(--muza-toggle-active-color, #3b82f6);
     }
   }
 
@@ -123,7 +115,7 @@
       var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
     font-size: 16px;
     line-height: 1;
-    color: var(--secondary-text-color);
+    color: var(--muza-track-artist-color, #6b7280);
   }
 
   .track-artist,
@@ -132,7 +124,7 @@
   }
 
   .separator {
-    color: var(--secondary-text-color);
+    color: var(--muza-track-artist-color, #6b7280);
   }
 
   .song-actions {
@@ -156,11 +148,11 @@
     border: none;
     cursor: pointer;
     padding: 4px;
-    color: var(--secondary-text-color);
+    color: var(--muza-secondary-text-color, #5f5f5f);
     transition: color 0.2s ease;
 
     &:hover {
-      color: var(--primary-text-color);
+      color: var(--muza-primary-text-color, #333333);
     }
 
     svg {
@@ -173,7 +165,7 @@
     .song-checkbox {
       width: 16px;
       height: 16px;
-      border: 1px solid var(--secondary-text-color);
+      border: 1px solid var(--muza-secondary-text-color, #5f5f5f);
       border-radius: var(--muza-border-radius-sm, 4px);
       background: var(--colors_background_light, #ffffff);
       cursor: pointer;
@@ -184,7 +176,7 @@
     font-family:
       var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
     font-size: 16px;
-    color: var(--primary-text-color);
+    color: var(--muza-primary-text-color, #333333);
     line-height: 1;
     white-space: nowrap;
   }
