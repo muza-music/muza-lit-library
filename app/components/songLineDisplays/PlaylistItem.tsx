@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./PlaylistItem.scss";
 import type { SongDetails } from "../../appData/models";
 import { formatSongNumber } from "../../appData/utils";
-import SongDetailsComponent from "./SongDetails";
+import SongDetailsView from "./SongDetails";
 import MuzaButton from "../../controls/MuzaButton";
 import MuzaContainer from "../ui/MuzaContainer";
 import {
@@ -23,7 +23,7 @@ const PlaylistItem: React.FC<PlaylistItemProps> = ({ details }) => {
         <span className="track-number">
           {formatSongNumber(details.index || 1)}
         </span>
-        <SongDetailsComponent details={details} onClick={() => {}} />
+        <SongDetailsView details={details} onClick={() => {}} />
       </span>
       <ContextMenu>
         <ContextMenuTrigger>

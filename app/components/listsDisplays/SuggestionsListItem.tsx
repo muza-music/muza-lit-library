@@ -2,7 +2,7 @@ import React from "react";
 import "./SuggestionsListItem.scss";
 import type { SongDetails } from "../../appData/models";
 import MuzaButton from "../../controls/MuzaButton";
-import SongDetailsComponent from "../songLineDisplays/SongDetails";
+import SongDetailsView from "../songLineDisplays/SongDetails";
 
 export type SuggestionsListItemProps = {
   details: SongDetails;
@@ -14,7 +14,7 @@ const SuggestionsListItem: React.FC<SuggestionsListItemProps> = ({
   return (
     <div className="suggestions-list-item">
       <span className="left">
-        <SongDetailsComponent details={details} onClick={() => {}} />
+        <SongDetailsView details={details} onClick={() => {}} />
       </span>
       <MuzaButton content="+" />
     </div>
