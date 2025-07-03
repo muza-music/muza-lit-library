@@ -27,7 +27,7 @@ const PlaylistCover: React.FC<PlaylistCoverProps> = ({
     <div onClick={handleClick}>
       <AlbumCover
         imageSrc={imageSrc}
-        title={`<icon-playlist></icon-playlist> ${title}`}
+        title={title}
         subTitle={`${songsCount} Songs`}
       />
     </div>
