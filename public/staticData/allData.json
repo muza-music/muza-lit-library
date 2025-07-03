@@ -75,6 +75,53 @@
       }
     ]
   },
+  "playlists": [
+    {
+      "id": "pl1",
+      "title": "Vibes for Stargazing",
+      "author": "Music Curator",
+      "imageSrc": "/art/imag_1.jpg",
+      "songs": [1, 2, 3, 4],
+      "songsCount": 4,
+      "suggestions": []
+    },
+    {
+      "id": "pl2",
+      "title": "Chill Beats for Rainy Days",
+      "author": "Chill Master",
+      "imageSrc": "/art/imag_2.jpg",
+      "songs": [5, 6, 7, 8],
+      "songsCount": 4,
+      "suggestions": []
+    },
+    {
+      "id": "pl3",
+      "title": "Epic Road Trip Anthems",
+      "author": "Road Warrior",
+      "imageSrc": "/art/imag_3.jpg",
+      "songs": [1, 3, 5, 7],
+      "songsCount": 4,
+      "suggestions": []
+    },
+    {
+      "id": "pl4",
+      "title": "Songs to Dance Like Nobody's Watching",
+      "author": "Dance Floor",
+      "imageSrc": "/art/imag_1.jpg",
+      "songs": [2, 4, 6, 8],
+      "songsCount": 4,
+      "suggestions": []
+    },
+    {
+      "id": "pl5",
+      "title": "Melodies for Midnight Musing",
+      "author": "Night Owl",
+      "imageSrc": "/art/imag_2.jpg",
+      "songs": [1, 2, 5, 6],
+      "songsCount": 4,
+      "suggestions": []
+    }
+  ],
   "artists": [
     {
       "id": 2,
@@ -103,7 +150,11 @@
       {
         "title": "Library",
         "items": [
-          { "svg": "playlist", "text": "Playlists", "action": "/" },
+          {
+            "svg": "playlist",
+            "text": "Playlists",
+            "action": "/routes/playlists"
+          },
           { "svg": "album", "text": "Albums", "action": "/routes/albums" },
           { "svg": "artists", "text": "Artists", "action": "/routes/artists" },
           { "svg": "songs", "text": "Songs", "action": "/routes/songs" }

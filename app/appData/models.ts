@@ -55,11 +55,15 @@ export type MusicListSection = {
 };
 
 export type MusicPlaylist = {
+  id?: string;
   title: string;
-  author: string;
+  name?: string;
+  author?: string;
   imageSrc?: string;
   songs: SongDetails[];
-  suggestions: SongDetails[];
+  suggestions?: SongDetails[];
+  visibility?: string;
+  createdAt?: string;
 };
 
 export type PlayerDetails = {
