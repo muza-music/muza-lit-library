@@ -21,9 +21,12 @@ const PlaylistGrid: React.FC<PlaylistGridProps> = ({
       {playlists.map((playlist, index) => (
         <PlaylistCover
           key={playlist.id || index}
-          imageSrc={playlist.imageSrc || "/art/muza.png"}
+          albumImages={
+            playlist.albumImages || [playlist.imageSrc || "/art/muza.png"]
+          }
           title={playlist.title || playlist.name}
           songsCount={playlist.songs?.length?.toString() || "0"}
+          userName={playlist.userName || playlist.author || "Unknown"}
           onSelect={() => onPlaylistClick(playlist)}
         />
       ))}

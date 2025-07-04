@@ -38,12 +38,14 @@ export interface Artist {
 }
 
 interface MusicListItem {
-  imageSrc: string;
+  imageSrc?: string;
+  albumImages?: string[];
   title: string;
   subTitle?: string;
   artistName?: string;
   songsCount?: number;
   albumsCount?: number;
+  author?: string;
 }
 
 export type MusicListSection = {
