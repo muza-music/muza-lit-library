@@ -37,21 +37,25 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const {
-    sidebarSections,
-    setNewReleases,
-    setFeatured,
-    setArtists,
-    setRecommended,
-    setRecentlyPlayed,
-    setSidebarSections,
-  } = useMusicLibraryStore();
-  const { selectedSong, setSelectedSong } = useCurrentPlayerStore();
+  const sidebarSections = useMusicLibraryStore(
+    (state) => state.sidebarSections,
+  );
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const {
+      setNewReleases,
+      setFeatured,
+      setArtists,
+      setRecommended,
+      setRecentlyPlayed,
+      setSidebarSections,
+    } = useMusicLibraryStore.getState();
+
+    const { selectedSong, setSelectedSong } = useCurrentPlayerStore.getState();
+
     fetch("/staticData/allData.json")
       .then((response) => {
         if (!response.ok) {
@@ -107,9 +111,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
           <div className="content">
             <MusicTopbar />
-
             {content || children}
-            <MuzaMusicPlayer></MuzaMusicPlayer>
+            <MuzaMusicPlayer />
           </div>
         </div>
         <ToastContainer />
