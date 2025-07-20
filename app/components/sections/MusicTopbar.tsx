@@ -37,4 +37,4 @@ const MusicTopbar: React.FC<MusicTopbarProps> = ({
   );
 };
 
-export default MusicTopbar;
+export default React.memo(MusicTopbar);

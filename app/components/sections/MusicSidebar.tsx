@@ -19,7 +19,9 @@ const MusicSidebar: React.FC<MusicSidebarProps> = ({
 
   const handleItemClick = (item: MenuItem) => {
     if (item.action) {
-      navigate(item.action);
+      React.startTransition(() => {
+        navigate(item.action!);
+      });
     }
   };
 
@@ -53,4 +55,4 @@ const MusicSidebar: React.FC<MusicSidebarProps> = ({
   );
 };
 
-export default MusicSidebar;
+export default React.memo(MusicSidebar);
