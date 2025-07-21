@@ -47,8 +47,11 @@ const Hero: React.FC<HeroProps> = ({ album, songs }) => {
   return (
     <div className="hero-card">
       <div className="hero-back">
-        <button className="hero-back-btn" onClick={() => navigate("/routes/albums")}>
-         <MuzaIcon iconName="ChevronLeft" />
+        <button
+          className="hero-back-btn"
+          onClick={() => navigate("/routes/albums")}
+        >
+          <MuzaIcon iconName="ChevronLeft" />
         </button>
       </div>
       <div className="hero-cover">
@@ -56,37 +59,45 @@ const Hero: React.FC<HeroProps> = ({ album, songs }) => {
       </div>
       <div className="hero-info">
         <div className="hero-info-text">
-        <div className="hero-title">{album.title}</div>
-        <div className="hero-artist">{album.artist}</div>
-        <div className="hero-meta">
-          <span>Album</span>
-          <span className="hero-dot">&bull;</span>
-          <span>{album.year ? album.year : '2025'}</span>
-          <span className="hero-dot">&bull;</span>
-          <span>{album.songs?.length} Songs</span>
-        </div>
+          <div className="hero-title">{album.title}</div>
+          <div className="hero-artist">{album.artist}</div>
+          <div className="hero-meta">
+            <span>Album</span>
+            <span className="hero-dot">&bull;</span>
+            <span>{album.year ? album.year : "2025"}</span>
+            <span className="hero-dot">&bull;</span>
+            <span>{album.songs?.length} Songs</span>
+          </div>
         </div>
         <div className="hero-info-actions">
           <div className="hero-CTAs">
-          <button className="hero-play-btn" onClick={handlePlayPause}>
-            {isPlaying ? (
-              <MuzaIcon iconName="pause" />
-            ) : (
-              <MuzaIcon iconName="play" />
-            )}
-            <span className="hero-play-label">Play Album</span>
-          </button>
+            <button className="hero-play-btn" onClick={handlePlayPause}>
+              {isPlaying ? (
+                <MuzaIcon iconName="pause" />
+              ) : (
+                <MuzaIcon iconName="play" />
+              )}
+              <span className="hero-play-label">Play Album</span>
+            </button>
           </div>
           <div className="hero-buttons">
-          <button className="hero-icon-btn" title="Add to Library" onClick={addToLibrary}>
-            <MuzaIcon iconName="Plus" />
-          </button>
-          <button className="hero-icon-btn" title="Album Info" onClick={() => setModalOpen(true)}>
-            <MuzaIcon iconName="Info" />
-          </button>
-          <button className="hero-icon-btn" title="More">
-            <MuzaIcon iconName="Ellipsis" />
-          </button>
+            <button
+              className="hero-icon-btn"
+              title="Add to Library"
+              onClick={addToLibrary}
+            >
+              <MuzaIcon iconName="Plus" />
+            </button>
+            <button
+              className="hero-icon-btn"
+              title="Album Info"
+              onClick={() => setModalOpen(true)}
+            >
+              <MuzaIcon iconName="Info" />
+            </button>
+            <button className="hero-icon-btn" title="More">
+              <MuzaIcon iconName="Ellipsis" />
+            </button>
           </div>
         </div>
       </div>
@@ -98,4 +109,4 @@ const Hero: React.FC<HeroProps> = ({ album, songs }) => {
   );
 };
 
-export default Hero; 
+export default Hero;
