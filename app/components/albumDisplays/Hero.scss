@@ -1,0 +1,180 @@
+.hero-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding: var(--muza-spacing-xl, 24px) var(--muza-spacing-lg, 16px)
+    var(--muza-spacing-lg, 16px) 0;
+  border-radius: var(--muza-border-radius-lg, 20px);
+  position: relative;
+
+  .hero-back {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--muza-spacing-xs, 4px) 0 0 0;
+    margin-right: var(--muza-spacing-lg, 16px);
+
+    .hero-back-btn {
+      background: transparent;
+      border: none;
+      border-radius: var(--muza-border-radius-full, 9999px);
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      .hero-back-icon {
+        font-size: 20px;
+        color: var(--muza-track-artist-color, #6b7280);
+      }
+    }
+  }
+
+  .hero-cover {
+    border-radius: var(--muza-border-radius-sm, 4px);
+    overflow: hidden;
+    box-shadow: var(
+      --muza-box-shadow,
+      0px 1px 3px 0px rgba(0, 0, 0, 0.1),
+      0px 1px 2px 0px rgba(0, 0, 0, 0.06)
+    );
+    margin-right: var(--muza-spacing-xl, 24px);
+    img {
+      height: 224px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-self: stretch;
+      aspect-ratio: 1/1;
+    }
+  }
+
+  .hero-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .hero-title {
+      font-family: var(
+        --typography_font_family_font_sans,
+        "Founders Grotesk",
+        sans-serif
+      );
+      font-size: 36px;
+      font-weight: var(--muza-font-weight-bold-extra, 700);
+      color: var(--muza-section-button-color, #111827);
+      margin-bottom: var(--muza-spacing-xs, 4px);
+    }
+
+    .hero-artist {
+      font-family: var(
+        --typography_font_family_font_sans,
+        "Founders Grotesk",
+        sans-serif
+      );
+      font-size: var(--muza-songline-title-font-size, 16px);
+      font-weight: var(--muza-font-weight-normal, 400);
+      color: var(--muza-section-title-color, #5f5f5f);
+      margin-bottom: var(--muza-spacing-xs, 4px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-family: var(
+        --typography_font_family_font_sans,
+        "Founders Grotesk",
+        sans-serif
+      );
+      font-size: var(--muza-songline-title-font-size, 16px);
+      color: var(--muza-section-subtitle-color, #aaa);
+      gap: var(--muza-spacing-sm, 8px);
+      margin-bottom: var(--muza-spacing-md, 12px);
+
+      .hero-dot {
+        margin: 0 var(--muza-spacing-sm, 8px);
+      }
+    }
+
+    .hero-info-actions {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: flex-end;
+      align-self: stretch;
+
+      svg {
+        width: var(--width-w-4, 16px);
+        height: var(--height-h-4, 16px);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .hero-play-btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        border: 1px solid var(--muza-section-button-color, #111827);
+        padding: var(--muza-spacing-sm, 8px) var(--muza-spacing-xxl, 36px);
+        font-family: var(
+          --typography_font_family_font_sans,
+          "Founders Grotesk",
+          sans-serif
+        );
+        font-size: var(--muza-songline-title-font-size, 16px);
+        font-weight: var(--muza-font-weight-medium, 500);
+        color: var(--muza-section-button-color, #111827);
+        cursor: pointer;
+        transition: background 0.2s;
+
+        &:hover {
+          background: var(--muza-button-hover-background, #f3f4f6);
+        }
+
+        .hero-play-label {
+          margin-left: 8px;
+        }
+        svg {
+          width: var(--width-w-4, 16px);
+          height: var(--height-h-4, 16px);
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 16px;
+
+        .hero-icon-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background 0.2s;
+          display: flex;
+          width: var(--width-w-9, 36px);
+          height: var(--height-h-9, 36px);
+          justify-content: center;
+          align-items: center;
+          border-radius: var(--muza-border-radius-full, 9999px);
+          &:hover {
+            background: var(--muza-button-hover-background, #f3f4f6);
+          }
+        }
+      }
+    }
+  }
+}
