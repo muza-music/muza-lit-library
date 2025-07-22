@@ -4,6 +4,14 @@
   height: 100vh;
   padding: 20px 0;
   border-right: 1px solid #ededed;
+
+  @media (max-width: 892px) {
+    width: 54px;
+    padding: 10px 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 }
 
 .logo {
@@ -14,6 +22,16 @@
     width: 120px;
     height: auto;
     margin-left: 12px;
+  }
+
+  @media (max-width: 892px) {
+    padding: 10px 4px;
+    text-align: center;
+
+    img {
+      width: 40px;
+      margin-left: 0;
+    }
   }
 }
 
@@ -30,6 +48,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 892px) {
+      display: none;
+    }
   }
 
   .menu-item {
@@ -53,6 +75,35 @@
       text-align: center;
       color: #666;
     }
+
+    @media (max-width: 892px) {
+      padding: 10px;
+      justify-content: center;
+      margin: 0 4px;
+
+      span {
+        display: none;
+      }
+
+      i {
+        margin-right: 0;
+        width: 24px;
+        height: 24px;
+      }
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  @media (max-width: 892px) {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 }
 
@@ -67,4 +118,5 @@
   &:hover {
     opacity: 0.8;
   }
+
 }
