@@ -79,9 +79,53 @@
     transition: opacity 0.2s ease-in-out;
     z-index: 1;
   }
+.album-overlay-actions{
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 4px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  .album-overlay-btn{
+    display: flex;
+width: var(--width-w-7, 28px);
+height: 28px;
+justify-content: center;
+align-items: center;
+aspect-ratio: 1/1;
+border-radius: var(--border-radius-full, 9999px);
+background: var(--base-muted, #F9FAFB);
+border: none;
+cursor: pointer;
+transition: background 0.2s;
+i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  svg{
+  flex-shrink: 0;
+path{
+  width: var(--width-w-4, 16px);
+  height: var(--height-h-4, 16px);
+}  
+}
+}
 
+  }
+}
   .image-container:hover .album-hover-overlay {
     opacity: 1;
+  }
+  .image-container:hover .album-overlay-actions {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .info {

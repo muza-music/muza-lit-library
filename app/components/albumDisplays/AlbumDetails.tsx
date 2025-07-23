@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AlbumDetails.scss";
 import type { Album } from "~/appData/models";
 import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
 import MuzaIcon from "~/icons/MuzaIcon";
+import AlbumInfoModal from "./AlbumInfoModal";
+import { addToLibrary } from "~/lib/utils";
 
 interface AlbumDetailsProps {
   details: Album;
@@ -14,6 +16,7 @@ const AlbumDetails: React.FC<AlbumDetailsProps> = ({
   onAlbumClick,
 }) => {
   const { isPlaying, setIsPlaying } = useCurrentPlayerStore();
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const handlePlayPause = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -22,18 +25,17 @@ const AlbumDetails: React.FC<AlbumDetailsProps> = ({
 
   return (
     <div className="album-details-card">
-      <div className="image-container">
+      <div className="image-container" onClick={onAlbumClick}>
         <img
           src={details.imageSrc}
           alt={details.title}
-          onClick={onAlbumClick}
         />
+        <div className="album-overlay-actions">
+          <button className="album-overlay-btn" onClick={e => e.stopPropagation()}><MuzaIcon iconName="ellipsis" /></button>
+          <button className="album-overlay-btn" onClick={e => { e.stopPropagation(); setModalOpen(true); }}><MuzaIcon iconName="info" /></button>
+          <button className="album-overlay-btn" onClick={e => { e.stopPropagation(); addToLibrary(); }}><MuzaIcon iconName="plus" /></button>
+        </div>
         <div className="album-hover-overlay">
-          <div className="album-overlay-actions">
-            <button className="album-overlay-btn"><MuzaIcon iconName="dots" /></button>
-            <button className="album-overlay-btn"><MuzaIcon iconName="info" /></button>
-            <button className="album-overlay-btn"><MuzaIcon iconName="plus" /></button>
-          </div>
         </div>
         <button
           className="album-play-pause-btn"
@@ -65,6 +67,7 @@ const AlbumDetails: React.FC<AlbumDetailsProps> = ({
           </button>
         </div>
       </div>
+      <AlbumInfoModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 };
