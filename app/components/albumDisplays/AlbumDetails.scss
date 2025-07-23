@@ -15,12 +15,73 @@
     background: var(--muza-image-background-color-bg);
     box-shadow: var(--muza-box-shadow);
     margin-right: var(--muza-spacing-lg);
+    position: relative;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+
+    .album-play-pause-btn {
+      display: flex;
+      padding: var(--spacing-2-5, 10px);
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: var(--border-radius-full, 9999px);
+      background: var(--base-primary, #1D4ED8);
+      color: #fff;
+      border: none;
+      z-index: 2;
+      font-size: 2rem;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.4s, transform 0.4s;
+      svg {
+        width: var(--width-w-9, 48px);
+        height: var(--width-w-9, 48px);
+        path {
+          fill: #fff !important;
+        }
+      }
+
+      i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+      &:hover {
+        transform: translate(-50%, -50%) scale(1.15);
+      }
+    }
+    &:hover .album-play-pause-btn {
+      opacity: 1;
+    }
+  }
+
+  .album-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius-sm, 2px);
+    background: var(--alpha-90, rgba(9, 9, 9, 0.10));
+    backdrop-filter: blur(calc(var(--blur-DEFAULT, 8px) / 2));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 1;
+  }
+
+  .image-container:hover .album-hover-overlay {
+    opacity: 1;
   }
 
   .info {
