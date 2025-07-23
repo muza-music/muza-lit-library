@@ -26,21 +26,35 @@ const AlbumDetails: React.FC<AlbumDetailsProps> = ({
   return (
     <div className="album-details-card">
       <div className="image-container" onClick={onAlbumClick}>
-        <img
-          src={details.imageSrc}
-          alt={details.title}
-        />
+        <img src={details.imageSrc} alt={details.title} />
         <div className="album-overlay-actions">
-          <button className="album-overlay-btn" onClick={e => e.stopPropagation()}><MuzaIcon iconName="ellipsis" /></button>
-          <button className="album-overlay-btn" onClick={e => { e.stopPropagation(); setModalOpen(true); }}><MuzaIcon iconName="info" /></button>
-          <button className="album-overlay-btn" onClick={e => { e.stopPropagation(); addToLibrary(); }}><MuzaIcon iconName="plus" /></button>
+          <button
+            className="album-overlay-btn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <MuzaIcon iconName="ellipsis" />
+          </button>
+          <button
+            className="album-overlay-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              setModalOpen(true);
+            }}
+          >
+            <MuzaIcon iconName="info" />
+          </button>
+          <button
+            className="album-overlay-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              addToLibrary();
+            }}
+          >
+            <MuzaIcon iconName="plus" />
+          </button>
         </div>
-        <div className="album-hover-overlay">
-        </div>
-        <button
-          className="album-play-pause-btn"
-          onClick={handlePlayPause}
-        >
+        <div className="album-hover-overlay"></div>
+        <button className="album-play-pause-btn" onClick={handlePlayPause}>
           {isPlaying ? (
             <MuzaIcon iconName="pause" />
           ) : (
@@ -67,7 +81,10 @@ const AlbumDetails: React.FC<AlbumDetailsProps> = ({
           </button>
         </div>
       </div>
-      <AlbumInfoModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+      <AlbumInfoModal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+      />
     </div>
   );
 };
