@@ -25,15 +25,15 @@
 
     .album-play-pause-btn {
       display: flex;
-      padding: var(--spacing-2-5, 10px);
+      padding: var(--muza-spacing-md);
       justify-content: center;
       align-items: center;
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      border-radius: var(--border-radius-full, 9999px);
-      background: var(--base-primary, #1D4ED8);
+      border-radius: var(--muza-border-radius-lg);
+      background: var(--colors_primary_light, #1D4ED8);
       color: #fff;
       border: none;
       z-index: 2;
@@ -42,8 +42,8 @@
       opacity: 0;
       transition: opacity 0.4s, transform 0.4s;
       svg {
-        width: var(--width-w-9, 48px);
-        height: var(--width-w-9, 48px);
+        width: 48px;
+        height: 48px;
         path {
           fill: #fff !important;
         }
@@ -71,9 +71,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: var(--border-radius-sm, 2px);
-    background: var(--alpha-90, rgba(9, 9, 9, 0.10));
-    backdrop-filter: blur(calc(var(--blur-DEFAULT, 8px) / 2));
+    border-radius: var(--muza-border-radius-sm);
+    background: rgba(9, 9, 9, 0.10);
+    backdrop-filter: blur(4px);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
@@ -93,31 +93,30 @@
   transition: opacity 0.2s;
   .album-overlay-btn{
     display: flex;
-width: var(--width-w-7, 28px);
-height: 28px;
-justify-content: center;
-align-items: center;
-aspect-ratio: 1/1;
-border-radius: var(--border-radius-full, 9999px);
-background: var(--base-muted, #F9FAFB);
-border: none;
-cursor: pointer;
-transition: background 0.2s;
-i {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  svg{
-  flex-shrink: 0;
-path{
-  width: var(--width-w-4, 16px);
-  height: var(--height-h-4, 16px);
-}  
-}
-}
-
+    width: 28px;
+    height: 28px;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    border-radius: var(--muza-border-radius-lg);
+    background: var(--muza-section-background, #F9FAFB);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    i {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      svg{
+        flex-shrink: 0;
+        path{
+          width: 16px;
+          height: 16px;
+        }  
+      }
+    }
   }
 }
   .image-container:hover .album-hover-overlay {
