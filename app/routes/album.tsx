@@ -18,7 +18,7 @@ interface AlbumPageState {
 }
 
 export default function AlbumPage() {
-  const { selectedSong, setSelectedSong } = useCurrentPlayerStore();
+  const { selectedSong, setSelectedSong, setIsPlaying, isPlaying, togglePlayPause } = useCurrentPlayerStore();
   const { recentlyPlayed } = useMusicLibraryStore();
 
   const [albumSongsDetails, setAlbumSongsDetails] = useState<SongDetails[]>([]);
@@ -43,8 +43,15 @@ export default function AlbumPage() {
           <SongLine
             key={s.id}
             details={s}
-            onClick={() => setSelectedSong(s)}
-            isPlaying={s.id === selectedSong?.id}
+            onClick={() => {
+              if (selectedSong?.id === s.id) {
+                togglePlayPause();
+              } else {
+                setSelectedSong(s);
+                setIsPlaying(true);
+              }
+            }}
+            isPlaying={s.id === selectedSong?.id && !!isPlaying}
           />
         ))}
       </div>

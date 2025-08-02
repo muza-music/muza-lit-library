@@ -8,9 +8,10 @@ type currentPlayerStore = {
   setIsPlaying: (isPlaying: Boolean) => void;
   setSelectedSong: (song: SongDetails) => void;
   setSelectedPlaListOrAlbum: (album: Album) => void;
+  togglePlayPause: () => void;
 };
 
-export const useCurrentPlayerStore = create<currentPlayerStore>((set) => ({
+export const useCurrentPlayerStore = create<currentPlayerStore>((set, get) => ({
   selectedSong: null,
   isPlaying: false,
   selectedPlaListOrAlbum: null,
@@ -20,4 +21,6 @@ export const useCurrentPlayerStore = create<currentPlayerStore>((set) => ({
 
   setSelectedPlaListOrAlbum: (album: Album) =>
     set({ selectedPlaListOrAlbum: album }),
+
+  togglePlayPause: () => set({ isPlaying: !get().isPlaying }),
 }));

@@ -6,6 +6,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "react-router";
 import type { Route } from "./+types/root";
 
@@ -37,12 +38,24 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+  const { setIsPlaying } = useCurrentPlayerStore();
   const sidebarSections = useMusicLibraryStore(
     (state) => state.sidebarSections,
   );
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Check if we're on the upload page
+  const isUploadPage = location.pathname === '/routes/upload';
+
+  // Stop music when navigating to upload page
+  useEffect(() => {
+    if (isUploadPage) {
+      setIsPlaying(false);
+    }
+  }, [isUploadPage, setIsPlaying]);
 
   useEffect(() => {
     const {
@@ -112,7 +125,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <div className="content">
             <MusicTopbar />
             {content || children}
-            <MuzaMusicPlayer />
+            {!isUploadPage && <MuzaMusicPlayer />}
           </div>
         </div>
         <ToastContainer />
