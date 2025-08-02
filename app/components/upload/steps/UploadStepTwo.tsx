@@ -7,23 +7,25 @@ import {
   useSensor,
   useSensors,
   type DragEndEvent,
-} from '@dnd-kit/core';
+} from "@dnd-kit/core";
 import {
   SortableContext,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
-import {
-  useSortable,
-} from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
+} from "@dnd-kit/sortable";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import type { TrackMetadata } from "~/appData/uploadStore";
 import MuzaIcon from "~/icons/MuzaIcon";
 import "./UploadStepTwo.scss";
 
 interface UploadStepTwoProps {
   trackMetadata: TrackMetadata[];
-  onTrackMetadataChange: (trackId: string, field: keyof Omit<TrackMetadata, 'id' | 'file'>, value: string) => void;
+  onTrackMetadataChange: (
+    trackId: string,
+    field: keyof Omit<TrackMetadata, "id" | "file">,
+    value: string,
+  ) => void;
   onDeleteTrack: (trackId: string) => void;
   onReorderTracks: (fromIndex: number, toIndex: number) => void;
 }
@@ -31,7 +33,11 @@ interface UploadStepTwoProps {
 interface SortableTrackRowProps {
   track: TrackMetadata;
   index: number;
-  onTrackMetadataChange: (trackId: string, field: keyof Omit<TrackMetadata, 'id' | 'file'>, value: string) => void;
+  onTrackMetadataChange: (
+    trackId: string,
+    field: keyof Omit<TrackMetadata, "id" | "file">,
+    value: string,
+  ) => void;
   onDeleteTrack: (trackId: string) => void;
 }
 
@@ -59,15 +65,11 @@ const SortableTrackRow: React.FC<SortableTrackRowProps> = ({
     <div
       ref={setNodeRef}
       style={style}
-      className={`table-row ${isDragging ? 'dragging' : ''}`}
+      className={`table-row ${isDragging ? "dragging" : ""}`}
     >
       {/* Track Number & Drag Handle */}
       <div className="cell-number">
-        <button 
-          className="drag-handle"
-          {...attributes}
-          {...listeners}
-        >
+        <button className="drag-handle" {...attributes} {...listeners}>
           <MuzaIcon iconName="grip-vertical" />
         </button>
         <span className="track-number">{index + 1}</span>
@@ -76,7 +78,7 @@ const SortableTrackRow: React.FC<SortableTrackRowProps> = ({
       {/* File Name with Play Button */}
       <div className="cell-filename">
         <button className="play-button">
-          <MuzaIcon iconName="play"/>
+          <MuzaIcon iconName="play" />
         </button>
         <span className="filename" title={track.fileName}>
           {track.fileName}
@@ -88,7 +90,9 @@ const SortableTrackRow: React.FC<SortableTrackRowProps> = ({
         <input
           type="text"
           value={track.songName}
-          onChange={(e) => onTrackMetadataChange(track.id, 'songName', e.target.value)}
+          onChange={(e) =>
+            onTrackMetadataChange(track.id, "songName", e.target.value)
+          }
           className="editable-field"
           placeholder="Song Name"
         />
@@ -99,7 +103,9 @@ const SortableTrackRow: React.FC<SortableTrackRowProps> = ({
         <input
           type="text"
           value={track.composer}
-          onChange={(e) => onTrackMetadataChange(track.id, 'composer', e.target.value)}
+          onChange={(e) =>
+            onTrackMetadataChange(track.id, "composer", e.target.value)
+          }
           className="editable-field"
           placeholder="Composer"
         />
@@ -134,15 +140,19 @@ const UploadStepTwo: React.FC<UploadStepTwoProps> = ({
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
+    }),
   );
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
     if (active.id !== over?.id) {
-      const oldIndex = trackMetadata.findIndex((track) => track.id === active.id);
-      const newIndex = trackMetadata.findIndex((track) => track.id === over?.id);
+      const oldIndex = trackMetadata.findIndex(
+        (track) => track.id === active.id,
+      );
+      const newIndex = trackMetadata.findIndex(
+        (track) => track.id === over?.id,
+      );
 
       onReorderTracks(oldIndex, newIndex);
     }
@@ -168,7 +178,7 @@ const UploadStepTwo: React.FC<UploadStepTwoProps> = ({
           onDragEnd={handleDragEnd}
         >
           <SortableContext
-            items={trackMetadata.map(track => track.id)}
+            items={trackMetadata.map((track) => track.id)}
             strategy={verticalListSortingStrategy}
           >
             <div className="table-body">
@@ -196,4 +206,4 @@ const UploadStepTwo: React.FC<UploadStepTwoProps> = ({
   );
 };
 
-export default UploadStepTwo; 
+export default UploadStepTwo;

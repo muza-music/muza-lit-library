@@ -17,50 +17,59 @@ const UploadFileArea: React.FC<UploadFileAreaProps> = ({
   // Remove local uploadedFiles state - use prop instead
 
   // Cover image dropzone
-  const onCoverDrop = useCallback((acceptedFiles: File[]) => {
-    const file = acceptedFiles[0];
-    if (file) {
-      const previewUrl = URL.createObjectURL(file);
-      setCoverPreview(previewUrl);
-      onCoverUpload(file);
-    }
-  }, [onCoverUpload]);
+  const onCoverDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      const file = acceptedFiles[0];
+      if (file) {
+        const previewUrl = URL.createObjectURL(file);
+        setCoverPreview(previewUrl);
+        onCoverUpload(file);
+      }
+    },
+    [onCoverUpload],
+  );
 
   const {
     getRootProps: getCoverRootProps,
     getInputProps: getCoverInputProps,
-    isDragActive: isCoverDragActive
+    isDragActive: isCoverDragActive,
   } = useDropzone({
     onDrop: onCoverDrop,
     accept: {
-      'image/*': ['.jpeg', '.jpg', '.png', '.webp', '.gif']
+      "image/*": [".jpeg", ".jpg", ".png", ".webp", ".gif"],
     },
     maxFiles: 1,
     maxSize: 10 * 1024 * 1024, // 10MB
   });
 
   // Audio files dropzone
-  const onFilesDrop = useCallback((acceptedFiles: File[]) => {
-    // Filter out duplicate files (same name and size)
-    const newFiles = acceptedFiles.filter(newFile => 
-      !uploadedFiles.some(existingFile => 
-        existingFile.name === newFile.name && existingFile.size === newFile.size
-      )
-    );
-    
-    // Add new files to existing files
-    const combinedFiles = [...uploadedFiles, ...newFiles];
-    onFileUpload(combinedFiles);
-  }, [onFileUpload, uploadedFiles]);
+  const onFilesDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      // Filter out duplicate files (same name and size)
+      const newFiles = acceptedFiles.filter(
+        (newFile) =>
+          !uploadedFiles.some(
+            (existingFile) =>
+              existingFile.name === newFile.name &&
+              existingFile.size === newFile.size,
+          ),
+      );
+
+      // Add new files to existing files
+      const combinedFiles = [...uploadedFiles, ...newFiles];
+      onFileUpload(combinedFiles);
+    },
+    [onFileUpload, uploadedFiles],
+  );
 
   const {
     getRootProps: getFilesRootProps,
     getInputProps: getFilesInputProps,
-    isDragActive: isFilesDragActive
+    isDragActive: isFilesDragActive,
   } = useDropzone({
     onDrop: onFilesDrop,
     accept: {
-      'audio/*': ['.mp3', '.wav', '.flac', '.aac', '.ogg', '.m4a']
+      "audio/*": [".mp3", ".wav", ".flac", ".aac", ".ogg", ".m4a"],
     },
     multiple: true,
     maxSize: 50 * 1024 * 1024, // 50MB per file
@@ -82,17 +91,21 @@ const UploadFileArea: React.FC<UploadFileAreaProps> = ({
   return (
     <div className="upload-file-area">
       {/* Cover Image Upload */}
-      <div 
-        {...getCoverRootProps()} 
-        className={`cover-upload ${isCoverDragActive ? 'drag-active' : ''} ${coverPreview ? 'has-preview' : ''}`}
+      <div
+        {...getCoverRootProps()}
+        className={`cover-upload ${isCoverDragActive ? "drag-active" : ""} ${coverPreview ? "has-preview" : ""}`}
       >
         <input {...getCoverInputProps()} />
-        
+
         {coverPreview ? (
           <div className="cover-preview">
-            <img src={coverPreview} alt="Cover preview" className="cover-image" />
-            <button 
-              type="button" 
+            <img
+              src={coverPreview}
+              alt="Cover preview"
+              className="cover-image"
+            />
+            <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 removeCover();
@@ -115,12 +128,12 @@ const UploadFileArea: React.FC<UploadFileAreaProps> = ({
       </div>
 
       {/* File Upload Area */}
-      <div 
-        {...getFilesRootProps()} 
-        className={`file-upload-zone ${isFilesDragActive ? 'drag-active' : ''}`}
+      <div
+        {...getFilesRootProps()}
+        className={`file-upload-zone ${isFilesDragActive ? "drag-active" : ""}`}
       >
         <input {...getFilesInputProps()} />
-        
+
         <div className="upload-icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path
@@ -134,11 +147,13 @@ const UploadFileArea: React.FC<UploadFileAreaProps> = ({
         </div>
         <div className="upload-text">
           <p className="upload-primary">
-            {isFilesDragActive ? "Drop audio files here" : "Drag files here to upload"}
+            {isFilesDragActive
+              ? "Drop audio files here"
+              : "Drag files here to upload"}
           </p>
           <p className="upload-secondary">or browse for files</p>
         </div>
-        
+
         {uploadedFiles.length > 0 && (
           <div className="uploaded-files-list">
             <h4>Uploaded Files ({uploadedFiles.length})</h4>
@@ -148,7 +163,7 @@ const UploadFileArea: React.FC<UploadFileAreaProps> = ({
                 <span className="file-size">
                   {(file.size / (1024 * 1024)).toFixed(2)} MB
                 </span>
-                <button 
+                <button
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
@@ -167,4 +182,4 @@ const UploadFileArea: React.FC<UploadFileAreaProps> = ({
   );
 };
 
-export default UploadFileArea; 
+export default UploadFileArea;

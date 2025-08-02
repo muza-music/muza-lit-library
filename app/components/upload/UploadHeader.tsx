@@ -17,4 +17,4 @@ const UploadHeader: React.FC<UploadHeaderProps> = ({ title, onCancel }) => {
   );
 };
 
-export default UploadHeader; 
+export default UploadHeader;

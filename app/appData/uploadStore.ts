@@ -40,7 +40,7 @@ type UploadStore = {
 
   // Form data actions
   updateFormData: (field: keyof UploadFormData, value: string) => void;
-  
+
   // Musicians actions
   updateMusician: (index: number, field: keyof Musician, value: string) => void;
   addMusician: () => void;
@@ -49,16 +49,20 @@ type UploadStore = {
   // File actions
   setCoverImage: (file: File | null) => void;
   setAudioFiles: (files: File[]) => void;
-  
+
   // Track metadata actions
-  updateTrackMetadata: (trackId: string, field: keyof Omit<TrackMetadata, 'id' | 'file'>, value: string) => void;
+  updateTrackMetadata: (
+    trackId: string,
+    field: keyof Omit<TrackMetadata, "id" | "file">,
+    value: string,
+  ) => void;
   deleteTrack: (trackId: string) => void;
   reorderTracks: (fromIndex: number, toIndex: number) => void;
   generateTrackMetadata: (files: File[], mainArtist: string) => void;
 
   // Reset/cleanup
   resetUpload: () => void;
-  
+
   // Final submission
   getUploadData: () => {
     formData: UploadFormData;
@@ -77,9 +81,7 @@ const initialFormData: UploadFormData = {
   otherCredits: "",
 };
 
-const initialMusicians: Musician[] = [
-  { name: "", instruments: "" }
-];
+const initialMusicians: Musician[] = [{ name: "", instruments: "" }];
 
 export const useUploadStore = create<UploadStore>((set, get) => ({
   // Initial state
@@ -115,9 +117,15 @@ export const useUploadStore = create<UploadStore>((set, get) => ({
     const { currentStep, formData, audioFiles, trackMetadata } = get();
     switch (currentStep) {
       case 1:
-        return !!(formData.albumTitle && formData.mainArtist && audioFiles.length > 0);
+        return !!(
+          formData.albumTitle &&
+          formData.mainArtist &&
+          audioFiles.length > 0
+        );
       case 2:
-        return trackMetadata.every(track => !!(track.songName && track.composer));
+        return trackMetadata.every(
+          (track) => !!(track.songName && track.composer),
+        );
       default:
         return true;
     }
@@ -126,25 +134,25 @@ export const useUploadStore = create<UploadStore>((set, get) => ({
   // Form data actions
   updateFormData: (field: keyof UploadFormData, value: string) =>
     set((state) => ({
-      formData: { ...state.formData, [field]: value }
+      formData: { ...state.formData, [field]: value },
     })),
 
   // Musicians actions
   updateMusician: (index: number, field: keyof Musician, value: string) =>
     set((state) => ({
       musicians: state.musicians.map((musician, i) =>
-        i === index ? { ...musician, [field]: value } : musician
-      )
+        i === index ? { ...musician, [field]: value } : musician,
+      ),
     })),
 
   addMusician: () =>
     set((state) => ({
-      musicians: [...state.musicians, { name: "", instruments: "" }]
+      musicians: [...state.musicians, { name: "", instruments: "" }],
     })),
 
   removeMusician: (index: number) =>
     set((state) => ({
-      musicians: state.musicians.filter((_, i) => i !== index)
+      musicians: state.musicians.filter((_, i) => i !== index),
     })),
 
   // File actions
@@ -158,19 +166,27 @@ export const useUploadStore = create<UploadStore>((set, get) => ({
   },
 
   // Track metadata actions
-  updateTrackMetadata: (trackId: string, field: keyof Omit<TrackMetadata, 'id' | 'file'>, value: string) =>
+  updateTrackMetadata: (
+    trackId: string,
+    field: keyof Omit<TrackMetadata, "id" | "file">,
+    value: string,
+  ) =>
     set((state) => ({
-      trackMetadata: state.trackMetadata.map(track =>
-        track.id === trackId ? { ...track, [field]: value } : track
-      )
+      trackMetadata: state.trackMetadata.map((track) =>
+        track.id === trackId ? { ...track, [field]: value } : track,
+      ),
     })),
 
   deleteTrack: (trackId: string) =>
     set((state) => {
-      const trackToDelete = state.trackMetadata.find(t => t.id === trackId);
+      const trackToDelete = state.trackMetadata.find((t) => t.id === trackId);
       return {
-        trackMetadata: state.trackMetadata.filter(track => track.id !== trackId),
-        audioFiles: state.audioFiles.filter(file => file !== trackToDelete?.file)
+        trackMetadata: state.trackMetadata.filter(
+          (track) => track.id !== trackId,
+        ),
+        audioFiles: state.audioFiles.filter(
+          (file) => file !== trackToDelete?.file,
+        ),
       };
     }),
 
@@ -184,9 +200,11 @@ export const useUploadStore = create<UploadStore>((set, get) => ({
 
   generateTrackMetadata: (files: File[], mainArtist: string) => {
     const { trackMetadata } = get();
-    const existingFileNames = trackMetadata.map(track => track.fileName);
-    const newFiles = files.filter(file => !existingFileNames.includes(file.name));
-    
+    const existingFileNames = trackMetadata.map((track) => track.fileName);
+    const newFiles = files.filter(
+      (file) => !existingFileNames.includes(file.name),
+    );
+
     if (newFiles.length > 0) {
       const newMetadata = newFiles.map((file, index) => ({
         id: `track-${Date.now()}-${index}`,
@@ -194,24 +212,25 @@ export const useUploadStore = create<UploadStore>((set, get) => ({
         songName: file.name.replace(/\.[^/.]+$/, ""), // Remove extension
         composer: mainArtist || "",
         duration: "0:00", // Will be calculated later
-        file: file
+        file: file,
       }));
-      
+
       set((state) => ({
-        trackMetadata: [...state.trackMetadata, ...newMetadata]
+        trackMetadata: [...state.trackMetadata, ...newMetadata],
       }));
     }
   },
 
   // Reset/cleanup
-  resetUpload: () => set({
-    currentStep: 1,
-    formData: initialFormData,
-    musicians: initialMusicians,
-    coverImage: null,
-    audioFiles: [],
-    trackMetadata: [],
-  }),
+  resetUpload: () =>
+    set({
+      currentStep: 1,
+      formData: initialFormData,
+      musicians: initialMusicians,
+      coverImage: null,
+      audioFiles: [],
+      trackMetadata: [],
+    }),
 
   // Final submission
   getUploadData: () => {
@@ -220,7 +239,7 @@ export const useUploadStore = create<UploadStore>((set, get) => ({
       formData,
       musicians,
       coverImage,
-      trackMetadata
+      trackMetadata,
     };
   },
-})); 
+}));

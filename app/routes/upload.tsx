@@ -13,7 +13,7 @@ import "../styles/main.scss";
 
 export default function Upload() {
   const navigate = useNavigate();
-  
+
   // Get state and actions from upload store
   const {
     currentStep,
@@ -22,7 +22,7 @@ export default function Upload() {
     audioFiles,
     trackMetadata,
     coverImage,
-    
+
     // Actions
     updateFormData,
     updateMusician,
@@ -44,13 +44,17 @@ export default function Upload() {
     navigate("/");
   };
 
-  const handleInputChange = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    updateFormData(field as keyof typeof formData, e.target.value);
-  };
+  const handleInputChange =
+    (field: string) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      updateFormData(field as keyof typeof formData, e.target.value);
+    };
 
-  const handleMusicianChange = (index: number, field: keyof typeof musicians[0]) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    updateMusician(index, field, e.target.value);
-  };
+  const handleMusicianChange =
+    (index: number, field: keyof (typeof musicians)[0]) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      updateMusician(index, field, e.target.value);
+    };
 
   const handleFileUpload = (files: File[]) => {
     setAudioFiles(files);
@@ -65,7 +69,9 @@ export default function Upload() {
       // Final submit logic
       const albumData = getUploadData();
       console.log("Album data ready for upload:", albumData);
-      alert(`Upload complete! Album: "${formData.albumTitle}" with ${trackMetadata.length} tracks`);
+      alert(
+        `Upload complete! Album: "${formData.albumTitle}" with ${trackMetadata.length} tracks`,
+      );
       resetUpload();
       navigate("/");
     } else {
@@ -126,10 +132,7 @@ export default function Upload() {
 
   return (
     <div className="upload-page">
-      <UploadHeader
-        title="Album Upload"
-        onCancel={handleCancel}
-      />
+      <UploadHeader title="Album Upload" onCancel={handleCancel} />
 
       {renderStepContent()}
 
@@ -143,4 +146,4 @@ export default function Upload() {
       />
     </div>
   );
-} 
+}

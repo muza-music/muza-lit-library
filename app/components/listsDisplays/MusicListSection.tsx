@@ -34,7 +34,13 @@ const MusicListSectionComponent: React.FC<
   selectedSong,
   artists,
 }) => {
-  const { selectedSong: globalSelectedSong, setSelectedSong, setIsPlaying, isPlaying, togglePlayPause } = useCurrentPlayerStore();
+  const {
+    selectedSong: globalSelectedSong,
+    setSelectedSong,
+    setIsPlaying,
+    isPlaying,
+    togglePlayPause,
+  } = useCurrentPlayerStore();
 
   const handleShowAll = () => {
     if (onShowAll) {

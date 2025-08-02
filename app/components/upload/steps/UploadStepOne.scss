@@ -7,7 +7,7 @@
     display: flex;
     min-height: 0;
     padding-bottom: 84px; // Space for fixed footer
-    
+
     .upload-left {
       flex: 1;
       padding: 24px 40px;
@@ -26,10 +26,10 @@
 @media (max-width: 1024px) {
   .upload-step-one .upload-container {
     flex-direction: column;
-    
+
     .upload-left {
       border-right: none;
       border-bottom: 1px solid var(--colors_border_light);
     }
   }
-} 
+}

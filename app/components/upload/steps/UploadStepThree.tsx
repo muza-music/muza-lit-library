@@ -21,7 +21,13 @@ const UploadStepThree: React.FC<UploadStepThreeProps> = ({
   onSave,
   onPublish,
 }) => {
-  const { selectedSong, setSelectedSong, setIsPlaying, isPlaying, togglePlayPause } = useCurrentPlayerStore();
+  const {
+    selectedSong,
+    setSelectedSong,
+    setIsPlaying,
+    isPlaying,
+    togglePlayPause,
+  } = useCurrentPlayerStore();
 
   const getCoverImageUrl = () => {
     if (coverImage) {
@@ -36,7 +42,7 @@ const UploadStepThree: React.FC<UploadStepThreeProps> = ({
       id: `upload-preview-${Date.now()}`,
       imageSrc: getCoverImageUrl(),
       title: formData.albumTitle || "Untitled Album",
-      subTitle: `Album • ${trackMetadata.length} Song${trackMetadata.length !== 1 ? 's' : ''}`,
+      subTitle: `Album • ${trackMetadata.length} Song${trackMetadata.length !== 1 ? "s" : ""}`,
       artist: formData.mainArtist || "Unknown Artist",
       songs: trackMetadata.map((_, index) => index + 1),
     };
@@ -48,7 +54,7 @@ const UploadStepThree: React.FC<UploadStepThreeProps> = ({
       // Parse duration string to seconds
       const parseDuration = (durationStr: string): number => {
         if (!durationStr || durationStr === "0:00") return 0;
-        const parts = durationStr.split(':');
+        const parts = durationStr.split(":");
         if (parts.length === 2) {
           const minutes = parseInt(parts[0]) || 0;
           const seconds = parseInt(parts[1]) || 0;
@@ -79,9 +85,9 @@ const UploadStepThree: React.FC<UploadStepThreeProps> = ({
       <div className="album-preview">
         {/* Use existing AlbumHeader component */}
         <AlbumHeader album={album} songs={songDetails} />
-        
+
         <hr />
-        
+
         {/* Use existing SongLine components */}
         <div className="album-song-list">
           {songDetails.map((song: SongDetails) => (
@@ -100,11 +106,11 @@ const UploadStepThree: React.FC<UploadStepThreeProps> = ({
             />
           ))}
         </div>
-        
+
         <hr />
       </div>
     </div>
   );
 };
 
-export default UploadStepThree; 
+export default UploadStepThree;

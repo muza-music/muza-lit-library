@@ -48,7 +48,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const [error, setError] = useState<string | null>(null);
 
   // Check if we're on the upload page
-  const isUploadPage = location.pathname === '/routes/upload';
+  const isUploadPage = location.pathname === "/routes/upload";
 
   // Stop music when navigating to upload page
   useEffect(() => {

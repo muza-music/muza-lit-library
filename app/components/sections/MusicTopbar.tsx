@@ -32,7 +32,9 @@ const MusicTopbar: React.FC<MusicTopbarProps> = ({
           />
         </div>
         <div className="controls">
-          <button className="upload-music-button" onClick={handleUploadClick}>Upload Music</button>
+          <button className="upload-music-button" onClick={handleUploadClick}>
+            Upload Music
+          </button>
           <div className="user-menu">
             <div className="user-icon" onClick={onUserIconClick}>
               <img src="https://picsum.photos/100" alt="user" />

@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   gap: 194px;
-  
+
   .cover-upload {
     width: 192px;
     height: 192px;
@@ -17,7 +17,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
-    
+
     &:hover {
       background-color: var(--colors_secondary_light);
     }
@@ -31,7 +31,7 @@
     &.has-preview {
       padding: 0;
     }
-    
+
     .cover-upload-button {
       background-color: var(--colors_foreground_light);
       width: 56px;
@@ -41,14 +41,14 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 16px;
-      
+
       .plus-icon-large {
         color: white;
         font-size: 24px;
         font-weight: bold;
       }
     }
-    
+
     .cover-upload-text {
       font-size: 14px;
       color: var(--colors_foreground_light);
@@ -93,7 +93,7 @@
       }
     }
   }
-  
+
   .file-upload-zone {
     display: flex;
     flex-direction: column;
@@ -116,22 +116,22 @@
       background-color: var(--colors_secondary_light);
       transform: scale(1.02);
     }
-    
+
     .upload-icon {
       width: 24px;
       height: 24px;
       color: var(--colors_foreground_light);
     }
-    
+
     .upload-text {
       text-align: center;
-      
+
       .upload-primary {
         font-size: 16px;
         color: var(--colors_foreground_light);
         margin: 0 0 4px 0;
       }
-      
+
       .upload-secondary {
         font-size: 14px;
         color: var(--colors_primary_light);
@@ -211,4 +211,4 @@
       padding: 24px;
     }
   }
-} 
+}

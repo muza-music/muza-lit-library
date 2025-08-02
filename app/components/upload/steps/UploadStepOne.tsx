@@ -8,8 +8,13 @@ interface UploadStepOneProps {
   formData: UploadFormData;
   musicians: Musician[];
   audioFiles: File[]; // Add audioFiles prop
-  onFormDataChange: (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  onMusicianChange: (index: number, field: keyof Musician) => (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onFormDataChange: (
+    field: string,
+  ) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onMusicianChange: (
+    index: number,
+    field: keyof Musician,
+  ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
   onAddMusician: () => void;
   onCoverUpload: (file: File) => void;
   onFileUpload: (files: File[]) => void;
@@ -50,4 +55,4 @@ const UploadStepOne: React.FC<UploadStepOneProps> = ({
   );
 };
 
-export default UploadStepOne; 
+export default UploadStepOne;

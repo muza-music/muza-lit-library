@@ -18,7 +18,13 @@ interface AlbumPageState {
 }
 
 export default function AlbumPage() {
-  const { selectedSong, setSelectedSong, setIsPlaying, isPlaying, togglePlayPause } = useCurrentPlayerStore();
+  const {
+    selectedSong,
+    setSelectedSong,
+    setIsPlaying,
+    isPlaying,
+    togglePlayPause,
+  } = useCurrentPlayerStore();
   const { recentlyPlayed } = useMusicLibraryStore();
 
   const [albumSongsDetails, setAlbumSongsDetails] = useState<SongDetails[]>([]);
