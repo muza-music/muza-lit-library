@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./MusicTopbar.scss";
+import { useTranslation } from "~/lib/i18n/translations";
 
 interface MusicTopbarProps {
   onSearchChange?: (searchText: string) => void;
@@ -10,6 +11,7 @@ const MusicTopbar: React.FC<MusicTopbarProps> = ({
   onSearchChange,
   onUserIconClick,
 }) => {
+  const { t } = useTranslation();
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     onSearchChange?.(e.target.value);
   };
@@ -20,15 +22,15 @@ const MusicTopbar: React.FC<MusicTopbarProps> = ({
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search for artists, albums or songs"
+            placeholder={t('form.searchPlaceholder')}
             onChange={handleSearchInput}
           />
         </div>
         <div className="controls">
-          <button className="upload-music-button">Upload Music</button>
+          <button className="upload-music-button">{t('upload.uploadMusic')}</button>
           <div className="user-menu">
             <div className="user-icon" onClick={onUserIconClick}>
-              <img src="https://picsum.photos/100" alt="user" />
+              <img src="https://picsum.photos/100" alt={t('topbar.user')} />
             </div>
           </div>
         </div>

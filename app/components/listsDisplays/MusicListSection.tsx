@@ -10,6 +10,7 @@ import type {
   SongDetails,
   Artist,
 } from "~/appData/models";
+import { useTranslation } from "~/lib/i18n/translations";
 
 const MusicListSectionComponent: React.FC<
   MusicListSection & {
@@ -33,6 +34,7 @@ const MusicListSectionComponent: React.FC<
   selectedSong,
   artists,
 }) => {
+  const { t } = useTranslation();
   const handleShowAll = () => {
     if (onShowAll) {
       onShowAll(title);
@@ -68,7 +70,7 @@ const MusicListSectionComponent: React.FC<
             albumImages={[item.imageSrc || ""]}
             title={item.title}
             songsCount={item.songsCount?.toString() || ""}
-            userName={item.author || "Unknown"}
+            userName={item.author || t('common.unknown')}
           />
         ));
       case "song":

@@ -4,12 +4,14 @@ import MusicListSectionComponent from "~/components/listsDisplays/MusicListSecti
 import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
 import { useMusicLibraryStore } from "~/appData/musicStore";
 import { useNavigate } from "react-router";
+import { useTranslation } from "~/lib/i18n/translations";
 
 import "../styles/scrollbar.scss";
 import "../styles/variables.scss";
 import "../styles/main.scss";
 
 export default function Home() {
+  const { t } = useTranslation();
   const { selectedSong, setSelectedSong } = useCurrentPlayerStore();
   const { recentlyPlayed, newReleases, artists } = useMusicLibraryStore();
 
@@ -21,13 +23,13 @@ export default function Home() {
 
   const handleShowAll = (sectionTitle: string) => {
     switch (sectionTitle) {
-      case "New Releases":
+      case t('section.newReleases'):
         navigate("/routes/albums");
         break;
-      case "Recently Played":
+      case t('section.recentlyPlayed'):
         navigate("/routes/songs");
         break;
-      case "Artists":
+      case t('section.artists'):
         navigate("/routes/artists");
         break;
       default:
@@ -37,17 +39,17 @@ export default function Home() {
 
   const sections = [
     {
-      title: "New Releases",
+      title: t('section.newReleases'),
       type: "album" as const,
       albums: newReleases,
     },
     {
-      title: "Recently Played",
+      title: t('section.recentlyPlayed'),
       type: "song" as const,
       songs: recentlyPlayed.slice(0, 30),
     },
     {
-      title: "Artists",
+      title: t('section.artists'),
       type: "artist" as const,
       artists: artists.slice(0, 6),
     },
@@ -55,7 +57,7 @@ export default function Home() {
 
   return (
     <main>
-      <h1>Home</h1>
+      <h1>{t('page.home')}</h1>
       <hr />
 
       {sections.map((section, index) => (

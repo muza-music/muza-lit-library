@@ -2,12 +2,14 @@ import type { Album } from "~/appData/models";
 import MusicListSectionComponent from "~/components/listsDisplays/MusicListSection";
 import { useMusicLibraryStore } from "~/appData/musicStore";
 import { useNavigate } from "react-router";
+import { useTranslation } from "~/lib/i18n/translations";
 
 import "../styles/scrollbar.scss";
 import "../styles/variables.scss";
 import "../styles/main.scss";
 
 export default function Explore() {
+  const { t } = useTranslation();
   const { newReleases, featured, recommended } = useMusicLibraryStore();
   const navigate = useNavigate();
 
@@ -22,30 +24,30 @@ export default function Explore() {
   // Define sections configuration for the loop
   const sections = [
     {
-      title: "New Releases",
+      title: t('section.newReleases'),
       albums: newReleases,
     },
     {
-      title: "The Classics",
+      title: t('section.theClassics'),
       albums: featured,
     },
     {
-      title: "Uncovered Gems",
+      title: t('section.uncoveredGems'),
       albums: recommended,
     },
     {
-      title: "Albums",
+      title: t('nav.albums'),
       albums: featured.concat(recommended),
     },
     {
-      title: "The Ones You Missed",
+      title: t('section.theOnesYouMissed'),
       albums: recommended,
     },
   ];
 
   return (
     <main>
-      <h1>Explore</h1>
+      <h1>{t('page.explore')}</h1>
       <hr />
 
       {sections.map((section, index) => (

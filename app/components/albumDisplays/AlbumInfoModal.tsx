@@ -1,5 +1,6 @@
 import React from "react";
 import "./AlbumInfoModal.scss";
+import { useTranslation } from "~/lib/i18n/translations";
 
 interface AlbumInfoProps {
   isOpen: boolean;
@@ -7,6 +8,7 @@ interface AlbumInfoProps {
 }
 
 const AlbumInfoModal: React.FC<AlbumInfoProps> = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
   if (!isOpen) return null;
 
   return (
@@ -15,48 +17,48 @@ const AlbumInfoModal: React.FC<AlbumInfoProps> = ({ isOpen, onClose }) => {
         <img
           className="album-cover"
           src="/art/imag_1.jpg"
-          alt="Ballads album cover"
+          alt={t('albumInfo.balladsCover')}
         />
         <div className="album-info">
-          <h2 className="album-title">Ballads</h2>
-          <p className="artist-name">john coltrano</p>
+          <h2 className="album-title">{t('albumInfo.ballads')}</h2>
+          <p className="artist-name">{t('albumInfo.johnColtrane')}</p>
         </div>
         <button className="modal-close" onClick={onClose}>
-          ×
+          {t('common.close')}
         </button>
       </div>
 
       <div className="modal-content">
         <div className="info-grid">
-          <div className="info-label">Tenor Saxophone</div>
-          <div className="info-value">John Coltrane</div>
+          <div className="info-label">{t('albumInfo.tenorSaxophone')}</div>
+          <div className="info-value">{t('albumInfo.johnColtraneValue')}</div>
 
-          <div className="info-label">Piano</div>
-          <div className="info-value">McCoy Tyner</div>
+          <div className="info-label">{t('albumInfo.piano')}</div>
+          <div className="info-value">{t('albumInfo.mccoyTyner')}</div>
 
-          <div className="info-label">Bass</div>
-          <div className="info-value">Jimmy Garrison</div>
+          <div className="info-label">{t('albumInfo.bass')}</div>
+          <div className="info-value">{t('albumInfo.jimmyGarrison')}</div>
 
-          <div className="info-label">Drums</div>
-          <div className="info-value">Elvin Jones</div>
+          <div className="info-label">{t('albumInfo.drums')}</div>
+          <div className="info-value">{t('albumInfo.elvinJones')}</div>
 
-          <div className="info-label">Composer</div>
-          <div className="info-value">Richard Rodgers</div>
+          <div className="info-label">{t('albumInfo.composer')}</div>
+          <div className="info-value">{t('albumInfo.richardRodgers')}</div>
 
-          <div className="info-label">Lyrics</div>
-          <div className="info-value">Lorenz Hart</div>
+          <div className="info-label">{t('albumInfo.lyrics')}</div>
+          <div className="info-value">{t('albumInfo.lorenzHart')}</div>
 
-          <div className="info-label">Recorded on</div>
-          <div className="info-value">Nov 13, 1962</div>
+          <div className="info-label">{t('albumInfo.recordedOn')}</div>
+          <div className="info-value">{t('albumInfo.recordingDate')}</div>
 
-          <div className="info-label">Recorded by</div>
-          <div className="info-value">By Rudy Van Gelder</div>
+          <div className="info-label">{t('albumInfo.recordedBy')}</div>
+          <div className="info-value">{t('albumInfo.rudyVanGelder')}</div>
 
-          <div className="info-label">Produced by</div>
-          <div className="info-value">Bob Thiele</div>
+          <div className="info-label">{t('albumInfo.producedBy')}</div>
+          <div className="info-value">{t('albumInfo.bobThiele')}</div>
 
-          <div className="info-label">Label</div>
-          <div className="info-value">Impulse Records</div>
+          <div className="info-label">{t('albumInfo.label')}</div>
+          <div className="info-value">{t('albumInfo.impulseRecords')}</div>
         </div>
       </div>
     </div>

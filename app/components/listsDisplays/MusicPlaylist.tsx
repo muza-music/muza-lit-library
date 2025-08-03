@@ -5,6 +5,7 @@ import SmallAlbumDetails from "../albumDisplays/SmallAlbumDetails";
 import MuzaButton from "~/controls/MuzaButton";
 import PlaylistItem from "../songLineDisplays/PlaylistItem";
 import MusicSuggestionsList from "./MusicSuggestionsList";
+import { useTranslation } from "~/lib/i18n/translations";
 
 const MuzaMusicPlaylist: React.FC<MusicPlaylist> = ({
   title,
@@ -13,6 +14,7 @@ const MuzaMusicPlaylist: React.FC<MusicPlaylist> = ({
   songs,
   suggestions,
 }) => {
+  const { t } = useTranslation();
   const sideMode = "side";
 
   const getImageSrc = () => {
@@ -29,7 +31,7 @@ const MuzaMusicPlaylist: React.FC<MusicPlaylist> = ({
         <SmallAlbumDetails
           imageSrc={getImageSrc()}
           title={title}
-          author={author || "Unknown"}
+          author={author || t('common.unknown')}
         />
       </div>
 
@@ -41,7 +43,7 @@ const MuzaMusicPlaylist: React.FC<MusicPlaylist> = ({
         </div>
       </div>
 
-      <MusicSuggestionsList title="Suggestions" songs={suggestions || []} />
+      <MusicSuggestionsList title={t('section.suggestions')} songs={suggestions || []} />
     </div>
   );
 };
