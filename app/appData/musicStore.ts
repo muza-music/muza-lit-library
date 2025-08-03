@@ -24,9 +24,10 @@ type musicLibraryStore = {
   setFeatured: (albums: Album[]) => void;
   setRecommended: (albums: Album[]) => void;
   setSidebarSections: (sections: Section[]) => void;
+  incrementPlayCount: (songId: string) => void;
 };
 
-export const useMusicLibraryStore = create<musicLibraryStore>((set) => ({
+export const useMusicLibraryStore = create<musicLibraryStore>((set, get) => ({
   newReleases: [],
   recentlyPlayed: [],
   artists: [],
@@ -53,4 +54,15 @@ export const useMusicLibraryStore = create<musicLibraryStore>((set) => ({
 
   setSidebarSections: (sections: Section[]) =>
     set({ sidebarSections: sections }),
+
+  incrementPlayCount: (songId: string) => {
+    const state = get();
+    const updatedRecentlyPlayed = state.recentlyPlayed.map(song => 
+      song.id === songId 
+        ? { ...song, plays: (song.plays || 0) + 1 }
+        : song
+    );
+    
+    set({ recentlyPlayed: updatedRecentlyPlayed });
+  },
 }));

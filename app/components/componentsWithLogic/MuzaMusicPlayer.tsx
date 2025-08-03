@@ -4,9 +4,15 @@ import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
 import { MusicPlayer } from "../sections/MusicPlayer";
 
 export default function MuzaMusicPlayer() {
-  const { recentlyPlayed } = useMusicLibraryStore();
-  const { selectedSong, setSelectedSong, isPlaying, setIsPlaying } =
-    useCurrentPlayerStore();
+  const { recentlyPlayed, incrementPlayCount } = useMusicLibraryStore();
+  const { 
+    selectedSong, 
+    setSelectedSong, 
+    isPlaying, 
+    setIsPlaying, 
+    playCountIncremented, 
+    setPlayCountIncremented 
+  } = useCurrentPlayerStore();
 
   const getCurrentSongIndex = () => {
     if (!selectedSong || !selectedSong.id) return -1;
@@ -41,6 +47,13 @@ export default function MuzaMusicPlayer() {
     });
   };
 
+  const handlePlayCountIncrement = () => {
+    if (selectedSong?.id && !playCountIncremented) {
+      incrementPlayCount(selectedSong.id);
+      setPlayCountIncremented(true);
+    }
+  };
+
   return (
     <>
       {selectedSong && (
@@ -65,6 +78,7 @@ export default function MuzaMusicPlayer() {
           onPrevious={handlePreviousSong}
           onNext={handleNextSong}
           onSongEnded={handleNextSong}
+          onPlayCountIncrement={handlePlayCountIncrement}
         />
       )}
     </>
