@@ -5,13 +5,13 @@ import { MusicPlayer } from "../sections/MusicPlayer";
 
 export default function MuzaMusicPlayer() {
   const { recentlyPlayed, incrementPlayCount } = useMusicLibraryStore();
-  const { 
-    selectedSong, 
-    setSelectedSong, 
-    isPlaying, 
-    setIsPlaying, 
-    playCountIncremented, 
-    setPlayCountIncremented 
+  const {
+    selectedSong,
+    setSelectedSong,
+    isPlaying,
+    setIsPlaying,
+    playCountIncremented,
+    setPlayCountIncremented,
   } = useCurrentPlayerStore();
 
   const getCurrentSongIndex = () => {

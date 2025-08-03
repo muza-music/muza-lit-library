@@ -57,12 +57,10 @@ export const useMusicLibraryStore = create<musicLibraryStore>((set, get) => ({
 
   incrementPlayCount: (songId: string) => {
     const state = get();
-    const updatedRecentlyPlayed = state.recentlyPlayed.map(song => 
-      song.id === songId 
-        ? { ...song, plays: (song.plays || 0) + 1 }
-        : song
+    const updatedRecentlyPlayed = state.recentlyPlayed.map((song) =>
+      song.id === songId ? { ...song, plays: (song.plays || 0) + 1 } : song,
     );
-    
+
     set({ recentlyPlayed: updatedRecentlyPlayed });
   },
 }));

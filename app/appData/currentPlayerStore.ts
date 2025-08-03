@@ -18,11 +18,13 @@ export const useCurrentPlayerStore = create<currentPlayerStore>((set) => ({
   selectedPlaListOrAlbum: null,
   playCountIncremented: false,
 
-  setSelectedSong: (song: SongDetails) => set({ selectedSong: song, playCountIncremented: false }),
+  setSelectedSong: (song: SongDetails) =>
+    set({ selectedSong: song, playCountIncremented: false }),
   setIsPlaying: (play: Boolean) => set({ isPlaying: play }),
 
   setSelectedPlaListOrAlbum: (album: Album) =>
     set({ selectedPlaListOrAlbum: album }),
 
-  setPlayCountIncremented: (incremented: boolean) => set({ playCountIncremented: incremented }),
+  setPlayCountIncremented: (incremented: boolean) =>
+    set({ playCountIncremented: incremented }),
 }));
