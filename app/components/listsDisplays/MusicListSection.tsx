@@ -70,7 +70,7 @@ const MusicListSectionComponent: React.FC<
             albumImages={[item.imageSrc || ""]}
             title={item.title}
             songsCount={item.songsCount?.toString() || ""}
-            userName={item.author || t('common.unknown')}
+            userName={item.author || t("common.unknown")}
           />
         ));
       case "song":

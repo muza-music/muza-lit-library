@@ -29,7 +29,7 @@ const AlbumHeader: React.FC<AlbumHeaderProps> = ({ album, songs }) => {
   };
 
   const addToLibrary = () => {
-    toast(t('album.addedToLibrary'), {
+    toast(t("album.addedToLibrary"), {
       position: "bottom-center",
       hideProgressBar: true,
     });
@@ -49,7 +49,9 @@ const AlbumHeader: React.FC<AlbumHeaderProps> = ({ album, songs }) => {
       <div className="info">
         <div className="title">{album.title}</div>
         <div className="artist">{album.artist}</div>
-        <div className="atrist">{t('common.album')} • {album.songs?.length} {t('common.songs')}</div>
+        <div className="atrist">
+          {t("common.album")} • {album.songs?.length} {t("common.songs")}
+        </div>
         <button className="icon-button" onClick={() => Play()}>
           {isPlaying ? <FaPause /> : <FaPlay />}
         </button>

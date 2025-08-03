@@ -24,30 +24,30 @@ export default function Explore() {
   // Define sections configuration for the loop
   const sections = [
     {
-      title: t('section.newReleases'),
+      title: t("section.newReleases"),
       albums: newReleases,
     },
     {
-      title: t('section.theClassics'),
+      title: t("section.theClassics"),
       albums: featured,
     },
     {
-      title: t('section.uncoveredGems'),
+      title: t("section.uncoveredGems"),
       albums: recommended,
     },
     {
-      title: t('nav.albums'),
+      title: t("nav.albums"),
       albums: featured.concat(recommended),
     },
     {
-      title: t('section.theOnesYouMissed'),
+      title: t("section.theOnesYouMissed"),
       albums: recommended,
     },
   ];
 
   return (
     <main>
-      <h1>{t('page.explore')}</h1>
+      <h1>{t("page.explore")}</h1>
       <hr />
 
       {sections.map((section, index) => (

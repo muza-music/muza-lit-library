@@ -22,15 +22,17 @@ const MusicTopbar: React.FC<MusicTopbarProps> = ({
         <div className="search-container">
           <input
             type="text"
-            placeholder={t('form.searchPlaceholder')}
+            placeholder={t("form.searchPlaceholder")}
             onChange={handleSearchInput}
           />
         </div>
         <div className="controls">
-          <button className="upload-music-button">{t('upload.uploadMusic')}</button>
+          <button className="upload-music-button">
+            {t("upload.uploadMusic")}
+          </button>
           <div className="user-menu">
             <div className="user-icon" onClick={onUserIconClick}>
-              <img src="https://picsum.photos/100" alt={t('topbar.user')} />
+              <img src="https://picsum.photos/100" alt={t("topbar.user")} />
             </div>
           </div>
         </div>

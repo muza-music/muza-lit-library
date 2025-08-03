@@ -168,7 +168,11 @@
       {
         "items": [
           { "svg": "home", "text": "nav.home", "action": "/" },
-          { "svg": "explore", "text": "nav.explore", "action": "/routes/explore" }
+          {
+            "svg": "explore",
+            "text": "nav.explore",
+            "action": "/routes/explore"
+          }
         ]
       },
       {
@@ -180,7 +184,11 @@
             "action": "/routes/playlists"
           },
           { "svg": "album", "text": "nav.albums", "action": "/routes/albums" },
-          { "svg": "artists", "text": "nav.artists", "action": "/routes/artists" },
+          {
+            "svg": "artists",
+            "text": "nav.artists",
+            "action": "/routes/artists"
+          },
           { "svg": "songs", "text": "nav.songs", "action": "/routes/songs" }
         ]
       }

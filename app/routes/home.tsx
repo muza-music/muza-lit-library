@@ -23,13 +23,13 @@ export default function Home() {
 
   const handleShowAll = (sectionTitle: string) => {
     switch (sectionTitle) {
-      case t('section.newReleases'):
+      case t("section.newReleases"):
         navigate("/routes/albums");
         break;
-      case t('section.recentlyPlayed'):
+      case t("section.recentlyPlayed"):
         navigate("/routes/songs");
         break;
-      case t('section.artists'):
+      case t("section.artists"):
         navigate("/routes/artists");
         break;
       default:
@@ -39,17 +39,17 @@ export default function Home() {
 
   const sections = [
     {
-      title: t('section.newReleases'),
+      title: t("section.newReleases"),
       type: "album" as const,
       albums: newReleases,
     },
     {
-      title: t('section.recentlyPlayed'),
+      title: t("section.recentlyPlayed"),
       type: "song" as const,
       songs: recentlyPlayed.slice(0, 30),
     },
     {
-      title: t('section.artists'),
+      title: t("section.artists"),
       type: "artist" as const,
       artists: artists.slice(0, 6),
     },
@@ -57,7 +57,7 @@ export default function Home() {
 
   return (
     <main>
-      <h1>{t('page.home')}</h1>
+      <h1>{t("page.home")}</h1>
       <hr />
 
       {sections.map((section, index) => (

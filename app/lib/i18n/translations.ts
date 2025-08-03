@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 // Translation type
 interface Translations {
@@ -6,7 +6,7 @@ interface Translations {
 }
 
 // Current language state
-let currentLanguage = 'english';
+let currentLanguage = "english";
 let translations: Translations = {};
 
 // Load translation file dynamically
@@ -15,9 +15,12 @@ const loadTranslations = async (language: string): Promise<Translations> => {
     const module = await import(`./translations/${language}.ts`);
     return module.default;
   } catch (error) {
-    console.error(`Failed to load translations for language: ${language}`, error);
+    console.error(
+      `Failed to load translations for language: ${language}`,
+      error,
+    );
     // Fallback to english if other language fails
-    if (language !== 'english') {
+    if (language !== "english") {
       const fallback = await import(`./translations/english.ts`);
       return fallback.default;
     }
@@ -53,4 +56,4 @@ export const useTranslation = () => {
 // Direct translation function for non-component usage
 export const t = (key: string, fallback?: string): string => {
   return translations[key] || fallback || key;
-}; 
+};

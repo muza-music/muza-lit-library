@@ -209,7 +209,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
             <button
               className={`control-btn shuffle ${shuffle ? "active" : ""}`}
               onClick={() => setShuffle(!shuffle)}
-              aria-label={t('player.shuffle')}
+              aria-label={t("player.shuffle")}
             >
               <MuzaIcon iconName="shuffle" />
             </button>
@@ -217,7 +217,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
             <button
               className="control-btn previous"
               onClick={onPrevious}
-              aria-label={t('player.previous')}
+              aria-label={t("player.previous")}
             >
               <MuzaIcon iconName="skip-back" />
             </button>
@@ -225,7 +225,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
             <button
               className="control-btn play"
               onClick={togglePlayPause}
-              aria-label={t('player.playPause')}
+              aria-label={t("player.playPause")}
             >
               {isLoading ? (
                 <FaSpinner className="spinner" />
@@ -239,7 +239,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
             <button
               className="control-btn next"
               onClick={onNext}
-              aria-label={t('player.next')}
+              aria-label={t("player.next")}
             >
               <MuzaIcon iconName="skip-forward" />
             </button>
@@ -247,7 +247,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
             <button
               className={`control-btn repeat ${repeat ? "active" : ""}`}
               onClick={() => setRepeat(!repeat)}
-              aria-label={t('player.repeat')}
+              aria-label={t("player.repeat")}
             >
               <MuzaIcon iconName="repeat" />
             </button>

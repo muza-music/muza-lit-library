@@ -17,7 +17,7 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
 }) => {
   const { t } = useTranslation();
   const [playlistName, setPlaylistName] = useState("");
-  const [visibility, setVisibility] = useState(t('playlist.public'));
+  const [visibility, setVisibility] = useState(t("playlist.public"));
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Handle ESC key to close modal
@@ -44,7 +44,7 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
     if (playlistName.trim()) {
       onCreatePlaylist(playlistName.trim(), visibility);
       setPlaylistName("");
-      setVisibility(t('playlist.public'));
+      setVisibility(t("playlist.public"));
       onClose();
     }
   };
@@ -65,12 +65,20 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
       case "ArrowDown":
       case "ArrowRight":
         e.preventDefault();
-        setVisibility(visibility === t('playlist.public') ? t('playlist.private') : t('playlist.public'));
+        setVisibility(
+          visibility === t("playlist.public")
+            ? t("playlist.private")
+            : t("playlist.public"),
+        );
         break;
       case "ArrowUp":
       case "ArrowLeft":
         e.preventDefault();
-        setVisibility(visibility === t('playlist.private') ? t('playlist.public') : t('playlist.private'));
+        setVisibility(
+          visibility === t("playlist.private")
+            ? t("playlist.public")
+            : t("playlist.private"),
+        );
         break;
       case "Enter":
       case " ":
@@ -87,8 +95,12 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
   };
 
   const visibilityOptions = [
-    { value: t('playlist.public'), label: t('playlist.public'), icon: "globe" },
-    { value: t('playlist.private'), label: t('playlist.private'), icon: "lock" },
+    { value: t("playlist.public"), label: t("playlist.public"), icon: "globe" },
+    {
+      value: t("playlist.private"),
+      label: t("playlist.private"),
+      icon: "lock",
+    },
   ];
 
   return (
@@ -99,13 +111,13 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
             <button className="close-button" onClick={onClose}>
               <MuzaIcon iconName="Close" />
             </button>
-            <h1 className="modal-title">{t('playlist.new')}</h1>
+            <h1 className="modal-title">{t("playlist.new")}</h1>
           </div>
           <div className="modal-content-inner">
             <div className="form-group">
               <MuzaInputField
-                label={t('playlist.title')}
-                placeholder={t('playlist.titlePlaceholder')}
+                label={t("playlist.title")}
+                placeholder={t("playlist.titlePlaceholder")}
                 value={playlistName}
                 onChange={(e) => setPlaylistName(e.target.value)}
                 required
@@ -113,7 +125,7 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
             </div>
 
             <div className="form-group">
-              <label>{t('playlist.visibility')}</label>
+              <label>{t("playlist.visibility")}</label>
               <div className="custom-select">
                 <div
                   className="select-trigger"
@@ -124,7 +136,9 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
                   <div className="select-content">
                     <span className="select-icon">
                       <MuzaIcon
-                        iconName={visibility === t('playlist.public') ? "globe" : "lock"}
+                        iconName={
+                          visibility === t("playlist.public") ? "globe" : "lock"
+                        }
                       />
                     </span>
                     <span>{visibility}</span>
@@ -155,10 +169,10 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
 
           <div className="modal-buttons">
             <button type="button" className="cancel-button" onClick={onClose}>
-              {t('playlist.cancel')}
+              {t("playlist.cancel")}
             </button>
             <button type="submit" className="create-button">
-              {t('playlist.create')}
+              {t("playlist.create")}
             </button>
           </div>
         </form>

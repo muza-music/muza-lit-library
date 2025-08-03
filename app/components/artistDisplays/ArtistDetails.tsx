@@ -22,7 +22,9 @@ const ArtistDetails: React.FC<ArtistDetailsProps> = ({ details }) => {
       </div>
       <div className="info">
         <div className="title">{details.artistName}</div>
-        <div className="subtitle">{details.albumsCount} {t('common.albums')}</div>
+        <div className="subtitle">
+          {details.albumsCount} {t("common.albums")}
+        </div>
       </div>
     </div>
   );
