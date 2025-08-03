@@ -166,14 +166,13 @@
   "sidebar": {
     "sections": [
       {
-        "title": "My Muza",
         "items": [
           { "svg": "home", "text": "Home", "action": "/" },
           { "svg": "explore", "text": "Explore", "action": "/routes/explore" }
         ]
       },
       {
-        "title": "Library",
+        "title": "My Muza",
         "items": [
           {
             "svg": "playlist",
