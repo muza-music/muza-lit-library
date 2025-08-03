@@ -12,7 +12,7 @@ let translations: Translations = {};
 // Load translation file dynamically
 const loadTranslations = async (language: string): Promise<Translations> => {
   try {
-    const module = await import(`./translations/${language}.ts`);
+    const module = await import(`./translations/${language}`);
     return module.default;
   } catch (error) {
     console.error(
@@ -21,7 +21,7 @@ const loadTranslations = async (language: string): Promise<Translations> => {
     );
     // Fallback to english if other language fails
     if (language !== "english") {
-      const fallback = await import(`./translations/english.ts`);
+      const fallback = await import(`./translations/english`);
       return fallback.default;
     }
     return {};
