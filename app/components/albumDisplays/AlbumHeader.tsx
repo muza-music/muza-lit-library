@@ -3,7 +3,7 @@ import "./AlbumHeader.scss";
 import type { Album, SongDetails } from "~/appData/models";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
-import { toast } from "react-toastify";
+import { addToLibrary } from "~/lib/utils";
 import AlbumInfoModal from "./AlbumInfoModal";
 import MuzaIcon from "~/icons/MuzaIcon";
 
@@ -24,13 +24,6 @@ const AlbumHeader: React.FC<AlbumHeaderProps> = ({ album, songs }) => {
 
   const GetRandomSong = () => {
     return Math.floor(Math.random() * songs.length);
-  };
-
-  const addToLibrary = () => {
-    toast("Album added succssefuly to your library", {
-      position: "bottom-center",
-      hideProgressBar: true,
-    });
   };
 
   const Play = () => {
