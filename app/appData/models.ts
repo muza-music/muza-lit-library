@@ -38,12 +38,14 @@ export interface Artist {
 }
 
 interface MusicListItem {
-  imageSrc: string;
+  imageSrc?: string;
+  albumImages?: string[];
   title: string;
   subTitle?: string;
   artistName?: string;
   songsCount?: number;
   albumsCount?: number;
+  author?: string;
 }
 
 export type MusicListSection = {
@@ -55,11 +57,15 @@ export type MusicListSection = {
 };
 
 export type MusicPlaylist = {
+  id?: string;
   title: string;
-  author: string;
+  name?: string;
+  author?: string;
   imageSrc?: string;
   songs: SongDetails[];
-  suggestions: SongDetails[];
+  suggestions?: SongDetails[];
+  visibility?: string;
+  createdAt?: string;
 };
 
 export type PlayerDetails = {

@@ -1,0 +1,31 @@
+.playlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(192px, 1fr));
+  gap: var(--muza-spacing-lg, 16px);
+  padding: var(--muza-spacing-lg, 16px) 0;
+
+  // Ensure consistent item sizing
+  > * {
+    width: 192px;
+    justify-self: start;
+  }
+
+  // Responsive breakpoints
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--muza-spacing-md, 12px);
+
+    > * {
+      width: 160px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--muza-spacing-sm, 8px);
+
+    > * {
+      width: 140px;
+    }
+  }
+}

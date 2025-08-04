@@ -1,0 +1,63 @@
+.create-playlist-card {
+  width: 192px;
+  height: 192px;
+  background: var(--colors_muted_light, #f9fafb);
+  border: 1px solid var(--colors_border_light, #e5e7eb);
+  border-radius: var(--muza-border-radius-sm, 4px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  position: relative;
+
+  &:hover {
+    background: var(--muza-hover-background, #eeeeee);
+    border-color: var(--muza-border-color, #a9a9a9);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  .create-playlist-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--muza-spacing-lg, 16px);
+  }
+
+  .plus-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .plus-icon-circle {
+    width: 56px;
+    height: 56px;
+    background: var(--colors_foreground_light, #030712);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .plus-icon {
+      color: var(--colors_background_light, #ffffff);
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .create-playlist-text {
+    font-family: var(--typography_font_family_font_sans, "Founders Grotesk");
+    font-size: var(--muza-primary-font-size, 14px);
+    font-weight: var(--muza-font-weight-normal, 400);
+    color: var(--colors_foreground_light, #030712);
+    margin: 0;
+    line-height: 1.2;
+    max-width: 162px;
+  }
+}
