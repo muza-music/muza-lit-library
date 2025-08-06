@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   DndContext,
   closestCenter,
@@ -17,6 +17,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { TrackMetadata } from "~/appData/uploadStore";
 import MuzaIcon from "~/icons/MuzaIcon";
+import WaveAnimation from "~/components/ui/WaveAnimation";
 import "./UploadStepTwo.scss";
 
 interface UploadStepTwoProps {
@@ -30,6 +31,11 @@ interface UploadStepTwoProps {
   onReorderTracks: (fromIndex: number, toIndex: number) => void;
 }
 
+interface PlaybackState {
+  currentTrackId: string | null;
+  isPlaying: boolean;
+}
+
 interface SortableTrackRowProps {
   track: TrackMetadata;
   index: number;
@@ -39,6 +45,8 @@ interface SortableTrackRowProps {
     value: string,
   ) => void;
   onDeleteTrack: (trackId: string) => void;
+  playbackState: PlaybackState;
+  onPlayPause: (trackId: string) => void;
 }
 
 const SortableTrackRow: React.FC<SortableTrackRowProps> = ({
@@ -46,7 +54,10 @@ const SortableTrackRow: React.FC<SortableTrackRowProps> = ({
   index,
   onTrackMetadataChange,
   onDeleteTrack,
+  playbackState,
+  onPlayPause,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
   const {
     attributes,
     listeners,
@@ -59,6 +70,19 @@ const SortableTrackRow: React.FC<SortableTrackRowProps> = ({
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+  };
+
+  const renderPlayButton = () => {
+    const isCurrentTrack = playbackState.currentTrackId === track.id;
+    const isPlaying = isCurrentTrack && playbackState.isPlaying;
+
+    if (isPlaying && isHovered) {
+      return <MuzaIcon iconName="pause" />;
+    }
+    if (isPlaying) {
+      return <WaveAnimation />;
+    }
+    return <MuzaIcon iconName="play" />;
   };
 
   return (
@@ -77,8 +101,13 @@ const SortableTrackRow: React.FC<SortableTrackRowProps> = ({
 
       {/* File Name with Play Button */}
       <div className="cell-filename">
-        <button className="play-button">
-          <MuzaIcon iconName="play" />
+        <button 
+          className="play-button"
+          onClick={() => onPlayPause(track.id)}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {renderPlayButton()}
         </button>
         <span className="filename" title={track.fileName}>
           {track.fileName}
@@ -136,12 +165,52 @@ const UploadStepTwo: React.FC<UploadStepTwoProps> = ({
   onDeleteTrack,
   onReorderTracks,
 }) => {
+  const [playbackState, setPlaybackState] = useState<PlaybackState>({
+    currentTrackId: null,
+    isPlaying: false,
+  });
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     }),
   );
+
+  const handlePlayPause = (trackId: string) => {
+    const track = trackMetadata.find((t) => t.id === trackId);
+    if (!track) return;
+
+    if (playbackState.currentTrackId === trackId && playbackState.isPlaying) {
+      // Pause current track
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      setPlaybackState({ currentTrackId: trackId, isPlaying: false });
+    } else {
+      // Play new track or resume
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      
+      // Create audio element for the track file
+      const audio = new Audio();
+      audio.src = URL.createObjectURL(track.file);
+      audioRef.current = audio;
+      
+      audio.play().then(() => {
+        setPlaybackState({ currentTrackId: trackId, isPlaying: true });
+      }).catch((error) => {
+        console.error("Error playing audio:", error);
+      });
+
+      // Handle audio end
+      audio.addEventListener('ended', () => {
+        setPlaybackState({ currentTrackId: null, isPlaying: false });
+      });
+    }
+  };
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -157,6 +226,16 @@ const UploadStepTwo: React.FC<UploadStepTwoProps> = ({
       onReorderTracks(oldIndex, newIndex);
     }
   };
+
+  // Cleanup audio when component unmounts
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
 
   return (
     <div className="upload-step-two">
@@ -189,6 +268,8 @@ const UploadStepTwo: React.FC<UploadStepTwoProps> = ({
                   index={index}
                   onTrackMetadataChange={onTrackMetadataChange}
                   onDeleteTrack={onDeleteTrack}
+                  playbackState={playbackState}
+                  onPlayPause={handlePlayPause}
                 />
               ))}
             </div>
