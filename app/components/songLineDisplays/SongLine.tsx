@@ -16,6 +16,12 @@ const formatDuration = (seconds: number): string => {
   return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
 };
 
+const formatPlayCount = (plays: number): string => {
+  if (plays < 1000) return plays.toString();
+  if (plays < 1000000) return `${(plays / 1000).toFixed(1)}K`;
+  return `${(plays / 1000000).toFixed(1)}M`;
+};
+
 const SongLine: React.FC<SongLineProps> = ({ details, onClick, isPlaying }) => {
   const renderIcon = () => {
     if (isPlaying) {
@@ -48,12 +54,21 @@ const SongLine: React.FC<SongLineProps> = ({ details, onClick, isPlaying }) => {
       <div className="song-container">
         <div className="track-info">
           <div className="track-icon">{renderIcon()}</div>
-          <span className="track-title">{details.title}</span>
-          <span className="track-artist">{details.artist}</span>
+          <div className="track-details">
+            <span className="track-title">{details.title}</span>
+            <span className="track-artist">{details.artist}</span>
+          </div>
         </div>
-        <span className="track-duration">
-          {details.time ? formatDuration(details.time) : ""}
-        </span>
+        <div className="track-meta">
+          {details.plays && details.plays > 0 && (
+            <span className="play-count">
+              {formatPlayCount(details.plays)} plays
+            </span>
+          )}
+          <span className="track-duration">
+            {details.time ? formatDuration(details.time) : ""}
+          </span>
+        </div>
       </div>
     </div>
   );

@@ -151,16 +151,23 @@
     {
       "id": 2,
       "index": 4,
-      "imageSrc": "https://picsum.photos/400",
-      "artistName": "Legendary Saxophone",
-      "albumsCount": "22"
+      "name": "The Felines",
+      "imageUrl": "/art/imag_1.jpg",
+      "albumsCount": 2
     },
     {
       "id": 3,
       "index": 5,
-      "imageSrc": "https://picsum.photos/300",
-      "artistName": "John Coltrane",
-      "albumsCount": "11"
+      "name": "Paper Cats",
+      "imageUrl": "/art/imag_2.jpg",
+      "albumsCount": 1
+    },
+    {
+      "id": 4,
+      "index": 6,
+      "name": "Twin Kittens",
+      "imageUrl": "/art/imag_3.jpg",
+      "albumsCount": 1
     }
   ],
   "sidebar": {
@@ -196,7 +203,7 @@
   },
   "songs": [
     {
-      "id": 1,
+      "id": "1",
       "index": 1,
       "title": "Meow Meow",
       "time": 185,
@@ -205,10 +212,11 @@
       "imageSrc": "/art/imag_1.jpg",
       "artist": "The Felines",
       "album": "Cat Tunes",
-      "year": 2018
+      "year": 2018,
+      "plays": 1247
     },
     {
-      "id": 2,
+      "id": "2",
       "index": 2,
       "title": "Scratching Post",
       "time": 212,
@@ -217,10 +225,11 @@
       "imageSrc": "/art/imag_2.jpg",
       "artist": "The Felines",
       "album": "Cat Tunes",
-      "year": 2018
+      "year": 2018,
+      "plays": 892
     },
     {
-      "id": 3,
+      "id": "3",
       "index": 3,
       "title": "Nap Time",
       "time": 198,
@@ -229,10 +238,11 @@
       "imageSrc": "/art/imag_3.jpg",
       "artist": "The Felines",
       "album": "Cat Tunes",
-      "year": 2018
+      "year": 2018,
+      "plays": 2134
     },
     {
-      "id": 4,
+      "id": "4",
       "index": 1,
       "title": "Origami Dreams",
       "time": 243,
@@ -241,10 +251,11 @@
       "imageSrc": "/art/imag_1.jpg",
       "artist": "Paper Cats",
       "album": "Folded Whiskers",
-      "year": 2021
+      "year": 2021,
+      "plays": 567
     },
     {
-      "id": 5,
+      "id": "5",
       "index": 2,
       "title": "Folded Whiskers",
       "time": 201,
@@ -253,22 +264,24 @@
       "imageSrc": "/art/imag_2.jpg",
       "artist": "Paper Cats",
       "album": "Folded Whiskers",
-      "year": 2021
+      "year": 2021,
+      "plays": 3421
     },
     {
-      "id": 6,
+      "id": "6",
       "index": 3,
       "title": "Paper Claws",
-      "time": 176,
+      "time": 189,
       "albumId": "2",
       "audioUrl": "https://github.com/muza-music/muza-audio-stream/raw/refs/heads/main/audio_files/10_twice.wav",
       "imageSrc": "/art/imag_3.jpg",
       "artist": "Paper Cats",
       "album": "Folded Whiskers",
-      "year": 2021
+      "year": 2021,
+      "plays": 15623
     },
     {
-      "id": 7,
+      "id": "7",
       "index": 1,
       "title": "Double Purr",
       "time": 225,
@@ -277,10 +290,11 @@
       "imageSrc": "/art/imag_1.jpg",
       "artist": "Twin Kittens",
       "album": "Twice As Nice",
-      "year": 2019
+      "year": 2019,
+      "plays": 756
     },
     {
-      "id": 8,
+      "id": "8",
       "index": 2,
       "title": "Twice As Nice",
       "time": 190,
@@ -292,7 +306,7 @@
       "year": 2019
     },
     {
-      "id": 9,
+      "id": "9",
       "index": 3,
       "title": "Dual Kittens",
       "time": 232,
@@ -301,7 +315,8 @@
       "imageSrc": "/art/imag_3.jpg",
       "artist": "Twin Kittens",
       "album": "Twice As Nice",
-      "year": 2019
+      "year": 2019,
+      "plays": 1024
     }
   ]
 }

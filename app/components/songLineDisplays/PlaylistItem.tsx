@@ -23,7 +23,7 @@ const PlaylistItem: React.FC<PlaylistItemProps> = ({ details }) => {
         <span className="track-number">
           {formatSongNumber(details.index || 1)}
         </span>
-        <SongDetailsView details={details} />
+        <SongDetailsView details={details} onClick={() => {}} />
       </span>
       <ContextMenu>
         <ContextMenuTrigger>

@@ -13,6 +13,7 @@ type MusicPlayerProps = {
   onUpdate?: (details: PlayerDetails) => void;
   onSongEnded?: () => void;
   setIsPlaying: (b: Boolean) => void;
+  onPlayCountIncrement?: () => void;
 };
 
 export const MusicPlayer: React.FC<MusicPlayerProps> = ({
@@ -22,6 +23,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
   onUpdate,
   onSongEnded,
   setIsPlaying,
+  onPlayCountIncrement,
 }) => {
   const { t } = useTranslation();
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -128,6 +130,8 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
     const handlePlay = () => {
       setIsPlaying(true);
       onUpdate?.({ ...details });
+      // Trigger play count increment when audio actually starts playing
+      onPlayCountIncrement?.();
     };
 
     const handlePause = () => {

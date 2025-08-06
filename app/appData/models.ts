@@ -8,6 +8,7 @@ export interface SongDetails {
   album?: string;
   year?: number;
   id?: string;
+  plays?: number;
 }
 
 export interface MenuItem {

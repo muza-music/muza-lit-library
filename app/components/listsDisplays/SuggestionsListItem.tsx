@@ -14,7 +14,7 @@ const SuggestionsListItem: React.FC<SuggestionsListItemProps> = ({
   return (
     <div className="suggestions-list-item">
       <span className="left">
-        <SongDetailsView details={details} />
+        <SongDetailsView details={details} onClick={() => {}} />
       </span>
       <MuzaButton content="+" />
     </div>
