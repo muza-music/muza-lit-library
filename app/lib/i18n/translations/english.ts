@@ -12,6 +12,10 @@ const english = {
   // Page Titles
   "page.home": "Home",
   "page.explore": "Explore",
+  "page.songs": "Songs",
+  "page.albums": "Albums",
+  "page.artists": "Artists",
+  "page.playlists": "Playlists",
 
   // Section Titles
   "section.newReleases": "New Releases",
@@ -21,6 +25,8 @@ const english = {
   "section.uncoveredGems": "Uncovered Gems",
   "section.theOnesYouMissed": "The Ones You Missed",
   "section.suggestions": "Suggestions",
+  "section.featuredAlbums": "Featured Albums",
+  "section.recommendedAlbums": "Recommended Albums",
 
   // Common Labels
   "common.unknown": "Unknown",
@@ -124,13 +130,22 @@ const english = {
   // Music Library
   "library.musicLibrary": "Music Library",
 
+  // UI Actions
+  "action.showMore": "Show more",
+
   // Create Playlist Card
   "playlist.createCard": "Create Playlist",
+  "playlist.createNew": "Create New Playlist",
 
   // Context and General
   "general.error": "Error",
   "general.notFound": "404",
   "general.networkError": "Network response was not ok",
+  "general.loading": "Loading...",
+  "general.errorWithMessage": "Error: {error}",
+  "general.oops": "Oops!",
+  "general.unexpectedError": "An unexpected error occurred.",
+  "general.pageNotFound": "The requested page could not be found.",
 
   // Stepper
   "stepper.step": "Step",

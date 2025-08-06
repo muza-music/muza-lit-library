@@ -114,7 +114,7 @@ const MusicListSectionComponent: React.FC<
       >
         <h2>{title}</h2>
         <button className="show-more-btn" onClick={handleShowAll}>
-          Show more
+          {t("action.showMore")}
         </button>
       </div>
       {subTitle && <p>{subTitle}</p>}

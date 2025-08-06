@@ -18,6 +18,7 @@ import { useMusicLibraryStore } from "./appData/musicStore";
 import { useEffect, useState } from "react";
 import { useCurrentPlayerStore } from "./appData/currentPlayerStore";
 import MuzaMusicPlayer from "./components/componentsWithLogic/MuzaMusicPlayer";
+import { useTranslation } from "./lib/i18n/translations";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -37,6 +38,7 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { t } = useTranslation();
   const sidebarSections = useMusicLibraryStore(
     (state) => state.sidebarSections,
   );
@@ -61,7 +63,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       .then((response) => {
         if (!response.ok) {
           fetch("./staticData/allData.json").then((response) => {
-            if (!response.ok) throw new Error("Network response was not ok");
+            if (!response.ok) throw new Error(t("general.networkError"));
             return response.json();
           });
         } else {
@@ -89,9 +91,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }, []);
 
   const content = loading ? (
-    <p>Loading...</p>
+    <p>{t("general.loading")}</p>
   ) : error ? (
-    <p>Error: {error}</p>
+    <p>{t("general.errorWithMessage").replace("{error}", error)}</p>
   ) : null;
 
   return (
@@ -107,7 +109,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="body">
           <MusicSidebar
             logoSrc="/app/icons/icons/muza.svg"
-            logoAlt="Music Library"
+            logoAlt={t("library.musicLibrary")}
             sections={sidebarSections}
           />
 
