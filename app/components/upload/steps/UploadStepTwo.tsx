@@ -101,7 +101,7 @@ const SortableTrackRow: React.FC<SortableTrackRowProps> = ({
 
       {/* File Name with Play Button */}
       <div className="cell-filename">
-        <button 
+        <button
           className="play-button"
           onClick={() => onPlayPause(track.id)}
           onMouseEnter={() => setIsHovered(true)}
@@ -193,20 +193,23 @@ const UploadStepTwo: React.FC<UploadStepTwoProps> = ({
       if (audioRef.current) {
         audioRef.current.pause();
       }
-      
+
       // Create audio element for the track file
       const audio = new Audio();
       audio.src = URL.createObjectURL(track.file);
       audioRef.current = audio;
-      
-      audio.play().then(() => {
-        setPlaybackState({ currentTrackId: trackId, isPlaying: true });
-      }).catch((error) => {
-        console.error("Error playing audio:", error);
-      });
+
+      audio
+        .play()
+        .then(() => {
+          setPlaybackState({ currentTrackId: trackId, isPlaying: true });
+        })
+        .catch((error) => {
+          console.error("Error playing audio:", error);
+        });
 
       // Handle audio end
-      audio.addEventListener('ended', () => {
+      audio.addEventListener("ended", () => {
         setPlaybackState({ currentTrackId: null, isPlaying: false });
       });
     }

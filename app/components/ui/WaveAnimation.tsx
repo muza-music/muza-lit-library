@@ -15,4 +15,4 @@ const WaveAnimation: React.FC<WaveAnimationProps> = ({ className = "" }) => {
   );
 };
 
-export default WaveAnimation; 
+export default WaveAnimation;
