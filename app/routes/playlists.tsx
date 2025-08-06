@@ -3,19 +3,21 @@ import { useMusicLibraryStore } from "~/appData/musicStore";
 import PlaylistGrid from "~/components/listsDisplays/PlaylistGrid";
 import CreatePlaylistModal from "~/components/ui/CreatePlaylistModal";
 import { useState } from "react";
+import { useTranslation } from "~/lib/i18n/translations";
 
 import "../styles/scrollbar.scss";
 import "../styles/variables.scss";
 import "../styles/main.scss";
 
 export default function Playlists() {
+  const { t } = useTranslation();
   const { playlists, createPlaylist } = useMusicLibraryStore();
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handlePlaylistClick = (playlist: any) => {
     // Navigate to individual playlist view - can be implemented later
-    console.log("Clicked playlist:", playlist);
+    // TODO: Implement playlist navigation
   };
 
   const handleCreatePlaylist = () => {
@@ -44,13 +46,12 @@ export default function Playlists() {
       createPlaylist(newPlaylist);
     }
 
-    console.log("Created playlist:", newPlaylist);
     setIsModalOpen(false);
   };
 
   return (
     <main>
-      <h1>Playlists</h1>
+      <h1>{t("page.playlists")}</h1>
       <hr />
 
       <PlaylistGrid

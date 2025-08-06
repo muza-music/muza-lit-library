@@ -4,12 +4,14 @@ import AlbumDetails from "~/components/albumDisplays/AlbumDetails";
 import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
 import { useMusicLibraryStore } from "~/appData/musicStore";
 import { useNavigate } from "react-router";
+import { useTranslation } from "~/lib/i18n/translations";
 
 import "../styles/scrollbar.scss";
 import "../styles/variables.scss";
 import "../styles/main.scss";
 
 export default function Albums() {
+  const { t } = useTranslation();
   const { setSelectedSong } = useCurrentPlayerStore();
   const { newReleases, featured, recommended } = useMusicLibraryStore();
 
@@ -21,10 +23,10 @@ export default function Albums() {
 
   return (
     <main>
-      <h1>Albums</h1>
+      <h1>{t("page.albums")}</h1>
 
       <hr />
-      <h2>Featured Albums</h2>
+      <h2>{t("section.featuredAlbums")}</h2>
       <div className="album-list">
         {featured.map((a: Album) => (
           <AlbumDetails
@@ -36,7 +38,7 @@ export default function Albums() {
       </div>
 
       <hr />
-      <h2>New Releases</h2>
+      <h2>{t("section.newReleases")}</h2>
       <div className="album-list">
         {newReleases.map((a: Album) => (
           <AlbumDetails
@@ -48,7 +50,7 @@ export default function Albums() {
       </div>
 
       <hr />
-      <h2>Recommended Albums</h2>
+      <h2>{t("section.recommendedAlbums")}</h2>
       <div className="album-list">
         {recommended.map((a: Album) => (
           <AlbumDetails
