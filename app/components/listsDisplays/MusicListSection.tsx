@@ -74,9 +74,10 @@ const MusicListSectionComponent: React.FC<
         return list.map((item, idx) => (
           <PlaylistCover
             key={idx}
-            imageSrc={item.imageSrc}
+            albumImages={[item.imageSrc || ""]}
             title={item.title}
             songsCount={item.songsCount?.toString() || ""}
+            userName={item.author || "Unknown"}
           />
         ));
       case "song":

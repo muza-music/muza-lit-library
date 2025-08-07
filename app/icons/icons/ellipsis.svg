@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M7.99935 8.66665C8.36754 8.66665 8.66602 8.36817 8.66602 7.99998C8.66602 7.63179 8.36754 7.33331 7.99935 7.33331C7.63116 7.33331 7.33268 7.63179 7.33268 7.99998C7.33268 8.36817 7.63116 8.66665 7.99935 8.66665Z" stroke="#030712" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12.666 8.66665C13.0342 8.66665 13.3327 8.36817 13.3327 7.99998C13.3327 7.63179 13.0342 7.33331 12.666 7.33331C12.2978 7.33331 11.9993 7.63179 11.9993 7.99998C11.9993 8.36817 12.2978 8.66665 12.666 8.66665Z" stroke="#030712" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M3.33268 8.66665C3.70087 8.66665 3.99935 8.36817 3.99935 7.99998C3.99935 7.63179 3.70087 7.33331 3.33268 7.33331C2.96449 7.33331 2.66602 7.63179 2.66602 7.99998C2.66602 8.36817 2.96449 8.66665 3.33268 8.66665Z" stroke="#030712" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
+=======
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="5" cy="12" r="2" fill="currentColor"/>
+  <circle cx="12" cy="12" r="2" fill="currentColor"/>
+  <circle cx="19" cy="12" r="2" fill="currentColor"/>
+</svg> 
+>>>>>>> upstream/main

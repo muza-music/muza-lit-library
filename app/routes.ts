@@ -46,6 +46,12 @@ const upload = {
   id: "upload",
 } as RouteConfigEntry;
 
+const playlists = {
+  file: "routes/playlists.tsx",
+  path: "routes/playlists",
+  id: "playlists",
+} as RouteConfigEntry;
+
 export default [
   home,
   album,
@@ -54,4 +60,5 @@ export default [
   songs,
   explore,
   upload,
+  playlists,
 ] satisfies RouteConfig;

@@ -13,18 +13,189 @@
 
 .song-details {
   display: flex;
-  flex-direction: column;
-}
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  height: 56px;
+  background: var(--colors_background_light, #ffffff);
+  border-radius: var(--muza-border-radius-md, 8px);
+  transition: all 0.2s ease;
+  position: relative;
 
-.song-title {
-  font-weight: bold;
-  font-size: 16px;
-  color: #5f5f5f;
-  line-height: 16px;
-}
+  &:hover,
+  &.hover {
+    background: var(--muza-hover-background, #eeeeee);
+  }
 
-.song-artist {
-  color: #a9a9a9;
-  line-height: 17px;
-  font-size: 15px;
+  &.active {
+    background: var(--colors_muted_light_50_, rgba(249, 250, 251, 0.5));
+    border: 1px solid var(--muza-light-border-color, #e5e7eb);
+  }
+
+  .song-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+    cursor: pointer;
+  }
+
+  .cover-container {
+    flex-shrink: 0;
+  }
+
+  .cover-image {
+    width: 44px;
+    height: 44px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: var(--muza-border-radius-sm, 4px);
+    box-shadow:
+      0px 1px 3px 0px rgba(0, 0, 0, 0.1),
+      0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .play-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(9, 9, 9, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .play-button {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .track-details {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 2px;
+  }
+
+  .track-title {
+    font-family:
+      var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--muza-track-title-color, #111827);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.active {
+      color: var(--muza-toggle-active-color, #3b82f6);
+    }
+  }
+
+  .track-metadata {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family:
+      var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--muza-track-artist-color, #6b7280);
+  }
+
+  .track-artist,
+  .play-count {
+    white-space: nowrap;
+  }
+
+  .separator {
+    color: var(--muza-track-artist-color, #6b7280);
+  }
+
+  .song-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-left: 24px;
+    min-width: 120px;
+    justify-content: flex-end;
+    position: relative;
+  }
+
+  .action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--muza-secondary-text-color, #5f5f5f);
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--muza-primary-text-color, #333333);
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .checkbox-container {
+    .song-checkbox {
+      width: 16px;
+      height: 16px;
+      border: 1px solid var(--muza-secondary-text-color, #5f5f5f);
+      border-radius: var(--muza-border-radius-sm, 4px);
+      background: var(--colors_background_light, #ffffff);
+      cursor: pointer;
+    }
+  }
+
+  .duration {
+    font-family:
+      var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
+    font-size: 16px;
+    color: var(--muza-primary-text-color, #333333);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    padding: 6px 12px;
+
+    .song-actions {
+      min-width: 80px;
+      padding-left: 16px;
+    }
+
+    .track-title {
+      font-size: 14px;
+    }
+
+    .track-metadata {
+      font-size: 14px;
+    }
+  }
 }

@@ -47,9 +47,22 @@
 
   .track-info {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     position: relative;
     padding-left: 40px;
+    flex: 1;
+  }
+
+  .track-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .track-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
   }
 
   .track-icon {
@@ -100,7 +113,13 @@
 
   .track-artist {
     color: var(--secondary-text-color);
-    font-size: var(--song-artist-font-size);
+    font-size: 14px;
+    margin-top: 2px;
+  }
+
+  .play-count {
+    color: var(--tertiary-text-color);
+    font-size: 12px;
     font-weight: 400;
   }
 
@@ -146,8 +165,9 @@
   }
 
   .track-duration {
-    color: var(--secondary-text-color);
+    color: var(--tertiary-text-color);
     font-size: var(--song-duration-font-size);
+    font-weight: 400;
     text-align: right;
     white-space: nowrap;
   }

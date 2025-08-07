@@ -64,6 +64,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       setArtists,
       setRecommended,
       setRecentlyPlayed,
+      setPlaylists,
       setSidebarSections,
     } = useMusicLibraryStore.getState();
 
@@ -86,6 +87,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         setRecommended(data.albums.recommended || []);
         setArtists(data.artists);
         setRecentlyPlayed(data.songs);
+        setPlaylists(data.playlists || []);
         setSidebarSections(data.sidebar.sections);
 
         if (data.songs.length > 0 && !selectedSong) {

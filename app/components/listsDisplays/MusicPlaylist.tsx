@@ -29,7 +29,7 @@ const MuzaMusicPlaylist: React.FC<MusicPlaylist> = ({
         <SmallAlbumDetails
           imageSrc={getImageSrc()}
           title={title}
-          author={author}
+          author={author || "Unknown"}
         />
       </div>
 
@@ -41,7 +41,7 @@ const MuzaMusicPlaylist: React.FC<MusicPlaylist> = ({
         </div>
       </div>
 
-      <MusicSuggestionsList title="Suggestions" songs={suggestions} />
+      <MusicSuggestionsList title="Suggestions" songs={suggestions || []} />
     </div>
   );
 };
