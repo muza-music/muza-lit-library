@@ -10,8 +10,8 @@
     "format:check": "prettier . --check",
     "postinstall": "flowbite-react patch",
     "build": "react-router build",
-    "test": "react-router typegen && tsc",
-    "lint": "prettier --check ./app"
+    "lint": "prettier --check ./app",
+    "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
     "@radix-ui/react-context-menu": "^2.2.14",

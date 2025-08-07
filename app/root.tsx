@@ -106,7 +106,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <div className="body">
           <MusicSidebar
-            logoSrc="/app/icons/icons/muza.svg"
+            logoSrc="/icons/muza.svg"
             logoAlt="Music Library"
             sections={sidebarSections}
           />
