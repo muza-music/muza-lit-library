@@ -5,19 +5,17 @@ import path from "path";
 import https from "https";
 import http from "http";
 import * as fs from "fs";
+const API_BASE_URL = process.env.API_BASE_URL;
 
 // Configuration constants
 const GRAPHQL_ENDPOINT =
-  process.env.GRAPHQL_ENDPOINT ||
-  "https://ec2-34-244-32-40.eu-west-1.compute.amazonaws.com/api/metadata/graphql";
+  process.env.GRAPHQL_ENDPOINT || `${API_BASE_URL}/metadata/graphql`;
 
 const AUDIO_FILES_ENDPOINT =
-  process.env.AUDIO_FILES_ENDPOINT ||
-  "https://ec2-34-244-32-40.eu-west-1.compute.amazonaws.com/api/upload/files";
+  process.env.AUDIO_FILES_ENDPOINT || `${API_BASE_URL}/stream/upload/files`;
 
 const IMG_FILES_ENDPOINT =
-  process.env.IMG_FILES_ENDPOINT ||
-  "https://ec2-34-244-32-40.eu-west-1.compute.amazonaws.com/api/upload/files";
+  process.env.IMG_FILES_ENDPOINT || `${API_BASE_URL}/cover/upload/files`;
 
 const PORT = process.env.PORT || 3000;
 const STOCK_PHOTO = "https://picsum.photos/400"; // Placeholde photo URL

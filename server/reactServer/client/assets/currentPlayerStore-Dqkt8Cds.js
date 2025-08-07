@@ -1,0 +1,1 @@
+import{c as t}from"./musicStore-J3WrqYgq.js";const s=t(l=>({selectedSong:null,isPlaying:!1,selectedPlaListOrAlbum:null,playCountIncremented:!1,setSelectedSong:e=>l({selectedSong:e,playCountIncremented:!1}),setIsPlaying:e=>l({isPlaying:e}),setSelectedPlaListOrAlbum:e=>l({selectedPlaListOrAlbum:e}),setPlayCountIncremented:e=>l({playCountIncremented:e})}));export{s as u};

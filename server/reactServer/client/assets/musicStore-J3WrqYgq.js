@@ -1,9 +1,17 @@
-import{o as s}from"./chunk-DQRVZFIR-BNfO-z-U.js";const e=`<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+import{w as k,x as C,y as w,z as p,a as _,A as M,o as H,v as a}from"./chunk-DQRVZFIR-BNfO-z-U.js";function Y(n){return function(){const t={params:p(),loaderData:w(),actionData:C(),matches:k()};return _.createElement(n,t)}}function t1(n){return function(){const t={params:p(),loaderData:w(),actionData:C(),error:M()};return _.createElement(n,t)}}const V=`<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6L8 10L12 6" stroke="#6B7280" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`,x=`<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.7">
+<path d="M12 4L4 12M4 4L12 12" stroke="#030712" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>
+`,m=`<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Icon / ListMusic">
 <path id="Vector" d="M14 10.5V4.5M8 8.5H2M10.6667 4.5H2M8 12.5H2M12.3333 12.5C12.7754 12.5 13.1993 12.3244 13.5118 12.0118C13.8244 11.6993 14 11.2754 14 10.8333C14 10.3913 13.8244 9.96738 13.5118 9.65482C13.1993 9.34226 12.7754 9.16667 12.3333 9.16667C11.8913 9.16667 11.4674 9.34226 11.1548 9.65482C10.8423 9.96738 10.6667 10.3913 10.6667 10.8333C10.6667 11.2754 10.8423 11.6993 11.1548 12.0118C11.4674 12.3244 11.8913 12.5 12.3333 12.5Z" stroke="#111827" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </svg>
-`,l=`<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+`,L=`<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2068_5142)">
 <path d="M4 8.89033C4 7.757 4.46667 6.757 5.2 6.09033M12 8.8903C12 10.0236 11.5333 11.0236 10.8 11.6903M14.6667 8.8903C14.6667 12.5722 11.6819 15.557 8 15.557C4.3181 15.557 1.33333 12.5722 1.33333 8.8903C1.33333 5.2084 4.3181 2.22363 8 2.22363C11.6819 2.22363 14.6667 5.2084 14.6667 8.8903ZM9.33333 8.8903C9.33333 9.62668 8.73638 10.2236 8 10.2236C7.26362 10.2236 6.66667 9.62668 6.66667 8.8903C6.66667 8.15392 7.26362 7.55697 8 7.55697C8.73638 7.55697 9.33333 8.15392 9.33333 8.8903Z" stroke="#111827" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
@@ -13,7 +21,7 @@ import{o as s}from"./chunk-DQRVZFIR-BNfO-z-U.js";const e=`<svg width="16" height
 </clipPath>
 </defs>
 </svg>
-`,C=`<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+`,b=`<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2068_5147)">
 <path d="M7.33339 5.95768L3.33739 11.4177C3.24337 11.5461 3.1984 11.704 3.21063 11.8627C3.22286 12.0214 3.29147 12.1705 3.40406 12.283L3.94873 12.8283C4.06296 12.9425 4.21472 13.0112 4.37583 13.0219C4.53694 13.0326 4.69645 12.9844 4.82473 12.8863L10.0601 8.89035M10.9999 15.0063C10.3332 14.557 9.58119 14.2236 8.66653 14.2236C7.29453 14.2236 6.04786 15.7943 4.66653 15.557C3.2852 15.3196 2.81653 13.311 3.66653 12.557M14 5.55697C14 7.39792 12.5076 8.8903 10.6667 8.8903C8.82572 8.8903 7.33333 7.39792 7.33333 5.55697C7.33333 3.71602 8.82572 2.22363 10.6667 2.22363C12.5076 2.22363 14 3.71602 14 5.55697Z" stroke="#111827" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
@@ -23,14 +31,18 @@ import{o as s}from"./chunk-DQRVZFIR-BNfO-z-U.js";const e=`<svg width="16" height
 </clipPath>
 </defs>
 </svg>
-`,g=`<svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+`,y=`<svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path
     d="M15.895 8.32349C15.6644 8.32349 15.4433 8.41983 15.2803 8.59132C15.1173 8.76281 15.0257 8.9954 15.0257 9.23792V10.1524C15.0257 11.365 14.5678 12.5279 13.7527 13.3854C12.9375 14.2428 11.832 14.7246 10.6793 14.7246H7.20216C6.04942 14.7246 4.94389 14.2428 4.12878 13.3854C3.31367 12.5279 2.85575 11.365 2.85575 10.1524V9.23792C2.85575 8.9954 2.76416 8.76281 2.60114 8.59132C2.43812 8.41983 2.21702 8.32349 1.98647 8.32349C1.75592 8.32349 1.53482 8.41983 1.37179 8.59132C1.20877 8.76281 1.11719 8.9954 1.11719 9.23792V10.1524C1.11719 11.85 1.75828 13.4782 2.89943 14.6786C4.04059 15.879 5.58832 16.5534 7.20216 16.5534H8.07144V17.4679C8.07144 17.7104 8.16302 17.943 8.32604 18.1145C8.48906 18.286 8.71017 18.3823 8.94072 18.3823C9.17126 18.3823 9.39237 18.286 9.55539 18.1145C9.71841 17.943 9.81 17.7104 9.81 17.4679V16.5534H10.6793C12.2931 16.5534 13.8408 15.879 14.982 14.6786C16.1232 13.4782 16.7642 11.85 16.7642 10.1524V9.23792C16.7642 8.9954 16.6727 8.76281 16.5096 8.59132C16.3466 8.41983 16.1255 8.32349 15.895 8.32349Z"
     fill="#374151" />
   <path
     d="M10.7295 9.52104C10.7295 9.28814 10.8237 9.06478 10.9914 8.90009C11.1591 8.73541 11.3865 8.64289 11.6236 8.64289H13.4119V6.88658H11.6236C11.3865 6.88658 11.1591 6.79406 10.9914 6.62938C10.8237 6.46469 10.7295 6.24133 10.7295 6.00843C10.7295 5.77553 10.8237 5.55217 10.9914 5.38749C11.1591 5.2228 11.3865 5.13028 11.6236 5.13028H13.4119C13.4119 4.19868 13.0351 3.30524 12.3644 2.64649C11.6936 1.98775 10.7839 1.61768 9.83541 1.61768H8.04717C7.09863 1.61768 6.18895 1.98775 5.51823 2.64649C4.84751 3.30524 4.4707 4.19868 4.4707 5.13028V10.3992C4.4707 11.3308 4.84751 12.2242 5.51823 12.883C6.18895 13.5417 7.09863 13.9118 8.04717 13.9118H9.83541C10.7839 13.9118 11.6936 13.5417 12.3644 12.883C13.0351 12.2242 13.4119 11.3308 13.4119 10.3992H11.6236C11.3865 10.3992 11.1591 10.3067 10.9914 10.142C10.8237 9.9773 10.7295 9.75394 10.7295 9.52104Z"
     fill="#374151" />
-</svg>`,h=`<svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+</svg>`,Z=`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="5" cy="12" r="2" fill="currentColor"/>
+  <circle cx="12" cy="12" r="2" fill="currentColor"/>
+  <circle cx="19" cy="12" r="2" fill="currentColor"/>
+</svg> `,j=`<svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2068_5126)">
 <path d="M10.8267 7.06364L9.62401 10.671C9.55855 10.8674 9.44827 11.0458 9.30189 11.1922C9.15551 11.3386 8.97706 11.4489 8.78067 11.5143L5.17334 12.717L6.37601 9.10964C6.44146 8.91325 6.55175 8.7348 6.69812 8.58842C6.8445 8.44205 7.02295 8.33176 7.21934 8.26631L10.8267 7.06364Z" stroke="#111827" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M8 16.557C11.6819 16.557 14.6667 13.5722 14.6667 9.8903C14.6667 6.2084 11.6819 3.22363 8 3.22363C4.3181 3.22363 1.33333 6.2084 1.33333 9.8903C1.33333 13.5722 4.3181 16.557 8 16.557Z" stroke="#111827" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
@@ -41,7 +53,13 @@ import{o as s}from"./chunk-DQRVZFIR-BNfO-z-U.js";const e=`<svg width="16" height
 </clipPath>
 </defs>
 </svg>
-`,r=`<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+`,B=`<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M8 14.6667C11.6819 14.6667 14.6667 11.6819 14.6667 8C14.6667 4.31814 11.6819 1.33337 8 1.33337C4.31814 1.33337 1.33337 4.31814 1.33337 8C1.33337 11.6819 4.31814 14.6667 8 14.6667Z" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1.33337 8H14.6667" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8 1.33337C9.65337 3.15908 10.5734 5.53748 10.5734 8.00004C10.5734 10.4626 9.65337 12.841 8 14.6667C6.34663 12.841 5.42663 10.4626 5.42663 8.00004C5.42663 5.53748 6.34663 3.15908 8 1.33337Z" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> `,P=`<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M17.5 6.875C17.5 4.5 15.5 2.5 13.125 2.5C11.875 2.5 10.75 3.125 10 4.0625C9.25 3.125 8.125 2.5 6.875 2.5C4.5 2.5 2.5 4.5 2.5 6.875C2.5 9.875 10 17.5 10 17.5S17.5 9.875 17.5 6.875Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> `,S=`<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2068_5122)">
 <path d="M6 15.557V8.8903H10V15.557M2 6.8903L8 2.22363L14 6.8903V14.2236C14 14.5773 13.8595 14.9164 13.6095 15.1664C13.3594 15.4165 13.0203 15.557 12.6667 15.557H3.33333C2.97971 15.557 2.64057 15.4165 2.39052 15.1664C2.14048 14.9164 2 14.5773 2 14.2236V6.8903Z" stroke="#111827" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
@@ -51,7 +69,10 @@ import{o as s}from"./chunk-DQRVZFIR-BNfO-z-U.js";const e=`<svg width="16" height
 </clipPath>
 </defs>
 </svg>
-`,d=`<svg width="80" height="63" viewBox="0 0 80 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+`,R=`<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12.6667 7.33337H3.33337C2.59699 7.33337 2.00004 7.93033 2.00004 8.66671V13.3334C2.00004 14.0698 2.59699 14.6667 3.33337 14.6667H12.6667C13.4031 14.6667 14 14.0698 14 13.3334V8.66671C14 7.93033 13.4031 7.33337 12.6667 7.33337Z" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4.66663 7.33337V4.66671C4.66663 3.78265 5.01782 2.93481 5.64294 2.30968C6.26806 1.68456 7.11591 1.33337 7.99996 1.33337C8.88401 1.33337 9.73186 1.68456 10.357 2.30968C10.9821 2.93481 11.3333 3.78265 11.3333 4.66671V7.33337" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> `,D=`<svg width="80" height="63" viewBox="0 0 80 63" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="Group 64">
 <g id="Group">
 <g id="Group_2">
@@ -69,29 +90,31 @@ import{o as s}from"./chunk-DQRVZFIR-BNfO-z-U.js";const e=`<svg width="16" height
 </g>
 </g>
 </svg>
-`,w=`<svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+`,E=`<svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9 4.5H7.5C7.10218 4.5 6.72064 4.65804 6.43934 4.93934C6.15804 5.22064 6 5.60218 6 6V18C6 18.3978 6.15804 18.7794 6.43934 19.0607C6.72064 19.342 7.10218 19.5 7.5 19.5H9C9.39782 19.5 9.77936 19.342 10.0607 19.0607C10.342 18.7794 10.5 18.3978 10.5 18V6C10.5 5.60218 10.342 5.22064 10.0607 4.93934C9.77936 4.65804 9.39782 4.5 9 4.5Z" fill="#030712"/>
 <path d="M16.5 4.5H15C14.6022 4.5 14.2206 4.65804 13.9393 4.93934C13.658 5.22064 13.5 5.60218 13.5 6V18C13.5 18.3978 13.658 18.7794 13.9393 19.0607C14.2206 19.342 14.6022 19.5 15 19.5H16.5C16.8978 19.5 17.2794 19.342 17.5607 19.0607C17.842 18.7794 18 18.3978 18 18V6C18 5.60218 17.842 5.22064 17.5607 4.93934C17.2794 4.65804 16.8978 4.5 16.5 4.5Z" fill="#030712"/>
 </svg>
-`,_=`<svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+`,I=`<svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 42.9197C9.67157 42.9197 9 42.2482 9 41.4197V8.41974C9.00024 7.88365 9.28656 7.38844 9.75104 7.12077C10.2155 6.8531 10.7875 6.85366 11.2515 7.12224L39.7515 23.6222C40.2141 23.8906 40.4988 24.3849 40.4988 24.9197C40.4988 25.4545 40.2141 25.9489 39.7515 26.2172L11.2515 42.7172C11.0232 42.8498 10.764 42.9197 10.5 42.9197Z" fill="#030712"/>
 </svg>
-`,p=`<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+`,G=`<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14 10.8901V4.89014M8 8.89014H2M10.6667 4.89014H2M8 12.8901H2M12.3333 12.8901C12.7754 12.8901 13.1993 12.7145 13.5118 12.402C13.8244 12.0894 14 11.6655 14 11.2235C14 10.7814 13.8244 10.3575 13.5118 10.045C13.1993 9.7324 12.7754 9.5568 12.3333 9.5568C11.8913 9.5568 11.4674 9.7324 11.1548 10.045C10.8423 10.3575 10.6667 10.7814 10.6667 11.2235C10.6667 11.6655 10.8423 12.0894 11.1548 12.402C11.4674 12.7145 11.8913 12.8901 12.3333 12.8901Z" stroke="#111827" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-`,v=`<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+`,O=`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> `,z=`<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M7 2.91992L3 6.91992M3 6.91992L7 10.9199M3 6.91992H17C18.0609 6.91992 19.0783 7.34135 19.8284 8.09149C20.5786 8.84164 21 9.85906 21 10.9199V11.9199M17 22.9199L21 18.9199M21 18.9199L17 14.9199M21 18.9199H7C5.93913 18.9199 4.92172 18.4985 4.17157 17.7483C3.42143 16.9982 3 15.9808 3 14.9199V13.9199" stroke="#030712" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-`,c=`<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+`,A=`<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M22 18.9199H20.6C19.3 18.9199 18.1 18.3199 17.3 17.2199L11.2 8.61992C10.5 7.51992 9.2 6.91992 7.9 6.91992H2M2 6.91992L6 2.91992M2 6.91992L6 10.9199M22 6.91992H20.1C18.6 6.91992 17.2 7.81992 16.5 9.11992M2.00019 18.9198H7.9002C9.2002 18.9198 10.5002 18.2198 11.2002 17.1198L11.7002 16.3198M2.00019 18.9198L6 14.9199M2.00019 18.9198L6 22.9199" stroke="#030712" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-`,a=`<svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+`,W=`<svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 4.41992H1.75V25.4199H3.5V4.41992ZM23.625 25.4199C24.1082 25.4199 24.5 25.0281 24.5 24.5449V5.29487C24.4999 4.98215 24.3328 4.69328 24.0619 4.53713C23.7909 4.38099 23.4573 4.38132 23.1866 4.53799L6.56163 14.163C6.29177 14.3195 6.12568 14.6079 6.12568 14.9199C6.12568 15.2318 6.29177 15.5202 6.56163 15.6767L23.1866 25.3017C23.3198 25.3791 23.471 25.4198 23.625 25.4199Z" fill="#030712"/>
 </svg>
-`,f=`<svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+`,F=`<svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M24.5 4.41992H26.25V25.4199H24.5V4.41992ZM4.375 25.4199C3.89175 25.4199 3.5 25.0281 3.5 24.5449V5.29487C3.50014 4.98215 3.66716 4.69328 3.93811 4.53713C4.20905 4.38099 4.54273 4.38132 4.81337 4.53799L21.4384 14.163C21.7082 14.3195 21.8743 14.6079 21.8743 14.9199C21.8743 15.2318 21.7082 15.5202 21.4384 15.6767L4.81337 25.3017C4.68022 25.3791 4.52898 25.4198 4.375 25.4199Z" fill="#030712"/>
 </svg>
-`,H=`<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+`,N=`<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2068_5152)">
 <path d="M8 12.8903C8 14.3631 6.80609 15.557 5.33333 15.557C3.86057 15.557 2.66667 14.3631 2.66667 12.8903C2.66667 11.4175 3.86057 10.2236 5.33333 10.2236C6.80609 10.2236 8 11.4175 8 12.8903ZM8 12.8903V2.22363L12.6667 4.8903" stroke="#111827" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
@@ -101,7 +124,7 @@ import{o as s}from"./chunk-DQRVZFIR-BNfO-z-U.js";const e=`<svg width="16" height
 </clipPath>
 </defs>
 </svg>
-`,M=`<svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+`,T=`<svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clip-path="url(#clip0_1013_2623)">
     <path
       d="M14.5292 4.26504V6.95582C14.5292 7.21384 14.3272 7.42578 14.0702 7.435H13.9784C13.1339 7.45343 11.9405 6.96503 11.61 6.73466C11.2795 6.50428 11.0959 6.60565 11.0959 6.85445V15.6087C11.0959 17.295 9.59044 18.6404 7.84627 18.3363C6.7355 18.1428 5.8267 17.2305 5.62474 16.1247C5.31263 14.3739 6.6437 12.8534 8.32362 12.8534C8.63573 12.8534 8.94785 12.9087 9.25078 13.0101V3.37119C9.25078 3.02102 9.53536 2.73535 9.88419 2.73535H10.6645C10.9032 2.73535 11.1418 2.80907 11.3438 2.9473L11.5825 3.11317C12.2801 3.58313 13.1063 3.82272 13.9417 3.80429H14.0243C14.2905 3.79508 14.5108 4.00702 14.5108 4.27426L14.5292 4.26504Z"
@@ -112,4 +135,4 @@ import{o as s}from"./chunk-DQRVZFIR-BNfO-z-U.js";const e=`<svg width="16" height
       <rect width="8.94118" height="15.6471" fill="white" transform="translate(5.58789 2.73535)" />
     </clipPath>
   </defs>
-</svg>`,V=Object.assign({"./icons/ListMusic.svg":e,"./icons/album.svg":l,"./icons/artist.svg":C,"./icons/artists.svg":g,"./icons/explore.svg":h,"./icons/home.svg":r,"./icons/muza.svg":d,"./icons/pause.svg":w,"./icons/play.svg":_,"./icons/playlist.svg":p,"./icons/repeat.svg":v,"./icons/shuffle.svg":c,"./icons/skip-back.svg":a,"./icons/skip-forward.svg":f,"./icons/song.svg":H,"./icons/songs.svg":M}),k=({iconName:t,svgStyle:i,className:o})=>{const n=V[`./icons/${t}.svg`];return n?s.jsx("i",{className:o,style:i,dangerouslySetInnerHTML:{__html:n}}):null};export{k as M};
+</svg>`,$=Object.assign({"./icons/ChevronDown.svg":V,"./icons/Close.svg":x,"./icons/ListMusic.svg":m,"./icons/album.svg":L,"./icons/artist.svg":b,"./icons/artists.svg":y,"./icons/ellipsis.svg":Z,"./icons/explore.svg":j,"./icons/globe.svg":B,"./icons/heart.svg":P,"./icons/home.svg":S,"./icons/lock.svg":R,"./icons/muza.svg":D,"./icons/pause.svg":E,"./icons/play.svg":I,"./icons/playlist.svg":G,"./icons/plus.svg":O,"./icons/repeat.svg":z,"./icons/shuffle.svg":A,"./icons/skip-back.svg":W,"./icons/skip-forward.svg":F,"./icons/song.svg":N,"./icons/songs.svg":T}),n1=({iconName:n,svgStyle:e,className:t})=>{const o=$[`./icons/${n}.svg`];return o?H.jsx("i",{className:t,style:e,dangerouslySetInnerHTML:{__html:o}}):null},d=n=>{let e;const t=new Set,o=(s,g)=>{const l=typeof s=="function"?s(e):s;if(!Object.is(l,e)){const u=e;e=g??(typeof l!="object"||l===null)?l:Object.assign({},e,l),t.forEach(f=>f(e,u))}},r=()=>e,c={setState:o,getState:r,getInitialState:()=>v,subscribe:s=>(t.add(s),()=>t.delete(s))},v=e=n(o,r,c);return c},q=n=>n?d(n):d,J=n=>n;function K(n,e=J){const t=a.useSyncExternalStore(n.subscribe,()=>e(n.getState()),()=>e(n.getInitialState()));return a.useDebugValue(t),t}const h=n=>{const e=q(n),t=o=>K(e,o);return Object.assign(t,e),t},Q=n=>n?h(n):h,e1=Q((n,e)=>({newReleases:[],recentlyPlayed:[],artists:[],labels:[],musicSections:[],featured:[],recommended:[],playlists:[],sidebarSections:[],setNewReleases:t=>n({newReleases:t}),setRecentlyPlayed:t=>n({recentlyPlayed:t}),setArtists:t=>n({artists:t}),setLabels:t=>n({labels:t}),setMusicSections:t=>n({musicSections:t}),setFeatured:t=>n({featured:t}),setRecommended:t=>n({recommended:t}),setPlaylists:t=>n({playlists:t}),setSidebarSections:t=>n({sidebarSections:t}),createPlaylist:t=>n(o=>({playlists:[...o.playlists,t]})),incrementPlayCount:t=>{const r=e().recentlyPlayed.map(i=>i.id===t?{...i,plays:(i.plays||0)+1}:i);n({recentlyPlayed:r})}}));export{n1 as M,t1 as a,Q as c,e1 as u,Y as w};
