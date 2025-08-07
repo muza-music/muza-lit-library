@@ -1,0 +1,335 @@
+.upload-step-two {
+  flex: 1;
+  padding-bottom: 108px; // Space for fixed footer
+  overflow-y: auto;
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .metadata-table {
+    max-width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    .table-header {
+      display: flex;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--colors_border_light);
+      font-size: 14px;
+      color: var(--colors_muted_foreground_light);
+      font-weight: var(--muza-font-weight-medium);
+
+      .column-number {
+        width: 114px;
+        text-align: right;
+        padding: 12px 16px 12px 48px; // Match cell-number padding
+      }
+
+      .column-filename {
+        width: 279px;
+        padding: 16px; // Match cell-filename padding
+      }
+
+      .column-songname {
+        width: 280px;
+        padding: 16px; // Match cell-songname padding
+      }
+
+      .column-composer {
+        flex: 1;
+        padding: 16px; // Match cell-composer padding
+      }
+
+      .column-time {
+        width: 120px;
+        text-align: right;
+        padding: 16px; // Match cell-time padding
+      }
+
+      .column-actions {
+        width: 80px;
+        text-align: center;
+        padding: 16px; // Match cell-actions padding
+      }
+    }
+
+    .table-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .table-row {
+        display: flex;
+        align-items: center;
+        min-height: 54px;
+        border-bottom: 1px solid var(--colors_border_light);
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: var(--colors_muted_light_50_);
+        }
+
+        &.dragging {
+          opacity: 0.7;
+          background-color: var(--colors_secondary_light);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+          z-index: 1000;
+        }
+
+        .cell-number {
+          width: 114px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding: 12px 16px 12px 48px;
+          gap: 8px;
+
+          .drag-handle {
+            background: none;
+            border: none;
+            padding: 4px;
+            cursor: grab;
+            color: var(--colors_muted_foreground_light);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: none;
+
+            &:hover {
+              background-color: var(--colors_secondary_light);
+              color: var(--colors_foreground_light);
+            }
+
+            &:active {
+              cursor: grabbing;
+            }
+          }
+
+          .track-number {
+            font-size: 16px;
+            font-weight: var(--muza-font-weight-medium);
+            color: var(--colors_muted_foreground_light);
+            width: 24px;
+            text-align: center;
+          }
+        }
+
+        .cell-filename {
+          width: 279px;
+          display: flex;
+          align-items: center;
+          padding: 16px;
+          gap: 10px;
+
+          .play-button {
+            background-color: var(--colors_secondary_light);
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+
+            // Override global play-button ::after from AlbumCover
+            &::after {
+              display: none;
+            }
+
+            &:hover {
+              background-color: var(--colors_border_light);
+            }
+
+            svg {
+              width: 16px;
+              height: 16px;
+            }
+
+            // Wave animation styling for upload context
+            .wave-container {
+              width: 16px;
+              height: 16px;
+
+              .bar {
+                background-color: var(--colors_foreground_light);
+              }
+            }
+          }
+
+          .filename {
+            flex: 1;
+            font-size: 14px;
+            color: var(--colors_muted_foreground_light);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: var(--muza-font-weight-regular);
+          }
+        }
+
+        .cell-songname {
+          width: 280px;
+          padding: 16px;
+
+          .editable-field {
+            width: 100%;
+            border: none;
+            background: none;
+            font-size: 14px;
+            color: var(--colors_foreground_light);
+            font-weight: var(--muza-font-weight-regular);
+            padding: 0;
+            outline: none;
+
+            &:focus {
+              color: var(--colors_foreground_light);
+            }
+
+            &::placeholder {
+              color: var(--colors_muted_foreground_light);
+            }
+          }
+        }
+
+        .cell-composer {
+          flex: 1;
+          padding: 16px;
+
+          .editable-field {
+            width: 100%;
+            border: none;
+            background: none;
+            font-size: 14px;
+            color: var(--colors_foreground_light);
+            font-weight: var(--muza-font-weight-regular);
+            padding: 0;
+            outline: none;
+
+            &:focus {
+              color: var(--colors_foreground_light);
+            }
+
+            &::placeholder {
+              color: var(--colors_muted_foreground_light);
+            }
+          }
+        }
+
+        .cell-time {
+          width: 120px;
+          padding: 16px;
+          text-align: right;
+
+          .duration {
+            font-size: 14px;
+            color: var(--colors_muted_foreground_light);
+            font-weight: var(--muza-font-weight-regular);
+          }
+        }
+
+        .cell-actions {
+          width: 80px;
+          padding: 16px;
+          display: flex;
+          justify-content: center;
+
+          .delete-button {
+            background-color: var(--colors_secondary_light);
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--colors_muted_foreground_light);
+            transition: all 0.2s;
+
+            &:hover {
+              background-color: #ff4444;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+
+    .empty-state {
+      padding: 48px 16px;
+      text-align: center;
+      color: var(--colors_muted_foreground_light);
+
+      p {
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .upload-step-two {
+    padding: 16px 20px;
+    padding-bottom: 108px;
+
+    .metadata-table {
+      .table-header {
+        font-size: 12px;
+
+        .column-number {
+          width: 80px;
+        }
+
+        .column-filename {
+          width: 200px;
+        }
+
+        .column-songname {
+          width: 180px;
+        }
+
+        .column-time {
+          width: 80px;
+        }
+
+        .column-actions {
+          width: 60px;
+        }
+      }
+
+      .table-body .table-row {
+        .cell-number {
+          width: 80px;
+          padding-left: 20px;
+        }
+
+        .cell-filename {
+          width: 200px;
+        }
+
+        .cell-songname {
+          width: 180px;
+        }
+
+        .cell-time {
+          width: 80px;
+        }
+
+        .cell-actions {
+          width: 60px;
+        }
+      }
+    }
+  }
+}

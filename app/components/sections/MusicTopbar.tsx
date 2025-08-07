@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import "./MusicTopbar.scss";
 
 interface MusicTopbarProps {
@@ -10,8 +11,14 @@ const MusicTopbar: React.FC<MusicTopbarProps> = ({
   onSearchChange,
   onUserIconClick,
 }) => {
+  const navigate = useNavigate();
+
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     onSearchChange?.(e.target.value);
+  };
+
+  const handleUploadClick = () => {
+    navigate("/routes/upload");
   };
 
   return (
@@ -25,7 +32,9 @@ const MusicTopbar: React.FC<MusicTopbarProps> = ({
           />
         </div>
         <div className="controls">
-          <button className="upload-music-button">Upload Music</button>
+          <button className="upload-music-button" onClick={handleUploadClick}>
+            Upload Music
+          </button>
           <div className="user-menu">
             <div className="user-icon" onClick={onUserIconClick}>
               <img src="https://picsum.photos/100" alt="user" />
