@@ -5,7 +5,7 @@
   "scripts": {
     "dev-server": "node server",
     "dev": "react-router dev",
-    "start": "react-router-serve ./server/index.js",
+    "start": "node server/index.js",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "postinstall": "flowbite-react patch",

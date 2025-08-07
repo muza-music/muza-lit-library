@@ -5,7 +5,7 @@ import path from "path";
 import https from "https";
 import http from "http";
 import * as fs from "fs";
-const API_BASE_URL = process.env.API_BASE_URL;
+const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:8000";
 
 // Configuration constants
 const GRAPHQL_ENDPOINT =
@@ -28,13 +28,14 @@ const publicDir = path.resolve("./public");
 const staticDataFilePath = path.join(publicDir, "/staticData/allData.json");
 
 // HTTP client setup
-const isHttps = GRAPHQL_ENDPOINT.startsWith("https://");
+const isHttps = GRAPHQL_ENDPOINT && GRAPHQL_ENDPOINT.startsWith("https://");
 const agent = isHttps
   ? new https.Agent({ rejectUnauthorized: false })
   : new http.Agent();
 const instance = axios.create({
   httpsAgent: isHttps ? agent : undefined,
   httpAgent: !isHttps ? agent : undefined,
+  timeout: 10000, // 10 second timeout
 });
 
 // GraphQL queries
@@ -156,18 +157,42 @@ async function fetchGraphQLData(query) {
 }
 
 async function fetchAlbums() {
-  const data = await fetchGraphQLData(ALBUMS_QUERY);
-  return data.allAlbums || [];
+  try {
+    const data = await fetchGraphQLData(ALBUMS_QUERY);
+    return data.allAlbums || [];
+  } catch (error) {
+    console.warn(
+      "Failed to fetch albums from GraphQL, using empty array:",
+      error.message,
+    );
+    return [];
+  }
 }
 
 async function fetchTracks() {
-  const data = await fetchGraphQLData(TRACKS_QUERY);
-  return data.allTracks || [];
+  try {
+    const data = await fetchGraphQLData(TRACKS_QUERY);
+    return data.allTracks || [];
+  } catch (error) {
+    console.warn(
+      "Failed to fetch tracks from GraphQL, using empty array:",
+      error.message,
+    );
+    return [];
+  }
 }
 
 async function fetchArtists() {
-  const data = await fetchGraphQLData(ARTISTS_QUERY);
-  return data.allArtists || [];
+  try {
+    const data = await fetchGraphQLData(ARTISTS_QUERY);
+    return data.allArtists || [];
+  } catch (error) {
+    console.warn(
+      "Failed to fetch artists from GraphQL, using empty array:",
+      error.message,
+    );
+    return [];
+  }
 }
 
 // File operations
