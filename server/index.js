@@ -5,7 +5,21 @@ import path from "path";
 import https from "https";
 import http from "http";
 import * as fs from "fs";
-const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:8000";
+
+// Add global error handlers to prevent unexpected exits
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection at:", promise, "reason:", reason);
+  // Don't exit the process, just log the error
+});
+
+process.on("uncaughtException", (error) => {
+  console.error("Uncaught Exception:", error);
+  // Don't exit the process, just log the error
+});
+
+const API_BASE_URL =
+  process.env.API_BASE_URL ||
+  "https://muza-staging-alb-868009887.eu-west-1.elb.amazonaws.com/api";
 
 // Configuration constants
 const GRAPHQL_ENDPOINT =
@@ -151,7 +165,7 @@ async function fetchGraphQLData(query) {
     const response = await instance.post(GRAPHQL_ENDPOINT, { query });
     return response.data.data;
   } catch (error) {
-    console.error("GraphQL request failed:", error.message);
+    console.error("GraphQL request failed:", error);
     throw error;
   }
 }
@@ -165,7 +179,7 @@ async function fetchAlbums() {
       "Failed to fetch albums from GraphQL, using empty array:",
       error.message,
     );
-    return [];
+    return null;
   }
 }
 
@@ -178,7 +192,7 @@ async function fetchTracks() {
       "Failed to fetch tracks from GraphQL, using empty array:",
       error.message,
     );
-    return [];
+    return null;
   }
 }
 
@@ -191,7 +205,7 @@ async function fetchArtists() {
       "Failed to fetch artists from GraphQL, using empty array:",
       error.message,
     );
-    return [];
+    return null;
   }
 }
 
@@ -247,13 +261,15 @@ async function initializeApp() {
 
         // Transform data
         console.log("Transforming data...");
-        const transformedTracks = transformTrackData(tracksData);
+        const transformedTracks = transformTrackData(
+          tracksData || allData.songs,
+        );
         const transformedAlbums = transformAlbumData(
-          albumsData,
+          albumsData || allData.albums,
           transformedTracks,
         );
         const transformedArtists = transformArtistData(
-          albumsData,
+          albumsData || allData.artists,
           transformedAlbums,
         );
 
@@ -309,13 +325,42 @@ async function initializeApp() {
       res.sendFile(path.join(clientDir, "index.html"));
     });
 
+    // Catch-all route for SPA - serve index.html for any route that doesn't match a static file
+    app.use((req, res) => {
+      console.log(`GET ${req.path} - Serving index.html for SPA routing`);
+      res.sendFile(path.join(clientDir, "index.html"));
+    });
+
     // Start server
-    app.listen(PORT, () => {
+    const server = app.listen(PORT, () => {
       console.log(`✅ Server running at http://localhost:${PORT}`);
       console.log(`📁 Serving static files from: ${clientDir}`);
       console.log(`📊 GraphQL endpoint: ${GRAPHQL_ENDPOINT}`);
       console.log(`🎵 Audio files endpoint: ${AUDIO_FILES_ENDPOINT}`);
       console.log(`🖼️  Image files endpoint: ${IMG_FILES_ENDPOINT}`);
+      console.log(`🚀 Server is ready to accept connections`);
+    });
+
+    // Add error handling for the server
+    server.on("error", (error) => {
+      console.error("Server error:", error);
+    });
+
+    // Keep the process alive
+    process.on("SIGINT", () => {
+      console.log("Received SIGINT, shutting down gracefully...");
+      server.close(() => {
+        console.log("Server closed");
+        process.exit(0);
+      });
+    });
+
+    process.on("SIGTERM", () => {
+      console.log("Received SIGTERM, shutting down gracefully...");
+      server.close(() => {
+        console.log("Server closed");
+        process.exit(0);
+      });
     });
   } catch (error) {
     console.error("❌ Failed to initialize application:", error);
