@@ -1,0 +1,35 @@
+.upload-step-one {
+  flex: 1;
+  overflow: hidden;
+
+  .upload-container {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+    padding-bottom: 84px; // Space for fixed footer
+
+    .upload-left {
+      flex: 1;
+      padding: 24px 40px;
+      border-right: 1px solid var(--colors_border_light);
+      overflow-y: auto;
+    }
+
+    .upload-right {
+      flex: 1;
+      padding: 24px 40px;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .upload-step-one .upload-container {
+    flex-direction: column;
+
+    .upload-left {
+      border-right: none;
+      border-bottom: 1px solid var(--colors_border_light);
+    }
+  }
+}

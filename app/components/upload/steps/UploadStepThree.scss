@@ -1,0 +1,22 @@
+.upload-step-three {
+  width: 100%;
+
+  .album-preview {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 24px 0;
+
+    // Use existing album-song-list styles from the album route
+    .album-song-list {
+      margin-top: var(--muza-spacing-lg);
+      margin-bottom: var(--muza-spacing-lg);
+    }
+
+    // Ensure proper spacing for hr elements
+    hr {
+      margin: var(--muza-spacing-lg) 0;
+      border: none;
+      border-top: 1px solid var(--muza-light-border-color);
+    }
+  }
+}

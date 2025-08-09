@@ -1,4 +1,4 @@
-import React, { type MouseEventHandler } from "react";
+import React, { type MouseEventHandler, useState } from "react";
 import "./SongLine.scss";
 import type { SongDetails } from "../../appData/models";
 import { formatSongNumber } from "../../appData/utils";
@@ -23,7 +23,16 @@ const formatPlayCount = (plays: number): string => {
 };
 
 const SongLine: React.FC<SongLineProps> = ({ details, onClick, isPlaying }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   const renderIcon = () => {
+    if (isPlaying && isHovered) {
+      return (
+        <span className="pause-icon">
+          <MuzaIcon iconName="pause" />
+        </span>
+      );
+    }
     if (isPlaying) {
       return (
         <div className="wave-container">
@@ -33,7 +42,6 @@ const SongLine: React.FC<SongLineProps> = ({ details, onClick, isPlaying }) => {
         </div>
       );
     }
-
     return (
       <>
         <span className="track-number">
@@ -50,6 +58,8 @@ const SongLine: React.FC<SongLineProps> = ({ details, onClick, isPlaying }) => {
     <div
       className={`song-line ${isPlaying ? "playing" : ""}`}
       onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="song-container">
         <div className="track-info">
@@ -68,6 +78,16 @@ const SongLine: React.FC<SongLineProps> = ({ details, onClick, isPlaying }) => {
           <span className="track-duration">
             {details.time ? formatDuration(details.time) : ""}
           </span>
+        </div>
+        <div className="info-right">
+          {isHovered && (
+            <button className="ellipsis-btn" title="More options">
+              <MuzaIcon iconName="ellipsis" />
+            </button>
+          )}
+          <button className="add-btn" title="Add to playlist">
+            <MuzaIcon iconName="plus" />
+          </button>
         </div>
       </div>
     </div>
