@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AlbumDetails.scss";
 import type { Album } from "~/appData/models";
+import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
+import MuzaIcon from "~/icons/MuzaIcon";
+import AlbumInfoModal from "./AlbumInfoModal";
+import { addToLibrary } from "~/lib/utils";
 
 interface AlbumDetailsProps {
   details: Album;
@@ -11,14 +15,52 @@ const AlbumDetails: React.FC<AlbumDetailsProps> = ({
   details,
   onAlbumClick,
 }) => {
+  const { isPlaying, setIsPlaying } = useCurrentPlayerStore();
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handlePlayPause = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <div className="album-details-card">
-      <div className="image-container">
-        <img
-          src={details.imageSrc}
-          alt={details.title}
-          onClick={onAlbumClick}
-        />
+      <div className="image-container" onClick={onAlbumClick}>
+        <img src={details.imageSrc} alt={details.title} />
+        <div className="album-overlay-actions">
+          <button
+            className="album-overlay-btn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <MuzaIcon iconName="ellipsis" />
+          </button>
+          <button
+            className="album-overlay-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              setModalOpen(true);
+            }}
+          >
+            <MuzaIcon iconName="info" />
+          </button>
+          <button
+            className="album-overlay-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              addToLibrary();
+            }}
+          >
+            <MuzaIcon iconName="plus" />
+          </button>
+        </div>
+        <div className="album-hover-overlay"></div>
+        <button className="album-play-pause-btn" onClick={handlePlayPause}>
+          {isPlaying ? (
+            <MuzaIcon iconName="pause" />
+          ) : (
+            <MuzaIcon iconName="play-hover" />
+          )}
+        </button>
       </div>
       <div className="info">
         <div className="title">{details.title}</div>
@@ -26,27 +68,23 @@ const AlbumDetails: React.FC<AlbumDetailsProps> = ({
         <div className="subtitle">{details.genre && `${details.genre} • `}</div>
         <div className="buttons">
           <button className="icon-button">
-            <span className="icon icon-dots" />
+            <MuzaIcon iconName="dots" />
           </button>
           <button className="icon-button">
-            <span className="icon icon-info" />
+            <MuzaIcon iconName="info" />
           </button>
           <button className="icon-button">
-            <span className="icon icon-plus" />
+            <MuzaIcon iconName="plus" />
           </button>
           <button className="icon-button">
-            <span className="icon icon-shuffle">
-              <svg viewBox="0 0 24 24">
-                <path d="M16 3h5v5" />
-                <path d="M4 20l16-16" />
-                <path d="M4 4l5 5" />
-                <path d="M21 16v5h-5" />
-                <path d="M15 15l6 6" />
-              </svg>
-            </span>
+            <MuzaIcon iconName="shuffle" />
           </button>
         </div>
       </div>
+      <AlbumInfoModal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+      />
     </div>
   );
 };
