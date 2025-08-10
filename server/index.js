@@ -17,19 +17,18 @@ process.on("uncaughtException", (error) => {
   // Don't exit the process, just log the error
 });
 
-const API_BASE_URL =
-  process.env.API_BASE_URL ||
-  "https://muza-staging-alb-868009887.eu-west-1.elb.amazonaws.com/api";
-
 // Configuration constants
 const GRAPHQL_ENDPOINT =
-  process.env.GRAPHQL_ENDPOINT || `${API_BASE_URL}/metadata/graphql`;
+  process.env.GRAPHQL_ENDPOINT ||
+  "http://muza-staging-alb-868009887.eu-west-1.elb.amazonaws.com/api/metadata/graphql";
 
 const AUDIO_FILES_ENDPOINT =
-  process.env.AUDIO_FILES_ENDPOINT || `${API_BASE_URL}/stream/upload/files`;
+  process.env.AUDIO_FILES_ENDPOINT ||
+  "http://muza-staging-alb-868009887.eu-west-1.elb.amazonaws.com/api/stream/upload/files";
 
 const IMG_FILES_ENDPOINT =
-  process.env.IMG_FILES_ENDPOINT || `${API_BASE_URL}/cover/upload/files`;
+  process.env.IMG_FILES_ENDPOINT ||
+  "http://muza-staging-alb-868009887.eu-west-1.elb.amazonaws.com/api/cover/upload/files";
 
 const PORT = process.env.PORT || 3000;
 const STOCK_PHOTO = "https://picsum.photos/400"; // Placeholde photo URL
@@ -42,13 +41,8 @@ const publicDir = path.resolve("./public");
 const staticDataFilePath = path.join(publicDir, "/staticData/allData.json");
 
 // HTTP client setup
-const isHttps = GRAPHQL_ENDPOINT && GRAPHQL_ENDPOINT.startsWith("https://");
-const agent = isHttps
-  ? new https.Agent({ rejectUnauthorized: false })
-  : new http.Agent();
 const instance = axios.create({
-  httpsAgent: isHttps ? agent : undefined,
-  httpAgent: !isHttps ? agent : undefined,
+  httpAgent: new http.Agent(),
   timeout: 10000, // 10 second timeout
 });
 
@@ -163,6 +157,7 @@ function transformArtistData(artists, transformedAlbums) {
 async function fetchGraphQLData(query) {
   try {
     const response = await instance.post(GRAPHQL_ENDPOINT, { query });
+    console.log("res!", response.data.data);
     return response.data.data;
   } catch (error) {
     console.error("GraphQL request failed:", error);
@@ -244,8 +239,6 @@ async function initializeApp() {
       try {
         console.log("GET /staticData/allData.json - Request received");
 
-        console.log("Loading data from multiple sources...");
-
         // Load data
         const [allData, albumsData, tracksData, artistsData] =
           await Promise.all([
@@ -255,9 +248,9 @@ async function initializeApp() {
             fetchArtists(),
           ]);
 
-        console.log(`Loaded ${albumsData.length} albums from GraphQL`);
-        console.log(`Loaded ${tracksData.length} tracks from GraphQL`);
-        console.log(`Loaded ${artistsData.length} artists from GraphQL`);
+        console.log(`Loaded ${albumsData?.length || 0} albums from GraphQL`);
+        console.log(`Loaded ${tracksData?.length || 0} tracks from GraphQL`);
+        console.log(`Loaded ${artistsData?.length || 0} artists from GraphQL`);
 
         // Transform data
         console.log("Transforming data...");
@@ -291,7 +284,7 @@ async function initializeApp() {
           },
           artists: getRandomItems(transformedArtists, 125),
           songs: getRandomItems(transformedTracks, 100000),
-          sidebar: allData.sidebar,
+          sidebar: allData?.sidebar,
         };
 
         console.log(
@@ -325,12 +318,6 @@ async function initializeApp() {
       res.sendFile(path.join(clientDir, "index.html"));
     });
 
-    // Catch-all route for SPA - serve index.html for any route that doesn't match a static file
-    app.use((req, res) => {
-      console.log(`GET ${req.path} - Serving index.html for SPA routing`);
-      res.sendFile(path.join(clientDir, "index.html"));
-    });
-
     // Start server
     const server = app.listen(PORT, () => {
       console.log(`✅ Server running at http://localhost:${PORT}`);
@@ -339,6 +326,9 @@ async function initializeApp() {
       console.log(`🎵 Audio files endpoint: ${AUDIO_FILES_ENDPOINT}`);
       console.log(`🖼️  Image files endpoint: ${IMG_FILES_ENDPOINT}`);
       console.log(`🚀 Server is ready to accept connections`);
+      console.log(
+        `🔗 Using internal ECS service discovery for API communication`,
+      );
     });
 
     // Add error handling for the server

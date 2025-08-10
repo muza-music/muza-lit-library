@@ -60,6 +60,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     fetch("/staticData/allData.json")
       .then((response) => {
         if (!response.ok) {
+          console.log("response not ok");
           fetch("./staticData/allData.json").then((response) => {
             if (!response.ok) throw new Error("Network response was not ok");
             return response.json();
