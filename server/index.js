@@ -157,7 +157,6 @@ function transformArtistData(artists, transformedAlbums) {
 async function fetchGraphQLData(query) {
   try {
     const response = await instance.post(GRAPHQL_ENDPOINT, { query });
-    console.log("res!", response.data.data);
     return response.data.data;
   } catch (error) {
     console.error("GraphQL request failed:", error);
@@ -248,21 +247,18 @@ async function initializeApp() {
             fetchArtists(),
           ]);
 
-        console.log(`Loaded ${albumsData?.length || 0} albums from GraphQL`);
-        console.log(`Loaded ${tracksData?.length || 0} tracks from GraphQL`);
-        console.log(`Loaded ${artistsData?.length || 0} artists from GraphQL`);
-
+        console.log(`Loaded ${albumsData?.length} albums from GraphQL`);
+        console.log(`Loaded ${tracksData?.length} tracks from GraphQL`);
+        console.log(`Loaded ${artistsData?.length} artists from GraphQL`);
         // Transform data
         console.log("Transforming data...");
-        const transformedTracks = transformTrackData(
-          tracksData || allData.songs,
-        );
+        const transformedTracks = transformTrackData(tracksData || []);
         const transformedAlbums = transformAlbumData(
-          albumsData || allData.albums,
+          albumsData || [],
           transformedTracks,
         );
         const transformedArtists = transformArtistData(
-          albumsData || allData.artists,
+          albumsData || [],
           transformedAlbums,
         );
 
@@ -313,6 +309,12 @@ async function initializeApp() {
     console.log("Setting up public file serving from:", publicDir);
     app.use(express.static(publicDir));
 
+    // Health check endpoint
+    app.get("/health", (req, res) => {
+      console.log("GET /health - Serving OK");
+      res.send("OK");
+    });
+
     app.get("/", (req, res) => {
       console.log("GET / - Serving index.html");
       res.sendFile(path.join(clientDir, "index.html"));
@@ -345,8 +347,8 @@ async function initializeApp() {
       });
     });
 
-    process.on("SIGTERM", () => {
-      console.log("Received SIGTERM, shutting down gracefully...");
+    process.on("SIGTERM", (grace) => {
+      console.log("Received SIGTERM, shutting down gracefully...", grace);
       server.close(() => {
         console.log("Server closed");
         process.exit(0);
