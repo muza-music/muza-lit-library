@@ -4,6 +4,7 @@ import "./MusicPlayer.scss";
 import VolumeControl from "../../controls/VolumeControl";
 import MuzaIcon from "~/icons/MuzaIcon";
 import type { PlayerDetails } from "~/appData/models";
+import { useTranslation } from "~/lib/i18n/translations";
 
 type MusicPlayerProps = {
   details: PlayerDetails;
@@ -24,6 +25,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
   setIsPlaying,
   onPlayCountIncrement,
 }) => {
+  const { t } = useTranslation();
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Audio state
@@ -211,7 +213,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
             <button
               className={`control-btn shuffle ${shuffle ? "active" : ""}`}
               onClick={() => setShuffle(!shuffle)}
-              aria-label="Shuffle"
+              aria-label={t("player.shuffle")}
             >
               <MuzaIcon iconName="shuffle" />
             </button>
@@ -219,7 +221,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
             <button
               className="control-btn previous"
               onClick={onPrevious}
-              aria-label="Previous track"
+              aria-label={t("player.previous")}
             >
               <MuzaIcon iconName="skip-back" />
             </button>
@@ -227,7 +229,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
             <button
               className="control-btn play"
               onClick={togglePlayPause}
-              aria-label="Play or pause"
+              aria-label={t("player.playPause")}
             >
               {isLoading ? (
                 <FaSpinner className="spinner" />
@@ -241,7 +243,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
             <button
               className="control-btn next"
               onClick={onNext}
-              aria-label="Next track"
+              aria-label={t("player.next")}
             >
               <MuzaIcon iconName="skip-forward" />
             </button>
@@ -249,7 +251,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({
             <button
               className={`control-btn repeat ${repeat ? "active" : ""}`}
               onClick={() => setRepeat(!repeat)}
-              aria-label="Repeat"
+              aria-label={t("player.repeat")}
             >
               <MuzaIcon iconName="repeat" />
             </button>

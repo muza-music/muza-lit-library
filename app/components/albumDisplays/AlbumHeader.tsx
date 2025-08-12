@@ -3,9 +3,10 @@ import "./AlbumHeader.scss";
 import type { Album, SongDetails } from "~/appData/models";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
-import { addToLibrary } from "~/lib/utils";
+import { toast } from "react-toastify";
 import AlbumInfoModal from "./AlbumInfoModal";
 import MuzaIcon from "~/icons/MuzaIcon";
+import { useTranslation } from "~/lib/i18n/translations";
 
 interface AlbumHeaderProps {
   album: Album;
@@ -13,6 +14,7 @@ interface AlbumHeaderProps {
 }
 
 const AlbumHeader: React.FC<AlbumHeaderProps> = ({ album, songs }) => {
+  const { t } = useTranslation();
   const {
     selectedSong,
     setSelectedSong,
@@ -24,6 +26,13 @@ const AlbumHeader: React.FC<AlbumHeaderProps> = ({ album, songs }) => {
 
   const GetRandomSong = () => {
     return Math.floor(Math.random() * songs.length);
+  };
+
+  const addToLibrary = () => {
+    toast(t("album.addedToLibrary"), {
+      position: "bottom-center",
+      hideProgressBar: true,
+    });
   };
 
   const Play = () => {
@@ -40,7 +49,9 @@ const AlbumHeader: React.FC<AlbumHeaderProps> = ({ album, songs }) => {
       <div className="info">
         <div className="title">{album.title}</div>
         <div className="artist">{album.artist}</div>
-        <div className="atrist">Album • {album.songs?.length} Songs</div>
+        <div className="atrist">
+          {t("common.album")} • {album.songs?.length} {t("common.songs")}
+        </div>
         <button className="icon-button" onClick={() => Play()}>
           {isPlaying ? <FaPause /> : <FaPlay />}
         </button>
