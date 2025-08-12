@@ -51,6 +51,7 @@ jobs:
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         run: |
+          # Generate image tag using GitHub SHA only
           IMAGE_TAG="${{ github.sha }}"
           ECR_REGISTRY="${{ steps.login-ecr.outputs.registry }}"
           REPO="${{ env.ECR_REPOSITORY }}"
@@ -58,9 +59,11 @@ jobs:
           IMAGE_SHA="$ECR_REGISTRY/$REPO:$IMAGE_TAG"
           IMAGE_LATEST="$ECR_REGISTRY/$REPO:latest"
 
-          echo "Building: $IMAGE_SHA (also tagging latest)"
+          echo "🏗️ Building image: $IMAGE_SHA (also tagging latest)"
+          # Build the Docker image with both tags
           docker build -t "$IMAGE_SHA" -t "$IMAGE_LATEST" .
 
+          # Push both images
           echo "Pushing: $IMAGE_SHA"
           docker push "$IMAGE_SHA"
           echo "Pushing: $IMAGE_LATEST"

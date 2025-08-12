@@ -22,14 +22,6 @@ const GRAPHQL_ENDPOINT =
   process.env.GRAPHQL_ENDPOINT ||
   "http://muza-staging-alb-868009887.eu-west-1.elb.amazonaws.com/api/metadata/graphql";
 
-const AUDIO_FILES_ENDPOINT =
-  process.env.AUDIO_FILES_ENDPOINT ||
-  "http://muza-staging-alb-868009887.eu-west-1.elb.amazonaws.com/api/stream/upload/files";
-
-const IMG_FILES_ENDPOINT =
-  process.env.IMG_FILES_ENDPOINT ||
-  "http://muza-staging-alb-868009887.eu-west-1.elb.amazonaws.com/api/cover/upload/files";
-
 const PORT = process.env.PORT || 3000;
 const STOCK_PHOTO = "https://picsum.photos/400"; // Placeholde photo URL
 
@@ -71,29 +63,6 @@ const ARTISTS_QUERY = `{
   }
 }`;
 
-// Utility functions
-function transformAudioUrl(url) {
-  if (!url) return url;
-
-  // Extract filename from URL
-  const filename = url.split("/").pop();
-  if (!filename) return url;
-
-  // Create new URL with AUDIO_FILES_ENDPOINT
-  return `${AUDIO_FILES_ENDPOINT.replace(/\/$/, "")}/${filename}`;
-}
-
-function transformImageUrl(url) {
-  if (!url || url === STOCK_PHOTO) return url;
-
-  // Extract filename from URL
-  const filename = url.split("/").pop();
-  if (!filename) return url;
-
-  // Create new URL with IMG_FILES_ENDPOINT
-  return `${IMG_FILES_ENDPOINT.replace(/\/$/, "")}/${filename}`;
-}
-
 function getRandomItems(array, count) {
   if (array.length <= count) {
     return array;
@@ -106,7 +75,7 @@ function getRandomItems(array, count) {
 function transformAlbumData(albums, transformedTracks) {
   return albums.map((album) => ({
     id: album.id,
-    imageSrc: transformImageUrl(album.albumCover || STOCK_PHOTO),
+    imageSrc: album.albumCover || STOCK_PHOTO,
     title: album.albumTitle,
     subTitle: album.yearReleased,
     artist: album.artistMain,
@@ -128,8 +97,8 @@ function transformTrackData(tracks) {
       title: track.songTitle,
       time: 185,
       albumId: track.albumTitle,
-      audioUrl: transformAudioUrl(track.songFile),
-      imageSrc: transformImageUrl(track.albumCover || STOCK_PHOTO),
+      audioUrl: track.songFile,
+      imageSrc: track.albumCover || STOCK_PHOTO,
       artist: track.artistMain,
       album: track.albumTitle,
       year: track.yearReleased,
@@ -147,7 +116,7 @@ function transformArtistData(artists, transformedAlbums) {
     .map((artist, index) => ({
       id: artist.id || index + 1,
       index: index + 1,
-      imageSrc: transformImageUrl(artist.albumCover) || STOCK_PHOTO,
+      imageSrc: artist.albumCover || STOCK_PHOTO,
       artistName: artist.artistMain,
       albumsCount: String(albumsByArtist[artist.artistMain] || 0),
     }));
@@ -325,8 +294,6 @@ async function initializeApp() {
       console.log(`✅ Server running at http://localhost:${PORT}`);
       console.log(`📁 Serving static files from: ${clientDir}`);
       console.log(`📊 GraphQL endpoint: ${GRAPHQL_ENDPOINT}`);
-      console.log(`🎵 Audio files endpoint: ${AUDIO_FILES_ENDPOINT}`);
-      console.log(`🖼️  Image files endpoint: ${IMG_FILES_ENDPOINT}`);
       console.log(`🚀 Server is ready to accept connections`);
       console.log(
         `🔗 Using internal ECS service discovery for API communication`,
