@@ -1,0 +1,177 @@
+.upload-page {
+  min-height: 100vh;
+  background-color: var(--colors_background_light);
+  font-family: var(--typography_font_family_font_sans), sans-serif;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .upload-container {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+    padding-bottom: 84px; // Space for fixed footer
+
+    .upload-left {
+      flex: 1;
+      padding: 24px 40px;
+      border-right: 1px solid var(--colors_border_light);
+      overflow-y: auto;
+    }
+
+    .upload-right {
+      flex: 1;
+      padding: 24px 40px;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .upload-page .upload-container {
+    flex-direction: column;
+
+    .upload-left {
+      border-right: none;
+      border-bottom: 1px solid var(--colors_border_light);
+    }
+  }
+}
+
+.upload-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--colors_background_dark); // Dark background like Figma
+  padding: 19px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  height: 84px;
+  box-sizing: border-box;
+
+  .stepper {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+
+    .stepper-container {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      min-width: 440px;
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        width: 48px; // Fixed width for proper spacing
+
+        .step-number {
+          width: 26px;
+          height: 26px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 18px;
+          font-weight: var(--muza-font-weight-medium);
+          color: var(--colors_foreground_dark); // Light text for inactive
+          background-color: transparent; // No background for inactive
+        }
+
+        .step-label {
+          font-size: 12px;
+          color: var(--colors_foreground_dark); // Light text
+          text-align: center;
+          width: 163px;
+          font-weight: var(--muza-font-weight-normal);
+        }
+
+        &.active {
+          .step-number {
+            background-color: var(
+              --colors_background_light
+            ); // White background
+            color: var(--colors_foreground_light); // Dark text
+          }
+        }
+      }
+
+      .step-connector {
+        flex: 1;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        height: 26px; // Match step number height for proper alignment
+
+        // Style the icon wrapper (i element from MuzaIcon)
+        i {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  .footer-buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    position: absolute;
+    right: 44px; // Position like in Figma
+  }
+
+  .back-button {
+    background-color: var(--colors_muted_foreground_light);
+    color: var(--colors_background_light);
+    border: none;
+    border-radius: 9999px;
+    padding: 8px 32px;
+    font-size: 16px;
+    font-weight: var(--muza-font-weight-medium);
+    cursor: pointer;
+    box-shadow:
+      0px 1px 3px 0px rgba(0, 0, 0, 0.1),
+      0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: var(--colors_foreground_light);
+    }
+  }
+
+  .next-button {
+    background-color: var(--colors_primary_light);
+    color: var(--colors_primary_foreground_light);
+    border: none;
+    border-radius: 9999px;
+    padding: 8px 32px;
+    font-size: 16px;
+    font-weight: var(--muza-font-weight-medium);
+    cursor: pointer;
+    box-shadow:
+      0px 1px 3px 0px rgba(0, 0, 0, 0.1),
+      0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: var(--colors_primary_dark);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: var(--colors_primary_light);
+
+      &:hover {
+        background-color: var(--colors_primary_light);
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import "./MusicTopbar.scss";
 import { useTranslation } from "~/lib/i18n/translations";
 
@@ -12,8 +13,14 @@ const MusicTopbar: React.FC<MusicTopbarProps> = ({
   onUserIconClick,
 }) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     onSearchChange?.(e.target.value);
+  };
+
+  const handleUploadClick = () => {
+    navigate("/routes/upload");
   };
 
   return (
@@ -27,7 +34,7 @@ const MusicTopbar: React.FC<MusicTopbarProps> = ({
           />
         </div>
         <div className="controls">
-          <button className="upload-music-button">
+          <button className="upload-music-button" onClick={handleUploadClick}>
             {t("upload.uploadMusic")}
           </button>
           <div className="user-menu">

@@ -1,0 +1,116 @@
+.upload-form {
+  .form-section {
+    margin-bottom: 24px;
+
+    .upload-section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+
+      .upload-section-title {
+        font-size: 14px;
+        color: var(--colors_muted_foreground_light);
+        white-space: nowrap;
+      }
+
+      .upload-section-divider {
+        flex: 1;
+        height: 1px;
+        background-color: var(--colors_border_light);
+      }
+    }
+
+    .form-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .textarea-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      label {
+        font-size: 14px;
+        font-weight: var(--muza-font-weight-medium);
+        color: var(--colors_foreground_light);
+      }
+
+      textarea {
+        padding: 8px 12px;
+        border: 1px solid var(--colors_border_light);
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 16px;
+        color: var(--colors_foreground_light);
+        background-color: white;
+        resize: vertical;
+        min-height: 60px;
+
+        &:focus {
+          outline: none;
+          border-color: var(--colors_primary_light);
+          box-shadow: 0 0 0 1px var(--colors_primary_light);
+        }
+
+        &::placeholder {
+          color: var(--colors_muted_foreground_light);
+        }
+      }
+    }
+  }
+
+  .musicians-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .musician-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .add-musician-container {
+      display: flex;
+      justify-content: flex-end;
+
+      .add-musician-button {
+        background: none;
+        border: none;
+        color: var(--colors_foreground_light);
+        font-size: 14px;
+        font-weight: var(--muza-font-weight-medium);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 9999px;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: var(--colors_secondary_light);
+        }
+
+        .plus-icon {
+          width: 16px;
+          height: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  // Override MuzaInputField styles specifically for upload form
+  .input-wrapper {
+    input {
+      border-radius: 999px !important;
+    }
+  }
+}

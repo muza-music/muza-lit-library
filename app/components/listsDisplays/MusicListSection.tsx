@@ -11,6 +11,7 @@ import type {
   Artist,
 } from "~/appData/models";
 import { useTranslation } from "~/lib/i18n/translations";
+import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
 
 const MusicListSectionComponent: React.FC<
   MusicListSection & {
@@ -35,6 +36,14 @@ const MusicListSectionComponent: React.FC<
   artists,
 }) => {
   const { t } = useTranslation();
+  const {
+    selectedSong: globalSelectedSong,
+    setSelectedSong,
+    setIsPlaying,
+    isPlaying,
+    togglePlayPause,
+  } = useCurrentPlayerStore();
+
   const handleShowAll = () => {
     if (onShowAll) {
       onShowAll(title);
@@ -78,8 +87,15 @@ const MusicListSectionComponent: React.FC<
           <SongLine
             key={song.id}
             details={song}
-            onClick={() => onSongClick?.(song)}
-            isPlaying={song.id === selectedSong?.id}
+            onClick={() => {
+              if (globalSelectedSong?.id === song.id) {
+                togglePlayPause();
+              } else {
+                setSelectedSong(song);
+                setIsPlaying(true);
+              }
+            }}
+            isPlaying={song.id === globalSelectedSong?.id && !!isPlaying}
           />
         ));
       default:
