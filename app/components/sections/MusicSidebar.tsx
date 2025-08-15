@@ -40,7 +40,9 @@ const MusicSidebar: React.FC<MusicSidebarProps> = ({
 
   const renderSection = (section: Section, index: number) => (
     <div key={index} className="section">
-      {section.title && <div className="section-title">{section.title}</div>}
+      {section.title && section.title.trim() !== "" && (
+        <div className="section-title">{section.title}</div>
+      )}
       {section.items.map(renderMenuItem)}
     </div>
   );
