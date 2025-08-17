@@ -131,6 +131,122 @@ import { MusicListSection, MuzaMusicPlaylist } from 'muza-react-library';
 />
 ```
 
+## Internationalization (i18n)
+
+Muza includes a built-in translation system that supports multiple languages for all user-facing text.
+
+### Using Translations in Components
+
+Import the `useTranslation` hook in any component to access translated strings:
+
+```jsx
+import { useTranslation } from "~/lib/i18n/translations";
+
+function MyComponent() {
+  const { t } = useTranslation();
+
+  return (
+    <div>
+      <h1>{t("page.home")}</h1>
+      <button>{t("playlist.create")}</button>
+      <span>{t("common.unknown")}</span>
+    </div>
+  );
+}
+```
+
+### Available Translation Keys
+
+The translation system includes keys for:
+
+- **Navigation**: `nav.home`, `nav.explore`, `nav.playlists`, etc.
+- **Page Titles**: `page.home`, `page.explore`
+- **Section Titles**: `section.newReleases`, `section.recentlyPlayed`
+- **Common Labels**: `common.album`, `common.songs`, `common.unknown`
+- **Player Controls**: `player.shuffle`, `player.repeat`, `player.playPause`
+- **Forms**: `form.required`, `form.searchPlaceholder`
+- **Modals**: `playlist.new`, `playlist.visibility`
+
+### Adding New Languages
+
+1. Create a new translation file in `app/lib/i18n/translations/`:
+
+```typescript
+// app/lib/i18n/translations/hebrew.ts
+const hebrew = {
+  "nav.home": "בית",
+  "nav.explore": "גלה",
+  "nav.playlists": "רשימות השמעה",
+  "nav.albums": "אלבומים",
+  "nav.artists": "אמנים",
+  "nav.songs": "שירים",
+  "page.home": "בית",
+  "page.explore": "גלה",
+  // ... add all other keys
+};
+
+export default hebrew;
+```
+
+2. Change language programmatically:
+
+```jsx
+function LanguageSwitcher() {
+  const { changeLanguage, currentLanguage } = useTranslation();
+
+  return (
+    <select
+      value={currentLanguage}
+      onChange={(e) => changeLanguage(e.target.value)}
+    >
+      <option value="english">English</option>
+      <option value="hebrew">עברית</option>
+    </select>
+  );
+}
+```
+
+### Translation File Structure
+
+```typescript
+const english = {
+  // Navigation and Sidebar
+  "nav.home": "Home",
+  "nav.explore": "Explore",
+
+  // Page Titles
+  "page.home": "Home",
+
+  // Section Titles
+  "section.newReleases": "New Releases",
+
+  // Common Labels
+  "common.album": "Album",
+  "common.songs": "Songs",
+
+  // Player Controls
+  "player.shuffle": "Shuffle",
+  "player.repeat": "Repeat",
+
+  // Forms and Inputs
+  "form.required": "*",
+  "form.searchPlaceholder": "Search...",
+
+  // Modals
+  "playlist.new": "New Playlist",
+  "playlist.create": "Create",
+};
+
+export default english;
+```
+
+### Features
+
+- **Fallback Support**: Automatically falls back to English if a translation is missing
+- **Dynamic Loading**: Language files are loaded on-demand
+- **Type Safety**: No separate types file needed - uses simple key-value pairs
+- **Easy Integration**: Works seamlessly with all Muza components
+
 ## Documentation
 
 For complete documentation and examples, visit our documentation site.

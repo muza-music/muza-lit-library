@@ -1,5 +1,6 @@
 import React from "react";
 import "./ArtistDetails.scss";
+import { useTranslation } from "~/lib/i18n/translations";
 
 interface Artist {
   id: number;
@@ -13,6 +14,7 @@ interface ArtistDetailsProps {
 }
 
 const ArtistDetails: React.FC<ArtistDetailsProps> = ({ details }) => {
+  const { t } = useTranslation();
   return (
     <div className="artist-details-card">
       <div className="image-container">
@@ -20,7 +22,9 @@ const ArtistDetails: React.FC<ArtistDetailsProps> = ({ details }) => {
       </div>
       <div className="info">
         <div className="title">{details.artistName}</div>
-        <div className="subtitle">{details.albumsCount} Albums</div>
+        <div className="subtitle">
+          {details.albumsCount} {t("common.albums")}
+        </div>
       </div>
     </div>
   );
