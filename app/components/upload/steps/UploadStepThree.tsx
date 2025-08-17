@@ -2,7 +2,7 @@ import React from "react";
 import type { UploadFormData, TrackMetadata } from "~/appData/uploadStore";
 import type { Album, SongDetails } from "~/appData/models";
 import AlbumHeader from "~/components/albumDisplays/AlbumHeader";
-import SongLine from "~/components/songLineDisplays/SongLine";
+import UploadSongLine from "~/components/upload/UploadSongLine";
 import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
 import "./UploadStepThree.scss";
 
@@ -88,10 +88,10 @@ const UploadStepThree: React.FC<UploadStepThreeProps> = ({
 
         <hr />
 
-        {/* Use existing SongLine components */}
+        {/* Use UploadSongLine components with simpler design */}
         <div className="album-song-list">
           {songDetails.map((song: SongDetails) => (
-            <SongLine
+            <UploadSongLine
               key={song.id}
               details={song}
               onClick={() => {
