@@ -3,15 +3,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev-server": "node server",
+    "dev-server": "nodemon server",
     "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
+    "start": "node server/index.js",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "postinstall": "flowbite-react patch",
     "build": "react-router build",
-    "test": "react-router typegen && tsc",
-    "lint": "prettier --check ./app"
+    "lint": "prettier --check ./app",
+    "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -48,6 +48,7 @@
     "eslint": "^9.26.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "nodemon": "^3.1.10",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "react-router-devtools": "^1.1.10",
