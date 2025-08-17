@@ -5,11 +5,7 @@ import path from "path";
 import https from "https";
 import http from "http";
 import * as fs from "fs";
-
-// Configuration constants
-const GRAPHQL_ENDPOINT =
-  process.env.GRAPHQL_ENDPOINT ||
-  "https://ec2-34-244-32-40.eu-west-1.compute.amazonaws.com/api/metadata/graphql";
+ 
 
 const AUDIO_FILES_ENDPOINT =
   process.env.AUDIO_FILES_ENDPOINT ||
