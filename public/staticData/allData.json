@@ -7,7 +7,11 @@
         "title": "Orange cat",
         "subTitle": "1944",
         "artist": "Meow Productions",
-        "songs": [1, 2, 3]
+        "songs": [
+          1,
+          2,
+          3
+        ]
       },
       {
         "id": "2",
@@ -15,10 +19,13 @@
         "title": "Paper cat",
         "subTitle": "2002",
         "artist": "Origami Felines",
-        "songs": [4, 5, 6]
+        "songs": [
+          4,
+          5,
+          6
+        ]
       }
     ],
-
     "newReleases": [
       {
         "id": "3",
@@ -26,7 +33,11 @@
         "title": "Two cats",
         "subTitle": "2023",
         "artist": "Double Trouble",
-        "songs": [7, 8, 9]
+        "songs": [
+          7,
+          8,
+          9
+        ]
       },
       {
         "id": "4",
@@ -34,7 +45,11 @@
         "title": "Orange cat",
         "subTitle": "1944",
         "artist": "Meow Productions",
-        "songs": [1, 2, 3]
+        "songs": [
+          1,
+          2,
+          3
+        ]
       },
       {
         "id": "5",
@@ -42,7 +57,11 @@
         "title": "Paper cat",
         "subTitle": "2002",
         "artist": "Origami Felines",
-        "songs": [4, 5, 6]
+        "songs": [
+          4,
+          5,
+          6
+        ]
       }
     ],
     "recommended": [
@@ -52,7 +71,11 @@
         "title": "Paper cat",
         "subTitle": "2002",
         "artist": "Origami Felines",
-        "songs": [4, 5, 6],
+        "songs": [
+          4,
+          5,
+          6
+        ],
         "songsCount": 3
       },
       {
@@ -61,7 +84,11 @@
         "title": "Two cats",
         "subTitle": "2023",
         "artist": "Double Trouble",
-        "songs": [7, 8, 9],
+        "songs": [
+          7,
+          8,
+          9
+        ],
         "songsCount": 3
       },
       {
@@ -70,7 +97,11 @@
         "title": "Orange cat",
         "subTitle": "1944",
         "artist": "Meow Productions",
-        "songs": [1, 2, 3],
+        "songs": [
+          1,
+          2,
+          3
+        ],
         "songsCount": 3
       }
     ]
@@ -86,7 +117,12 @@
         "/art/imag_3.jpg",
         "/art/imag_1.jpg"
       ],
-      "songs": [1, 2, 3, 4],
+      "songs": [
+        1,
+        2,
+        3,
+        4
+      ],
       "songsCount": 4,
       "suggestions": []
     },
@@ -100,7 +136,12 @@
         "/art/imag_1.jpg",
         "/art/imag_2.jpg"
       ],
-      "songs": [5, 6, 7, 8],
+      "songs": [
+        5,
+        6,
+        7,
+        8
+      ],
       "songsCount": 4,
       "suggestions": []
     },
@@ -114,7 +155,12 @@
         "/art/imag_2.jpg",
         "/art/imag_1.jpg"
       ],
-      "songs": [1, 3, 5, 7],
+      "songs": [
+        1,
+        3,
+        5,
+        7
+      ],
       "songsCount": 4,
       "suggestions": []
     },
@@ -128,7 +174,12 @@
         "/art/imag_3.jpg",
         "/art/imag_2.jpg"
       ],
-      "songs": [2, 4, 6, 8],
+      "songs": [
+        2,
+        4,
+        6,
+        8
+      ],
       "songsCount": 4,
       "suggestions": []
     },
@@ -142,7 +193,12 @@
         "/art/imag_2.jpg",
         "/art/imag_3.jpg"
       ],
-      "songs": [1, 2, 5, 6],
+      "songs": [
+        1,
+        2,
+        5,
+        6
+      ],
       "songsCount": 4,
       "suggestions": []
     }
@@ -196,7 +252,17 @@
             "text": "nav.artists",
             "action": "/routes/artists"
           },
-          { "svg": "songs", "text": "nav.songs", "action": "/routes/songs" }
+          { "svg": "songs", "text": "nav.songs", "action": "/routes/songs" },
+          {
+            "svg": "album",
+            "text": "Albums",
+            "action": "/routes/albums"
+          },
+          {
+            "svg": "artists",
+            "text": "Artists",
+            "action": "/routes/artists"
+          }
         ]
       }
     ]

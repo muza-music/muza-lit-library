@@ -39,7 +39,7 @@ const MusicTopbar: React.FC<MusicTopbarProps> = ({
           </button>
           <div className="user-menu">
             <div className="user-icon" onClick={onUserIconClick}>
-              <img src="https://picsum.photos/100" alt={t("topbar.user")} />
+              <img src="/art/logo.jpg" alt={t("topbar.user")} />
             </div>
           </div>
         </div>

@@ -75,6 +75,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     fetch("/staticData/allData.json")
       .then((response) => {
         if (!response.ok) {
+          console.log("response not ok");
           fetch("./staticData/allData.json").then((response) => {
             if (!response.ok) throw new Error(t("general.networkError"));
             return response.json();
@@ -121,8 +122,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <div className="body">
           <MusicSidebar
-            logoSrc="/app/icons/icons/muza.svg"
             logoAlt={t("library.musicLibrary")}
+            logoSrc="/icons/muza.svg"
             sections={sidebarSections}
           />
 

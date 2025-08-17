@@ -6,18 +6,21 @@ import https from "https";
 import http from "http";
 import * as fs from "fs";
 
+// Add global error handlers to prevent unexpected exits
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection at:", promise, "reason:", reason);
+  // Don't exit the process, just log the error
+});
+
+process.on("uncaughtException", (error) => {
+  console.error("Uncaught Exception:", error);
+  // Don't exit the process, just log the error
+});
+
 // Configuration constants
 const GRAPHQL_ENDPOINT =
   process.env.GRAPHQL_ENDPOINT ||
-  "https://ec2-34-244-32-40.eu-west-1.compute.amazonaws.com/api/metadata/graphql";
-
-const AUDIO_FILES_ENDPOINT =
-  process.env.AUDIO_FILES_ENDPOINT ||
-  "https://ec2-34-244-32-40.eu-west-1.compute.amazonaws.com/api/upload/files";
-
-const IMG_FILES_ENDPOINT =
-  process.env.IMG_FILES_ENDPOINT ||
-  "https://ec2-34-244-32-40.eu-west-1.compute.amazonaws.com/api/upload/files";
+  "http://muza-staging-alb-868009887.eu-west-1.elb.amazonaws.com/api/metadata/graphql";
 
 const PORT = process.env.PORT || 3000;
 const STOCK_PHOTO = "https://picsum.photos/400"; // Placeholde photo URL
@@ -30,13 +33,9 @@ const publicDir = path.resolve("./public");
 const staticDataFilePath = path.join(publicDir, "/staticData/allData.json");
 
 // HTTP client setup
-const isHttps = GRAPHQL_ENDPOINT.startsWith("https://");
-const agent = isHttps
-  ? new https.Agent({ rejectUnauthorized: false })
-  : new http.Agent();
 const instance = axios.create({
-  httpsAgent: isHttps ? agent : undefined,
-  httpAgent: !isHttps ? agent : undefined,
+  httpAgent: new http.Agent(),
+  timeout: 10000, // 10 second timeout
 });
 
 // GraphQL queries
@@ -64,29 +63,6 @@ const ARTISTS_QUERY = `{
   }
 }`;
 
-// Utility functions
-function transformAudioUrl(url) {
-  if (!url) return url;
-
-  // Extract filename from URL
-  const filename = url.split("/").pop();
-  if (!filename) return url;
-
-  // Create new URL with AUDIO_FILES_ENDPOINT
-  return `${AUDIO_FILES_ENDPOINT.replace(/\/$/, "")}/${filename}`;
-}
-
-function transformImageUrl(url) {
-  if (!url || url === STOCK_PHOTO) return url;
-
-  // Extract filename from URL
-  const filename = url.split("/").pop();
-  if (!filename) return url;
-
-  // Create new URL with IMG_FILES_ENDPOINT
-  return `${IMG_FILES_ENDPOINT.replace(/\/$/, "")}/${filename}`;
-}
-
 function getRandomItems(array, count) {
   if (array.length <= count) {
     return array;
@@ -99,7 +75,7 @@ function getRandomItems(array, count) {
 function transformAlbumData(albums, transformedTracks) {
   return albums.map((album) => ({
     id: album.id,
-    imageSrc: transformImageUrl(album.albumCover || STOCK_PHOTO),
+    imageSrc: album.albumCover || STOCK_PHOTO,
     title: album.albumTitle,
     subTitle: album.yearReleased,
     artist: album.artistMain,
@@ -121,8 +97,8 @@ function transformTrackData(tracks) {
       title: track.songTitle,
       time: 185,
       albumId: track.albumTitle,
-      audioUrl: transformAudioUrl(track.songFile),
-      imageSrc: transformImageUrl(track.albumCover || STOCK_PHOTO),
+      audioUrl: track.songFile,
+      imageSrc: track.albumCover || STOCK_PHOTO,
       artist: track.artistMain,
       album: track.albumTitle,
       year: track.yearReleased,
@@ -140,7 +116,7 @@ function transformArtistData(artists, transformedAlbums) {
     .map((artist, index) => ({
       id: artist.id || index + 1,
       index: index + 1,
-      imageSrc: transformImageUrl(artist.albumCover) || STOCK_PHOTO,
+      imageSrc: artist.albumCover || STOCK_PHOTO,
       artistName: artist.artistMain,
       albumsCount: String(albumsByArtist[artist.artistMain] || 0),
     }));
@@ -152,24 +128,48 @@ async function fetchGraphQLData(query) {
     const response = await instance.post(GRAPHQL_ENDPOINT, { query });
     return response.data.data;
   } catch (error) {
-    console.error("GraphQL request failed:", error.message);
+    console.error("GraphQL request failed:", error);
     throw error;
   }
 }
 
 async function fetchAlbums() {
-  const data = await fetchGraphQLData(ALBUMS_QUERY);
-  return data.allAlbums || [];
+  try {
+    const data = await fetchGraphQLData(ALBUMS_QUERY);
+    return data.allAlbums || [];
+  } catch (error) {
+    console.warn(
+      "Failed to fetch albums from GraphQL, using empty array:",
+      error.message,
+    );
+    return null;
+  }
 }
 
 async function fetchTracks() {
-  const data = await fetchGraphQLData(TRACKS_QUERY);
-  return data.allTracks || [];
+  try {
+    const data = await fetchGraphQLData(TRACKS_QUERY);
+    return data.allTracks || [];
+  } catch (error) {
+    console.warn(
+      "Failed to fetch tracks from GraphQL, using empty array:",
+      error.message,
+    );
+    return null;
+  }
 }
 
 async function fetchArtists() {
-  const data = await fetchGraphQLData(ARTISTS_QUERY);
-  return data.allArtists || [];
+  try {
+    const data = await fetchGraphQLData(ARTISTS_QUERY);
+    return data.allArtists || [];
+  } catch (error) {
+    console.warn(
+      "Failed to fetch artists from GraphQL, using empty array:",
+      error.message,
+    );
+    return null;
+  }
 }
 
 // File operations
@@ -207,8 +207,6 @@ async function initializeApp() {
       try {
         console.log("GET /staticData/allData.json - Request received");
 
-        console.log("Loading data from multiple sources...");
-
         // Load data
         const [allData, albumsData, tracksData, artistsData] =
           await Promise.all([
@@ -218,19 +216,18 @@ async function initializeApp() {
             fetchArtists(),
           ]);
 
-        console.log(`Loaded ${albumsData.length} albums from GraphQL`);
-        console.log(`Loaded ${tracksData.length} tracks from GraphQL`);
-        console.log(`Loaded ${artistsData.length} artists from GraphQL`);
-
+        console.log(`Loaded ${albumsData?.length} albums from GraphQL`);
+        console.log(`Loaded ${tracksData?.length} tracks from GraphQL`);
+        console.log(`Loaded ${artistsData?.length} artists from GraphQL`);
         // Transform data
         console.log("Transforming data...");
-        const transformedTracks = transformTrackData(tracksData);
+        const transformedTracks = transformTrackData(tracksData || []);
         const transformedAlbums = transformAlbumData(
-          albumsData,
+          albumsData || [],
           transformedTracks,
         );
         const transformedArtists = transformArtistData(
-          albumsData,
+          albumsData || [],
           transformedAlbums,
         );
 
@@ -252,7 +249,7 @@ async function initializeApp() {
           },
           artists: getRandomItems(transformedArtists, 125),
           songs: getRandomItems(transformedTracks, 100000),
-          sidebar: allData.sidebar,
+          sidebar: allData?.sidebar,
         };
 
         console.log(
@@ -281,18 +278,48 @@ async function initializeApp() {
     console.log("Setting up public file serving from:", publicDir);
     app.use(express.static(publicDir));
 
+    // Health check endpoint
+    app.get("/health", (req, res) => {
+      console.log("GET /health - Serving OK");
+      res.send("OK");
+    });
+
     app.get("/", (req, res) => {
       console.log("GET / - Serving index.html");
       res.sendFile(path.join(clientDir, "index.html"));
     });
 
     // Start server
-    app.listen(PORT, () => {
+    const server = app.listen(PORT, () => {
       console.log(`✅ Server running at http://localhost:${PORT}`);
       console.log(`📁 Serving static files from: ${clientDir}`);
       console.log(`📊 GraphQL endpoint: ${GRAPHQL_ENDPOINT}`);
-      console.log(`🎵 Audio files endpoint: ${AUDIO_FILES_ENDPOINT}`);
-      console.log(`🖼️  Image files endpoint: ${IMG_FILES_ENDPOINT}`);
+      console.log(`🚀 Server is ready to accept connections`);
+      console.log(
+        `🔗 Using internal ECS service discovery for API communication`,
+      );
+    });
+
+    // Add error handling for the server
+    server.on("error", (error) => {
+      console.error("Server error:", error);
+    });
+
+    // Keep the process alive
+    process.on("SIGINT", () => {
+      console.log("Received SIGINT, shutting down gracefully...");
+      server.close(() => {
+        console.log("Server closed");
+        process.exit(0);
+      });
+    });
+
+    process.on("SIGTERM", (grace) => {
+      console.log("Received SIGTERM, shutting down gracefully...", grace);
+      server.close(() => {
+        console.log("Server closed");
+        process.exit(0);
+      });
     });
   } catch (error) {
     console.error("❌ Failed to initialize application:", error);

@@ -3,11 +3,9 @@
 
 # React Router
 /.react-router/
-/build/
-
-# Build artifacts and compiled files
-/server/reactServer/client/assets/
-/server/reactServer/client/index.html
-/server/reactServer/client/staticData/
+/build/ 
+# Build artifacts and compiled files 
 /dist/
 *.log
+
+server/reactServer 
