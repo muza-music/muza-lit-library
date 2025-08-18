@@ -59,61 +59,70 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({ album, songs }) => {
 
       <div className="media-header" data-name="Media-Header">
         <div className="content-section">
-        <div className="cover-section" data-name="cover">
-          <div className="cover-frame" data-name="cover frame">
-            <img src={album.imageSrc} alt={album.title} />
-            <div className="overlay" data-name="Overlay" />
-          </div>
-        </div>
-
-        <div className="info-section">
-          <div className="titles-section" data-name="Titles">
-            <div className="title-info">
-              <div className="album-title">{album.title}</div>
-              <div className="artist-name">{album.artist}</div>
-              <div className="album-metadata">
-                <span>{t("common.album")}</span>
-                <span>•</span>
-                <span>{album.year || "1976"}</span>
-                <span>•</span>
-                <span>{album.songs?.length} {t("common.songs")}</span>
-              </div>
+          <div className="cover-section" data-name="cover">
+            <div className="cover-frame" data-name="cover frame">
+              <img src={album.imageSrc} alt={album.title} />
+              <div className="overlay" data-name="Overlay" />
             </div>
+          </div>
 
-            <div className="actions-section">
-              <div className="ctas-section" data-name="CTAs">
-                <button className="play-album-button" onClick={handlePlayPause} data-name="Button">
-                  <div className="play-icon">
-                    {isPlaying ? <FaPause /> : <FaPlay />}
-                  </div>
-                  <span className="play-text">
-                    {isPlaying ? t("common.pause") : t("common.playAlbum")}
+          <div className="info-section">
+            <div className="titles-section" data-name="Titles">
+              <div className="title-info">
+                <div className="album-title">{album.title}</div>
+                <div className="artist-name">{album.artist}</div>
+                <div className="album-metadata">
+                  <span>{t("common.album")}</span>
+                  <span>•</span>
+                  <span>{album.year || "1976"}</span>
+                  <span>•</span>
+                  <span>
+                    {album.songs?.length} {t("common.songs")}
                   </span>
-                </button>
+                </div>
               </div>
 
-              <div className="action-buttons" data-name="buttons">
-                <button 
-                  className="action-button add-button" 
-                  onClick={addToLibrary}
-                  data-name="Add-Download Button"
-                >
-                  <MuzaIcon iconName="plus" />
-                </button>
-                <button 
-                  className="action-button info-button" 
-                  onClick={() => setModalOpen(true)}
-                  data-name="Info Button"
-                >
-                  <MuzaIcon iconName="info" />
-                </button>
-                <button className="action-button menu-button" data-name="Menu Button">
-                  <MuzaIcon iconName="ellipsis" />
-                </button>
+              <div className="actions-section">
+                <div className="ctas-section" data-name="CTAs">
+                  <button
+                    className="play-album-button"
+                    onClick={handlePlayPause}
+                    data-name="Button"
+                  >
+                    <div className="play-icon">
+                      {isPlaying ? <FaPause /> : <FaPlay />}
+                    </div>
+                    <span className="play-text">
+                      {isPlaying ? t("common.pause") : t("common.playAlbum")}
+                    </span>
+                  </button>
+                </div>
+
+                <div className="action-buttons" data-name="buttons">
+                  <button
+                    className="action-button add-button"
+                    onClick={addToLibrary}
+                    data-name="Add-Download Button"
+                  >
+                    <MuzaIcon iconName="plus" />
+                  </button>
+                  <button
+                    className="action-button info-button"
+                    onClick={() => setModalOpen(true)}
+                    data-name="Info Button"
+                  >
+                    <MuzaIcon iconName="info" />
+                  </button>
+                  <button
+                    className="action-button menu-button"
+                    data-name="Menu Button"
+                  >
+                    <MuzaIcon iconName="ellipsis" />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
 
