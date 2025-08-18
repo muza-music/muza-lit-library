@@ -4,7 +4,7 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 16px 16px 16px 0;
+  padding: var(--muza-spacing-lg) var(--muza-spacing-lg) var(--muza-spacing-lg) 0;
   width: 100%;
   height: auto;
   position: relative;
@@ -14,10 +14,10 @@
 .back-close-section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--muza-spacing-sm);
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 4px 0;
+  padding: var(--muza-spacing-xs) 0;
   flex-shrink: 0;
 }
 
@@ -25,10 +25,10 @@
   background: rgba(255, 255, 255, 0);
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: var(--muza-spacing-sm);
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
+  padding: var(--muza-spacing-sm) var(--muza-spacing-lg);
   border-radius: 9999px;
   width: 24px;
   height: 24px;
@@ -51,7 +51,7 @@
   transform: rotate(90deg); // Rotate chevron to point left
   
   svg {
-    color: rgba(107, 114, 128, 1);
+    color: var(--colors_muted_foreground_light);
     width: 100%;
     height: 100%;
   }
@@ -88,7 +88,7 @@
   background-repeat: no-repeat;
   overflow: hidden;
   position: relative;
-  border-radius: 2px;
+  border-radius: var(--muza-border-radius-sm);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
   flex-shrink: 0;
   width: 100%;
@@ -122,7 +122,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 0 16px;
+  padding: 0 var(--muza-spacing-lg);
   height: 100%;
   flex: 1;
   min-width: 0;
@@ -134,7 +134,7 @@
 .title-info {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--muza-spacing-sm);
   align-items: flex-start;
   justify-content: flex-start;
   padding: 0;
@@ -144,24 +144,24 @@
 }
 
 .album-title {
-  font-family: 'Founders Grotesk', sans-serif;
-  font-weight: 700;
+  font-family: var(--typography_font_family_font_sans), sans-serif;
+  font-weight: var(--muza-font-weight-bold-extra);
   font-style: normal;
   line-height: 1;
   font-size: 36px;
-  color: rgb(3, 7, 18);
+  color: var(--colors_foreground_light);
   text-align: left;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .artist-name {
-  font-family: 'Founders Grotesk', sans-serif;
-  font-weight: 400;
+  font-family: var(--typography_font_family_font_sans), sans-serif;
+  font-weight: var(--muza-font-weight-normal);
   font-style: normal;
   line-height: 1;
-  font-size: 16px;
-  color: rgb(3, 7, 18);
+  font-size: var(--muza-songline-title-font-size);
+  color: var(--colors_foreground_light);
   text-align: left;
   white-space: nowrap;
   flex-shrink: 0;
@@ -170,18 +170,18 @@
 .album-metadata {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: var(--muza-spacing-sm);
   align-items: center;
   justify-content: flex-start;
   padding: 0;
   width: 100%;
   flex-shrink: 0;
-  font-family: 'Founders Grotesk', sans-serif;
-  font-weight: 400;
+  font-family: var(--typography_font_family_font_sans), sans-serif;
+  font-weight: var(--muza-font-weight-normal);
   font-style: normal;
   line-height: 1;
-  font-size: 16px;
-  color: rgb(107, 114, 128);
+  font-size: var(--muza-songline-title-font-size);
+  color: var(--colors_muted_foreground_light);
   text-align: left;
   white-space: nowrap;
 
@@ -206,7 +206,7 @@
 .ctas-section {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--muza-spacing-md);
   align-items: center;
   justify-content: center;
   padding: 0;
@@ -218,11 +218,11 @@
   background: rgba(255, 255, 255, 0.5);
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: var(--muza-spacing-sm);
   height: 40px;
   align-items: center;
   justify-content: center;
-  padding: 8px 32px;
+  padding: var(--muza-spacing-sm) var(--muza-spacing-xxl);
   border-radius: 9999px;
   width: 234px;
   flex-shrink: 0;
@@ -243,7 +243,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(3, 7, 18);
+  color: var(--colors_foreground_light);
 
   svg {
     width: 100%;
@@ -255,12 +255,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: 'Founders Grotesk', sans-serif;
-  font-weight: 500;
+  font-family: var(--typography_font_family_font_sans), sans-serif;
+  font-weight: var(--muza-font-weight-medium);
   font-style: normal;
   line-height: 20px;
-  font-size: 16px;
-  color: rgb(3, 7, 18);
+  font-size: var(--muza-songline-title-font-size);
+  color: var(--colors_foreground_light);
   text-align: left;
   white-space: nowrap;
   flex-shrink: 0;
@@ -270,7 +270,7 @@
 .action-buttons {
   display: flex;
   flex-direction: row;
-  gap: 16px;
+  gap: var(--muza-spacing-lg);
   align-items: center;
   justify-content: flex-end;
   padding: 0;
@@ -281,10 +281,10 @@
   background: rgba(255, 255, 255, 0);
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: var(--muza-spacing-sm);
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
+  padding: var(--muza-spacing-sm) var(--muza-spacing-lg);
   border-radius: 9999px;
   width: 36px;
   height: 36px;
@@ -294,13 +294,13 @@
   transition: background-color 0.2s ease;
 
   &:hover {
-    background: rgba(3, 7, 18, 0.05);
+    background: var(--muza-hover-background);
   }
 
   svg {
     width: 16px;
     height: 16px;
-    color: rgb(3, 7, 18);
+    color: var(--colors_foreground_light);
   }
 }
 
@@ -308,13 +308,13 @@
 @media (max-width: 768px) {
   .media-header {
     flex-direction: column;
-    padding: 16px;
+    padding: var(--muza-spacing-lg);
   }
 
   .content-section {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: var(--muza-spacing-xl);
     width: 100%;
   }
 
@@ -335,7 +335,7 @@
 
   .actions-section {
     flex-direction: column;
-    gap: 16px;
+    gap: var(--muza-spacing-lg);
     align-items: center;
   }
 
