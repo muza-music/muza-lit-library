@@ -22,7 +22,11 @@ const formatPlayCount = (plays: number): string => {
   return `${(plays / 1000000).toFixed(1)}M`;
 };
 
-const SongLineWithCover: React.FC<SongLineProps> = ({ details, onClick, isPlaying }) => {
+const SongLineWithCover: React.FC<SongLineProps> = ({
+  details,
+  onClick,
+  isPlaying,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const renderIcon = () => {
