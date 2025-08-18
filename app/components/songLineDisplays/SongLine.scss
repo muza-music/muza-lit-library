@@ -47,22 +47,9 @@
 
   .track-info {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     position: relative;
     padding-left: 40px;
-    flex: 1;
-  }
-
-  .track-details {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .track-meta {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 2px;
   }
 
   .track-icon {
@@ -93,18 +80,6 @@
     }
   }
 
-  .pause-icon {
-    display: inline-block;
-    color: var(--tertiary-text-color);
-    margin-right: 8px;
-    text-align: center;
-
-    svg {
-      width: 24px;
-      margin-top: 4px;
-    }
-  }
-
   .track-title {
     color: var(--primary-text-color);
     font-size: var(--song-title-font-size);
@@ -113,63 +88,13 @@
 
   .track-artist {
     color: var(--secondary-text-color);
-    font-size: 14px;
-    margin-top: 2px;
-  }
-
-  .play-count {
-    color: var(--tertiary-text-color);
-    font-size: 12px;
+    font-size: var(--song-artist-font-size);
     font-weight: 400;
-  }
-
-  .info-right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding-left: 24px;
-    padding-right: 8px;
-    padding-top: 0;
-    padding-bottom: 0;
-    height: 54px;
-
-    .add-btn,
-    .ellipsis-btn {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      color: var(--primary-text-color);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.2s ease;
-
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.05);
-      }
-    }
-
-    .ellipsis-btn {
-      font-size: 20px;
-      line-height: 1;
-    }
-
-    .add-btn {
-      font-size: 18px;
-      font-weight: 400;
-    }
   }
 
   .track-duration {
-    color: var(--tertiary-text-color);
+    color: var(--secondary-text-color);
     font-size: var(--song-duration-font-size);
-    font-weight: 400;
-    text-align: right;
-    white-space: nowrap;
   }
 
   .wave-container {
@@ -180,24 +105,24 @@
     width: 20px;
     height: 20px;
     margin-right: 8px;
+  }
 
-    .bar {
-      width: 30%;
-      height: 100%;
-      border-radius: 10px;
-      background-color: var(--tertiary-text-color);
+  .bar {
+    width: 30%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: var(--tertiary-text-color);
 
-      &:nth-child(1) {
-        animation: wave 1s infinite ease-in-out;
-      }
+    &:nth-child(1) {
+      animation: wave 1s infinite ease-in-out;
+    }
 
-      &:nth-child(2) {
-        animation: wave 1s infinite ease-in-out 0.2s;
-      }
+    &:nth-child(2) {
+      animation: wave 1s infinite ease-in-out 0.2s;
+    }
 
-      &:nth-child(3) {
-        animation: wave 1s infinite ease-in-out 0.4s;
-      }
+    &:nth-child(3) {
+      animation: wave 1s infinite ease-in-out 0.4s;
     }
   }
 }
