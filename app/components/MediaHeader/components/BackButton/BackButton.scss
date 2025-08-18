@@ -2,7 +2,7 @@
 .back-close-section {
   display: flex;
   position: absolute;
-  left: calc(-1 * var(--muza-spacing-lg, 16px) / 2);
+  left: calc(-1 * var(--muza-spacing-lg, 16px) * 2);
   z-index: 10;
   padding: var(--muza-spacing-lg, 16px) var(--muza-spacing-lg, 16px);
 }
