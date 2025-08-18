@@ -65,9 +65,9 @@ const SongLineWithCover: React.FC<SongLineProps> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="song-line__content">
+      <div className="song-line-with-cover__content">
         {/* Album Cover */}
-        <div className="song-line__cover">
+        <div className="song-line-with-cover__cover">
           <img
             src={details.imageSrc || "/art/imag_1.jpg"}
             alt={`${details.title} cover`}
@@ -91,12 +91,12 @@ const SongLineWithCover: React.FC<SongLineProps> = ({
         </div>
 
         {/* Song Info */}
-        <div className="song-line__info">
-          <div className="song-line__title-row">
+        <div className="song-line-with-cover__info">
+          <div className="song-line-with-cover__title-row">
             <h3 className="song-title">{details.title}</h3>
           </div>
 
-          <div className="song-line__details-row">
+          <div className="song-line-with-cover__details-row">
             <div className="song-details">
               <span className="artist-name">{details.artist}</span>
               <span className="separator">•</span>
@@ -112,7 +112,7 @@ const SongLineWithCover: React.FC<SongLineProps> = ({
         </div>
 
         {/* Right Section with Gradient */}
-        <div className="song-line__actions">
+        <div className="song-line-with-cover__actions">
           {isHovered && (
             <button
               className="ellipsis-btn"

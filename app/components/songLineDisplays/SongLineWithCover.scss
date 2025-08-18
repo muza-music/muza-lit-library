@@ -9,22 +9,22 @@
     background: var(--muza-hover-background, #f9fafb);
 
     // Apply hover background to all child elements
-    .song-line__content,
-    .song-line__cover,
-    .song-line__info,
-    .song-line__title-row,
-    .song-line__details-row,
-    .song-line__actions {
+    .song-line-with-cover__content,
+    .song-line-with-cover__cover,
+    .song-line-with-cover__info,
+    .song-line-with-cover__title-row,
+    .song-line-with-cover__details-row,
+    .song-line-with-cover__actions {
       background: var(--muza-hover-background, #f9fafb);
     }
 
-    .song-line__cover {
+    .song-line-with-cover__cover {
       .play-overlay {
         opacity: 1;
       }
     }
 
-    .song-line__actions {
+    .song-line-with-cover__actions {
       background: linear-gradient(
         90deg,
         rgba(249, 250, 251, 0) 4.82%,
@@ -45,12 +45,12 @@
     background: var(--muza-hover-background, #f9fafb);
 
     // Apply active background to all child elements
-    .song-line__content,
-    .song-line__cover,
-    .song-line__info,
-    .song-line__title-row,
-    .song-line__details-row,
-    .song-line__actions {
+    .song-line-with-cover__content,
+    .song-line-with-cover__cover,
+    .song-line-with-cover__info,
+    .song-line-with-cover__title-row,
+    .song-line-with-cover__details-row,
+    .song-line-with-cover__actions {
       background: var(--muza-hover-background, #f9fafb);
     }
 
