@@ -3,7 +3,7 @@ import "./MusicListSection.scss";
 import AlbumDetails from "../albumDisplays/AlbumDetails";
 import ArtistDetails from "../artistDisplays/ArtistDetails";
 import PlaylistCover from "../albumDisplays/PlaylistCover";
-import SongLine from "../songLineDisplays/SongLine";
+import SongLineWithCover from "../songLineDisplays/SongLineWithCover";
 import type {
   MusicListSection,
   Album,
@@ -84,7 +84,7 @@ const MusicListSectionComponent: React.FC<
         ));
       case "song":
         return songs!.map((song) => (
-          <SongLine
+          <SongLineWithCover
             key={song.id}
             details={song}
             onClick={() => {
