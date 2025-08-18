@@ -29,6 +29,7 @@ export interface Album {
   artist: string;
   songs?: number[];
   genre?: string;
+  year?: number;
 }
 
 export interface Artist {
