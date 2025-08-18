@@ -1,7 +1,7 @@
 import React from "react";
 import type { UploadFormData, TrackMetadata } from "~/appData/uploadStore";
 import type { Album, SongDetails } from "~/appData/models";
-import MediaHeader from "~/components/albumDisplays/MediaHeader";
+import MediaHeader from "~/components/MediaHeader";
 import UploadSongLine from "~/components/upload/UploadSongLine";
 import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
 import "./UploadStepThree.scss";
@@ -83,12 +83,12 @@ const UploadStepThree: React.FC<UploadStepThreeProps> = ({
   return (
     <div className="upload-step-three">
       <div className="album-preview">
-        {/* Use MediaHeader component */}
-        <MediaHeader album={album} songs={songDetails} />
-
-        <hr />
-
-        {/* Use UploadSongLine components with simpler design */}
+        <MediaHeader 
+          media={album} 
+          songs={songDetails} 
+          mediaType="album"
+          showBackButton={false}
+        />
         <div className="album-song-list">
           {songDetails.map((song: SongDetails) => (
             <UploadSongLine
@@ -106,8 +106,6 @@ const UploadStepThree: React.FC<UploadStepThreeProps> = ({
             />
           ))}
         </div>
-
-        <hr />
       </div>
     </div>
   );

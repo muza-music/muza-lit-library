@@ -1,0 +1,74 @@
+// MediaInfo component styles
+.title-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--muza-spacing-sm, 8px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+  width: 100%;
+  flex-shrink: 0;
+  z-index: 2;
+
+  &--center {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.album-title {
+  font-family:
+    var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
+  font-weight: var(--muza-font-weight-bold-extra, 700);
+  font-style: normal;
+  line-height: 1;
+  font-size: 36px;
+  color: var(--colors_foreground_light, #030712);
+  text-align: left;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  .title-info--center & {
+    text-align: center;
+  }
+}
+
+.creator-name {
+  font-family:
+    var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
+  font-weight: var(--muza-font-weight-normal, 400);
+  font-style: normal;
+  line-height: 1;
+  font-size: var(--muza-songline-title-font-size, 16px);
+  color: var(--colors_foreground_light, #030712);
+  text-align: left;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  .title-info--center & {
+    text-align: center;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .title-info {
+    align-items: center;
+    text-align: center;
+  }
+
+  .album-title {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .creator-name {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .album-title {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,83 @@
+// PlayButton component styles
+.ctas-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--muza-spacing-md, 12px);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.play-album-button {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: row;
+  gap: var(--muza-spacing-sm, 8px);
+  align-items: center;
+  height: 24px;
+  width: 170px;
+  justify-content: center;
+  padding: var(--muza-spacing-sm, 8px) var(--muza-spacing-xxl, 36px);
+  border-radius: 9999px;
+  flex-shrink: 0;
+  border: 1px solid rgb(17, 24, 39);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.7);
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.play-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--colors_foreground_light, #030712);
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.play-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family:
+    var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
+  font-weight: var(--muza-font-weight-medium, 500);
+  font-style: normal;
+  line-height: 20px;
+  font-size: var(--muza-songline-title-font-size, 16px);
+  color: var(--colors_foreground_light, #030712);
+  text-align: left;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .play-album-button {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .play-album-button {
+    width: 180px;
+    font-size: 14px;
+  }
+}

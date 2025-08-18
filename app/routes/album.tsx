@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { Album, SongDetails } from "~/appData/models";
 import { useMusicLibraryStore } from "~/appData/musicStore";
 import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
-import MediaHeader from "~/components/albumDisplays/MediaHeader";
+import MediaHeader from "~/components/MediaHeader";
 import { MusicPlayer } from "~/components/sections/MusicPlayer";
 import MusicSidebar from "~/components/sections/MusicSidebar";
 import MusicTopbar from "~/components/sections/MusicTopbar";
@@ -42,7 +42,12 @@ export default function AlbumPage() {
 
   return (
     <main>
-      <MediaHeader album={album} songs={albumSongsDetails} />
+      <MediaHeader 
+        media={album} 
+        songs={albumSongsDetails} 
+        mediaType="album"
+        showBackButton={true}
+      />
       <div className="album-song-list">
         {albumSongsDetails.map((s: SongDetails) => (
           <SongLine

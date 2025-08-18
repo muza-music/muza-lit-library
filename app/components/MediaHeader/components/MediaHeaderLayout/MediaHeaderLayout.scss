@@ -1,0 +1,27 @@
+// MediaHeaderLayout component styles
+.media-header-layout {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+
+  .media-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--muza-spacing-lg, 16px);
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  // Responsive design
+  @media (max-width: 768px) {
+    .media-header {
+      flex-direction: column;
+      padding: var(--muza-spacing-lg, 16px);
+    }
+  }
+}
