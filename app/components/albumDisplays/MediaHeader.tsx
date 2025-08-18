@@ -42,7 +42,7 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({ album, songs }) => {
   };
 
   return (
-    <div className="media-header" data-name="Media-Header">
+    <>
       <div className="back-close-section" data-name="back & close">
         <div className="back-button" data-name="back" onClick={goBack}>
           <div className="back-icon">
@@ -51,7 +51,8 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({ album, songs }) => {
         </div>
       </div>
 
-      <div className="content-section">
+      <div className="media-header" data-name="Media-Header">
+        <div className="content-section">
         <div className="cover-section" data-name="cover">
           <div className="cover-frame" data-name="cover frame">
             <img src={album.imageSrc} alt={album.title} />
@@ -107,13 +108,14 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({ album, songs }) => {
             </div>
           </div>
         </div>
+        </div>
       </div>
 
       <AlbumInfoModal
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}
       />
-    </div>
+    </>
   );
 };
 

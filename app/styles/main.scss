@@ -26,7 +26,8 @@
   max-width: 100%;
 
   main {
-    padding: var(--muza-spacing-xl);
+    position: relative;
+    padding: var(--muza-spacing-xl, 24px);
     padding-bottom: 160px; /* for the music player */
   }
 }

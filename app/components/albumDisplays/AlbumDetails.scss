@@ -2,19 +2,19 @@
   display: flex;
   align-items: center;
   background: white;
-  padding: var(--muza-spacing-md);
-  border-radius: var(--muza-border-radius-md);
+  padding: var(--muza-spacing-md, 12px);
+  border-radius: var(--muza-border-radius-md, 8px);
   flex-direction: column;
   align-items: flex-start;
 
   .image-container {
     width: 180px;
     height: 180px;
-    border-radius: var(--muza-border-radius-sm);
+    border-radius: var(--muza-border-radius-sm, 4px);
     overflow: hidden;
-    background: var(--muza-image-background-color-bg);
-    box-shadow: var(--muza-box-shadow);
-    margin-right: var(--muza-spacing-lg);
+    background: var(--muza-image-background-color-bg, #d9d9d9);
+    box-shadow: var(--muza-box-shadow, 0 3px 10px rgba(0, 0, 0, 0.2));
+    margin-right: var(--muza-spacing-lg, 16px);
     position: relative;
 
     img {
@@ -25,7 +25,7 @@
 
     .album-play-pause-btn {
       display: flex;
-      padding: var(--muza-spacing-md);
+      padding: var(--muza-spacing-md, 12px);
       justify-content: center;
       align-items: center;
       position: absolute;
@@ -73,7 +73,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: var(--muza-border-radius-sm);
+    border-radius: var(--muza-border-radius-sm, 4px);
     background: rgba(9, 9, 9, 0.1);
     backdrop-filter: blur(4px);
     pointer-events: none;
@@ -100,8 +100,8 @@
       justify-content: center;
       align-items: center;
       aspect-ratio: 1/1;
-      border-radius: var(--muza-border-radius-lg);
-      background: var(--muza-section-background, #f9fafb);
+      border-radius: var(--muza-border-radius-lg, 20px);
+      background: var(--muza-section-background, #f7f7f7);
       border: none;
       cursor: pointer;
       transition: background 0.2s;
@@ -113,6 +113,8 @@
         height: 100%;
         svg {
           flex-shrink: 0;
+          width: 16px;
+          height: 16px;
           path {
             width: 16px;
             height: 16px;
@@ -131,40 +133,40 @@
 
   .info {
     margin-top: 4px;
-    margin-left: var(--muza-spacing-sm);
+    margin-left: var(--muza-spacing-sm, 8px);
     flex: 1;
 
     .title {
-      font-size: var(--muza-heading-font-size);
-      font-weight: var(--muza-font-weight-bold-extra);
-      color: var(--muza-primary-text-color);
+      font-size: var(--muza-heading-font-size, 18px);
+      font-weight: var(--muza-font-weight-bold-extra, 700);
+      color: var(--muza-primary-text-color, #333333);
     }
 
     .artist {
       font-size: 16px;
-      color: var(--muza-secondary-text-color);
+      color: var(--muza-secondary-text-color, #5f5f5f);
       font-weight: 400;
       line-height: 1.2;
     }
 
     .subtitle {
       display: none;
-      font-size: var(--muza-secondary-font-size);
-      color: var(--muza-tertiary-text-color);
-      margin-top: var(--muza-spacing-xs);
+      font-size: var(--muza-secondary-font-size, 12px);
+      color: var(--muza-tertiary-text-color, #aaa);
+      margin-top: var(--muza-spacing-xs, 4px);
     }
   }
 
   .buttons {
     display: none;
-    gap: var(--muza-spacing-sm);
-    margin-top: var(--muza-spacing-md);
+    gap: var(--muza-spacing-sm, 8px);
+    margin-top: var(--muza-spacing-md, 12px);
 
     .icon-button {
-      background: var(--muza-buttons-color);
+      background: var(--muza-buttons-color, #ededed);
       border: none;
-      padding: var(--muza-spacing-sm);
-      border-radius: var(--muza-border-radius-sm);
+      padding: var(--muza-spacing-sm, 8px);
+      border-radius: var(--muza-border-radius-sm, 4px);
       cursor: pointer;
       transition: background 0.2s ease-in-out;
       border-radius: 50%;
@@ -174,7 +176,7 @@
       height: var(--button-size);
 
       &:hover {
-        background: var(--muza-button-hover-background);
+        background: var(--muza-button-hover-background, #dddddd);
       }
 
       .icon {
@@ -183,7 +185,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--muza-secondary-text-color);
+        color: var(--muza-secondary-text-color, #5f5f5f);
 
         &.icon-dots::before {
           content: "⋮";
@@ -206,8 +208,8 @@
         &.icon-shuffle svg {
           width: 18px;
           height: 18px;
-          fill: var(--muza-secondary-text-color);
-          stroke: var(--muza-secondary-text-color);
+          fill: var(--muza-secondary-text-color, #5f5f5f);
+          stroke: var(--muza-secondary-text-color, #5f5f5f);
           stroke-width: 2;
           stroke-linecap: round;
           stroke-linejoin: round;

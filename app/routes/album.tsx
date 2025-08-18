@@ -43,7 +43,6 @@ export default function AlbumPage() {
   return (
     <main>
       <MediaHeader album={album} songs={albumSongsDetails} />
-      <hr />
       <div className="album-song-list">
         {albumSongsDetails.map((s: SongDetails) => (
           <SongLine
@@ -61,8 +60,6 @@ export default function AlbumPage() {
           />
         ))}
       </div>
-
-      <hr />
     </main>
   );
 }
