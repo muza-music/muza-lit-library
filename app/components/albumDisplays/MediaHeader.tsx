@@ -31,10 +31,16 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({ album, songs }) => {
     });
   };
 
-  const Play = () => {
-    setSelectedSong(songs[0]);
-    setSelectedPlaListOrAlbum(album);
-    setIsPlaying(true);
+  const handlePlayPause = () => {
+    if (isPlaying) {
+      // If currently playing, pause
+      setIsPlaying(false);
+    } else {
+      // If not playing, start playing the album
+      setSelectedSong(songs[0]);
+      setSelectedPlaListOrAlbum(album);
+      setIsPlaying(true);
+    }
   };
 
   const goBack = () => {
@@ -76,7 +82,7 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({ album, songs }) => {
 
             <div className="actions-section">
               <div className="ctas-section" data-name="CTAs">
-                <button className="play-album-button" onClick={Play} data-name="Button">
+                <button className="play-album-button" onClick={handlePlayPause} data-name="Button">
                   <div className="play-icon">
                     {isPlaying ? <FaPause /> : <FaPlay />}
                   </div>
