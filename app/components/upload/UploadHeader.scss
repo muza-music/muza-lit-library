@@ -1,0 +1,35 @@
+.upload-header {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--colors_border_light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  h1 {
+    font-size: 20px;
+    font-weight: var(--muza-font-weight-bold-extra);
+    color: var(--colors_foreground_light);
+    margin: 0;
+    text-transform: capitalize;
+  }
+
+  .cancel-button {
+    background-color: var(--colors_secondary_light);
+    border: none;
+    border-radius: 9999px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: var(--muza-font-weight-medium);
+    color: var(--colors_foreground_light);
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: var(--muza-button-hover-background);
+    }
+  }
+}

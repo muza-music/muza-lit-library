@@ -3,6 +3,7 @@ import SongDetails from "~/components/songLineDisplays/SongDetails";
 import type { SongDetails as SongDetailsType } from "~/appData/models";
 import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
 import { useMusicLibraryStore } from "~/appData/musicStore";
+import { useTranslation } from "~/lib/i18n/translations";
 
 import "../styles/scrollbar.scss";
 import "../styles/variables.scss";
@@ -10,6 +11,7 @@ import "../styles/main.scss";
 import "./songs.scss";
 
 export default function Songs() {
+  const { t } = useTranslation();
   const { setSelectedSong, selectedSong } = useCurrentPlayerStore();
   const { recentlyPlayed } = useMusicLibraryStore();
   const [loading, setLoading] = useState(true);
@@ -30,13 +32,14 @@ export default function Songs() {
     setActiveSongId(song.id || null);
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <p>{t("general.loading")}</p>;
+  if (error)
+    return <p>{t("general.errorWithMessage").replace("{error}", error)}</p>;
 
   return (
     <main className="songs-page">
       <div className="page-header">
-        <h1>Songs</h1>
+        <h1>{t("page.songs")}</h1>
       </div>
 
       <div className="songs-list-container">

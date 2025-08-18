@@ -229,58 +229,30 @@
   "sidebar": {
     "sections": [
       {
-        "title": "Home",
         "items": [
-          {
-            "svg": "home",
-            "text": "Home",
-            "action": "home"
-          },
+          { "svg": "home", "text": "nav.home", "action": "/" },
           {
             "svg": "explore",
-            "text": "Explore",
-            "action": "explore"
+            "text": "nav.explore",
+            "action": "/routes/explore"
           }
         ]
       },
       {
-        "title": "My Muza",
+        "title": "nav.myMuza",
         "items": [
           {
-            "svg": "songs",
-            "text": "Songs",
-            "action": "songs"
-          },
-          {
-            "svg": "album",
-            "text": "Albums",
-            "action": "albums"
-          },
-          {
-            "svg": "artists",
-            "text": "Artists",
-            "action": "artists"
-          },
-          {
             "svg": "playlist",
-            "text": "Playlists",
+            "text": "nav.playlists",
             "action": "/routes/playlists"
           },
-          {
-            "svg": "album",
-            "text": "Albums",
-            "action": "/routes/albums"
-          },
+          { "svg": "album", "text": "nav.albums", "action": "/routes/albums" },
           {
             "svg": "artists",
-            "text": "Artists",
+            "text": "nav.artists",
             "action": "/routes/artists"
           },
-          {
-            "svg": "songs",
-            "text": "Songs",
-            "action": "/routes/songs"
-          }
+          { "svg": "songs", "text": "nav.songs", "action": "/routes/songs" }
         ]
       }
     ]

@@ -2,6 +2,7 @@ import React from "react";
 import "./PlaylistGrid.scss";
 import CreatePlaylistCard from "./CreatePlaylistCard";
 import PlaylistCover from "../albumDisplays/PlaylistCover";
+import { useTranslation } from "~/lib/i18n/translations";
 
 interface PlaylistGridProps {
   playlists: any[];
@@ -14,6 +15,8 @@ const PlaylistGrid: React.FC<PlaylistGridProps> = ({
   onPlaylistClick,
   onCreatePlaylist,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="playlist-grid">
       <CreatePlaylistCard onClick={onCreatePlaylist} />
@@ -26,7 +29,7 @@ const PlaylistGrid: React.FC<PlaylistGridProps> = ({
           }
           title={playlist.title || playlist.name}
           songsCount={playlist.songs?.length?.toString() || "0"}
-          userName={playlist.userName || playlist.author || "Unknown"}
+          userName={playlist.userName || playlist.author || t("common.unknown")}
           onSelect={() => onPlaylistClick(playlist)}
         />
       ))}
