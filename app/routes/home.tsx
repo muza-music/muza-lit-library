@@ -18,19 +18,19 @@ export default function Home() {
   const navigate = useNavigate();
 
   const onAlbumClick = (album: Album) => {
-    navigate("/routes/album", { state: { album } });
+    navigate("/album", { state: { album } });
   };
 
   const handleShowAll = (sectionTitle: string) => {
     switch (sectionTitle) {
       case t("section.newReleases"):
-        navigate("/routes/albums");
+        navigate("/albums");
         break;
       case t("section.recentlyPlayed"):
-        navigate("/routes/songs");
+        navigate("/songs");
         break;
       case t("section.artists"):
-        navigate("/routes/artists");
+        navigate("/artists");
         break;
       default:
         break;

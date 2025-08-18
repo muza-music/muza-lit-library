@@ -14,11 +14,11 @@ export default function Explore() {
   const navigate = useNavigate();
 
   const onAlbumClick = (album: Album) => {
-    navigate("/routes/album", { state: { album } });
+    navigate("/album", { state: { album } });
   };
 
   const handleShowAll = (sectionTitle: string) => {
-    navigate("/routes/albums");
+    navigate("/albums");
   };
 
   // Define sections configuration for the loop

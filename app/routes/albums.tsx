@@ -18,7 +18,7 @@ export default function Albums() {
   const navigate = useNavigate();
 
   const onAlbumClick = (album: Album) => {
-    navigate("/routes/album", { state: { album } });
+    navigate("/album", { state: { album } });
   };
 
   return (

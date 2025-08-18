@@ -284,8 +284,22 @@ async function initializeApp() {
       res.send("OK");
     });
 
+    // Handle favicon requests
+    app.get("/favicon.ico", (req, res) => {
+      console.log("GET /favicon.ico - Serving favicon");
+      res.status(204).end(); // No content response
+    });
+
     app.get("/", (req, res) => {
       console.log("GET / - Serving index.html");
+      res.sendFile(path.join(clientDir, "index.html"));
+    });
+
+    // Catch-all middleware for client-side routing
+    app.use((req, res) => {
+      console.log(
+        `GET ${req.path} - Serving index.html for client-side routing`,
+      );
       res.sendFile(path.join(clientDir, "index.html"));
     });
 

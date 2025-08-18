@@ -20,7 +20,7 @@ const MusicTopbar: React.FC<MusicTopbarProps> = ({
   };
 
   const handleUploadClick = () => {
-    navigate("/routes/upload");
+    navigate("/upload");
   };
 
   return (
