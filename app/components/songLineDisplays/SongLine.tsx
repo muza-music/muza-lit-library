@@ -42,7 +42,7 @@ const SongLine: React.FC<SongLineProps> = ({ details, onClick, isPlaying }) => {
 
   return (
     <div
-      className={`song-line ${isPlaying ? "playing" : ""}`}
+      className={`song-line-simple ${isPlaying ? "playing" : ""}`}
       onClick={onClick}
     >
       <div className="song-container">

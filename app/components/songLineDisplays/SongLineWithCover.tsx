@@ -60,7 +60,7 @@ const SongLineWithCover: React.FC<SongLineProps> = ({
 
   return (
     <div
-      className={`song-line ${isPlaying ? "playing" : ""}`}
+      className={`song-line-with-cover ${isPlaying ? "playing" : ""}`}
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

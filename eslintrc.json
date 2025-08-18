@@ -15,9 +15,6 @@
       "jsx": true
     }
   },
-  "plugins": [
-    "react",
-    "react-hooks"
-  ],
+  "plugins": ["react", "react-hooks"],
   "rules": {}
 }
