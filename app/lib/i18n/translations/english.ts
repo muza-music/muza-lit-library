@@ -131,7 +131,7 @@ const english = {
   "library.musicLibrary": "Music Library",
 
   // UI Actions
-  "action.showMore": "Show more",
+  "action.showAll": "Show all",
 
   // Create Playlist Card
   "playlist.createCard": "Create Playlist",
