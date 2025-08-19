@@ -1,4 +1,3 @@
-// PlayButton component styles
 .ctas-section {
   display: flex;
   flex-direction: column;
@@ -23,12 +22,13 @@
   border-radius: 9999px;
   flex-shrink: 0;
   border: 1px solid rgb(17, 24, 39);
-  cursor: pointer;
+  cursor: pointer !important;
   transition: all 0.2s ease;
 
   &:hover:not(:disabled) {
     background: rgba(255, 255, 255, 0.7);
     transform: translateY(-1px);
+    cursor: pointer !important;
   }
 
   &:disabled {
@@ -45,10 +45,14 @@
   align-items: center;
   justify-content: center;
   color: var(--colors_foreground_light, #030712);
+  pointer-events: none;
+  cursor: inherit;
 
   svg {
     width: 100%;
     height: 100%;
+    pointer-events: none;
+    cursor: inherit;
   }
 }
 
@@ -66,9 +70,10 @@
   text-align: left;
   white-space: nowrap;
   flex-shrink: 0;
+  pointer-events: none;
+  cursor: inherit;
 }
 
-// Responsive design
 @media (max-width: 768px) {
   .play-album-button {
     width: 200px;

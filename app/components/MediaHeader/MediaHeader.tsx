@@ -9,13 +9,13 @@ import { useTranslation } from "~/lib/i18n/translations";
 // Import sub-components
 import MediaHeaderLayout from "./components/MediaHeaderLayout/MediaHeaderLayout";
 import MediaContentSection from "./components/MediaContentSection/MediaContentSection";
-import BackButton from "./components/BackButton/BackButton";
+
 import MediaCover from "./components/MediaCover/MediaCover";
 import MediaInfo from "./components/MediaInfo/MediaInfo";
 import MediaMetadata from "./components/MediaMetadata/MediaMetadata";
 import PlayButton from "./components/PlayButton/PlayButton";
 import ActionButtonGroup from "./components/ActionButtonGroup/ActionButtonGroup";
-import IconActionButton from "./components/IconActionButton/IconActionButton";
+import MuzaButton from "~/controls/MuzaButton";
 
 interface MediaHeaderProps {
   // Generic media object that works for albums, playlists, etc.
@@ -67,6 +67,22 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({
 
   const goBack = () => {
     window.history.back();
+  };
+
+  // Helper function to safely get title
+  const getMediaTitle = () => {
+    if (mediaType === 'artist') {
+      return (media as Artist).name || '';
+    }
+    return (media as Album | MusicPlaylist).title || '';
+  };
+
+  // Helper function to safely get image
+  const getMediaImageSrc = () => {
+    if (mediaType === 'artist') {
+      return (media as Artist).imageUrl || '';
+    }
+    return (media as Album | MusicPlaylist).imageSrc || '';
   };
 
   // Dynamic content based on media type
@@ -133,29 +149,41 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({
   return (
     <>
       <MediaHeaderLayout hasBackButton={showBackButton}>
-        {showBackButton && <BackButton onClick={goBack} />}
+        {showBackButton && (
+          <div className="back-close-section" data-name="back & close">
+            <MuzaButton
+              iconName="ChevronDown"
+              onClick={goBack}
+              size="small"
+              className="back-button"
+              data-name="back"
+            />
+          </div>
+        )}
         
         <div className="media-header" data-name="Media-Header">
           <MediaContentSection>
             <MediaCover 
-              imageSrc={media.imageSrc || ''}
-              title={media.title || (media as any).name || ''}
+              imageSrc={getMediaImageSrc()}
+              title={getMediaTitle()}
               mediaType={mediaType}
             />
             
             <div className="info-section">
               <div className="titles-section" data-name="Titles">
-                <MediaInfo 
-                  title={media.title || (media as any).name || ''}
-                  creator={creator}
-                  creatorLabel={label}
-                />
-                
-                <MediaMetadata {...metadataProps} />
+                <div className="title-metadata-group">
+                  <MediaInfo 
+                    title={getMediaTitle()}
+                    creator={creator}
+                    creatorLabel={label}
+                  />
+                  
+                  <MediaMetadata {...metadataProps} />
+                </div>
 
                 <div className="actions-section">
                   <PlayButton 
-                    isPlaying={isPlaying}
+                    isPlaying={!!isPlaying}
                     onPlayPause={handlePlayPause}
                     text={getPlayButtonText()}
                     disabled={songs.length === 0}
@@ -164,19 +192,22 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({
                   <ActionButtonGroup alignment="end">
                     {customActions || (
                       <>
-                        <IconActionButton 
+                        <MuzaButton 
                           iconName="plus" 
                           onClick={addToLibrary}
+                          size="medium"
                           data-name="Add-Download Button"
                         />
-                        <IconActionButton 
+                        <MuzaButton 
                           iconName="info" 
                           onClick={() => setModalOpen(true)}
+                          size="medium"
                           data-name="Info Button"
                         />
-                        <IconActionButton 
+                        <MuzaButton 
                           iconName="ellipsis"
                           onClick={() => {}}
+                          size="medium"
                           data-name="Menu Button"
                         />
                       </>

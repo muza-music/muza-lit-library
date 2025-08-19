@@ -1,5 +1,6 @@
 .muza-button {
-  --button-background: var(--muza-hover-background, #ededed);
+  --button-background: rgba(255, 255, 255, 0);
+  --button-hover-background: var(--muza-hover-background, #eeeeee);
 
   border-radius: 50%;
   background-color: var(--button-background);
@@ -9,5 +10,51 @@
   justify-content: center;
   align-items: center;
   font-size: 10px;
-  font-family: FontAwesome;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover:not(:disabled) {
+    background-color: var(--button-hover-background);
+    cursor: pointer;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &--small {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--medium {
+    width: 36px;
+    height: 36px;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    color: var(--colors_foreground_light, #030712);
+    pointer-events: none;
+    cursor: inherit;
+  }
+
+  span {
+    font-family: var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
+    font-size: 10px;
+    pointer-events: none;
+    cursor: inherit;
+  }
+
+  * {
+    cursor: inherit;
+  }
+
+  &:not(:has(svg)):not(:has(span)) {
+    font-family: FontAwesome;
+  }
 }
