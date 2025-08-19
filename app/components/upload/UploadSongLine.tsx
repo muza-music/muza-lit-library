@@ -4,7 +4,7 @@ import type { SongDetails } from "../../appData/models";
 import { formatSongNumber } from "../../appData/utils";
 import MuzaIcon from "~/icons/MuzaIcon";
 
-interface UploadSongLineProps {
+interface SongLineProps {
   details: SongDetails;
   onClick: MouseEventHandler<HTMLDivElement>;
   isPlaying: boolean;
@@ -22,11 +22,7 @@ const formatPlayCount = (plays: number): string => {
   return `${(plays / 1000000).toFixed(1)}M`;
 };
 
-const UploadSongLine: React.FC<UploadSongLineProps> = ({
-  details,
-  onClick,
-  isPlaying,
-}) => {
+const SongLine: React.FC<SongLineProps> = ({ details, onClick, isPlaying }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const renderIcon = () => {
@@ -98,4 +94,4 @@ const UploadSongLine: React.FC<UploadSongLineProps> = ({
   );
 };
 
-export default UploadSongLine;
+export default SongLine;
