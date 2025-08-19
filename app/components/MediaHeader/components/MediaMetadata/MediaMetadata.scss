@@ -1,0 +1,32 @@
+// MediaMetadata component styles
+.album-metadata {
+  display: flex;
+  flex-direction: row;
+  gap: var(--muza-spacing-sm, 8px);
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  width: 100%;
+  flex-shrink: 0;
+  font-family:
+    var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
+  font-weight: var(--muza-font-weight-normal, 400);
+  font-style: normal;
+  line-height: 1;
+  font-size: var(--muza-songline-title-font-size, 16px);
+  color: var(--colors_muted_foreground_light);
+  text-align: left;
+  white-space: nowrap;
+
+  span {
+    flex-shrink: 0;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .album-metadata {
+    justify-content: center;
+    text-align: center;
+  }
+}

@@ -81,6 +81,10 @@ const english = {
   // Album Header
   "album.addedToLibrary": "Album added successfully to your library",
 
+  // Media Header
+  "common.playAlbum": "Play Album",
+  "common.pause": "Pause",
+
   // Artist Details
   "artist.albumsCount": "{count} Albums",
 
