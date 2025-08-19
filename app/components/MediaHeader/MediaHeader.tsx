@@ -11,16 +11,11 @@ import { toast } from "react-toastify";
 import AlbumInfoModal from "~/components/albumDisplays/AlbumInfoModal";
 import { useTranslation } from "~/lib/i18n/translations";
 
-// Import sub-components
-import MediaHeaderLayout from "./components/MediaHeaderLayout/MediaHeaderLayout";
-import MediaContentSection from "./components/MediaContentSection/MediaContentSection";
-
+// Import remaining sub-components
 import MediaCover from "./components/MediaCover/MediaCover";
-import MediaInfo from "./components/MediaInfo/MediaInfo";
 import MediaMetadata from "./components/MediaMetadata/MediaMetadata";
-import PlayButton from "./components/PlayButton/PlayButton";
-import ActionButtonGroup from "./components/ActionButtonGroup/ActionButtonGroup";
 import MuzaButton from "~/controls/MuzaButton";
+import { FaPause, FaPlay } from "react-icons/fa";
 
 interface MediaHeaderProps {
   // Generic media object that works for albums, playlists, etc.
@@ -156,7 +151,7 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({
 
   return (
     <>
-      <MediaHeaderLayout hasBackButton={showBackButton}>
+      <div className={`media-header-layout ${showBackButton ? "has-back-button" : ""}`}>
         {showBackButton && (
           <div className="back-close-section" data-name="back & close">
             <MuzaButton
@@ -170,7 +165,7 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({
         )}
 
         <div className="media-header" data-name="Media-Header">
-          <MediaContentSection>
+          <div className="media-content-section media-content-section--horizontal">
             <MediaCover
               imageSrc={getMediaImageSrc()}
               title={getMediaTitle()}
@@ -180,24 +175,36 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({
             <div className="info-section">
               <div className="titles-section" data-name="Titles">
                 <div className="title-metadata-group">
-                  <MediaInfo
-                    title={getMediaTitle()}
-                    creator={creator}
-                    creatorLabel={label}
-                  />
+                  {/* MediaInfo content inlined */}
+                  <div className="title-info title-info--left">
+                    <div className="album-title">{getMediaTitle()}</div>
+                    {creator && (
+                      <div className="creator-name">
+                        {label && `${label} `}
+                        {creator}
+                      </div>
+                    )}
+                  </div>
 
                   <MediaMetadata {...metadataProps} />
                 </div>
 
                 <div className="actions-section">
-                  <PlayButton
-                    isPlaying={!!isPlaying}
-                    onPlayPause={handlePlayPause}
-                    text={getPlayButtonText()}
-                    disabled={songs.length === 0}
-                  />
+                  {/* PlayButton content inlined */}
+                  <div className="ctas-section" data-name="CTAs">
+                    <button
+                      className="play-album-button"
+                      onClick={handlePlayPause}
+                      disabled={songs.length === 0}
+                      data-name="Button"
+                    >
+                      <div className="play-icon">{isPlaying ? <FaPause /> : <FaPlay />}</div>
+                      <span className="play-text">{getPlayButtonText()}</span>
+                    </button>
+                  </div>
 
-                  <ActionButtonGroup alignment="end">
+                  {/* ActionButtonGroup content inlined */}
+                  <div className="action-buttons action-buttons--end action-buttons--gap-medium">
                     {customActions || (
                       <>
                         <MuzaButton
@@ -220,13 +227,13 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({
                         />
                       </>
                     )}
-                  </ActionButtonGroup>
+                  </div>
                 </div>
               </div>
             </div>
-          </MediaContentSection>
+          </div>
         </div>
-      </MediaHeaderLayout>
+      </div>
 
       <AlbumInfoModal
         isOpen={isModalOpen}
