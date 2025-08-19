@@ -151,7 +151,9 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({
 
   return (
     <>
-      <div className={`media-header-layout ${showBackButton ? "has-back-button" : ""}`}>
+      <div
+        className={`media-header-layout ${showBackButton ? "has-back-button" : ""}`}
+      >
         {showBackButton && (
           <div className="back-close-section" data-name="back & close">
             <MuzaButton
@@ -198,7 +200,9 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({
                       disabled={songs.length === 0}
                       data-name="Button"
                     >
-                      <div className="play-icon">{isPlaying ? <FaPause /> : <FaPlay />}</div>
+                      <div className="play-icon">
+                        {isPlaying ? <FaPause /> : <FaPlay />}
+                      </div>
                       <span className="play-text">{getPlayButtonText()}</span>
                     </button>
                   </div>
