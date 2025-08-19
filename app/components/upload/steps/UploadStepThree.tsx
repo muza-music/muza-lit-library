@@ -83,9 +83,9 @@ const UploadStepThree: React.FC<UploadStepThreeProps> = ({
   return (
     <div className="upload-step-three">
       <div className="album-preview">
-        <MediaHeader 
-          media={album} 
-          songs={songDetails} 
+        <MediaHeader
+          media={album}
+          songs={songDetails}
           mediaType="album"
           showBackButton={false}
         />

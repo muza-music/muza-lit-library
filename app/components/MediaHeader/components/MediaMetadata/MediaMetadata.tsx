@@ -3,7 +3,7 @@ import "./MediaMetadata.scss";
 import { useTranslation } from "~/lib/i18n/translations";
 
 interface MediaMetadataProps {
-  type: 'album' | 'playlist' | 'artist';
+  type: "album" | "playlist" | "artist";
   year?: string | number;
   songCount?: number;
   duration?: string;
@@ -12,14 +12,14 @@ interface MediaMetadataProps {
   separator?: string;
 }
 
-const MediaMetadata: React.FC<MediaMetadataProps> = ({ 
+const MediaMetadata: React.FC<MediaMetadataProps> = ({
   type,
   year,
   songCount,
   duration,
   isPublic,
   followerCount,
-  separator = "•"
+  separator = "•",
 }) => {
   const { t } = useTranslation();
 
@@ -30,7 +30,7 @@ const MediaMetadata: React.FC<MediaMetadataProps> = ({
     items.push(<span key="type">{t(`common.${type}`)}</span>);
 
     // Add year for albums
-    if (type === 'album' && year) {
+    if (type === "album" && year) {
       items.push(<span key="separator1">{separator}</span>);
       items.push(<span key="year">{year}</span>);
     }
@@ -41,7 +41,7 @@ const MediaMetadata: React.FC<MediaMetadataProps> = ({
       items.push(
         <span key="songCount">
           {songCount} {t("common.songs")}
-        </span>
+        </span>,
       );
     }
 
@@ -52,33 +52,29 @@ const MediaMetadata: React.FC<MediaMetadataProps> = ({
     }
 
     // Add public/private status for playlists
-    if (type === 'playlist' && typeof isPublic === 'boolean') {
+    if (type === "playlist" && typeof isPublic === "boolean") {
       items.push(<span key="separator4">{separator}</span>);
       items.push(
         <span key="visibility">
           {isPublic ? t("common.public") : t("common.private")}
-        </span>
+        </span>,
       );
     }
 
     // Add follower count for artists
-    if (type === 'artist' && followerCount) {
+    if (type === "artist" && followerCount) {
       items.push(<span key="separator5">{separator}</span>);
       items.push(
         <span key="followers">
           {followerCount.toLocaleString()} {t("common.followers")}
-        </span>
+        </span>,
       );
     }
 
     return items;
   };
 
-  return (
-    <div className="album-metadata">
-      {renderMetadataItems()}
-    </div>
-  );
+  return <div className="album-metadata">{renderMetadataItems()}</div>;
 };
 
 export default MediaMetadata;

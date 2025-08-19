@@ -4,15 +4,15 @@ import "./MediaCover.scss";
 interface MediaCoverProps {
   imageSrc: string;
   title: string;
-  mediaType?: 'album' | 'playlist' | 'artist';
-  size?: 'small' | 'medium' | 'large';
+  mediaType?: "album" | "playlist" | "artist";
+  size?: "small" | "medium" | "large";
 }
 
-const MediaCover: React.FC<MediaCoverProps> = ({ 
-  imageSrc, 
-  title, 
-  mediaType = 'album',
-  size = 'large' 
+const MediaCover: React.FC<MediaCoverProps> = ({
+  imageSrc,
+  title,
+  mediaType = "album",
+  size = "large",
 }) => {
   return (
     <div className={`cover-section cover-section--${size}`} data-name="cover">

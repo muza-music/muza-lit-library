@@ -9,11 +9,11 @@ interface PlayButtonProps {
   disabled?: boolean;
 }
 
-const PlayButton: React.FC<PlayButtonProps> = ({ 
-  isPlaying, 
-  onPlayPause, 
-  text, 
-  disabled = false 
+const PlayButton: React.FC<PlayButtonProps> = ({
+  isPlaying,
+  onPlayPause,
+  text,
+  disabled = false,
 }) => {
   return (
     <div className="ctas-section" data-name="CTAs">
@@ -23,9 +23,7 @@ const PlayButton: React.FC<PlayButtonProps> = ({
         disabled={disabled}
         data-name="Button"
       >
-        <div className="play-icon">
-          {isPlaying ? <FaPause /> : <FaPlay />}
-        </div>
+        <div className="play-icon">{isPlaying ? <FaPause /> : <FaPlay />}</div>
         <span className="play-text">{text}</span>
       </button>
     </div>

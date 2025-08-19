@@ -6,12 +6,14 @@ interface MediaHeaderLayoutProps {
   hasBackButton?: boolean;
 }
 
-const MediaHeaderLayout: React.FC<MediaHeaderLayoutProps> = ({ 
-  children, 
-  hasBackButton = true 
+const MediaHeaderLayout: React.FC<MediaHeaderLayoutProps> = ({
+  children,
+  hasBackButton = true,
 }) => {
   return (
-    <div className={`media-header-layout ${hasBackButton ? 'has-back-button' : ''}`}>
+    <div
+      className={`media-header-layout ${hasBackButton ? "has-back-button" : ""}`}
+    >
       {children}
     </div>
   );

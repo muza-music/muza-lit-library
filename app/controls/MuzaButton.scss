@@ -44,7 +44,8 @@
   }
 
   span {
-    font-family: var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
+    font-family:
+      var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
     font-size: 10px;
     pointer-events: none;
     cursor: inherit;

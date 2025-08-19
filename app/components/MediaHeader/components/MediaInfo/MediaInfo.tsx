@@ -5,21 +5,22 @@ interface MediaInfoProps {
   title: string;
   creator: string;
   creatorLabel?: string;
-  alignment?: 'left' | 'center';
+  alignment?: "left" | "center";
 }
 
-const MediaInfo: React.FC<MediaInfoProps> = ({ 
-  title, 
-  creator, 
+const MediaInfo: React.FC<MediaInfoProps> = ({
+  title,
+  creator,
   creatorLabel = "",
-  alignment = 'left' 
+  alignment = "left",
 }) => {
   return (
     <div className={`title-info title-info--${alignment}`}>
       <div className="album-title">{title}</div>
       {creator && (
         <div className="creator-name">
-          {creatorLabel && `${creatorLabel} `}{creator}
+          {creatorLabel && `${creatorLabel} `}
+          {creator}
         </div>
       )}
     </div>

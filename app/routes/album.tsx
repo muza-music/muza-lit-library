@@ -42,9 +42,9 @@ export default function AlbumPage() {
 
   return (
     <main>
-      <MediaHeader 
-        media={album} 
-        songs={albumSongsDetails} 
+      <MediaHeader
+        media={album}
+        songs={albumSongsDetails}
         mediaType="album"
         showBackButton={true}
       />

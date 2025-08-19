@@ -7,26 +7,26 @@ interface MuzaButtonProps {
   iconName?: string;
   onClick?: () => void;
   disabled?: boolean;
-  size?: 'small' | 'default' | 'medium';
+  size?: "small" | "default" | "medium";
   className?: string;
   "data-name"?: string;
 }
 
-const MuzaButton: React.FC<MuzaButtonProps> = ({ 
+const MuzaButton: React.FC<MuzaButtonProps> = ({
   content,
   iconName,
-  onClick, 
+  onClick,
   disabled = false,
-  size = 'default',
+  size = "default",
   className = "",
   "data-name": dataName,
-  ...props 
+  ...props
 }) => {
-  const sizeClass = size !== 'default' ? `muza-button--${size}` : '';
+  const sizeClass = size !== "default" ? `muza-button--${size}` : "";
   const buttonClasses = `muza-button ${sizeClass} ${className}`.trim();
 
   return (
-    <button 
+    <button
       className={buttonClasses}
       onClick={onClick}
       disabled={disabled}

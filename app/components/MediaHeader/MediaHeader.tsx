@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import "./MediaHeader.scss";
-import type { Album, SongDetails, MusicPlaylist, Artist } from "~/appData/models";
+import type {
+  Album,
+  SongDetails,
+  MusicPlaylist,
+  Artist,
+} from "~/appData/models";
 import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
 import { toast } from "react-toastify";
 import AlbumInfoModal from "~/components/albumDisplays/AlbumInfoModal";
@@ -21,18 +26,18 @@ interface MediaHeaderProps {
   // Generic media object that works for albums, playlists, etc.
   media: Album | MusicPlaylist | Artist;
   songs: SongDetails[];
-  mediaType: 'album' | 'playlist' | 'artist';
+  mediaType: "album" | "playlist" | "artist";
   // Optional customization
   showBackButton?: boolean;
   customActions?: React.ReactNode;
 }
 
-const MediaHeader: React.FC<MediaHeaderProps> = ({ 
-  media, 
-  songs, 
+const MediaHeader: React.FC<MediaHeaderProps> = ({
+  media,
+  songs,
   mediaType,
   showBackButton = true,
-  customActions 
+  customActions,
 }) => {
   const { t } = useTranslation();
   const {
@@ -71,72 +76,75 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({
 
   // Helper function to safely get title
   const getMediaTitle = () => {
-    if (mediaType === 'artist') {
-      return (media as Artist).name || '';
+    if (mediaType === "artist") {
+      return (media as Artist).name || "";
     }
-    return (media as Album | MusicPlaylist).title || '';
+    return (media as Album | MusicPlaylist).title || "";
   };
 
   // Helper function to safely get image
   const getMediaImageSrc = () => {
-    if (mediaType === 'artist') {
-      return (media as Artist).imageUrl || '';
+    if (mediaType === "artist") {
+      return (media as Artist).imageUrl || "";
     }
-    return (media as Album | MusicPlaylist).imageSrc || '';
+    return (media as Album | MusicPlaylist).imageSrc || "";
   };
 
   // Dynamic content based on media type
   const getCreatorInfo = () => {
     switch (mediaType) {
-      case 'album':
+      case "album":
         return { creator: (media as Album).artist, label: "" };
-      case 'playlist':
-        return { creator: (media as MusicPlaylist).author || '', label: t("common.by") };
-      case 'artist':
-        return { creator: '', label: '' }; // Artists don't have creators
+      case "playlist":
+        return {
+          creator: (media as MusicPlaylist).author || "",
+          label: t("common.by"),
+        };
+      case "artist":
+        return { creator: "", label: "" }; // Artists don't have creators
       default:
-        return { creator: '', label: '' };
+        return { creator: "", label: "" };
     }
   };
 
   const getMetadataProps = () => {
     switch (mediaType) {
-      case 'album':
+      case "album":
         const album = media as Album;
         return {
-          type: 'album' as const,
+          type: "album" as const,
           year: album.year,
-          songCount: songs.length
+          songCount: songs.length,
         };
-      case 'playlist':
+      case "playlist":
         const playlist = media as MusicPlaylist;
         return {
-          type: 'playlist' as const,
+          type: "playlist" as const,
           songCount: songs.length,
-          isPublic: playlist.visibility === 'public'
+          isPublic: playlist.visibility === "public",
         };
-      case 'artist':
+      case "artist":
         const artist = media as Artist;
         return {
-          type: 'artist' as const,
-          followerCount: 0 // Would need to be added to Artist interface
+          type: "artist" as const,
+          followerCount: 0, // Would need to be added to Artist interface
         };
       default:
         return {
-          type: 'album' as const,
-          songCount: songs.length
+          type: "album" as const,
+          songCount: songs.length,
         };
     }
   };
 
   const getPlayButtonText = () => {
-    const action = isPlaying ? 'pause' : 'play';
+    const action = isPlaying ? "pause" : "play";
     switch (mediaType) {
-      case 'album':
+      case "album":
         return isPlaying ? t("common.pause") : t("common.playAlbum");
-      case 'playlist':
+      case "playlist":
         return isPlaying ? t("common.pause") : t("common.playPlaylist");
-      case 'artist':
+      case "artist":
         return isPlaying ? t("common.pause") : t("common.playArtist");
       default:
         return isPlaying ? t("common.pause") : t("common.play");
@@ -160,51 +168,51 @@ const MediaHeader: React.FC<MediaHeaderProps> = ({
             />
           </div>
         )}
-        
+
         <div className="media-header" data-name="Media-Header">
           <MediaContentSection>
-            <MediaCover 
+            <MediaCover
               imageSrc={getMediaImageSrc()}
               title={getMediaTitle()}
               mediaType={mediaType}
             />
-            
+
             <div className="info-section">
               <div className="titles-section" data-name="Titles">
                 <div className="title-metadata-group">
-                  <MediaInfo 
+                  <MediaInfo
                     title={getMediaTitle()}
                     creator={creator}
                     creatorLabel={label}
                   />
-                  
+
                   <MediaMetadata {...metadataProps} />
                 </div>
 
                 <div className="actions-section">
-                  <PlayButton 
+                  <PlayButton
                     isPlaying={!!isPlaying}
                     onPlayPause={handlePlayPause}
                     text={getPlayButtonText()}
                     disabled={songs.length === 0}
                   />
-                  
+
                   <ActionButtonGroup alignment="end">
                     {customActions || (
                       <>
-                        <MuzaButton 
-                          iconName="plus" 
+                        <MuzaButton
+                          iconName="plus"
                           onClick={addToLibrary}
                           size="medium"
                           data-name="Add-Download Button"
                         />
-                        <MuzaButton 
-                          iconName="info" 
+                        <MuzaButton
+                          iconName="info"
                           onClick={() => setModalOpen(true)}
                           size="medium"
                           data-name="Info Button"
                         />
-                        <MuzaButton 
+                        <MuzaButton
                           iconName="ellipsis"
                           onClick={() => {}}
                           size="medium"
