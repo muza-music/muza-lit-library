@@ -36,18 +36,17 @@
 }
 
 .section {
-  padding: 20px 0;
-  margin: 0 10px;
-  padding-left: 20px;
+  padding: var(--muza-spacing-lg, 16px);
+  margin: 0 12px;
 
   .section-title {
-    font-size: 16px;
+    font-size: var(--muza-primary-font-size, 14px);
     font-weight: 600;
     color: var(--secondary-text-color);
-    padding: 7px 7px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
 
     @media (max-width: 892px) {
       display: none;
@@ -57,7 +56,7 @@
   .menu-item {
     display: flex;
     align-items: center;
-    padding: 7px 7px;
+    padding: 8px 0px;
     color: #444;
     text-decoration: none;
     cursor: pointer;

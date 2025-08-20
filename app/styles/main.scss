@@ -25,6 +25,8 @@
   height: 100vh;
   box-sizing: border-box;
   max-width: 100%;
+  display: flex;
+  flex-direction: column;
 
   /* Generic main content area - pages should override with specific styling */
   main {

@@ -121,13 +121,7 @@ const MusicListSectionComponent: React.FC<
 
   return (
     <div className="music-list-section">
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+      <div className="music-list-section-header">
         <h2>{title}</h2>
         <button className="show-all-btn" onClick={handleShowAll}>
           {t("action.showAll")}
