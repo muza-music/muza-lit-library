@@ -62,6 +62,7 @@ export default function Home() {
         <h1>{t("page.home")}</h1>
       </div>
       <div className="sections-container">
+        <hr className="section-divider" />
         {sections.map((section, index) => (
           <div key={section.title} className="section-wrapper">
             {section.type === "album" && (

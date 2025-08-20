@@ -4,8 +4,12 @@
   margin: 0;
 
   .page-header {
-    padding: var(--muza-spacing-xl, 24px) var(--muza-spacing-lg, 16px);
-    padding-bottom: var(--muza-spacing-lg, 16px);
+    height: 54px;
+    padding: var(--muza-section-scrollbar-height, 3px) var( --muza-spacing-xxl, 32px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ 
 
     h1 {
       font-family: var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
@@ -13,12 +17,12 @@
       font-weight: var(--muza-font-weight-bold-extra, 700);
       line-height: 1.2;
       color: var(--muza-primary-text-color, #333333);
-      margin: 0 0 var(--muza-spacing-md, 12px) 0;
+      margin: 0;
     }
   }
 
   .sections-container {
-    padding: 0 var(--muza-spacing-lg, 16px);
+    padding: 0 var(--muza-spacing-xxl, 32px);
     padding-bottom: 160px; // Space for the fixed music player
   }
 
