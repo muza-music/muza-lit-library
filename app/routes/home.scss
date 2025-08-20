@@ -1,0 +1,113 @@
+.home-page {
+  background: var(--colors_background_light, #ffffff);
+  padding: 0;
+  margin: 0;
+  max-width: 1680px;
+  align-self: center;
+  .page-header {
+    height: 54px;
+    padding: var(--muza-section-scrollbar-height, 3px)
+      var(--muza-spacing-xxl, 32px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+      font-family:
+        var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
+      font-size: var(--muza-title-font-size, 27px);
+      font-weight: var(--muza-font-weight-bold-extra, 700);
+      line-height: 1.2;
+      color: var(--muza-primary-text-color, #333333);
+      margin: 0;
+    }
+  }
+
+  .sections-container {
+    padding: 0 var(--muza-spacing-xxl, 32px);
+    padding-bottom: 160px; // Space for the fixed music player
+  }
+
+  .section-wrapper {
+    margin-bottom: var(--muza-spacing-lg, 16px);
+    .music-list-section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--muza-spacing-lg, 16px);
+    }
+    .music-list-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h2 {
+        font-size: var(--muza-heading-font-size, 18px);
+        margin: 0;
+      }
+    }
+  }
+
+  .section-divider {
+    margin: var(--muza-spacing-lg, 16px) 0;
+    border: none;
+    height: 1px;
+    background-color: var(--muza-light-border-color, #e5e7eb);
+  }
+
+  // Responsive design for tablets
+  @media (max-width: 1024px) {
+    .page-header {
+      padding: var(--muza-spacing-lg, 16px);
+      padding-bottom: var(--muza-spacing-md, 12px);
+
+      h1 {
+        font-size: var(--muza-heading-font-size, 18px);
+      }
+    }
+
+    .sections-container {
+      padding: 0 var(--muza-spacing-lg, 16px);
+      padding-bottom: 140px;
+    }
+  }
+
+  // Responsive design for mobile
+  @media (max-width: 768px) {
+    .page-header {
+      padding: var(--muza-spacing-md, 12px);
+
+      h1 {
+        font-size: var(--muza-songline-title-font-size, 16px);
+      }
+    }
+
+    .sections-container {
+      padding: 0 var(--muza-spacing-md, 12px);
+      padding-bottom: 120px;
+    }
+
+    .section-divider {
+      margin: var(--muza-spacing-md, 12px) 0;
+    }
+  }
+
+  // Small mobile devices
+  @media (max-width: 480px) {
+    .page-header {
+      padding: var(--muza-spacing-sm, 8px) var(--muza-spacing-md, 12px);
+
+      h1 {
+        font-size: var(--muza-primary-font-size, 14px);
+        font-weight: var(--muza-font-weight-bold, 600);
+      }
+    }
+
+    .sections-container {
+      padding: 0 var(--muza-spacing-sm, 8px);
+      padding-bottom: 100px;
+    }
+
+    .section-divider {
+      margin: var(--muza-spacing-sm, 8px) 0;
+    }
+  }
+}
