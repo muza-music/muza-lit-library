@@ -26,6 +26,7 @@
   box-sizing: border-box;
   max-width: 100%;
 
+  /* Generic main content area - pages should override with specific styling */
   main {
     padding: var(--muza-spacing-xl);
     padding-bottom: 160px; /* for the music player */
@@ -56,6 +57,7 @@ music-playlist {
   background-color: white;
 }
 
+/* Global heading styles - override with page-specific styles as needed */
 h1 {
   font-size: 32px;
   font-weight: 800;
@@ -68,6 +70,7 @@ h2 {
   margin-bottom: 12px;
 }
 
+/* Global hr styles - override with page-specific styles as needed */
 hr {
   margin: 8px;
   border: none;
@@ -111,24 +114,4 @@ hr {
   flex-direction: column;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0 8px;
-}
-
-.show-all-btn {
-  display: flex;
-  padding: calc(var(--muza-spacing-md, 12px) * 0.5) var(--muza-spacing-md, 12px);
-  justify-content: center;
-  align-items: center;
-  gap: var(--muza-spacing-2, 8px);
-  transition: background-color 0.2s ease;
-  border-radius: 999px;
-  border: 1px solid var(--muza-track-title-color, #111827);
-  color: var(--muza-track-title-color, #111827);
-  font-size: var(--muza-primary-font-size, 14px);
-  font-weight: var(--muza-font-weight-normal, 400);
-  line-height: var(--muza-songline-title-font-size, 16px);
-  cursor: pointer;
-}
-
-.show-all-btn:hover {
-  background-color: #f5f5f5;
 }

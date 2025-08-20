@@ -53,6 +53,27 @@
   }
 }
 
+.show-all-btn {
+  display: flex;
+  padding: calc(var(--muza-spacing-md, 12px) * 0.5) var(--muza-spacing-md, 12px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--muza-spacing-2, 8px);
+  transition: background-color 0.2s ease;
+  border-radius: 999px;
+  border: 1px solid var(--muza-track-title-color, #111827);
+  color: var(--muza-track-title-color, #111827);
+  font-size: var(--muza-primary-font-size, 14px);
+  font-weight: var(--muza-font-weight-normal, 400);
+  line-height: var(--muza-songline-title-font-size, 16px);
+  cursor: pointer;
+  background: transparent;
+}
+
+.show-all-btn:hover {
+  background-color: var(--muza-hover-background, #f5f5f5);
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   height: var(--muza-section-scrollbar-height, 9px);
