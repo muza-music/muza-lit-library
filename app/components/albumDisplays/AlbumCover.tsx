@@ -1,5 +1,6 @@
 import React from "react";
 import "./AlbumCover.scss";
+import HoverOverlay from "~/components/ui/HoverOverlay";
 
 interface AlbumCoverProps {
   imageSrc: string;
@@ -28,9 +29,13 @@ const AlbumCover: React.FC<AlbumCoverProps> = ({
     <div className="album-cover" onClick={handleClick}>
       <div className="image-container">
         <img src={imageSrc} alt={title} />
-        <div className="play-overlay">
-          <div className="play-button"></div>
-        </div>
+        <HoverOverlay
+          showPlayButton={true}
+          onPlayPause={(e) => {
+            e.stopPropagation();
+            handleClick();
+          }}
+        />
       </div>
       <h3 dangerouslySetInnerHTML={{ __html: title }} />
       <p>{subTitle}</p>

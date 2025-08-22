@@ -1,0 +1,113 @@
+.hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--muza-border-radius-sm, 4px);
+  background: rgba(9, 9, 9, 0.1);
+  backdrop-filter: blur(var(--muza-spacing-xs, 4px));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.hover-play-pause-btn {
+  display: flex;
+  padding: var(--muza-spacing-md, 12px);
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: var(--colors_primary_light, #1d4ed8);
+  color: var(--colors_primary_foreground_light, #f9fafb);
+  border: none;
+  z-index: 2;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity 0.4s,
+    transform 0.4s;
+
+  svg {
+    width: 48px;
+    height: 48px;
+    path {
+      fill: var(--colors_primary_foreground_light, #f9fafb) !important;
+    }
+  }
+
+  &:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+.hover-overlay-actions {
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: var(--muza-spacing-xs, 4px);
+  position: absolute;
+  top: var(--muza-spacing-sm, 8px);
+  right: var(--muza-spacing-sm, 8px);
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.hover-overlay-btn {
+  display: flex;
+  width: 28px;
+  height: 28px;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
+  border-radius: var(--muza-border-radius-lg, 20px);
+  background: var(--muza-section-background, #f7f7f7);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    path {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &:hover {
+    background: var(--muza-button-hover-background, #dddddd);
+  }
+}
+
+// Hover states - these need to be applied to the parent container
+.image-container:hover .hover-overlay,
+.playlist-cover__image-container:hover .hover-overlay {
+  opacity: 1;
+}
+
+.image-container:hover .hover-play-pause-btn,
+.playlist-cover__image-container:hover .hover-play-pause-btn {
+  opacity: 1;
+}
+
+.image-container:hover .hover-overlay-actions,
+.playlist-cover__image-container:hover .hover-overlay-actions {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

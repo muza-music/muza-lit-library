@@ -5,6 +5,7 @@ import { useCurrentPlayerStore } from "~/appData/currentPlayerStore";
 import MuzaIcon from "~/icons/MuzaIcon";
 import AlbumInfoModal from "./AlbumInfoModal";
 import { addToLibrary } from "~/lib/utils";
+import HoverOverlay from "~/components/ui/HoverOverlay";
 
 interface AlbumDetailsProps {
   details: Album;
@@ -27,40 +28,33 @@ const AlbumDetails: React.FC<AlbumDetailsProps> = ({
     <div className="album-details-card">
       <div className="image-container" onClick={onAlbumClick}>
         <img src={details.imageSrc} alt={details.title} />
-        <div className="album-overlay-actions">
-          <button
-            className="album-overlay-btn"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <MuzaIcon iconName="ellipsis" />
-          </button>
-          <button
-            className="album-overlay-btn"
-            onClick={(e) => {
-              e.stopPropagation();
-              setModalOpen(true);
-            }}
-          >
-            <MuzaIcon iconName="info" />
-          </button>
-          <button
-            className="album-overlay-btn"
-            onClick={(e) => {
-              e.stopPropagation();
-              addToLibrary();
-            }}
-          >
-            <MuzaIcon iconName="plus" />
-          </button>
-        </div>
-        <div className="album-hover-overlay"></div>
-        <button className="album-play-pause-btn" onClick={handlePlayPause}>
-          {isPlaying ? (
-            <MuzaIcon iconName="pause" />
-          ) : (
-            <MuzaIcon iconName="play-hover" />
-          )}
-        </button>
+        <HoverOverlay
+          isPlaying={!!isPlaying}
+          onPlayPause={handlePlayPause}
+          actions={[
+            {
+              icon: "ellipsis",
+              onClick: (e) => e.stopPropagation(),
+              title: "More options",
+            },
+            {
+              icon: "info",
+              onClick: (e) => {
+                e.stopPropagation();
+                setModalOpen(true);
+              },
+              title: "Album info",
+            },
+            {
+              icon: "plus",
+              onClick: (e) => {
+                e.stopPropagation();
+                addToLibrary();
+              },
+              title: "Add to library",
+            },
+          ]}
+        />
       </div>
       <div className="info">
         <div className="title">{details.title}</div>

@@ -107,7 +107,7 @@ icon-playlist {
     min-width: 0;
   }
 
-  // Hover effects
+  // Hover effects - now handled by HoverOverlay component
   &:hover {
     .playlist-cover__image-container {
       transform: scale(1.02);
