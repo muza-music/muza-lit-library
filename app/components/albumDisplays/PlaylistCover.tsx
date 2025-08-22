@@ -1,5 +1,6 @@
 import React from "react";
 import "./PlaylistCover.scss";
+import HoverOverlay from "~/components/ui/HoverOverlay";
 
 interface PlaylistCoverProps {
   albumImages: string[]; // Array of 4 album cover images
@@ -53,6 +54,20 @@ const PlaylistCover: React.FC<PlaylistCoverProps> = ({
             style={{ backgroundImage: `url('${paddedImages[3]}')` }}
           />
         </div>
+        <HoverOverlay
+          showPlayButton={true}
+          onPlayPause={(e) => {
+            e.stopPropagation();
+            handleClick();
+          }}
+          actions={[
+            {
+              icon: "ellipsis",
+              onClick: (e) => e.stopPropagation(),
+              title: "More options"
+            }
+          ]}
+        />
       </div>
       <div className="playlist-cover__info">
         <div className="playlist-cover__title">{title}</div>
