@@ -42,7 +42,9 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (playlistName.trim()) {
-      const visibility = isPrivate ? t("playlist.private") : t("playlist.public");
+      const visibility = isPrivate
+        ? t("playlist.private")
+        : t("playlist.public");
       onCreatePlaylist(playlistName.trim(), visibility);
       setPlaylistName("");
       setIsPrivate(false);
@@ -67,7 +69,7 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
           <div className="modal-header">
             <h1 className="modal-title">{t("playlist.new")}</h1>
           </div>
-          
+
           <div className="modal-content-inner">
             <div className="form-group">
               <MuzaInputField
@@ -94,9 +96,9 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
             <button type="button" className="cancel-button" onClick={onClose}>
               {t("playlist.cancel")}
             </button>
-            <button 
-              type="button" 
-              className="create-button" 
+            <button
+              type="button"
+              className="create-button"
               onClick={handleSubmit}
               disabled={!playlistName.trim()}
             >

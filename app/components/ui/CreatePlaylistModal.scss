@@ -122,14 +122,18 @@
         .slider {
           background-color: var(--colors_border_light, #e5e7eb);
           border-radius: 9999px;
-          box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+          box-shadow:
+            0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+            0px 4px 6px -2px rgba(0, 0, 0, 0.05);
           pointer-events: none;
 
           &:before {
             left: 1px;
             bottom: 1px;
             background-color: var(--colors_background_light, #ffffff);
-            box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+            box-shadow:
+              0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+              0px 4px 6px -2px rgba(0, 0, 0, 0.05);
             pointer-events: none;
           }
         }
@@ -184,7 +188,8 @@
       border: 1px solid var(--colors_border_light, #e5e7eb);
       border-radius: 9999px;
       height: 36px;
-      font-family: var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
+      font-family:
+        var(--typography_font_family_font_sans, "Founders Grotesk"), sans-serif;
       letter-spacing: 0.25px;
 
       &::placeholder {
