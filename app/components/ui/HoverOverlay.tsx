@@ -30,14 +30,14 @@ const HoverOverlay: React.FC<HoverOverlayProps> = ({
     <>
       {/* Hover overlay background */}
       <div className="hover-overlay" />
-      
+
       {/* Play/Pause button in center */}
       {showPlayButton && onPlayPause && (
         <button className="hover-play-pause-btn" onClick={handlePlayPause}>
           <MuzaIcon iconName={isPlaying ? "pause" : "play-hover"} />
         </button>
       )}
-      
+
       {/* Action buttons in top-right */}
       {actions.length > 0 && (
         <div className="hover-overlay-actions">

@@ -64,8 +64,8 @@ const PlaylistCover: React.FC<PlaylistCoverProps> = ({
             {
               icon: "ellipsis",
               onClick: (e) => e.stopPropagation(),
-              title: "More options"
-            }
+              title: "More options",
+            },
           ]}
         />
       </div>
