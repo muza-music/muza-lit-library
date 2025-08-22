@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./CreatePlaylistModal.scss";
 import MuzaInputField from "~/controls/MuzaInputField";
 import MuzaIcon from "~/icons/MuzaIcon";
+import ToggleButton from "~/controls/ToggleButton";
 import { useTranslation } from "~/lib/i18n/translations";
 
 interface CreatePlaylistModalProps {
@@ -17,8 +18,7 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
 }) => {
   const { t } = useTranslation();
   const [playlistName, setPlaylistName] = useState("");
-  const [visibility, setVisibility] = useState(t("playlist.public"));
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isPrivate, setIsPrivate] = useState(false);
 
   // Handle ESC key to close modal
   useEffect(() => {
@@ -42,9 +42,10 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (playlistName.trim()) {
+      const visibility = isPrivate ? t("playlist.private") : t("playlist.public");
       onCreatePlaylist(playlistName.trim(), visibility);
       setPlaylistName("");
-      setVisibility(t("playlist.public"));
+      setIsPrivate(false);
       onClose();
     }
   };
@@ -55,64 +56,18 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
     }
   };
 
-  const handleVisibilitySelect = (value: string) => {
-    setVisibility(value);
-    setIsDropdownOpen(false);
+  const handleToggleChange = (checked: boolean) => {
+    setIsPrivate(checked);
   };
-
-  const handleVisibilityKeyDown = (e: React.KeyboardEvent) => {
-    switch (e.key) {
-      case "ArrowDown":
-      case "ArrowRight":
-        e.preventDefault();
-        setVisibility(
-          visibility === t("playlist.public")
-            ? t("playlist.private")
-            : t("playlist.public"),
-        );
-        break;
-      case "ArrowUp":
-      case "ArrowLeft":
-        e.preventDefault();
-        setVisibility(
-          visibility === t("playlist.private")
-            ? t("playlist.public")
-            : t("playlist.private"),
-        );
-        break;
-      case "Enter":
-      case " ":
-        e.preventDefault();
-        setIsDropdownOpen(!isDropdownOpen);
-        break;
-      case "Escape":
-        e.preventDefault();
-        setIsDropdownOpen(false);
-        break;
-      default:
-        break;
-    }
-  };
-
-  const visibilityOptions = [
-    { value: t("playlist.public"), label: t("playlist.public"), icon: "globe" },
-    {
-      value: t("playlist.private"),
-      label: t("playlist.private"),
-      icon: "lock",
-    },
-  ];
 
   return (
     <div className="modal-backdrop" onClick={handleBackdropClick}>
       <div className="create-playlist-modal">
-        <form onSubmit={handleSubmit} className="modal-content">
+        <div className="modal-content">
           <div className="modal-header">
-            <button className="close-button" onClick={onClose}>
-              <MuzaIcon iconName="Close" />
-            </button>
             <h1 className="modal-title">{t("playlist.new")}</h1>
           </div>
+          
           <div className="modal-content-inner">
             <div className="form-group">
               <MuzaInputField
@@ -125,44 +80,12 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
             </div>
 
             <div className="form-group">
-              <label>{t("playlist.visibility")}</label>
-              <div className="custom-select">
-                <div
-                  className="select-trigger"
-                  tabIndex={0}
-                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  onKeyDown={handleVisibilityKeyDown}
-                >
-                  <div className="select-content">
-                    <span className="select-icon">
-                      <MuzaIcon
-                        iconName={
-                          visibility === t("playlist.public") ? "globe" : "lock"
-                        }
-                      />
-                    </span>
-                    <span>{visibility}</span>
-                  </div>
-                  <span className="chevron">
-                    <MuzaIcon iconName="ChevronDown" />
-                  </span>
-                </div>
-                {isDropdownOpen && (
-                  <div className="select-dropdown">
-                    {visibilityOptions.map((option) => (
-                      <div
-                        key={option.value}
-                        className={`select-option ${option.value === visibility ? "selected" : ""}`}
-                        onClick={() => handleVisibilitySelect(option.value)}
-                      >
-                        <span className="option-icon">
-                          <MuzaIcon iconName={option.icon} />
-                        </span>
-                        <span>{option.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
+              <div className="privacy-toggle-wrapper">
+                <ToggleButton
+                  checked={isPrivate}
+                  onChange={handleToggleChange}
+                  label={t("playlist.makePrivate")}
+                />
               </div>
             </div>
           </div>
@@ -171,11 +94,20 @@ const CreatePlaylistModal: React.FC<CreatePlaylistModalProps> = ({
             <button type="button" className="cancel-button" onClick={onClose}>
               {t("playlist.cancel")}
             </button>
-            <button type="submit" className="create-button">
+            <button 
+              type="button" 
+              className="create-button" 
+              onClick={handleSubmit}
+              disabled={!playlistName.trim()}
+            >
               {t("playlist.create")}
             </button>
           </div>
-        </form>
+
+          <button className="close-button" onClick={onClose}>
+            <MuzaIcon iconName="Close" />
+          </button>
+        </div>
       </div>
     </div>
   );
