@@ -10,35 +10,90 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 24px;
   }
 
   .search-container {
     position: relative;
     min-width: 300px;
+    flex: 1;
+    max-width: 600px;
 
-    &::before {
-      content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE0LjAwMDEgMTRMMTEuMTMzNSAxMS4xMzMzTTEyLjY2NjcgNy4zMzMzM0MxMi42NjY3IDEwLjI3ODkgMTAuMjc4OSAxMi42NjY3IDcuMzMzMzMgMTIuNjY2N0M0LjM4NzgxIDEyLjY2NjcgMiAxMC4yNzg5IDIgNy4zMzMzM0MyIDQuMzg3ODEgNC4zODc4MSAyIDcuMzMzMzMgMkMxMC4yNzg5IDIgMTIuNjY2NyA0LjM4NzgxIDEyLjY2NjcgNy4zMzMzM1oiIHN0cm9rZT0iIzZCNzI4MCIgc3Ryb2tlLXdpZHRoPSIxLjMzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==");
-      position: absolute;
-      left: 12px;
-      top: 55%;
-      transform: translateY(-50%);
-      color: #666;
-    }
-
-    input {
+    .search-input-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       width: 100%;
-      padding: 6px 8px 8px 35px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      outline: none;
-      background-color: #f9fafb;
 
-      &:focus {
-        border-color: var(--muza-border-color);
-        outline: 1px solid var(--muza-border-color);
+      .search-input {
+        background: #ffffff;
+        height: 36px;
+        position: relative;
+        border-radius: 9999px;
+        width: 100%;
 
-        &::placeholder {
-          opacity: 0.5;
+        .search-input-content {
+          box-sizing: border-box;
+          display: flex;
+          gap: 4px;
+          height: 36px;
+          align-items: center;
+          justify-content: flex-start;
+          overflow: clip;
+          padding: 4px 12px;
+          position: relative;
+          width: 100%;
+
+          .search-icon {
+            overflow: clip;
+            position: relative;
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+          }
+
+          .search-field {
+            flex: 1;
+            font-family: 'Founders Grotesk', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            min-height: 0;
+            min-width: 0;
+            font-style: normal;
+            overflow: ellipsis;
+            overflow-hidden: hidden;
+            position: relative;
+            flex-shrink: 0;
+            text-align: left;
+            color: #6b7280;
+            text-nowrap: true;
+            letter-spacing: 0.25px;
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 0;
+
+            &::placeholder {
+              color: #6b7280;
+              opacity: 1;
+            }
+
+            &:focus {
+              color: #030712;
+            }
+          }
+        }
+
+        .search-border {
+          position: absolute;
+          border: 1px solid #e5e7eb;
+          border-radius: 9999px;
+          inset: 0;
+          pointer-events: none;
         }
       }
     }
@@ -47,7 +102,7 @@
   .controls {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
 
     .upload-music-button {
       color: var(--muza-primary-text-color);

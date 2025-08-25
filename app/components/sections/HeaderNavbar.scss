@@ -1,0 +1,179 @@
+.header-navbar {
+  background-color: var(--colors_background_light);
+  border-bottom: 1px solid var(--colors_border_light);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 64px; // h-16 equivalent
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px 0 0; // pr-6 equivalent
+
+  .header-navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    gap: 24px; // spacing-6 equivalent
+  }
+
+  .search-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 32px 0 32px; // pl-8 pr-4 equivalent
+    min-width: 0;
+
+    .input-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px; // spacing-2 equivalent
+
+      .input-container {
+        background-color: var(--colors_background_light);
+        height: 36px; // h-9 equivalent
+        border-radius: 9999px; // border-radius-full equivalent
+        position: relative;
+        width: 100%;
+
+        .input-content {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 4px; // spacing-1 equivalent
+          height: 36px;
+          overflow: hidden;
+          padding: 4px 12px; // px-3 py-1 equivalent
+          width: 100%;
+          box-sizing: border-box;
+
+          .search-icon {
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+            width: 16px; // w-4 equivalent
+            height: 16px; // h-4 equivalent
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          .search-input {
+            flex: 1;
+            font-family: var(--typography_font_family_font_sans);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20px;
+            color: var(--colors_muted_foreground_light);
+            background: transparent;
+            border: none;
+            outline: none;
+            min-width: 0;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            letter-spacing: 0.25px;
+
+            &::placeholder {
+              color: var(--colors_muted_foreground_light);
+              opacity: 1;
+            }
+
+            &:focus {
+              color: var(--colors_foreground_light);
+            }
+          }
+        }
+
+        // Border overlay
+        &::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border: 1px solid var(--colors_border_light);
+          border-radius: 9999px;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  .actions-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px; // spacing-4 equivalent
+    flex-shrink: 0;
+
+    .upload-button {
+      background-color: rgba(255, 255, 255, 0); // transparent background
+      border: none;
+      border-radius: 9999px;
+      height: 40px; // h-10 equivalent
+      padding: 8px 32px; // px-8 py-2 equivalent
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px; // spacing-2 equivalent
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: var(--colors_accent_light);
+      }
+
+      .upload-text {
+        font-family: var(--typography_font_family_font_sans);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 20px;
+        color: var(--colors_foreground_light);
+        white-space: pre;
+        letter-spacing: 0.25px;
+      }
+
+      .upload-icon {
+        overflow: hidden;
+        position: relative;
+        flex-shrink: 0;
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .avatar-container {
+      width: 40px; // size-10 equivalent
+      height: 40px;
+      border-radius: 9999px;
+      overflow: hidden;
+      flex-shrink: 0;
+      cursor: pointer;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      .avatar-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 9999px;
+      }
+    }
+  }
+}
