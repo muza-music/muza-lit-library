@@ -118,7 +118,7 @@ const english = {
 
   // Form Validation and Input
   "form.required": "*",
-  "form.searchPlaceholder": "Search...",
+  "form.searchPlaceholder": "Search for Artists, Albums or Songs",
 
   // Visibility Options
   "visibility.public": "Public",
