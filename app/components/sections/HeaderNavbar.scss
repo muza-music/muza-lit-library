@@ -95,7 +95,7 @@
 
         // Border overlay
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           inset: 0;
           border: 1px solid var(--colors_border_light);
